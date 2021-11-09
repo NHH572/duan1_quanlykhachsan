@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/HoTroJDialog.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuenMatKhau.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/ChaoJDialog.java</file>
@@ -14,6 +15,11 @@
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/TrangChuJFrame.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/entity/HoaDon.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/entity/DatPhong.java</file>
+=======
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDatPhongJPanel.java</file>
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDichVuJPanel.java</file>
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/TrangChuJrame.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
