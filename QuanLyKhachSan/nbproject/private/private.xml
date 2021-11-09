@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/helper/JdbcHelper.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/helper/MsgBox.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/helper/XImage.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/DangnhapJDialog.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/TrangChuJFrame.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/helper/Auth.java</file>
+=======
+<<<<<<< Updated upstream
+>>>>>>> bb2d3a384a273c309231cc36d5f039fa84b6903a
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/HoTroJDialog.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuenMatKhau.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/ChaoJDialog.java</file>
@@ -18,6 +22,11 @@
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/NewJPanel.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/entity/HoaDon.java</file>
             <file>file:/D:/DuAn1_quanlukhachsan/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/entity/DatPhong.java</file>
+=======
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDatPhongJPanel.java</file>
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDichVuJPanel.java</file>
+            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/TrangChuJrame.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
