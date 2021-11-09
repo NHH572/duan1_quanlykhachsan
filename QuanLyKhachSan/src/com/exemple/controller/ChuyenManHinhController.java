@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package com.exemple.controller;
 
 import com.exemple.views.DangnhapJDialog;
 import com.exemple.views.QuanLyDatPhongJPanel;
@@ -21,7 +21,7 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
-import model.DanhMuc;
+import com.exemple.entity.DanhMuc;
 
 /**
  *

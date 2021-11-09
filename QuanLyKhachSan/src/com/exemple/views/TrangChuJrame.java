@@ -5,12 +5,12 @@
  */
 package com.exemple.views;
 
-import controller.ChuyenManHinhController;
+import com.exemple.controller.ChuyenManHinhController;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-import model.DanhMuc;
+import com.exemple.entity.DanhMuc;
 
 /**
  *
