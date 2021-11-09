@@ -280,6 +280,11 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jButton13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dangxuat.png"))); // NOI18N
         jButton13.setText("Đăng xuất");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/thoat.png"))); // NOI18N
@@ -604,6 +609,10 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments
