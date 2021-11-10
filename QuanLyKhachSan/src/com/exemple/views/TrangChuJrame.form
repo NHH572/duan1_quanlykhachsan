@@ -26,6 +26,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -44,15 +45,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-=======
-          <Color blue="66" green="66" red="66" type="rgb"/>
->>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
-=======
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
->>>>>>> parent of 1cd85c2 (Update TrangChuJrame.form)
         </Property>
       </Properties>
 
@@ -757,15 +750,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  <EmptySpace min="0" pref="979" max="32767" attributes="0"/>
-=======
-                  <EmptySpace min="0" pref="726" max="32767" attributes="0"/>
->>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
-=======
                   <EmptySpace min="0" pref="702" max="32767" attributes="0"/>
->>>>>>> parent of 1cd85c2 (Update TrangChuJrame.form)
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
