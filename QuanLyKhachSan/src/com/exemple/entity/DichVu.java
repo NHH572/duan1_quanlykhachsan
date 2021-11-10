@@ -10,15 +10,16 @@ package com.exemple.entity;
  * @author hp
  */
 public class DichVu {
+
     private int maDichVu;
-    private int tenDichVu;
+    private String tenDichVu;
     private float giaDichVu;
     private String moTa;
 
     public DichVu() {
     }
 
-    public DichVu(int maDichVu, int tenDichVu, float giaDichVu, String moTa) {
+    public DichVu(int maDichVu, String tenDichVu, float giaDichVu, String moTa) {
         this.maDichVu = maDichVu;
         this.tenDichVu = tenDichVu;
         this.giaDichVu = giaDichVu;
@@ -33,11 +34,11 @@ public class DichVu {
         this.maDichVu = maDichVu;
     }
 
-    public int getTenDichVu() {
+    public String getTenDichVu() {
         return tenDichVu;
     }
 
-    public void setTenDichVu(int tenDichVu) {
+    public void setTenDichVu(String tenDichVu) {
         this.tenDichVu = tenDichVu;
     }
 
@@ -56,6 +57,5 @@ public class DichVu {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
-    
-    
+
 }

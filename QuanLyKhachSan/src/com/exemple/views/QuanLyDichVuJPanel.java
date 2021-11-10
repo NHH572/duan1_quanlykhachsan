@@ -5,17 +5,48 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.DichVuDAO;
+import com.exemple.entity.DichVu;
+import com.exemple.helper.MsgBox;
+import java.awt.Color;
+import java.util.List;
+import java.util.concurrent.ForkJoinTask;
+import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Minh Triet
  */
 public class QuanLyDichVuJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form QuanLyDichVuJPanel
-     */
+    int row = -1;
+
     public QuanLyDichVuJPanel() {
         initComponents();
+        init();
+    }
+
+    void init() {
+        fillToTable();
+    }
+
+    private void fillToTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDichVu.getModel();
+        model.setRowCount(0);
+        DichVuDAO dvDAO = new DichVuDAO();
+        List<DichVu> list = dvDAO.selectAll();
+        for (DichVu dv : list) {
+            Object[] row = {
+                dv.getMaDichVu(),
+                dv.getTenDichVu(),
+                dv.getGiaDichVu(),
+                dv.getMoTa()};
+            model.addRow(row);
+        }
     }
 
     /**
@@ -26,98 +57,184 @@ public class QuanLyDichVuJPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblDichVu = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnMoi = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        txtMoTa = new javax.swing.JEditorPane();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtTenDichVu = new javax.swing.JTextField();
+        txtGiaDichVu = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
         jLabel1.setText("QUẢN LÝ DỊCH VỤ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDichVu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tblDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Mã ", "Tên", "Giá", "Mô tả"
+                "Mã dịch vụ ", "Tên dịch vụ", "Giá", "Mô tả"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
 
-        jLabel2.setText("Mã");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDichVuMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDichVu);
 
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
+
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/add.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThem);
+
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/update.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSua);
+
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/deleteService.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa);
+
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/new.png"))); // NOI18N
+        btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMoi);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        txtMoTa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        txtMoTa.setName("Mô tả"); // NOI18N
+        jScrollPane2.setViewportView(txtMoTa);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 489;
+        gridBagConstraints.ipady = 69;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 11, 10);
+        jPanel2.add(jScrollPane2, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Tên");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 15, 0, 0);
+        jPanel2.add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("Giá");
-
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Mô tả");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
+        jPanel2.add(jLabel5, gridBagConstraints);
 
-        jButton1.setText("Thêm");
+        txtTenDichVu.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        txtTenDichVu.setName("Tên dịch vụ"); // NOI18N
+        txtTenDichVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenDichVuActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.ipadx = 201;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 23, 0, 0);
+        jPanel2.add(txtTenDichVu, gridBagConstraints);
 
-        jButton2.setText("Xóa");
+        txtGiaDichVu.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        txtGiaDichVu.setName("Giá dịch vụ"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 222;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 28, 0, 10);
+        jPanel2.add(txtGiaDichVu, gridBagConstraints);
 
-        jButton3.setText("Sửa");
-
-        jScrollPane2.setViewportView(jEditorPane1);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Giá");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 18, 0, 0);
+        jPanel2.add(jLabel4, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
+                .addGap(90, 90, 90)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
+                        .addGap(158, 158, 158)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(55, 55, 55)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(jLabel4)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,49 +242,177 @@ public class QuanLyDichVuJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)))
-                .addComponent(jLabel5)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtTenDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDichVuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenDichVuActionPerformed
+    private String getTextFromTable(int col) {
+        return String.valueOf(tblDichVu.getValueAt(row, col));
+    }
+
+    private void showInformation() {
+        txtTenDichVu.setText(getTextFromTable(1));
+        txtGiaDichVu.setText(getTextFromTable(2));
+        txtMoTa.setText(getTextFromTable(3));
+    }
+    private void tblDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDichVuMouseClicked
+        row = tblDichVu.getSelectedRow();
+        if (row >= 0) {
+            showInformation();
+        }
+    }//GEN-LAST:event_tblDichVuMouseClicked
+    private void clearText() {
+        txtTenDichVu.setText("");
+        txtGiaDichVu.setText("");
+        txtMoTa.setText("");
+    }
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        clearText();
+    }//GEN-LAST:event_btnMoiActionPerformed
+    private boolean checkNullTextFiled(JTextField txt) {
+        if (txt.getText().trim().length() > 0) {
+            txt.setBackground(Color.white);
+            return true;
+        } else {
+            txt.setBackground(Color.pink);
+            MsgBox.alert(this, "Không được để trống " + txt.getName() + "!");
+            return false;
+        }
+    }
+
+    private boolean checkNullEditorPane(JEditorPane txt) {
+        if (txt.getText().trim().length() > 0) {
+            txt.setBackground(Color.white);
+            return true;
+        } else {
+            txt.setBackground(Color.pink);
+            MsgBox.alert(this, "Không được để trống " + txt.getName() + "!");
+            return false;
+        }
+    }
+    private boolean checkNumber(JTextField txt){
+        try{
+            Float.parseFloat(txt.getText());
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+    private boolean checkPrice() {
+        if(checkNumber(txtGiaDichVu)){
+            if (Float.parseFloat(txtGiaDichVu.getText()) > 0) {
+            txtGiaDichVu.setBackground(Color.white);
+            return true;
+        } else {
+            txtGiaDichVu.setBackground(Color.pink);
+            MsgBox.alert(this, txtGiaDichVu.getName() + " phải lớn hơn 0!");
+            return false;
+        }
+        }else{
+            txtGiaDichVu.setBackground(Color.pink);
+            MsgBox.alert(this, txtGiaDichVu.getName() + " phải là số!");
+            return false;
+            
+        }
+        
+    }
+
+    private boolean insertDichVu() {
+        try {
+            DichVuDAO dvDAO = new DichVuDAO();
+            DichVu dv = new DichVu();
+            dv.setTenDichVu(txtTenDichVu.getText());
+            dv.setGiaDichVu(Float.valueOf(txtGiaDichVu.getText()));
+            dv.setMoTa(txtMoTa.getText());
+            dvDAO.insert(dv);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (checkNullTextFiled(txtTenDichVu) && checkNullTextFiled(txtGiaDichVu) && checkNullEditorPane(txtMoTa)) {
+            if (checkPrice()) {
+                if (insertDichVu()) {
+                    fillToTable();
+                    MsgBox.alert(this, "Thêm thành công!");
+                } else {
+                    MsgBox.alert(this, "Thêm thất bại!");
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btnThemActionPerformed
+    private boolean updateDichVu() {
+        try {
+            DichVuDAO dvDAO = new DichVuDAO();
+            DichVu dv = new DichVu();
+            int maDichVu = (int) tblDichVu.getValueAt(row, 0);
+            dv.setMaDichVu(maDichVu);
+            dv.setTenDichVu(txtTenDichVu.getText());
+            dv.setGiaDichVu(Float.valueOf(txtGiaDichVu.getText()));
+            dv.setMoTa(txtMoTa.getText());
+            dvDAO.update(dv);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        if (updateDichVu()) {
+            fillToTable();
+            MsgBox.alert(this, "Sửa thành công!");
+        } else {
+            MsgBox.alert(this, "Sửa thất bại!");
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+    private boolean deleteDichVu() {
+        try {
+            DichVuDAO dvDAO = new DichVuDAO();
+            int maDichVu = (int) tblDichVu.getValueAt(row, 0);
+            dvDAO.delete(maDichVu);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        if (deleteDichVu()) {
+            if (MsgBox.confirm(this, "Bạn có muốn xóa không?")) {
+                fillToTable();
+                clearText();
+                MsgBox.alert(this, "Xóa thành công!");
+            }
+        } else {
+            MsgBox.alert(this, "Xóa thất bại!");
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JButton btnMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tblDichVu;
+    private javax.swing.JTextField txtGiaDichVu;
+    private javax.swing.JEditorPane txtMoTa;
+    private javax.swing.JTextField txtTenDichVu;
     // End of variables declaration//GEN-END:variables
 }
