@@ -6,8 +6,13 @@
         <group/>
 =======
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/entity/NhanVien.java</file>
             <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/controller/NhanVienDAO.java</file>
+=======
+            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/HoTroJDialog.java</file>
+            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/ChaoJDialog.java</file>
+>>>>>>> parent of 4a99a20 (Update private.xml)
             <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/TrangChuJrame.java</file>
         </group>
 >>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
