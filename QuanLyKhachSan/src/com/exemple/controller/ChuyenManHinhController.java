@@ -11,7 +11,7 @@ import com.exemple.views.QuanLyDichVuJPanel;
 import com.exemple.views.QuanLyDoiTacJPanel;
 import com.exemple.views.QuanLyHoaDonJPanel;
 import com.exemple.views.QuanLyKhoJPanel;
-import com.exemple.views.QuanLyKhuyenMaiJPanel;
+
 import com.exemple.views.QuanLyNhanVienJPanel;
 import com.exemple.views.QuanLyPhongJPanel;
 import java.awt.BorderLayout;
@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import com.exemple.entity.DanhMuc;
+import com.exemple.views.QuanLyKhuyenMaiJPanel;
 
 /**
  *
