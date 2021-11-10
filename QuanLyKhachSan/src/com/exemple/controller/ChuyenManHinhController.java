@@ -29,8 +29,8 @@ import com.exemple.entity.DanhMuc;
  */
 public class ChuyenManHinhController {
 
-    Color colorDefault = new Color(102, 102, 102);
-    Color colorChange = new Color(153, 153, 153);
+    public static Color colorDefault = new Color(102, 102, 102);
+    public static Color colorChange = new Color(153, 153, 153);
     private JPanel mainPanel;
     private String kindSelected = "";
     private List<DanhMuc> listDanhMuc = null;
@@ -154,6 +154,7 @@ public class ChuyenManHinhController {
         @Override
         public void mouseMoved(MouseEvent e) {
         }
+
     }
 
     private void setChangeBackground(String kind) {
@@ -169,4 +170,5 @@ public class ChuyenManHinhController {
             }
         }
     }
+
 }
