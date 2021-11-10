@@ -6,14 +6,11 @@
 package com.exemple.views;
 
 import com.exemple.controller.ChuyenManHinhController;
-import static com.exemple.controller.ChuyenManHinhController.colorChange;
-import static com.exemple.controller.ChuyenManHinhController.colorDefault;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import com.exemple.entity.DanhMuc;
-import java.awt.BorderLayout;
 
 /**
  *
@@ -22,13 +19,11 @@ import java.awt.BorderLayout;
 public class TrangChuJrame extends javax.swing.JFrame {
 
     ChuyenManHinhController controller;
-
     public TrangChuJrame() {
         initComponents();
         init();
     }
-
-    void init() {
+     void init() {
 
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
@@ -41,20 +36,27 @@ public class TrangChuJrame extends javax.swing.JFrame {
 //        }).start();
 //        this.openChao();
 //        this.openDangNhap();
-        controller = new ChuyenManHinhController(mainPanel);
-        controller.setView(panelPhong, lblPhong, Opaque1);
-        List<DanhMuc> listDanhMuc = new ArrayList<>();
-        listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
-        listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
-        listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
-        listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
-        listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
-        listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
-        listDanhMuc.add(new DanhMuc("KhoHang", panelKhoHang, lblKhoHang, Opaque7));
-        listDanhMuc.add(new DanhMuc("KhuyenMai", panelKhuyenMai, lblKhuyenMai, Opaque8));
-        listDanhMuc.add(new DanhMuc("DangXuat", panelDangXuat, lblDangXuat, Opaque9));
-        listDanhMuc.add(new DanhMuc("Thoat", panelThoat, lblThoat, Opaque10));
+        controller=new ChuyenManHinhController(mainPanel);        
+        controller.setView(panelPhong, lblPhong,Opaque1);
+        List<DanhMuc> listDanhMuc=new ArrayList<>();
+        listDanhMuc.add(new DanhMuc("QuanLyPhong",panelPhong,lblPhong,Opaque1));
+        listDanhMuc.add(new DanhMuc("NhanVien",panelNhanVien,lblNhanVien,Opaque2));
+        listDanhMuc.add(new DanhMuc("DichVu",panelDichVu,lblDichVu,Opaque3));
+        listDanhMuc.add(new DanhMuc("HoaDon",panelHoaDon,lblHoaDon,Opaque4));
+        listDanhMuc.add(new DanhMuc("DatPhong",panelDatPhong,lblDatPhong,Opaque5));
+        listDanhMuc.add(new DanhMuc("DoiTac",panelDoiTac,lblDoiTac,Opaque6));
+        listDanhMuc.add(new DanhMuc("KhoHang",panelKhoHang,lblKhoHang,Opaque7));
+        listDanhMuc.add(new DanhMuc("KhuyenMai",panelKhuyenMai,lblKhuyenMai,Opaque8));
+        listDanhMuc.add(new DanhMuc("DangXuat",panelDangXuat,lblDangXuat,Opaque9));
+        listDanhMuc.add(new DanhMuc("Thoat",panelThoat,lblThoat,Opaque10));
         controller.setEvent(listDanhMuc);
+    }
+    void setColor(JPanel panel) {
+        panel.setBackground(new Color(153, 153, 153));// Màu khi click vô
+    }
+
+    void resetColor(JPanel panel) {
+        panel.setBackground(new Color(102, 102, 102));// Màu ban đầu, trùng với màu của SlidePanel
     }
 
     /**
@@ -115,17 +117,21 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton6 = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JToolBar.Separator();
-        btnTroGiup = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
         jButton19 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 =======
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 >>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
+=======
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> parent of 05926a7 (Update TrangChuJrame.java)
 
         slidePanel.setBackground(new java.awt.Color(102, 102, 102));
         slidePanel.setLayout(new java.awt.GridBagLayout());
@@ -558,10 +564,14 @@ public class TrangChuJrame extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 <<<<<<< HEAD
+<<<<<<< HEAD
             .addGap(0, 979, Short.MAX_VALUE)
 =======
             .addGap(0, 726, Short.MAX_VALUE)
 >>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
+=======
+            .addGap(0, 702, Short.MAX_VALUE)
+>>>>>>> parent of 05926a7 (Update TrangChuJrame.java)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,7 +586,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -652,18 +663,13 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jToolBar1.add(jButton6);
         jToolBar1.add(jSeparator8);
 
-        btnTroGiup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/trogiup.png"))); // NOI18N
-        btnTroGiup.setText("Trợ giúp");
-        btnTroGiup.setFocusable(false);
-        btnTroGiup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTroGiup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnTroGiup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTroGiupActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnTroGiup);
+        jButton18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/trogiup.png"))); // NOI18N
+        jButton18.setText("Trợ giúp");
+        jButton18.setFocusable(false);
+        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton18.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton18);
         jToolBar1.add(jSeparator7);
 
         jButton19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -713,7 +719,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
     private void panelDatPhongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDatPhongMousePressed
 
-
+   
     }//GEN-LAST:event_panelDatPhongMousePressed
 
     private void panelDoiTacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDoiTacMousePressed
@@ -721,11 +727,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }//GEN-LAST:event_panelDoiTacMousePressed
 
     private void panelKhoHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKhoHangMousePressed
-
+        
     }//GEN-LAST:event_panelKhoHangMousePressed
 
     private void panelKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKhuyenMaiMousePressed
-
+       
     }//GEN-LAST:event_panelKhuyenMaiMousePressed
 
     private void panelDangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDangXuatMousePressed
@@ -743,37 +749,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    public void resetBackground() {
-        panelPhong.setBackground(colorDefault);
-        Opaque1.setOpaque(false);
-        panelNhanVien.setBackground(colorDefault);
-        Opaque2.setOpaque(false);
-        panelDichVu.setBackground(colorDefault);
-        Opaque3.setOpaque(false);
-        panelHoaDon.setBackground(colorDefault);
-        Opaque4.setOpaque(false);
-        panelDatPhong.setBackground(colorDefault);
-        Opaque5.setOpaque(false);
-        panelDoiTac.setBackground(colorDefault);
-        Opaque6.setOpaque(false);
-        panelKhoHang.setBackground(colorDefault);
-        Opaque7.setOpaque(false);
-        panelKhuyenMai.setBackground(colorDefault);
-        Opaque8.setOpaque(false);
-        panelDangXuat.setBackground(colorDefault);
-        Opaque9.setOpaque(false);
-        panelThoat.setBackground(colorDefault);
-        Opaque10.setOpaque(false);
-    }
-    private void btnTroGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroGiupActionPerformed
-        mainPanel.removeAll();
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new HoTroJPanel());
-        mainPanel.validate();
-        mainPanel.repaint();
-        resetBackground();
-    }//GEN-LAST:event_btnTroGiupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -821,8 +796,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel Opaque7;
     private javax.swing.JPanel Opaque8;
     private javax.swing.JPanel Opaque9;
-    private javax.swing.JButton btnTroGiup;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
