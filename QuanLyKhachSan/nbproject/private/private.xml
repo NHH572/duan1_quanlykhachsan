@@ -3,15 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDatPhong.java</file>
-            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/thongke.java</file>
-            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/ChaoJDialog.java</file>
-            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuenMatKhau.java</file>
-=======
-            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/views/QuanLyDoiTacJPanel.java</file>
-            <file>file:/C:/Users/Minh%20Triet/Desktop/ThayPhung/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/controller/ChuyenManHinhController.java</file>
->>>>>>> 39d62e14c1035165d9f8c96370f6f4a042a693ca
+            <file>file:/C:/Users/ACER/OneDrive/Desktop/DuAn1/duan1_quanlykhachsan/QuanLyKhachSan/src/com/exemple/helper/JdbcHelper.java</file>
         </group>
     </open-files>
 </project-private>
