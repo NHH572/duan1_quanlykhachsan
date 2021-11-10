@@ -5,12 +5,14 @@
  */
 package com.exemple.views;
 
+
 import com.exemple.controller.ChuyenManHinhController;
+import com.exemple.entity.DanhMuc;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-import com.exemple.entity.DanhMuc;
+
 
 /**
  *
@@ -27,15 +29,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
-//        new Timer(1000, new ActionListener() {
-//            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
-//
-//            public void actionPerformed(ActionEvent e) {
-//                Dongho.setText(format.format(new Date()));
-//            }
-//        }).start();
-//        this.openChao();
-//        this.openDangNhap();
         controller=new ChuyenManHinhController(mainPanel);        
         controller.setView(panelPhong, lblPhong,Opaque1);
         List<DanhMuc> listDanhMuc=new ArrayList<>();
@@ -123,15 +116,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-=======
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
->>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
-=======
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
->>>>>>> parent of 05926a7 (Update TrangChuJrame.java)
 
         slidePanel.setBackground(new java.awt.Color(102, 102, 102));
         slidePanel.setLayout(new java.awt.GridBagLayout());
@@ -563,15 +548,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-<<<<<<< HEAD
-            .addGap(0, 979, Short.MAX_VALUE)
-=======
-            .addGap(0, 726, Short.MAX_VALUE)
->>>>>>> 6ff1b4685baded5f77f882bd4ca8285cc8a32d13
-=======
             .addGap(0, 702, Short.MAX_VALUE)
->>>>>>> parent of 05926a7 (Update TrangChuJrame.java)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -686,7 +663,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
