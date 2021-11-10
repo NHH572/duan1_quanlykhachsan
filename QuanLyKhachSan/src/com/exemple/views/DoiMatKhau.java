@@ -9,12 +9,12 @@ package com.exemple.views;
  *
  * @author ACER
  */
-public class QuenMatKhau extends javax.swing.JPanel {
+public class DoiMatKhau extends javax.swing.JPanel {
 
     /**
      * Creates new form QuenMatKhau
      */
-    public QuenMatKhau() {
+    public DoiMatKhau() {
         initComponents();
     }
 
@@ -61,7 +61,7 @@ public class QuenMatKhau extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel5.setText("QUÊN MẬT KHẨU");
+        jLabel5.setText("ĐỔI MẬT KHẨU");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

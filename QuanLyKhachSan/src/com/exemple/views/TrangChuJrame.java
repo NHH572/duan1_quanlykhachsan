@@ -5,12 +5,14 @@
  */
 package com.exemple.views;
 
+
 import com.exemple.controller.ChuyenManHinhController;
+import com.exemple.entity.DanhMuc;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-import com.exemple.entity.DanhMuc;
+
 
 /**
  *
@@ -27,15 +29,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
-//        new Timer(1000, new ActionListener() {
-//            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
-//
-//            public void actionPerformed(ActionEvent e) {
-//                Dongho.setText(format.format(new Date()));
-//            }
-//        }).start();
-//        this.openChao();
-//        this.openDangNhap();
         controller=new ChuyenManHinhController(mainPanel);        
         controller.setView(panelPhong, lblPhong,Opaque1);
         List<DanhMuc> listDanhMuc=new ArrayList<>();

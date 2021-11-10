@@ -14,17 +14,17 @@ import java.util.Date;
 public class KhuyenMai {
     private String maKhuyenMai;
     private String tenKhuyenMai;
-    private int gaiTri;
+    private int giaTri;
     private Date ngayBatDau;
     private Date ngayKetThuoc;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String maKhuyenMai, String tenKhuyenMai, int gaiTri, Date ngayBatDau, Date ngayKetThuoc) {
+    public KhuyenMai(String maKhuyenMai, String tenKhuyenMai, int giaTri, Date ngayBatDau, Date ngayKetThuoc) {
         this.maKhuyenMai = maKhuyenMai;
         this.tenKhuyenMai = tenKhuyenMai;
-        this.gaiTri = gaiTri;
+        this.giaTri = giaTri;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuoc = ngayKetThuoc;
     }
@@ -45,12 +45,12 @@ public class KhuyenMai {
         this.tenKhuyenMai = tenKhuyenMai;
     }
 
-    public int getGaiTri() {
-        return gaiTri;
+    public int getGiaTri() {
+        return giaTri;
     }
 
-    public void setGaiTri(int gaiTri) {
-        this.gaiTri = gaiTri;
+    public void setGiaTri(int giaTri) {
+        this.giaTri = giaTri;
     }
 
     public Date getNgayBatDau() {
@@ -68,6 +68,8 @@ public class KhuyenMai {
     public void setNgayKetThuoc(Date ngayKetThuoc) {
         this.ngayKetThuoc = ngayKetThuoc;
     }
+
+   
     
     
 }
