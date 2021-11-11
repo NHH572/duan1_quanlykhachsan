@@ -44,6 +44,7 @@ CREATE TABLE NhanVien
   DiaChi NVARCHAR(255),
   SoDienThoai VARCHAR(15),
   VaiTro BIT,
+  Hinh varchar(255),
   PRIMARY KEY (TaiKhoanNV)
 );
 
@@ -58,7 +59,7 @@ CREATE TABLE DichVu
 
 CREATE TABLE DoiTac
 (
-  MaDoiTac INT IDENTITY(1,1),
+  MaDoiTac varchar(10),
   TenDoiTac NVARCHAR(50),
   SoDienThoai NVARCHAR(15),
   DanhGiaKhachSan NVARCHAR(300),
@@ -74,7 +75,7 @@ CREATE TABLE KhachHang
   SoDienThoai VARCHAR(15),
   QuocTich NVARCHAR(20),
   SoLanThue INT,
-  MaDoiTac INT,
+  MaDoiTac varchar(10),
   PRIMARY KEY (SoCMTKhachHang),
   FOREIGN KEY (MaDoiTac) REFERENCES DoiTac(MaDoiTac)
 );
@@ -231,15 +232,15 @@ GO
 	('KHTT3',N'Khách hàng thân thiết 3',50,'2021/11/01','2021/12/31'),
 	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31')
 -- Đối tác
-	INSERT INTO DoiTac(TenDoiTac,SoDienThoai,DanhGiaKhachSan)
-	VALUES (N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
-	(N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
-	(N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
+	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
+	VALUES ('CTTP',N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
+	('CTTT',N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
+	('CTPT',N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
 -- Khách hàng
 	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,QuocTich,SoLanThue,MaDoiTac)
 	VALUES ('272433567',N'Phạm Nguyễn Minh Triết','1990/09/09',0,N'Việt Nam',null,null),
-	('767265819',N'John Tom','1982/01/01',0,N'Singapore',null,1),
-	('124567893',N'Nguyễn Hoàng Hải','1989/11/11',0,N'Việt Nam',2,2)
+	('767265819',N'John Tom','1982/01/01',0,N'Singapore',null,'CTTP'),
+	('124567893',N'Nguyễn Hoàng Hải','1989/11/11',0,N'Việt Nam',2,'CTTT')
 -- Dịch Vụ
 	INSERT INTO DichVu(TenDichVu,GiaDichVu,MoTa)
 	VALUES (N'Giặt ủi',20000,N'Giá theo kg'),
