@@ -35,6 +35,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     public QuanLyDoiTacJPanel() {
         initComponents();
         fillTable();
+        txt_SLHT.disable();
     }
 
     int index = 0;
@@ -130,6 +131,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     void edit() {
         setTrang();
         try {
+            txt_SLHT.setText("0");
             index = tbl_DoiTac.getSelectedRow();
             if (index >= 0) {
                 String madt = (String) tbl_DoiTac.getValueAt(this.index, 0);
@@ -139,6 +141,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                     
                 }
                 SoLanHopTac();
+                
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
@@ -155,8 +158,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
             ps.setString(1, maDT);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                String SL =rs.getString("SoLuong") ;
-                lbl_SLHT.setText(String.valueOf(SL));
+                txt_SLHT.setText(rs.getString("SoLuong"));
             }
             }      
         } catch (Exception e) {
@@ -190,7 +192,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
         btn_Moi = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txt_SDT = new javax.swing.JTextField();
-        lbl_SLHT = new javax.swing.JLabel();
+        txt_SLHT = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("QUẢN LÝ ĐỐI TÁC");
@@ -255,8 +257,6 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Số điện thoại");
 
-        lbl_SLHT.setText("0");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -301,7 +301,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbl_SLHT, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_SLHT, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
@@ -323,7 +323,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                         .addComponent(txt_MaDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6)
                     .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_TenDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,7 +331,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(lbl_SLHT))
+                            .addComponent(txt_SLHT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)))
                 .addGap(9, 9, 9)
                 .addComponent(lbDG)
@@ -414,11 +414,11 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbDG;
-    private javax.swing.JLabel lbl_SLHT;
     private javax.swing.JTable tbl_DoiTac;
     private javax.swing.JTextArea txt_DanhGia;
     private javax.swing.JTextField txt_MaDT;
     private javax.swing.JTextField txt_SDT;
+    private javax.swing.JTextField txt_SLHT;
     private javax.swing.JTextField txt_TenDT;
     // End of variables declaration//GEN-END:variables
 }
