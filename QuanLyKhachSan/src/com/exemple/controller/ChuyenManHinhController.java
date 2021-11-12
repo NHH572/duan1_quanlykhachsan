@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import com.exemple.entity.DanhMuc;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
+import com.exemple.views.SoDoPhongJPanel;
 
 /**
  *
@@ -41,13 +42,13 @@ public class ChuyenManHinhController {
     }
 
     public void setView(JPanel jpnItem, JLabel jlbItem, JPanel opaque) {
-        kindSelected = "QuanLyPhong";
+        kindSelected = "SoDoPhong";
         jlbItem.setBackground(colorChange);
         jpnItem.setBackground(colorChange);
         opaque.setOpaque(true);
         mainPanel.removeAll();
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new QuanLyPhongJPanel());
+        mainPanel.add(new SoDoPhongJPanel());
         mainPanel.validate();
         mainPanel.repaint();
     }
@@ -77,6 +78,9 @@ public class ChuyenManHinhController {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
+                case "SoDoPhong":
+                    node = new SoDoPhongJPanel();
+                    break;
                 case "QuanLyPhong":
                     node = new QuanLyPhongJPanel();
                     break;
@@ -103,9 +107,6 @@ public class ChuyenManHinhController {
                     break;
                 case "DangXuat":
                     new DangnhapJDialog(null, true).setVisible(true);
-                    break;
-                case "Thoat":
-                    System.exit(0);
                     break;
                 default:
                     break;
