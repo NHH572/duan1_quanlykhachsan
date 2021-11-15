@@ -16,17 +16,17 @@ public class KhuyenMai {
     private String tenKhuyenMai;
     private int giaTri;
     private Date ngayBatDau;
-    private Date NgayHetHan;
+    private Date ngayKetThuoc;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String maKhuyenMai, String tenKhuyenMai, int giaTri, Date ngayBatDau, Date NgayHetHan) {
+    public KhuyenMai(String maKhuyenMai, String tenKhuyenMai, int giaTri, Date ngayBatDau, Date ngayKetThuoc) {
         this.maKhuyenMai = maKhuyenMai;
         this.tenKhuyenMai = tenKhuyenMai;
         this.giaTri = giaTri;
         this.ngayBatDau = ngayBatDau;
-        this.NgayHetHan = NgayHetHan;
+        this.ngayKetThuoc = ngayKetThuoc;
     }
 
     public String getMaKhuyenMai() {
@@ -61,15 +61,14 @@ public class KhuyenMai {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public Date getNgayHetHan() {
-        return NgayHetHan;
+    public Date getNgayKetThuoc() {
+        return ngayKetThuoc;
     }
 
-    public void setNgayHetHan(Date NgayHetHan) {
-        this.NgayHetHan = NgayHetHan;
+    public void setNgayKetThuoc(Date ngayKetThuoc) {
+        this.ngayKetThuoc = ngayKetThuoc;
     }
 
-    
    
     
     
