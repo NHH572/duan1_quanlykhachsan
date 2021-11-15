@@ -61,16 +61,17 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
         try {
             ResultSet rs = JdbcHelper.executeQuery(sqlString, args);
             while(rs.next()){
-                NhanVien entity = new NhanVien();
-                entity.setMaNV(rs.getString("MaNV"));
+                 NhanVien entity = new NhanVien();
+                entity.setMaNV(rs.getString("TaiKhoanNV"));
+                entity.setMatKhau(rs.getString("MatKhauNV"));
                 entity.setHoTen(rs.getString("HoTen"));
-                entity.setMatKhau(rs.getString("MatKhau"));
                 entity.setNgaySinh(rs.getDate("NgaySinh"));
                 entity.setGioiTinh(rs.getBoolean("GioiTinh"));
                 entity.setCMND_CCCD(rs.getString("SoCMT"));
                 entity.setDiaChi(rs.getString("DiaChi"));
                 entity.setSoDienThoai(rs.getString("SoDienThoai"));
                 entity.setVaiTro(rs.getBoolean("VaiTro"));
+                entity.setHinh(rs.getString("Hinh"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
