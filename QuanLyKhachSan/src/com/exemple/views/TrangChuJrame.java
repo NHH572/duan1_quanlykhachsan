@@ -26,12 +26,12 @@ public class TrangChuJrame extends javax.swing.JFrame {
         init();
     }
      void init() {
+
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
         controller=new ChuyenManHinhController(mainPanel);        
-        controller.setView(panelSoDoPhong, lblSoDoPhong,Opaque10);
+        controller.setView(panelPhong, lblPhong,Opaque1);
         List<DanhMuc> listDanhMuc=new ArrayList<>();
-        listDanhMuc.add(new DanhMuc("SoDoPhong",panelSoDoPhong,lblSoDoPhong,Opaque10));
         listDanhMuc.add(new DanhMuc("QuanLyPhong",panelPhong,lblPhong,Opaque1));
         listDanhMuc.add(new DanhMuc("NhanVien",panelNhanVien,lblNhanVien,Opaque2));
         listDanhMuc.add(new DanhMuc("DichVu",panelDichVu,lblDichVu,Opaque3));
@@ -40,7 +40,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMuc("DoiTac",panelDoiTac,lblDoiTac,Opaque6));
         listDanhMuc.add(new DanhMuc("KhoHang",panelKhoHang,lblKhoHang,Opaque7));
         listDanhMuc.add(new DanhMuc("KhuyenMai",panelKhuyenMai,lblKhuyenMai,Opaque8));
-        listDanhMuc.add(new DanhMuc("DangXuat",panelDangXuat,lblDangXuat,Opaque9));        
+        listDanhMuc.add(new DanhMuc("DangXuat",panelDangXuat,lblDangXuat,Opaque9));
+        listDanhMuc.add(new DanhMuc("Thoat",panelThoat,lblThoat,Opaque10));
         controller.setEvent(listDanhMuc);
     }
     void setColor(JPanel panel) {
@@ -92,10 +93,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelDangXuat = new javax.swing.JPanel();
         Opaque9 = new javax.swing.JPanel();
         lblDangXuat = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        panelSoDoPhong = new javax.swing.JPanel();
+        panelThoat = new javax.swing.JPanel();
         Opaque10 = new javax.swing.JPanel();
-        lblSoDoPhong = new javax.swing.JLabel();
+        lblThoat = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -116,7 +116,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         slidePanel.setBackground(new java.awt.Color(102, 102, 102));
         slidePanel.setLayout(new java.awt.GridBagLayout());
@@ -131,7 +131,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 209, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -150,11 +150,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = -9;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         slidePanel.add(jPanel2, gridBagConstraints);
 
         panelPhong.setBackground(new java.awt.Color(102, 102, 102));
@@ -188,9 +185,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
@@ -227,12 +224,12 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
         slidePanel.add(panelNhanVien, gridBagConstraints);
 
         panelDichVu.setBackground(new java.awt.Color(102, 102, 102));
@@ -266,9 +263,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
@@ -305,9 +302,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
@@ -344,9 +341,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
@@ -383,9 +380,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
@@ -422,9 +419,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
@@ -461,9 +458,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
@@ -500,38 +497,21 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
         slidePanel.add(panelDangXuat, gridBagConstraints);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        slidePanel.add(jPanel3, gridBagConstraints);
-
-        panelSoDoPhong.setBackground(new java.awt.Color(102, 102, 102));
-        panelSoDoPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelThoat.setBackground(new java.awt.Color(102, 102, 102));
+        panelThoat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelSoDoPhongMousePressed(evt);
+                panelThoatMousePressed(evt);
             }
         });
-        panelSoDoPhong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelThoat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Opaque10.setEnabled(false);
         Opaque10.setOpaque(false);
@@ -547,24 +527,33 @@ public class TrangChuJrame extends javax.swing.JFrame {
             .addGap(0, 46, Short.MAX_VALUE)
         );
 
-        panelSoDoPhong.add(Opaque10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelThoat.add(Opaque10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
 
-        lblSoDoPhong.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lblSoDoPhong.setForeground(new java.awt.Color(255, 255, 255));
-        lblSoDoPhong.setText("Sơ đồ phòng");
-        panelSoDoPhong.add(lblSoDoPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
+        lblThoat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblThoat.setForeground(new java.awt.Color(255, 255, 255));
+        lblThoat.setText("Thoát");
+        panelThoat.add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 58;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        slidePanel.add(panelSoDoPhong, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(13, 0, 13, 0);
+        slidePanel.add(panelThoat, gridBagConstraints);
 
-        mainPanel.setLayout(new java.awt.GridBagLayout());
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 702, Short.MAX_VALUE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -574,12 +563,15 @@ public class TrangChuJrame extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jToolBar1.setRollover(true);
@@ -680,8 +672,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -725,9 +716,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_panelDangXuatMousePressed
 
-    private void panelSoDoPhongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSoDoPhongMousePressed
+    private void panelThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelThoatMousePressed
 
-    }//GEN-LAST:event_panelSoDoPhongMousePressed
+    }//GEN-LAST:event_panelThoatMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -794,7 +785,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
@@ -812,7 +802,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblKhuyenMai;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblPhong;
-    private javax.swing.JLabel lblSoDoPhong;
+    private javax.swing.JLabel lblThoat;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelDangXuat;
     private javax.swing.JPanel panelDatPhong;
@@ -823,7 +813,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelKhuyenMai;
     private javax.swing.JPanel panelNhanVien;
     private javax.swing.JPanel panelPhong;
-    private javax.swing.JPanel panelSoDoPhong;
+    private javax.swing.JPanel panelThoat;
     private javax.swing.JPanel slidePanel;
     // End of variables declaration//GEN-END:variables
 }
