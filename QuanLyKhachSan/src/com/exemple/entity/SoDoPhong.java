@@ -14,7 +14,6 @@ public class SoDoPhong {
     private int soPhong;
     private String tenLoaiPhong;
     private String trangThai;
-
     public SoDoPhong() {
     }
 

@@ -8,9 +8,7 @@ package com.exemple.controller;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.SoDoPhong;
 import com.exemple.helper.JdbcHelper;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +27,10 @@ public class SoDoPhongDAO {
 
     public static Color colorDefault = new Color(102, 102, 102);
     public static Color colorChange = new Color(153, 153, 153);
-    private JPanel panelPhong;
     private List<DanhMucSoDoPhong> listDanhMucSoDoPhong = null;
     String sqlSoDoPhong = "select p.SoPhong,lp.TenLoaiPhong,p.TrangThai from LoaiPhong lp inner join Phong p on lp.MaLoaiPhong=p.MaLoaiPhong";
 
     public SoDoPhongDAO() {
-    }
-
-    public SoDoPhongDAO(JPanel panelPhong) {
-        this.panelPhong = panelPhong;
     }
 
     public List<SoDoPhong> selectSoDoPhong() {
@@ -78,12 +71,6 @@ public class SoDoPhongDAO {
         int i = 0;
         for (SoDoPhong item : listDataDanhMucSoDoPhong) {
             DanhMucSoDoPhong dmsdp = listDanhMucSoDoPhong.get(i);
-//            dmsdp.setChuThich("T"+tang+"P"+phong);
-//            i++;
-//            if(i==4||i==9||i==14||i==19||i==24){
-//                tang++;
-//            }
-
             dmsdp.setTextSoPhong(String.valueOf(item.getSoPhong()));
             dmsdp.setTextLoaiPhong(item.getTenLoaiPhong());
             dmsdp.setTextTrangThai(item.getTrangThai());
@@ -100,34 +87,63 @@ public class SoDoPhongDAO {
     public void setEvent(List<DanhMucSoDoPhong> listDanhMucSoDoPhong) {
         this.listDanhMucSoDoPhong = listDanhMucSoDoPhong;
         for (DanhMucSoDoPhong item : listDanhMucSoDoPhong) {
-            item.getPanel().addMouseListener(new LabelEvent(item.getPanel(), item.getSoPhong(), item.getLoaiPhong(), item.getTrangThai()));
+            item.getPanel().addMouseListener(new LabelEvent(item.getPanel(), item.getSoPhong(), item.getLoaiPhong(), item.getTrangThai(),
+                    item.getPanelTam(), item.getBtnChiTiet(), item.getBtnChucNang()));
         }
+
     }
 
     class LabelEvent implements MouseInputListener {
 
-        private JPanel node;
+        private JPanel panelGoc;
         private JLabel soPhong;
         private JLabel loaiPhong;
         private JLabel trangThai;
-        private JPanel panelTam = new JPanel();
+        private JPanel panelTam;
+        private JButton btnChiTiet;
+        private JButton btnChucNang;
+        private int i = 0;
 
         public LabelEvent() {
         }
 
-        public LabelEvent(JPanel node) {
-            this.node = node;
-        }
-        
-        public LabelEvent(JPanel node, JLabel soPhong, JLabel loaiPhong, JLabel trangThai) {
-            this.node = node;
+        public LabelEvent(JPanel panelGoc, JLabel soPhong, JLabel loaiPhong, JLabel trangThai, JPanel panelTam, JButton btnChiTiet, JButton btnChucNang) {
+            this.panelGoc = panelGoc;
             this.soPhong = soPhong;
             this.loaiPhong = loaiPhong;
             this.trangThai = trangThai;
+            this.panelTam = panelTam;
+            this.btnChiTiet = btnChiTiet;
+            this.btnChucNang = btnChucNang;
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            if (i % 2 == 0) {
+                if (trangThai.getText().equalsIgnoreCase("Trạng thái: Trống")) {
+                    btnChucNang.setText("Đặt phòng");
+                    soPhong.setVisible(false);
+                    loaiPhong.setVisible(false);
+                    trangThai.setVisible(false);
+                    btnChiTiet.setVisible(true);
+                    btnChucNang.setVisible(true);
+                } else {
+                    btnChucNang.setText("Thanh toán");
+                    soPhong.setVisible(false);
+                    loaiPhong.setVisible(false);
+                    trangThai.setVisible(false);
+                    btnChiTiet.setVisible(true);
+                    btnChucNang.setVisible(true);
+                }
+                i++;
+            } else {
+                soPhong.setVisible(true);
+                loaiPhong.setVisible(true);
+                trangThai.setVisible(true);
+                btnChiTiet.setVisible(false);
+                btnChucNang.setVisible(false);
+                i++;
+            }
 
         }
 
@@ -143,29 +159,7 @@ public class SoDoPhongDAO {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-//            if (trangThai.getText().equalsIgnoreCase("Trạng thái: Trống")) {
-//                panelPhong.removeAll();
-//                panelPhong.setLayout(new GridBagLayout());
-//                JButton btnChiTietPhong = new JButton();
-//                btnChiTietPhong.setText("Chi tiết");
-//                JButton btnDatPhong = new JButton();
-//                btnDatPhong.setText("Đặt phòng");
-//                panelPhong.add(btnChiTietPhong);
-//                panelPhong.add(btnDatPhong);
-//                panelPhong.validate();
-//                panelPhong.repaint();
-//            } else {
-//                panelPhong.removeAll();
-//                panelPhong.setLayout(new GridBagLayout());
-//                JButton btnChiTietPhong = new JButton();
-//                btnChiTietPhong.setText("Chi tiết");
-//                JButton btnDatPhong = new JButton();
-//                btnDatPhong.setText("Thanh toán");
-//                panelPhong.add(btnChiTietPhong);
-//                panelPhong.add(btnDatPhong);
-//                panelPhong.validate();
-//                panelPhong.repaint();
-//            }
+
         }
 
         @Override
@@ -180,6 +174,5 @@ public class SoDoPhongDAO {
         @Override
         public void mouseMoved(MouseEvent e) {
         }
-
     }
 }
