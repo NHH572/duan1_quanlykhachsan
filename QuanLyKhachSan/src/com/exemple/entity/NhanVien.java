@@ -12,20 +12,21 @@ import java.util.Date;
  * @author hp
  */
 public class NhanVien {
-    String maNV;
-    String matKhau;
-    String hoTen;
-    Date ngaySinh;
-    boolean gioiTinh;
-    String CMND_CCCD;
-    String diaChi;
-    String soDienThoai;
-    boolean vaiTro;
+    private String maNV;
+    private String matKhau;
+    private String hoTen;
+    private Date ngaySinh;
+    private boolean gioiTinh;
+    private String CMND_CCCD;
+    private String diaChi;
+    private String soDienThoai;
+    private boolean vaiTro;
+    private String hinh;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String matKhau, String hoTen, Date ngaySinh, boolean gioiTinh, String CMND_CCCD, String diaChi, String soDienThoai, boolean vaiTro) {
+    public NhanVien(String maNV, String matKhau, String hoTen, Date ngaySinh, boolean gioiTinh, String CMND_CCCD, String diaChi, String soDienThoai, boolean vaiTro, String hinh) {
         this.maNV = maNV;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
@@ -35,7 +36,18 @@ public class NhanVien {
         this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
         this.vaiTro = vaiTro;
+        this.hinh = hinh;
     }
+
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
+
+    
 
     public String getMaNV() {
         return maNV;

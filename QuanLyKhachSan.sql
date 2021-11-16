@@ -43,9 +43,12 @@ CREATE TABLE NhanVien
   SoCMT VARCHAR(20),
   DiaChi NVARCHAR(255),
   SoDienThoai VARCHAR(15),
-  VaiTro BIT,
+    VaiTro BIT,
+    hinh varchar(255),
   PRIMARY KEY (TaiKhoanNV)
+
 );
+
 
 CREATE TABLE DichVu
 (
@@ -192,13 +195,14 @@ GO
 	(505,5,N'Trống',3)
 -- NHÂN VIÊN
 	INSERT INTO NhanVien
-	VALUES ('admin','admin',N'Lê Văn Phụng','1972/10/10',0,'765666271',N'12 Thái Thị Nhạn, Q.Tân Bình, TP. HCM','0393796446',0),
-	('pnmtriet','123456',N'Phạm Nguyễn Minh Triết','1999/08/22',0,'272123456',N'1 Hồng Lạc, Q.Tân Bình, TP. HCM','0393796446',1),
-	('nhhai','123456',N'Nguyễn Hoàng Hải','2001/01/01',0,'546728901',N'1 Trưng Vương, Q.Cầu Giấy, Hà Nội','0976253623',1),
-	('ddcuong','123456',N'Đàm Đình Cường','2001/02/02',0,'276155678',N'125 Đinh Tiên Hoàng, Q.1, TP. HCM','0976251334',1),
-	('hvanh','123456',N'Hoàng Việt Anh','2002/11/11',0,'876766721',N'12 Hoàng Văn Thụ, Q.Tân Bình, TP. HCM','0987263456',1),
-	('lhthuat','123456',N'Lê Hoàng Thuật','2002/10/10',0,'287277980',N'3 Điện Biên Phủ, Q.3, TP. HCM','0987263456',1),
-	('pplong','123456',N'Lê Hoàng Thuật','2002/10/10',0,'287277980',N'54 CMT8, Q.10, TP. HCM','0987654356',1)
+	VALUES
+	('pnmtriet','123456',N'Phạm Nguyễn Minh Triết','1999/08/22',0,'272123456',N'1 Hồng Lạc, Q.Tân Bình, TP. HCM','0393796446',1,''),
+	('nhhai','123456',N'Nguyễn Hoàng Hải','2001/01/01',0,'546728901',N'1 Trưng Vương, Q.Cầu Giấy, Hà Nội','0976253623',1,''),
+	('ddcuong','123456',N'Đàm Đình Cường','2001/02/02',0,'276155678',N'125 Đinh Tiên Hoàng, Q.1, TP. HCM','0976251334',1,''),
+	('hvanh','123456',N'Hoàng Việt Anh','2002/11/11',0,'876766721',N'12 Hoàng Văn Thụ, Q.Tân Bình, TP. HCM','0987263456',1,''),
+	('lhthuat','123456',N'Lê Hoàng Thuật','2002/10/10',0,'287277980',N'3 Điện Biên Phủ, Q.3, TP. HCM','0987263456',1,''),
+	('pplong','123456',N'Lê Hoàng Thuật','2002/10/10',0,'287277980',N'54 CMT8, Q.10, TP. HCM','0987654356',1,''),
+	('admin','admin',N'Lê Văn Phụng','1972/10/10',0,'765666271',N'12 Thái Thị Nhạn, Q.Tân Bình, TP. HCM','0393796446',0,'')
 -- VẬT DỤNG
 	INSERT INTO VatDung(TenVatDung,SoLuongKho,DonViTinh)
 	VALUES (N'Bàn chải đánh răng',400,N'cái'),
