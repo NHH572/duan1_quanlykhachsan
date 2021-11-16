@@ -14,7 +14,6 @@ public class SoDoPhong {
     private int soPhong;
     private String tenLoaiPhong;
     private String trangThai;
-
     public SoDoPhong() {
     }
 
@@ -22,7 +21,7 @@ public class SoDoPhong {
         this.soPhong = soPhong;
         this.tenLoaiPhong = tenLoaiPhong;
         this.trangThai = trangThai;
-    }
+    }    
 
     public int getSoPhong() {
         return soPhong;
