@@ -8,9 +8,19 @@ package com.exemple.views;
 import com.exemple.controller.SoDoPhongDAO;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.SoDoPhong;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Panel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
@@ -31,38 +41,42 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
         addToListDanhMucSoDoPhong();
         sdpDAO.setInformationSoDoPhong(listDanhMucSoDoPhong, listDataDanhMucSoDoPhong);
-        for (DanhMucSoDoPhong item : listDanhMucSoDoPhong) {
-            SoDoPhongDAO spDAOchange = new SoDoPhongDAO(item.getPanel());
-            spDAOchange.setEvent(listDanhMucSoDoPhong);
+        SoDoPhongDAO spDAO = new SoDoPhongDAO();
+        spDAO.setEvent(listDanhMucSoDoPhong);
+        for(DanhMucSoDoPhong item:listDanhMucSoDoPhong){
+            item.getPanelTam().setOpaque(false);
+            item.getBtnChiTiet().setVisible(false);
+            item.getBtnChucNang().setVisible(false);
         }
+
     }
 
     private void addToListDanhMucSoDoPhong() {
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P1", panelT1P1, lblT1P1, lblLoaiT1P1, lblTrangThaiT1P1));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P2", panelT1P2, lblT1P2, lblLoaiT1P2, lblTrangThaiT1P2));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P3", panelT1P3, lblT1P3, lblLoaiT1P3, lblTrangThaiT1P3));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P4", panelT1P4, lblT1P4, lblLoaiT1P4, lblTrangThaiT1P4));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P5", panelT1P5, lblT1P5, lblLoaiT1P5, lblTrangThaiT1P5));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P1", panelT2P1, lblT2P1, lblLoaiT2P1, lblTrangThaiT2P1));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P2", panelT2P2, lblT2P2, lblLoaiT2P2, lblTrangThaiT2P2));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P3", panelT2P3, lblT2P3, lblLoaiT2P3, lblTrangThaiT2P3));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P4", panelT2P4, lblT2P4, lblLoaiT2P4, lblTrangThaiT2P4));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P5", panelT2P5, lblT2P5, lblLoaiT2P5, lblTrangThaiT2P5));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P1", panelT3P1, lblT3P1, lblLoaiT3P1, lblTrangThaiT3P1));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P2", panelT3P2, lblT3P2, lblLoaiT3P2, lblTrangThaiT3P2));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P3", panelT3P3, lblT3P3, lblLoaiT3P3, lblTrangThaiT3P3));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P4", panelT3P4, lblT3P4, lblLoaiT3P4, lblTrangThaiT3P4));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P5", panelT3P5, lblT3P5, lblLoaiT3P5, lblTrangThaiT3P5));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P1", panelT4P1, lblT4P1, lblLoaiT4P1, lblTrangThaiT4P1));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P2", panelT4P2, lblT4P2, lblLoaiT4P2, lblTrangThaiT4P2));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P3", panelT4P3, lblT4P3, lblLoaiT4P3, lblTrangThaiT4P3));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P4", panelT4P4, lblT4P4, lblLoaiT4P4, lblTrangThaiT4P4));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P5", panelT4P5, lblT4P5, lblLoaiT4P5, lblTrangThaiT4P5));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P1", panelT5P1, lblT5P1, lblLoaiT5P1, lblTrangThaiT5P1));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P2", panelT5P2, lblT5P2, lblLoaiT5P2, lblTrangThaiT5P2));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P3", panelT5P3, lblT5P3, lblLoaiT5P3, lblTrangThaiT5P3));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P4", panelT5P4, lblT5P4, lblLoaiT5P4, lblTrangThaiT5P4));
-        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P5", panelT5P5, lblT5P5, lblLoaiT5P5, lblTrangThaiT5P5));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P1", panel1, lblSoPhong1, lblLoai1, lblTrangThai1, panelTam1, btnChiTiet1, btnChucNang1));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P2", panel2, lblSoPhong2, lblLoai2, lblTrangThai2, panelTam2, btnChiTiet2, btnChucNang2));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P3", panel3, lblSoPhong3, lblLoai3, lblTrangThai3, panelTam3, btnChiTiet3, btnChucNang3));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P4", panel4, lblSoPhong4, lblLoai4, lblTrangThai4, panelTam4, btnChiTiet4, btnChucNang4));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T1P5", panel5, lblSoPhong5, lblLoai5, lblTrangThai5, panelTam5, btnChiTiet5, btnChucNang5));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P1", panel6, lblSoPhong6, lblLoai6, lblTrangThai6, panelTam6, btnChiTiet6, btnChucNang6));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P2", panel7, lblSoPhong7, lblLoai7, lblTrangThai7, panelTam7, btnChiTiet7, btnChucNang7));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P3", panel8, lblSoPhong8, lblLoai8, lblTrangThai8, panelTam8, btnChiTiet8, btnChucNang8));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P4", panel9, lblSoPhong9, lblLoai9, lblTrangThai9, panelTam9, btnChiTiet9, btnChucNang9));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T2P5", panel10, lblSoPhong10, lblLoai10, lblTrangThai10, panelTam10, btnChiTiet10, btnChucNang10));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P1", panel11, lblSoPhong11, lblLoai11, lblTrangThai11, panelTam11, btnChiTiet11, btnChucNang11));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P2", panel12, lblSoPhong12, lblLoai12, lblTrangThai12, panelTam12, btnChiTiet12, btnChucNang12));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P3", panel13, lblSoPhong13, lblLoai13, lblTrangThai13, panelTam13, btnChiTiet13, btnChucNang13));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P4", panel14, lblSoPhong14, lblLoai14, lblTrangThai14, panelTam14, btnChiTiet14, btnChucNang14));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T3P5", panel15, lblSoPhong15, lblLoai15, lblTrangThai15, panelTam15, btnChiTiet15, btnChucNang15));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P1", panel16, lblSoPhong16, lblLoai16, lblTrangThai16, panelTam16, btnChiTiet16, btnChucNang16));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P2", panel17, lblSoPhong17, lblLoai17, lblTrangThai17, panelTam17, btnChiTiet17, btnChucNang17));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P3", panel18, lblSoPhong18, lblLoai18, lblTrangThai18, panelTam18, btnChiTiet18, btnChucNang18));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P4", panel19, lblSoPhong19, lblLoai19, lblTrangThai19, panelTam19, btnChiTiet19, btnChucNang19));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T4P5", panel20, lblSoPhong20, lblLoai20, lblTrangThai20, panelTam20, btnChiTiet20, btnChucNang20));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P1", panel21, lblSoPhong21, lblLoai21, lblTrangThai21, panelTam21, btnChiTiet21, btnChucNang21));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P2", panel22, lblSoPhong22, lblLoai22, lblTrangThai22, panelTam22, btnChiTiet22, btnChucNang22));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P3", panel23, lblSoPhong23, lblLoai23, lblTrangThai23, panelTam23, btnChiTiet23, btnChucNang23));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P4", panel24, lblSoPhong24, lblLoai24, lblTrangThai24, panelTam24, btnChiTiet24, btnChucNang24));
+        listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T5P5", panel25, lblSoPhong25, lblLoai25, lblTrangThai25, panelTam25, btnChiTiet25, btnChucNang25));
     }
 
     /**
@@ -78,118 +92,193 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panelTang1 = new javax.swing.JPanel();
         panelTang = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        panelT1P1 = new javax.swing.JPanel();
-        lblT1P1 = new javax.swing.JLabel();
-        lblLoaiT1P1 = new javax.swing.JLabel();
-        lblTrangThaiT1P1 = new javax.swing.JLabel();
-        panelT1P2 = new javax.swing.JPanel();
-        lblT1P2 = new javax.swing.JLabel();
-        lblLoaiT1P2 = new javax.swing.JLabel();
-        lblTrangThaiT1P2 = new javax.swing.JLabel();
-        panelT1P3 = new javax.swing.JPanel();
-        lblT1P3 = new javax.swing.JLabel();
-        lblLoaiT1P3 = new javax.swing.JLabel();
-        lblTrangThaiT1P3 = new javax.swing.JLabel();
-        panelT1P4 = new javax.swing.JPanel();
-        lblT1P4 = new javax.swing.JLabel();
-        lblLoaiT1P4 = new javax.swing.JLabel();
-        lblTrangThaiT1P4 = new javax.swing.JLabel();
-        panelT1P5 = new javax.swing.JPanel();
-        lblT1P5 = new javax.swing.JLabel();
-        lblLoaiT1P5 = new javax.swing.JLabel();
-        lblTrangThaiT1P5 = new javax.swing.JLabel();
+        panel1 = new javax.swing.JPanel();
+        lblSoPhong1 = new javax.swing.JLabel();
+        lblLoai1 = new javax.swing.JLabel();
+        lblTrangThai1 = new javax.swing.JLabel();
+        panelTam1 = new javax.swing.JPanel();
+        btnChiTiet1 = new javax.swing.JButton();
+        btnChucNang1 = new javax.swing.JButton();
+        panel2 = new javax.swing.JPanel();
+        lblSoPhong2 = new javax.swing.JLabel();
+        lblLoai2 = new javax.swing.JLabel();
+        lblTrangThai2 = new javax.swing.JLabel();
+        panelTam2 = new javax.swing.JPanel();
+        btnChiTiet2 = new javax.swing.JButton();
+        btnChucNang2 = new javax.swing.JButton();
+        panel3 = new javax.swing.JPanel();
+        lblSoPhong3 = new javax.swing.JLabel();
+        lblLoai3 = new javax.swing.JLabel();
+        lblTrangThai3 = new javax.swing.JLabel();
+        panelTam3 = new javax.swing.JPanel();
+        btnChiTiet3 = new javax.swing.JButton();
+        btnChucNang3 = new javax.swing.JButton();
+        panel4 = new javax.swing.JPanel();
+        lblSoPhong4 = new javax.swing.JLabel();
+        lblLoai4 = new javax.swing.JLabel();
+        lblTrangThai4 = new javax.swing.JLabel();
+        panelTam4 = new javax.swing.JPanel();
+        btnChiTiet4 = new javax.swing.JButton();
+        btnChucNang4 = new javax.swing.JButton();
+        panel5 = new javax.swing.JPanel();
+        lblSoPhong5 = new javax.swing.JLabel();
+        lblLoai5 = new javax.swing.JLabel();
+        lblTrangThai5 = new javax.swing.JLabel();
+        panelTam5 = new javax.swing.JPanel();
+        btnChiTiet5 = new javax.swing.JButton();
+        btnChucNang5 = new javax.swing.JButton();
         panelTang2 = new javax.swing.JPanel();
         panelTang3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        panelT2P1 = new javax.swing.JPanel();
-        lblT2P1 = new javax.swing.JLabel();
-        lblLoaiT2P1 = new javax.swing.JLabel();
-        lblTrangThaiT2P1 = new javax.swing.JLabel();
-        panelT2P2 = new javax.swing.JPanel();
-        lblT2P2 = new javax.swing.JLabel();
-        lblLoaiT2P2 = new javax.swing.JLabel();
-        lblTrangThaiT2P2 = new javax.swing.JLabel();
-        panelT2P3 = new javax.swing.JPanel();
-        lblT2P3 = new javax.swing.JLabel();
-        lblLoaiT2P3 = new javax.swing.JLabel();
-        lblTrangThaiT2P3 = new javax.swing.JLabel();
-        panelT2P4 = new javax.swing.JPanel();
-        lblT2P4 = new javax.swing.JLabel();
-        lblLoaiT2P4 = new javax.swing.JLabel();
-        lblTrangThaiT2P4 = new javax.swing.JLabel();
-        panelT2P5 = new javax.swing.JPanel();
-        lblT2P5 = new javax.swing.JLabel();
-        lblLoaiT2P5 = new javax.swing.JLabel();
-        lblTrangThaiT2P5 = new javax.swing.JLabel();
+        panel6 = new javax.swing.JPanel();
+        lblSoPhong6 = new javax.swing.JLabel();
+        lblLoai6 = new javax.swing.JLabel();
+        lblTrangThai6 = new javax.swing.JLabel();
+        panelTam6 = new javax.swing.JPanel();
+        btnChiTiet6 = new javax.swing.JButton();
+        btnChucNang6 = new javax.swing.JButton();
+        panel7 = new javax.swing.JPanel();
+        lblSoPhong7 = new javax.swing.JLabel();
+        lblLoai7 = new javax.swing.JLabel();
+        lblTrangThai7 = new javax.swing.JLabel();
+        panelTam7 = new javax.swing.JPanel();
+        btnChiTiet7 = new javax.swing.JButton();
+        btnChucNang7 = new javax.swing.JButton();
+        panel8 = new javax.swing.JPanel();
+        lblSoPhong8 = new javax.swing.JLabel();
+        lblLoai8 = new javax.swing.JLabel();
+        lblTrangThai8 = new javax.swing.JLabel();
+        panelTam8 = new javax.swing.JPanel();
+        btnChiTiet8 = new javax.swing.JButton();
+        btnChucNang8 = new javax.swing.JButton();
+        panel9 = new javax.swing.JPanel();
+        lblSoPhong9 = new javax.swing.JLabel();
+        lblLoai9 = new javax.swing.JLabel();
+        lblTrangThai9 = new javax.swing.JLabel();
+        panelTam9 = new javax.swing.JPanel();
+        btnChiTiet9 = new javax.swing.JButton();
+        btnChucNang9 = new javax.swing.JButton();
+        panel10 = new javax.swing.JPanel();
+        lblSoPhong10 = new javax.swing.JLabel();
+        lblLoai10 = new javax.swing.JLabel();
+        lblTrangThai10 = new javax.swing.JLabel();
+        panelTam10 = new javax.swing.JPanel();
+        btnChiTiet10 = new javax.swing.JButton();
+        btnChucNang10 = new javax.swing.JButton();
         panelTang4 = new javax.swing.JPanel();
         panelTang5 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        panelT3P1 = new javax.swing.JPanel();
-        lblT3P1 = new javax.swing.JLabel();
-        lblLoaiT3P1 = new javax.swing.JLabel();
-        lblTrangThaiT3P1 = new javax.swing.JLabel();
-        panelT3P2 = new javax.swing.JPanel();
-        lblT3P2 = new javax.swing.JLabel();
-        lblLoaiT3P2 = new javax.swing.JLabel();
-        lblTrangThaiT3P2 = new javax.swing.JLabel();
-        panelT3P3 = new javax.swing.JPanel();
-        lblT3P3 = new javax.swing.JLabel();
-        lblLoaiT3P3 = new javax.swing.JLabel();
-        lblTrangThaiT3P3 = new javax.swing.JLabel();
-        panelT3P4 = new javax.swing.JPanel();
-        lblT3P4 = new javax.swing.JLabel();
-        lblLoaiT3P4 = new javax.swing.JLabel();
-        lblTrangThaiT3P4 = new javax.swing.JLabel();
-        panelT3P5 = new javax.swing.JPanel();
-        lblT3P5 = new javax.swing.JLabel();
-        lblLoaiT3P5 = new javax.swing.JLabel();
-        lblTrangThaiT3P5 = new javax.swing.JLabel();
+        panel11 = new javax.swing.JPanel();
+        lblSoPhong11 = new javax.swing.JLabel();
+        lblLoai11 = new javax.swing.JLabel();
+        lblTrangThai11 = new javax.swing.JLabel();
+        panelTam11 = new javax.swing.JPanel();
+        btnChiTiet11 = new javax.swing.JButton();
+        btnChucNang11 = new javax.swing.JButton();
+        panel12 = new javax.swing.JPanel();
+        lblSoPhong12 = new javax.swing.JLabel();
+        lblLoai12 = new javax.swing.JLabel();
+        lblTrangThai12 = new javax.swing.JLabel();
+        panelTam12 = new javax.swing.JPanel();
+        btnChiTiet12 = new javax.swing.JButton();
+        btnChucNang12 = new javax.swing.JButton();
+        panel13 = new javax.swing.JPanel();
+        lblSoPhong13 = new javax.swing.JLabel();
+        lblLoai13 = new javax.swing.JLabel();
+        lblTrangThai13 = new javax.swing.JLabel();
+        panelTam13 = new javax.swing.JPanel();
+        btnChiTiet13 = new javax.swing.JButton();
+        btnChucNang13 = new javax.swing.JButton();
+        panel14 = new javax.swing.JPanel();
+        lblSoPhong14 = new javax.swing.JLabel();
+        lblLoai14 = new javax.swing.JLabel();
+        lblTrangThai14 = new javax.swing.JLabel();
+        panelTam14 = new javax.swing.JPanel();
+        btnChiTiet14 = new javax.swing.JButton();
+        btnChucNang14 = new javax.swing.JButton();
+        panel15 = new javax.swing.JPanel();
+        lblSoPhong15 = new javax.swing.JLabel();
+        lblLoai15 = new javax.swing.JLabel();
+        lblTrangThai15 = new javax.swing.JLabel();
+        panelTam15 = new javax.swing.JPanel();
+        btnChiTiet15 = new javax.swing.JButton();
+        btnChucNang15 = new javax.swing.JButton();
         panelTang6 = new javax.swing.JPanel();
         panelTang7 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
-        panelT4P1 = new javax.swing.JPanel();
-        lblT4P1 = new javax.swing.JLabel();
-        lblLoaiT4P1 = new javax.swing.JLabel();
-        lblTrangThaiT4P1 = new javax.swing.JLabel();
-        panelT4P2 = new javax.swing.JPanel();
-        lblT4P2 = new javax.swing.JLabel();
-        lblLoaiT4P2 = new javax.swing.JLabel();
-        lblTrangThaiT4P2 = new javax.swing.JLabel();
-        panelT4P3 = new javax.swing.JPanel();
-        lblT4P3 = new javax.swing.JLabel();
-        lblLoaiT4P3 = new javax.swing.JLabel();
-        lblTrangThaiT4P3 = new javax.swing.JLabel();
-        panelT4P4 = new javax.swing.JPanel();
-        lblT4P4 = new javax.swing.JLabel();
-        lblLoaiT4P4 = new javax.swing.JLabel();
-        lblTrangThaiT4P4 = new javax.swing.JLabel();
-        panelT4P5 = new javax.swing.JPanel();
-        lblT4P5 = new javax.swing.JLabel();
-        lblLoaiT4P5 = new javax.swing.JLabel();
-        lblTrangThaiT4P5 = new javax.swing.JLabel();
+        panel16 = new javax.swing.JPanel();
+        lblSoPhong16 = new javax.swing.JLabel();
+        lblLoai16 = new javax.swing.JLabel();
+        lblTrangThai16 = new javax.swing.JLabel();
+        panelTam16 = new javax.swing.JPanel();
+        btnChiTiet16 = new javax.swing.JButton();
+        btnChucNang16 = new javax.swing.JButton();
+        panel17 = new javax.swing.JPanel();
+        lblSoPhong17 = new javax.swing.JLabel();
+        lblLoai17 = new javax.swing.JLabel();
+        lblTrangThai17 = new javax.swing.JLabel();
+        panelTam17 = new javax.swing.JPanel();
+        btnChiTiet17 = new javax.swing.JButton();
+        btnChucNang17 = new javax.swing.JButton();
+        panel18 = new javax.swing.JPanel();
+        lblSoPhong18 = new javax.swing.JLabel();
+        lblLoai18 = new javax.swing.JLabel();
+        lblTrangThai18 = new javax.swing.JLabel();
+        panelTam18 = new javax.swing.JPanel();
+        btnChiTiet18 = new javax.swing.JButton();
+        btnChucNang18 = new javax.swing.JButton();
+        panel19 = new javax.swing.JPanel();
+        lblSoPhong19 = new javax.swing.JLabel();
+        lblLoai19 = new javax.swing.JLabel();
+        lblTrangThai19 = new javax.swing.JLabel();
+        panelTam19 = new javax.swing.JPanel();
+        btnChiTiet19 = new javax.swing.JButton();
+        btnChucNang19 = new javax.swing.JButton();
+        panel20 = new javax.swing.JPanel();
+        lblSoPhong20 = new javax.swing.JLabel();
+        lblLoai20 = new javax.swing.JLabel();
+        lblTrangThai20 = new javax.swing.JLabel();
+        panelTam20 = new javax.swing.JPanel();
+        btnChiTiet20 = new javax.swing.JButton();
+        btnChucNang20 = new javax.swing.JButton();
         panelTang8 = new javax.swing.JPanel();
         panelTang9 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
-        panelT5P1 = new javax.swing.JPanel();
-        lblT5P1 = new javax.swing.JLabel();
-        lblLoaiT5P1 = new javax.swing.JLabel();
-        lblTrangThaiT5P1 = new javax.swing.JLabel();
-        panelT5P2 = new javax.swing.JPanel();
-        lblT5P2 = new javax.swing.JLabel();
-        lblLoaiT5P2 = new javax.swing.JLabel();
-        lblTrangThaiT5P2 = new javax.swing.JLabel();
-        panelT5P3 = new javax.swing.JPanel();
-        lblT5P3 = new javax.swing.JLabel();
-        lblLoaiT5P3 = new javax.swing.JLabel();
-        lblTrangThaiT5P3 = new javax.swing.JLabel();
-        panelT5P4 = new javax.swing.JPanel();
-        lblT5P4 = new javax.swing.JLabel();
-        lblLoaiT5P4 = new javax.swing.JLabel();
-        lblTrangThaiT5P4 = new javax.swing.JLabel();
-        panelT5P5 = new javax.swing.JPanel();
-        lblT5P5 = new javax.swing.JLabel();
-        lblLoaiT5P5 = new javax.swing.JLabel();
-        lblTrangThaiT5P5 = new javax.swing.JLabel();
+        panel21 = new javax.swing.JPanel();
+        lblSoPhong21 = new javax.swing.JLabel();
+        lblLoai21 = new javax.swing.JLabel();
+        lblTrangThai21 = new javax.swing.JLabel();
+        panelTam21 = new javax.swing.JPanel();
+        btnChiTiet21 = new javax.swing.JButton();
+        btnChucNang21 = new javax.swing.JButton();
+        panel22 = new javax.swing.JPanel();
+        lblSoPhong22 = new javax.swing.JLabel();
+        lblLoai22 = new javax.swing.JLabel();
+        lblTrangThai22 = new javax.swing.JLabel();
+        panelTam22 = new javax.swing.JPanel();
+        btnChiTiet22 = new javax.swing.JButton();
+        btnChucNang22 = new javax.swing.JButton();
+        panel23 = new javax.swing.JPanel();
+        lblSoPhong23 = new javax.swing.JLabel();
+        lblLoai23 = new javax.swing.JLabel();
+        lblTrangThai23 = new javax.swing.JLabel();
+        panelTam23 = new javax.swing.JPanel();
+        btnChiTiet23 = new javax.swing.JButton();
+        btnChucNang23 = new javax.swing.JButton();
+        panel24 = new javax.swing.JPanel();
+        lblSoPhong24 = new javax.swing.JLabel();
+        lblLoai24 = new javax.swing.JLabel();
+        lblTrangThai24 = new javax.swing.JLabel();
+        panelTam24 = new javax.swing.JPanel();
+        btnChiTiet24 = new javax.swing.JButton();
+        btnChucNang24 = new javax.swing.JButton();
+        panel25 = new javax.swing.JPanel();
+        lblSoPhong25 = new javax.swing.JLabel();
+        lblLoai25 = new javax.swing.JLabel();
+        lblTrangThai25 = new javax.swing.JLabel();
+        panelTam25 = new javax.swing.JPanel();
+        btnChiTiet25 = new javax.swing.JButton();
+        btnChucNang25 = new javax.swing.JButton();
 
         panelTang1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTang1.setLayout(new java.awt.GridLayout());
@@ -204,213 +293,163 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
         panelTang1.add(panelTang);
 
-        panelT1P1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel1MouseEntered(evt);
+            }
+        });
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT1P1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT1P1.setForeground(new java.awt.Color(255, 255, 255));
-        lblT1P1.setText("Số phòng");
+        lblSoPhong1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong1.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong1.setText("Số phòng");
+        panel1.add(lblSoPhong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT1P1.setText("Loại:");
+        lblLoai1.setText("Loại:");
+        panel1.add(lblLoai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT1P1.setText("Trạng thái:");
+        lblTrangThai1.setText("Trạng thái:");
+        panel1.add(lblTrangThai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT1P1Layout = new javax.swing.GroupLayout(panelT1P1);
-        panelT1P1.setLayout(panelT1P1Layout);
-        panelT1P1Layout.setHorizontalGroup(
-            panelT1P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P1Layout.createSequentialGroup()
-                .addGroup(panelT1P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT1P1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT1P1))
-                    .addGroup(panelT1P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT1P1))
-                    .addGroup(panelT1P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT1P1)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT1P1Layout.setVerticalGroup(
-            panelT1P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT1P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT1P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT1P1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam1.setLayout(new java.awt.GridBagLayout());
 
-        panelTang1.add(panelT1P1);
+        btnChiTiet1.setText("Chi tiết");
+        panelTam1.add(btnChiTiet1, new java.awt.GridBagConstraints());
 
-        panelT1P2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang1.setText("Nút 2");
+        panelTam1.add(btnChucNang1, new java.awt.GridBagConstraints());
 
-        lblT1P2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT1P2.setForeground(new java.awt.Color(255, 255, 255));
-        lblT1P2.setText("Số phòng");
+        panel1.add(panelTam1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT1P2.setText("Loại:");
+        panelTang1.add(panel1);
 
-        lblTrangThaiT1P2.setText("Trạng thái:");
+        panel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel2MouseEntered(evt);
+            }
+        });
+        panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT1P2Layout = new javax.swing.GroupLayout(panelT1P2);
-        panelT1P2.setLayout(panelT1P2Layout);
-        panelT1P2Layout.setHorizontalGroup(
-            panelT1P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P2Layout.createSequentialGroup()
-                .addGroup(panelT1P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT1P2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT1P2))
-                    .addGroup(panelT1P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT1P2))
-                    .addGroup(panelT1P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT1P2)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT1P2Layout.setVerticalGroup(
-            panelT1P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT1P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT1P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT1P2)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong2.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong2.setText("Số phòng");
+        panel2.add(lblSoPhong2, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang1.add(panelT1P2);
+        lblLoai2.setText("Loại:");
+        panel2.add(lblLoai2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        panelT1P3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblTrangThai2.setText("Trạng thái:");
+        panel2.add(lblTrangThai2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        lblT1P3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT1P3.setForeground(new java.awt.Color(255, 255, 255));
-        lblT1P3.setText("Số phòng");
+        panelTam2.setLayout(new java.awt.GridBagLayout());
 
-        lblLoaiT1P3.setText("Loại:");
+        btnChiTiet2.setText("Chi tiết");
+        panelTam2.add(btnChiTiet2, new java.awt.GridBagConstraints());
 
-        lblTrangThaiT1P3.setText("Trạng thái:");
+        btnChucNang2.setText("Nút 2");
+        panelTam2.add(btnChucNang2, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout panelT1P3Layout = new javax.swing.GroupLayout(panelT1P3);
-        panelT1P3.setLayout(panelT1P3Layout);
-        panelT1P3Layout.setHorizontalGroup(
-            panelT1P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P3Layout.createSequentialGroup()
-                .addGroup(panelT1P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT1P3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT1P3))
-                    .addGroup(panelT1P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT1P3))
-                    .addGroup(panelT1P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT1P3)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT1P3Layout.setVerticalGroup(
-            panelT1P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT1P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT1P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT1P3)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panel2.add(panelTam2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        panelTang1.add(panelT1P3);
+        panelTang1.add(panel2);
 
-        panelT1P4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel3MouseEntered(evt);
+            }
+        });
+        panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT1P4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT1P4.setForeground(new java.awt.Color(255, 255, 255));
-        lblT1P4.setText("Số phòng");
+        lblSoPhong3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong3.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong3.setText("Số phòng");
+        panel3.add(lblSoPhong3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT1P4.setText("Loại:");
+        lblLoai3.setText("Loại:");
+        panel3.add(lblLoai3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT1P4.setText("Trạng thái:");
+        lblTrangThai3.setText("Trạng thái:");
+        panel3.add(lblTrangThai3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT1P4Layout = new javax.swing.GroupLayout(panelT1P4);
-        panelT1P4.setLayout(panelT1P4Layout);
-        panelT1P4Layout.setHorizontalGroup(
-            panelT1P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P4Layout.createSequentialGroup()
-                .addGroup(panelT1P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT1P4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT1P4))
-                    .addGroup(panelT1P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT1P4))
-                    .addGroup(panelT1P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT1P4)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT1P4Layout.setVerticalGroup(
-            panelT1P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P4Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT1P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT1P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT1P4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam3.setLayout(new java.awt.GridBagLayout());
 
-        panelTang1.add(panelT1P4);
+        btnChiTiet3.setText("Chi tiết");
+        panelTam3.add(btnChiTiet3, new java.awt.GridBagConstraints());
 
-        panelT1P5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang3.setText("Nút 2");
+        panelTam3.add(btnChucNang3, new java.awt.GridBagConstraints());
 
-        lblT1P5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT1P5.setForeground(new java.awt.Color(255, 255, 255));
-        lblT1P5.setText("Số phòng");
+        panel3.add(panelTam3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT1P5.setText("Loại:");
+        panelTang1.add(panel3);
 
-        lblTrangThaiT1P5.setText("Trạng thái:");
+        panel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel4MouseEntered(evt);
+            }
+        });
+        panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT1P5Layout = new javax.swing.GroupLayout(panelT1P5);
-        panelT1P5.setLayout(panelT1P5Layout);
-        panelT1P5Layout.setHorizontalGroup(
-            panelT1P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P5Layout.createSequentialGroup()
-                .addGroup(panelT1P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT1P5Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT1P5))
-                    .addGroup(panelT1P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT1P5))
-                    .addGroup(panelT1P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT1P5)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT1P5Layout.setVerticalGroup(
-            panelT1P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT1P5Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT1P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT1P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT1P5)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong4.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong4.setText("Số phòng");
+        panel4.add(lblSoPhong4, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang1.add(panelT1P5);
+        lblLoai4.setText("Loại:");
+        panel4.add(lblLoai4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai4.setText("Trạng thái:");
+        panel4.add(lblTrangThai4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam4.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet4.setText("Chi tiết");
+        panelTam4.add(btnChiTiet4, new java.awt.GridBagConstraints());
+
+        btnChucNang4.setText("Nút 2");
+        panelTam4.add(btnChucNang4, new java.awt.GridBagConstraints());
+
+        panel4.add(panelTam4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang1.add(panel4);
+
+        panel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel5MouseEntered(evt);
+            }
+        });
+        panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSoPhong5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong5.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong5.setText("Số phòng");
+        panel5.add(lblSoPhong5, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
+
+        lblLoai5.setText("Loại:");
+        panel5.add(lblLoai5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai5.setText("Trạng thái:");
+        panel5.add(lblTrangThai5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam5.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet5.setText("Chi tiết");
+        panelTam5.add(btnChiTiet5, new java.awt.GridBagConstraints());
+
+        btnChucNang5.setText("Nút 2");
+        panelTam5.add(btnChucNang5, new java.awt.GridBagConstraints());
+
+        panel5.add(panelTam5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang1.add(panel5);
 
         panelTang2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelTang2.setLayout(new java.awt.GridLayout());
+        panelTang2.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTang3.setBackground(new java.awt.Color(0, 153, 255));
         panelTang3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -427,213 +466,163 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
         panelTang2.add(panelTang3);
 
-        panelT2P1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel6MouseEntered(evt);
+            }
+        });
+        panel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT2P1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT2P1.setForeground(new java.awt.Color(255, 255, 255));
-        lblT2P1.setText("Số phòng");
+        lblSoPhong6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong6.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong6.setText("Số phòng");
+        panel6.add(lblSoPhong6, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT2P1.setText("Loại:");
+        lblLoai6.setText("Loại:");
+        panel6.add(lblLoai6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT2P1.setText("Trạng thái:");
+        lblTrangThai6.setText("Trạng thái:");
+        panel6.add(lblTrangThai6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT2P1Layout = new javax.swing.GroupLayout(panelT2P1);
-        panelT2P1.setLayout(panelT2P1Layout);
-        panelT2P1Layout.setHorizontalGroup(
-            panelT2P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P1Layout.createSequentialGroup()
-                .addGroup(panelT2P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT2P1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT2P1))
-                    .addGroup(panelT2P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT2P1))
-                    .addGroup(panelT2P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT2P1)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT2P1Layout.setVerticalGroup(
-            panelT2P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT2P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT2P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT2P1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam6.setLayout(new java.awt.GridBagLayout());
 
-        panelTang2.add(panelT2P1);
+        btnChiTiet6.setText("Chi tiết");
+        panelTam6.add(btnChiTiet6, new java.awt.GridBagConstraints());
 
-        panelT2P2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang6.setText("Nút 2");
+        panelTam6.add(btnChucNang6, new java.awt.GridBagConstraints());
 
-        lblT2P2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT2P2.setForeground(new java.awt.Color(255, 255, 255));
-        lblT2P2.setText("Số phòng");
+        panel6.add(panelTam6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT2P2.setText("Loại:");
+        panelTang2.add(panel6);
 
-        lblTrangThaiT2P2.setText("Trạng thái:");
+        panel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel7MouseEntered(evt);
+            }
+        });
+        panel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT2P2Layout = new javax.swing.GroupLayout(panelT2P2);
-        panelT2P2.setLayout(panelT2P2Layout);
-        panelT2P2Layout.setHorizontalGroup(
-            panelT2P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P2Layout.createSequentialGroup()
-                .addGroup(panelT2P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT2P2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT2P2))
-                    .addGroup(panelT2P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT2P2))
-                    .addGroup(panelT2P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT2P2)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT2P2Layout.setVerticalGroup(
-            panelT2P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT2P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT2P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT2P2)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong7.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong7.setText("Số phòng");
+        panel7.add(lblSoPhong7, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang2.add(panelT2P2);
+        lblLoai7.setText("Loại:");
+        panel7.add(lblLoai7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        panelT2P3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblTrangThai7.setText("Trạng thái:");
+        panel7.add(lblTrangThai7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        lblT2P3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT2P3.setForeground(new java.awt.Color(255, 255, 255));
-        lblT2P3.setText("Số phòng");
+        panelTam7.setLayout(new java.awt.GridBagLayout());
 
-        lblLoaiT2P3.setText("Loại:");
+        btnChiTiet7.setText("Chi tiết");
+        panelTam7.add(btnChiTiet7, new java.awt.GridBagConstraints());
 
-        lblTrangThaiT2P3.setText("Trạng thái:");
+        btnChucNang7.setText("Nút 2");
+        panelTam7.add(btnChucNang7, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout panelT2P3Layout = new javax.swing.GroupLayout(panelT2P3);
-        panelT2P3.setLayout(panelT2P3Layout);
-        panelT2P3Layout.setHorizontalGroup(
-            panelT2P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P3Layout.createSequentialGroup()
-                .addGroup(panelT2P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT2P3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT2P3))
-                    .addGroup(panelT2P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT2P3))
-                    .addGroup(panelT2P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT2P3)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT2P3Layout.setVerticalGroup(
-            panelT2P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT2P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT2P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT2P3)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panel7.add(panelTam7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        panelTang2.add(panelT2P3);
+        panelTang2.add(panel7);
 
-        panelT2P4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel8MouseEntered(evt);
+            }
+        });
+        panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT2P4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT2P4.setForeground(new java.awt.Color(255, 255, 255));
-        lblT2P4.setText("Số phòng");
+        lblSoPhong8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong8.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong8.setText("Số phòng");
+        panel8.add(lblSoPhong8, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT2P4.setText("Loại:");
+        lblLoai8.setText("Loại:");
+        panel8.add(lblLoai8, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT2P4.setText("Trạng thái:");
+        lblTrangThai8.setText("Trạng thái:");
+        panel8.add(lblTrangThai8, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT2P4Layout = new javax.swing.GroupLayout(panelT2P4);
-        panelT2P4.setLayout(panelT2P4Layout);
-        panelT2P4Layout.setHorizontalGroup(
-            panelT2P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P4Layout.createSequentialGroup()
-                .addGroup(panelT2P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT2P4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT2P4))
-                    .addGroup(panelT2P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT2P4))
-                    .addGroup(panelT2P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT2P4)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT2P4Layout.setVerticalGroup(
-            panelT2P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P4Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT2P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT2P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT2P4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam8.setLayout(new java.awt.GridBagLayout());
 
-        panelTang2.add(panelT2P4);
+        btnChiTiet8.setText("Chi tiết");
+        panelTam8.add(btnChiTiet8, new java.awt.GridBagConstraints());
 
-        panelT2P5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang8.setText("Nút 2");
+        panelTam8.add(btnChucNang8, new java.awt.GridBagConstraints());
 
-        lblT2P5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT2P5.setForeground(new java.awt.Color(255, 255, 255));
-        lblT2P5.setText("Số phòng");
+        panel8.add(panelTam8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT2P5.setText("Loại:");
+        panelTang2.add(panel8);
 
-        lblTrangThaiT2P5.setText("Trạng thái:");
+        panel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel9MouseEntered(evt);
+            }
+        });
+        panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT2P5Layout = new javax.swing.GroupLayout(panelT2P5);
-        panelT2P5.setLayout(panelT2P5Layout);
-        panelT2P5Layout.setHorizontalGroup(
-            panelT2P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P5Layout.createSequentialGroup()
-                .addGroup(panelT2P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT2P5Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT2P5))
-                    .addGroup(panelT2P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT2P5))
-                    .addGroup(panelT2P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT2P5)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT2P5Layout.setVerticalGroup(
-            panelT2P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT2P5Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT2P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT2P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT2P5)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong9.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong9.setText("Số phòng");
+        panel9.add(lblSoPhong9, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang2.add(panelT2P5);
+        lblLoai9.setText("Loại:");
+        panel9.add(lblLoai9, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai9.setText("Trạng thái:");
+        panel9.add(lblTrangThai9, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam9.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet9.setText("Chi tiết");
+        panelTam9.add(btnChiTiet9, new java.awt.GridBagConstraints());
+
+        btnChucNang9.setText("Nút 2");
+        panelTam9.add(btnChucNang9, new java.awt.GridBagConstraints());
+
+        panel9.add(panelTam9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang2.add(panel9);
+
+        panel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel10MouseEntered(evt);
+            }
+        });
+        panel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSoPhong10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong10.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong10.setText("Số phòng");
+        panel10.add(lblSoPhong10, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
+
+        lblLoai10.setText("Loại:");
+        panel10.add(lblLoai10, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai10.setText("Trạng thái:");
+        panel10.add(lblTrangThai10, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam10.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet10.setText("Chi tiết");
+        panelTam10.add(btnChiTiet10, new java.awt.GridBagConstraints());
+
+        btnChucNang10.setText("Nút 2");
+        panelTam10.add(btnChucNang10, new java.awt.GridBagConstraints());
+
+        panel10.add(panelTam10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang2.add(panel10);
 
         panelTang4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelTang4.setLayout(new java.awt.GridLayout());
+        panelTang4.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTang5.setBackground(new java.awt.Color(0, 153, 255));
         panelTang5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -650,213 +639,163 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
         panelTang4.add(panelTang5);
 
-        panelT3P1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel11MouseEntered(evt);
+            }
+        });
+        panel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT3P1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT3P1.setForeground(new java.awt.Color(255, 255, 255));
-        lblT3P1.setText("Số phòng");
+        lblSoPhong11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong11.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong11.setText("Số phòng");
+        panel11.add(lblSoPhong11, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT3P1.setText("Loại:");
+        lblLoai11.setText("Loại:");
+        panel11.add(lblLoai11, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT3P1.setText("Trạng thái:");
+        lblTrangThai11.setText("Trạng thái:");
+        panel11.add(lblTrangThai11, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT3P1Layout = new javax.swing.GroupLayout(panelT3P1);
-        panelT3P1.setLayout(panelT3P1Layout);
-        panelT3P1Layout.setHorizontalGroup(
-            panelT3P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P1Layout.createSequentialGroup()
-                .addGroup(panelT3P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT3P1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT3P1))
-                    .addGroup(panelT3P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT3P1))
-                    .addGroup(panelT3P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT3P1)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT3P1Layout.setVerticalGroup(
-            panelT3P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT3P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT3P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT3P1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam11.setLayout(new java.awt.GridBagLayout());
 
-        panelTang4.add(panelT3P1);
+        btnChiTiet11.setText("Chi tiết");
+        panelTam11.add(btnChiTiet11, new java.awt.GridBagConstraints());
 
-        panelT3P2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang11.setText("Nút 2");
+        panelTam11.add(btnChucNang11, new java.awt.GridBagConstraints());
 
-        lblT3P2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT3P2.setForeground(new java.awt.Color(255, 255, 255));
-        lblT3P2.setText("Số phòng");
+        panel11.add(panelTam11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT3P2.setText("Loại:");
+        panelTang4.add(panel11);
 
-        lblTrangThaiT3P2.setText("Trạng thái:");
+        panel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel12MouseEntered(evt);
+            }
+        });
+        panel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT3P2Layout = new javax.swing.GroupLayout(panelT3P2);
-        panelT3P2.setLayout(panelT3P2Layout);
-        panelT3P2Layout.setHorizontalGroup(
-            panelT3P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P2Layout.createSequentialGroup()
-                .addGroup(panelT3P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT3P2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT3P2))
-                    .addGroup(panelT3P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT3P2))
-                    .addGroup(panelT3P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT3P2)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT3P2Layout.setVerticalGroup(
-            panelT3P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT3P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT3P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT3P2)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong12.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong12.setText("Số phòng");
+        panel12.add(lblSoPhong12, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang4.add(panelT3P2);
+        lblLoai12.setText("Loại:");
+        panel12.add(lblLoai12, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        panelT3P3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblTrangThai12.setText("Trạng thái:");
+        panel12.add(lblTrangThai12, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        lblT3P3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT3P3.setForeground(new java.awt.Color(255, 255, 255));
-        lblT3P3.setText("Số phòng");
+        panelTam12.setLayout(new java.awt.GridBagLayout());
 
-        lblLoaiT3P3.setText("Loại:");
+        btnChiTiet12.setText("Chi tiết");
+        panelTam12.add(btnChiTiet12, new java.awt.GridBagConstraints());
 
-        lblTrangThaiT3P3.setText("Trạng thái:");
+        btnChucNang12.setText("Nút 2");
+        panelTam12.add(btnChucNang12, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout panelT3P3Layout = new javax.swing.GroupLayout(panelT3P3);
-        panelT3P3.setLayout(panelT3P3Layout);
-        panelT3P3Layout.setHorizontalGroup(
-            panelT3P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P3Layout.createSequentialGroup()
-                .addGroup(panelT3P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT3P3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT3P3))
-                    .addGroup(panelT3P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT3P3))
-                    .addGroup(panelT3P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT3P3)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT3P3Layout.setVerticalGroup(
-            panelT3P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT3P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT3P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT3P3)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panel12.add(panelTam12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        panelTang4.add(panelT3P3);
+        panelTang4.add(panel12);
 
-        panelT3P4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel13MouseEntered(evt);
+            }
+        });
+        panel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT3P4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT3P4.setForeground(new java.awt.Color(255, 255, 255));
-        lblT3P4.setText("Số phòng");
+        lblSoPhong13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong13.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong13.setText("Số phòng");
+        panel13.add(lblSoPhong13, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT3P4.setText("Loại:");
+        lblLoai13.setText("Loại:");
+        panel13.add(lblLoai13, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT3P4.setText("Trạng thái:");
+        lblTrangThai13.setText("Trạng thái:");
+        panel13.add(lblTrangThai13, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT3P4Layout = new javax.swing.GroupLayout(panelT3P4);
-        panelT3P4.setLayout(panelT3P4Layout);
-        panelT3P4Layout.setHorizontalGroup(
-            panelT3P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P4Layout.createSequentialGroup()
-                .addGroup(panelT3P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT3P4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT3P4))
-                    .addGroup(panelT3P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT3P4))
-                    .addGroup(panelT3P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT3P4)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT3P4Layout.setVerticalGroup(
-            panelT3P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P4Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT3P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT3P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT3P4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam13.setLayout(new java.awt.GridBagLayout());
 
-        panelTang4.add(panelT3P4);
+        btnChiTiet13.setText("Chi tiết");
+        panelTam13.add(btnChiTiet13, new java.awt.GridBagConstraints());
 
-        panelT3P5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang13.setText("Nút 2");
+        panelTam13.add(btnChucNang13, new java.awt.GridBagConstraints());
 
-        lblT3P5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT3P5.setForeground(new java.awt.Color(255, 255, 255));
-        lblT3P5.setText("Số phòng");
+        panel13.add(panelTam13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT3P5.setText("Loại:");
+        panelTang4.add(panel13);
 
-        lblTrangThaiT3P5.setText("Trạng thái:");
+        panel14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel14MouseEntered(evt);
+            }
+        });
+        panel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT3P5Layout = new javax.swing.GroupLayout(panelT3P5);
-        panelT3P5.setLayout(panelT3P5Layout);
-        panelT3P5Layout.setHorizontalGroup(
-            panelT3P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P5Layout.createSequentialGroup()
-                .addGroup(panelT3P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT3P5Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT3P5))
-                    .addGroup(panelT3P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT3P5))
-                    .addGroup(panelT3P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT3P5)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT3P5Layout.setVerticalGroup(
-            panelT3P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT3P5Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT3P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT3P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT3P5)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong14.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong14.setText("Số phòng");
+        panel14.add(lblSoPhong14, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang4.add(panelT3P5);
+        lblLoai14.setText("Loại:");
+        panel14.add(lblLoai14, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai14.setText("Trạng thái:");
+        panel14.add(lblTrangThai14, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam14.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet14.setText("Chi tiết");
+        panelTam14.add(btnChiTiet14, new java.awt.GridBagConstraints());
+
+        btnChucNang14.setText("Nút 2");
+        panelTam14.add(btnChucNang14, new java.awt.GridBagConstraints());
+
+        panel14.add(panelTam14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang4.add(panel14);
+
+        panel15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel15MouseEntered(evt);
+            }
+        });
+        panel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSoPhong15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong15.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong15.setText("Số phòng");
+        panel15.add(lblSoPhong15, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
+
+        lblLoai15.setText("Loại:");
+        panel15.add(lblLoai15, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai15.setText("Trạng thái:");
+        panel15.add(lblTrangThai15, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam15.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet15.setText("Chi tiết");
+        panelTam15.add(btnChiTiet15, new java.awt.GridBagConstraints());
+
+        btnChucNang15.setText("Nút 2");
+        panelTam15.add(btnChucNang15, new java.awt.GridBagConstraints());
+
+        panel15.add(panelTam15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang4.add(panel15);
 
         panelTang6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelTang6.setLayout(new java.awt.GridLayout());
+        panelTang6.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTang7.setBackground(new java.awt.Color(0, 153, 255));
         panelTang7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -873,213 +812,163 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
         panelTang6.add(panelTang7);
 
-        panelT4P1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel16MouseEntered(evt);
+            }
+        });
+        panel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT4P1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT4P1.setForeground(new java.awt.Color(255, 255, 255));
-        lblT4P1.setText("Số phòng");
+        lblSoPhong16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong16.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong16.setText("Số phòng");
+        panel16.add(lblSoPhong16, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT4P1.setText("Loại:");
+        lblLoai16.setText("Loại:");
+        panel16.add(lblLoai16, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT4P1.setText("Trạng thái:");
+        lblTrangThai16.setText("Trạng thái:");
+        panel16.add(lblTrangThai16, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT4P1Layout = new javax.swing.GroupLayout(panelT4P1);
-        panelT4P1.setLayout(panelT4P1Layout);
-        panelT4P1Layout.setHorizontalGroup(
-            panelT4P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P1Layout.createSequentialGroup()
-                .addGroup(panelT4P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT4P1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT4P1))
-                    .addGroup(panelT4P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT4P1))
-                    .addGroup(panelT4P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT4P1)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT4P1Layout.setVerticalGroup(
-            panelT4P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT4P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT4P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT4P1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam16.setLayout(new java.awt.GridBagLayout());
 
-        panelTang6.add(panelT4P1);
+        btnChiTiet16.setText("Chi tiết");
+        panelTam16.add(btnChiTiet16, new java.awt.GridBagConstraints());
 
-        panelT4P2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang16.setText("Nút 2");
+        panelTam16.add(btnChucNang16, new java.awt.GridBagConstraints());
 
-        lblT4P2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT4P2.setForeground(new java.awt.Color(255, 255, 255));
-        lblT4P2.setText("Số phòng");
+        panel16.add(panelTam16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT4P2.setText("Loại:");
+        panelTang6.add(panel16);
 
-        lblTrangThaiT4P2.setText("Trạng thái:");
+        panel17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel17MouseEntered(evt);
+            }
+        });
+        panel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT4P2Layout = new javax.swing.GroupLayout(panelT4P2);
-        panelT4P2.setLayout(panelT4P2Layout);
-        panelT4P2Layout.setHorizontalGroup(
-            panelT4P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P2Layout.createSequentialGroup()
-                .addGroup(panelT4P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT4P2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT4P2))
-                    .addGroup(panelT4P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT4P2))
-                    .addGroup(panelT4P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT4P2)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT4P2Layout.setVerticalGroup(
-            panelT4P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT4P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT4P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT4P2)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong17.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong17.setText("Số phòng");
+        panel17.add(lblSoPhong17, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang6.add(panelT4P2);
+        lblLoai17.setText("Loại:");
+        panel17.add(lblLoai17, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        panelT4P3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblTrangThai17.setText("Trạng thái:");
+        panel17.add(lblTrangThai17, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        lblT4P3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT4P3.setForeground(new java.awt.Color(255, 255, 255));
-        lblT4P3.setText("Số phòng");
+        panelTam17.setLayout(new java.awt.GridBagLayout());
 
-        lblLoaiT4P3.setText("Loại:");
+        btnChiTiet17.setText("Chi tiết");
+        panelTam17.add(btnChiTiet17, new java.awt.GridBagConstraints());
 
-        lblTrangThaiT4P3.setText("Trạng thái:");
+        btnChucNang17.setText("Nút 2");
+        panelTam17.add(btnChucNang17, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout panelT4P3Layout = new javax.swing.GroupLayout(panelT4P3);
-        panelT4P3.setLayout(panelT4P3Layout);
-        panelT4P3Layout.setHorizontalGroup(
-            panelT4P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P3Layout.createSequentialGroup()
-                .addGroup(panelT4P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT4P3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT4P3))
-                    .addGroup(panelT4P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT4P3))
-                    .addGroup(panelT4P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT4P3)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT4P3Layout.setVerticalGroup(
-            panelT4P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT4P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT4P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT4P3)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panel17.add(panelTam17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        panelTang6.add(panelT4P3);
+        panelTang6.add(panel17);
 
-        panelT4P4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel18.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel18MouseEntered(evt);
+            }
+        });
+        panel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT4P4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT4P4.setForeground(new java.awt.Color(255, 255, 255));
-        lblT4P4.setText("Số phòng");
+        lblSoPhong18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong18.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong18.setText("Số phòng");
+        panel18.add(lblSoPhong18, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT4P4.setText("Loại:");
+        lblLoai18.setText("Loại:");
+        panel18.add(lblLoai18, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT4P4.setText("Trạng thái:");
+        lblTrangThai18.setText("Trạng thái:");
+        panel18.add(lblTrangThai18, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT4P4Layout = new javax.swing.GroupLayout(panelT4P4);
-        panelT4P4.setLayout(panelT4P4Layout);
-        panelT4P4Layout.setHorizontalGroup(
-            panelT4P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P4Layout.createSequentialGroup()
-                .addGroup(panelT4P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT4P4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT4P4))
-                    .addGroup(panelT4P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT4P4))
-                    .addGroup(panelT4P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT4P4)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT4P4Layout.setVerticalGroup(
-            panelT4P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P4Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT4P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT4P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT4P4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam18.setLayout(new java.awt.GridBagLayout());
 
-        panelTang6.add(panelT4P4);
+        btnChiTiet18.setText("Chi tiết");
+        panelTam18.add(btnChiTiet18, new java.awt.GridBagConstraints());
 
-        panelT4P5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang18.setText("Nút 2");
+        panelTam18.add(btnChucNang18, new java.awt.GridBagConstraints());
 
-        lblT4P5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT4P5.setForeground(new java.awt.Color(255, 255, 255));
-        lblT4P5.setText("Số phòng");
+        panel18.add(panelTam18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT4P5.setText("Loại:");
+        panelTang6.add(panel18);
 
-        lblTrangThaiT4P5.setText("Trạng thái:");
+        panel19.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel19MouseEntered(evt);
+            }
+        });
+        panel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT4P5Layout = new javax.swing.GroupLayout(panelT4P5);
-        panelT4P5.setLayout(panelT4P5Layout);
-        panelT4P5Layout.setHorizontalGroup(
-            panelT4P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P5Layout.createSequentialGroup()
-                .addGroup(panelT4P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT4P5Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT4P5))
-                    .addGroup(panelT4P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT4P5))
-                    .addGroup(panelT4P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT4P5)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT4P5Layout.setVerticalGroup(
-            panelT4P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT4P5Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT4P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT4P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT4P5)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong19.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong19.setText("Số phòng");
+        panel19.add(lblSoPhong19, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang6.add(panelT4P5);
+        lblLoai19.setText("Loại:");
+        panel19.add(lblLoai19, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai19.setText("Trạng thái:");
+        panel19.add(lblTrangThai19, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam19.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet19.setText("Chi tiết");
+        panelTam19.add(btnChiTiet19, new java.awt.GridBagConstraints());
+
+        btnChucNang19.setText("Nút 2");
+        panelTam19.add(btnChucNang19, new java.awt.GridBagConstraints());
+
+        panel19.add(panelTam19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang6.add(panel19);
+
+        panel20.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel20MouseEntered(evt);
+            }
+        });
+        panel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSoPhong20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong20.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong20.setText("Số phòng");
+        panel20.add(lblSoPhong20, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
+
+        lblLoai20.setText("Loại:");
+        panel20.add(lblLoai20, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai20.setText("Trạng thái:");
+        panel20.add(lblTrangThai20, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam20.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet20.setText("Chi tiết");
+        panelTam20.add(btnChiTiet20, new java.awt.GridBagConstraints());
+
+        btnChucNang20.setText("Nút 2");
+        panelTam20.add(btnChucNang20, new java.awt.GridBagConstraints());
+
+        panel20.add(panelTam20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang6.add(panel20);
 
         panelTang8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelTang8.setLayout(new java.awt.GridLayout());
+        panelTang8.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTang9.setBackground(new java.awt.Color(0, 153, 255));
         panelTang9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1096,210 +985,160 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
         panelTang8.add(panelTang9);
 
-        panelT5P1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel21.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel21MouseEntered(evt);
+            }
+        });
+        panel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT5P1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT5P1.setForeground(new java.awt.Color(255, 255, 255));
-        lblT5P1.setText("Số phòng");
+        lblSoPhong21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong21.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong21.setText("Số phòng");
+        panel21.add(lblSoPhong21, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT5P1.setText("Loại:");
+        lblLoai21.setText("Loại:");
+        panel21.add(lblLoai21, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT5P1.setText("Trạng thái:");
+        lblTrangThai21.setText("Trạng thái:");
+        panel21.add(lblTrangThai21, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT5P1Layout = new javax.swing.GroupLayout(panelT5P1);
-        panelT5P1.setLayout(panelT5P1Layout);
-        panelT5P1Layout.setHorizontalGroup(
-            panelT5P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P1Layout.createSequentialGroup()
-                .addGroup(panelT5P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT5P1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT5P1))
-                    .addGroup(panelT5P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT5P1))
-                    .addGroup(panelT5P1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT5P1)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT5P1Layout.setVerticalGroup(
-            panelT5P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT5P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT5P1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT5P1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam21.setLayout(new java.awt.GridBagLayout());
 
-        panelTang8.add(panelT5P1);
+        btnChiTiet21.setText("Chi tiết");
+        panelTam21.add(btnChiTiet21, new java.awt.GridBagConstraints());
 
-        panelT5P2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang21.setText("Nút 2");
+        panelTam21.add(btnChucNang21, new java.awt.GridBagConstraints());
 
-        lblT5P2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT5P2.setForeground(new java.awt.Color(255, 255, 255));
-        lblT5P2.setText("Số phòng");
+        panel21.add(panelTam21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT5P2.setText("Loại:");
+        panelTang8.add(panel21);
 
-        lblTrangThaiT5P2.setText("Trạng thái:");
+        panel22.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel22MouseEntered(evt);
+            }
+        });
+        panel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT5P2Layout = new javax.swing.GroupLayout(panelT5P2);
-        panelT5P2.setLayout(panelT5P2Layout);
-        panelT5P2Layout.setHorizontalGroup(
-            panelT5P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P2Layout.createSequentialGroup()
-                .addGroup(panelT5P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT5P2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT5P2))
-                    .addGroup(panelT5P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT5P2))
-                    .addGroup(panelT5P2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT5P2)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT5P2Layout.setVerticalGroup(
-            panelT5P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT5P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT5P2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT5P2)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong22.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong22.setText("Số phòng");
+        panel22.add(lblSoPhong22, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang8.add(panelT5P2);
+        lblLoai22.setText("Loại:");
+        panel22.add(lblLoai22, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        panelT5P3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblTrangThai22.setText("Trạng thái:");
+        panel22.add(lblTrangThai22, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        lblT5P3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT5P3.setForeground(new java.awt.Color(255, 255, 255));
-        lblT5P3.setText("Số phòng");
+        panelTam22.setLayout(new java.awt.GridBagLayout());
 
-        lblLoaiT5P3.setText("Loại:");
+        btnChiTiet22.setText("Chi tiết");
+        panelTam22.add(btnChiTiet22, new java.awt.GridBagConstraints());
 
-        lblTrangThaiT5P3.setText("Trạng thái:");
+        btnChucNang22.setText("Nút 2");
+        panelTam22.add(btnChucNang22, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout panelT5P3Layout = new javax.swing.GroupLayout(panelT5P3);
-        panelT5P3.setLayout(panelT5P3Layout);
-        panelT5P3Layout.setHorizontalGroup(
-            panelT5P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P3Layout.createSequentialGroup()
-                .addGroup(panelT5P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT5P3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT5P3))
-                    .addGroup(panelT5P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT5P3))
-                    .addGroup(panelT5P3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT5P3)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT5P3Layout.setVerticalGroup(
-            panelT5P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT5P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT5P3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT5P3)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panel22.add(panelTam22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        panelTang8.add(panelT5P3);
+        panelTang8.add(panel22);
 
-        panelT5P4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel23.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel23MouseEntered(evt);
+            }
+        });
+        panel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblT5P4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT5P4.setForeground(new java.awt.Color(255, 255, 255));
-        lblT5P4.setText("Số phòng");
+        lblSoPhong23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong23.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong23.setText("Số phòng");
+        panel23.add(lblSoPhong23, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        lblLoaiT5P4.setText("Loại:");
+        lblLoai23.setText("Loại:");
+        panel23.add(lblLoai23, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
-        lblTrangThaiT5P4.setText("Trạng thái:");
+        lblTrangThai23.setText("Trạng thái:");
+        panel23.add(lblTrangThai23, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
-        javax.swing.GroupLayout panelT5P4Layout = new javax.swing.GroupLayout(panelT5P4);
-        panelT5P4.setLayout(panelT5P4Layout);
-        panelT5P4Layout.setHorizontalGroup(
-            panelT5P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P4Layout.createSequentialGroup()
-                .addGroup(panelT5P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT5P4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT5P4))
-                    .addGroup(panelT5P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT5P4))
-                    .addGroup(panelT5P4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT5P4)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT5P4Layout.setVerticalGroup(
-            panelT5P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P4Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT5P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT5P4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT5P4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        panelTam23.setLayout(new java.awt.GridBagLayout());
 
-        panelTang8.add(panelT5P4);
+        btnChiTiet23.setText("Chi tiết");
+        panelTam23.add(btnChiTiet23, new java.awt.GridBagConstraints());
 
-        panelT5P5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnChucNang23.setText("Nút 2");
+        panelTam23.add(btnChucNang23, new java.awt.GridBagConstraints());
 
-        lblT5P5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblT5P5.setForeground(new java.awt.Color(255, 255, 255));
-        lblT5P5.setText("Số phòng");
+        panel23.add(panelTam23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
 
-        lblLoaiT5P5.setText("Loại:");
+        panelTang8.add(panel23);
 
-        lblTrangThaiT5P5.setText("Trạng thái:");
+        panel24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel24MouseEntered(evt);
+            }
+        });
+        panel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelT5P5Layout = new javax.swing.GroupLayout(panelT5P5);
-        panelT5P5.setLayout(panelT5P5Layout);
-        panelT5P5Layout.setHorizontalGroup(
-            panelT5P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P5Layout.createSequentialGroup()
-                .addGroup(panelT5P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelT5P5Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblT5P5))
-                    .addGroup(panelT5P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLoaiT5P5))
-                    .addGroup(panelT5P5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrangThaiT5P5)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        panelT5P5Layout.setVerticalGroup(
-            panelT5P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelT5P5Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblT5P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoaiT5P5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTrangThaiT5P5)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        lblSoPhong24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong24.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong24.setText("Số phòng");
+        panel24.add(lblSoPhong24, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
-        panelTang8.add(panelT5P5);
+        lblLoai24.setText("Loại:");
+        panel24.add(lblLoai24, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai24.setText("Trạng thái:");
+        panel24.add(lblTrangThai24, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam24.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet24.setText("Chi tiết");
+        panelTam24.add(btnChiTiet24, new java.awt.GridBagConstraints());
+
+        btnChucNang24.setText("Nút 2");
+        panelTam24.add(btnChucNang24, new java.awt.GridBagConstraints());
+
+        panel24.add(panelTam24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang8.add(panel24);
+
+        panel25.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel25MouseEntered(evt);
+            }
+        });
+        panel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSoPhong25.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong25.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoPhong25.setText("Số phòng");
+        panel25.add(lblSoPhong25, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
+
+        lblLoai25.setText("Loại:");
+        panel25.add(lblLoai25, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
+
+        lblTrangThai25.setText("Trạng thái:");
+        panel25.add(lblTrangThai25, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
+
+        panelTam25.setLayout(new java.awt.GridBagLayout());
+
+        btnChiTiet25.setText("Chi tiết");
+        panelTam25.add(btnChiTiet25, new java.awt.GridBagConstraints());
+
+        btnChucNang25.setText("Nút 2");
+        panelTam25.add(btnChucNang25, new java.awt.GridBagConstraints());
+
+        panel25.add(panelTam25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 110));
+
+        panelTang8.add(panel25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1326,113 +1165,288 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void panel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseEntered
+
+    }//GEN-LAST:event_panel1MouseEntered
+
+    private void panel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel2MouseEntered
+
+    private void panel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel3MouseEntered
+
+    private void panel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel4MouseEntered
+
+    private void panel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel5MouseEntered
+
+    private void panel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel6MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel6MouseEntered
+
+    private void panel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel7MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel7MouseEntered
+
+    private void panel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel8MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel8MouseEntered
+
+    private void panel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel9MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel9MouseEntered
+
+    private void panel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel10MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel10MouseEntered
+
+    private void panel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel11MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel11MouseEntered
+
+    private void panel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel12MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel12MouseEntered
+
+    private void panel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel13MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel13MouseEntered
+
+    private void panel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel14MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel14MouseEntered
+
+    private void panel15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel15MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel15MouseEntered
+
+    private void panel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel16MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel16MouseEntered
+
+    private void panel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel17MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel17MouseEntered
+
+    private void panel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel18MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel18MouseEntered
+
+    private void panel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel19MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel19MouseEntered
+
+    private void panel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel20MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel20MouseEntered
+
+    private void panel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel21MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel21MouseEntered
+
+    private void panel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel22MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel22MouseEntered
+
+    private void panel23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel23MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel23MouseEntered
+
+    private void panel24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel24MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel24MouseEntered
+
+    private void panel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel25MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel25MouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChiTiet1;
+    private javax.swing.JButton btnChiTiet10;
+    private javax.swing.JButton btnChiTiet11;
+    private javax.swing.JButton btnChiTiet12;
+    private javax.swing.JButton btnChiTiet13;
+    private javax.swing.JButton btnChiTiet14;
+    private javax.swing.JButton btnChiTiet15;
+    private javax.swing.JButton btnChiTiet16;
+    private javax.swing.JButton btnChiTiet17;
+    private javax.swing.JButton btnChiTiet18;
+    private javax.swing.JButton btnChiTiet19;
+    private javax.swing.JButton btnChiTiet2;
+    private javax.swing.JButton btnChiTiet20;
+    private javax.swing.JButton btnChiTiet21;
+    private javax.swing.JButton btnChiTiet22;
+    private javax.swing.JButton btnChiTiet23;
+    private javax.swing.JButton btnChiTiet24;
+    private javax.swing.JButton btnChiTiet25;
+    private javax.swing.JButton btnChiTiet3;
+    private javax.swing.JButton btnChiTiet4;
+    private javax.swing.JButton btnChiTiet5;
+    private javax.swing.JButton btnChiTiet6;
+    private javax.swing.JButton btnChiTiet7;
+    private javax.swing.JButton btnChiTiet8;
+    private javax.swing.JButton btnChiTiet9;
+    private javax.swing.JButton btnChucNang1;
+    private javax.swing.JButton btnChucNang10;
+    private javax.swing.JButton btnChucNang11;
+    private javax.swing.JButton btnChucNang12;
+    private javax.swing.JButton btnChucNang13;
+    private javax.swing.JButton btnChucNang14;
+    private javax.swing.JButton btnChucNang15;
+    private javax.swing.JButton btnChucNang16;
+    private javax.swing.JButton btnChucNang17;
+    private javax.swing.JButton btnChucNang18;
+    private javax.swing.JButton btnChucNang19;
+    private javax.swing.JButton btnChucNang2;
+    private javax.swing.JButton btnChucNang20;
+    private javax.swing.JButton btnChucNang21;
+    private javax.swing.JButton btnChucNang22;
+    private javax.swing.JButton btnChucNang23;
+    private javax.swing.JButton btnChucNang24;
+    private javax.swing.JButton btnChucNang25;
+    private javax.swing.JButton btnChucNang3;
+    private javax.swing.JButton btnChucNang4;
+    private javax.swing.JButton btnChucNang5;
+    private javax.swing.JButton btnChucNang6;
+    private javax.swing.JButton btnChucNang7;
+    private javax.swing.JButton btnChucNang8;
+    private javax.swing.JButton btnChucNang9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel lblLoaiT1P1;
-    private javax.swing.JLabel lblLoaiT1P2;
-    private javax.swing.JLabel lblLoaiT1P3;
-    private javax.swing.JLabel lblLoaiT1P4;
-    private javax.swing.JLabel lblLoaiT1P5;
-    private javax.swing.JLabel lblLoaiT2P1;
-    private javax.swing.JLabel lblLoaiT2P2;
-    private javax.swing.JLabel lblLoaiT2P3;
-    private javax.swing.JLabel lblLoaiT2P4;
-    private javax.swing.JLabel lblLoaiT2P5;
-    private javax.swing.JLabel lblLoaiT3P1;
-    private javax.swing.JLabel lblLoaiT3P2;
-    private javax.swing.JLabel lblLoaiT3P3;
-    private javax.swing.JLabel lblLoaiT3P4;
-    private javax.swing.JLabel lblLoaiT3P5;
-    private javax.swing.JLabel lblLoaiT4P1;
-    private javax.swing.JLabel lblLoaiT4P2;
-    private javax.swing.JLabel lblLoaiT4P3;
-    private javax.swing.JLabel lblLoaiT4P4;
-    private javax.swing.JLabel lblLoaiT4P5;
-    private javax.swing.JLabel lblLoaiT5P1;
-    private javax.swing.JLabel lblLoaiT5P2;
-    private javax.swing.JLabel lblLoaiT5P3;
-    private javax.swing.JLabel lblLoaiT5P4;
-    private javax.swing.JLabel lblLoaiT5P5;
-    private javax.swing.JLabel lblT1P1;
-    private javax.swing.JLabel lblT1P2;
-    private javax.swing.JLabel lblT1P3;
-    private javax.swing.JLabel lblT1P4;
-    private javax.swing.JLabel lblT1P5;
-    private javax.swing.JLabel lblT2P1;
-    private javax.swing.JLabel lblT2P2;
-    private javax.swing.JLabel lblT2P3;
-    private javax.swing.JLabel lblT2P4;
-    private javax.swing.JLabel lblT2P5;
-    private javax.swing.JLabel lblT3P1;
-    private javax.swing.JLabel lblT3P2;
-    private javax.swing.JLabel lblT3P3;
-    private javax.swing.JLabel lblT3P4;
-    private javax.swing.JLabel lblT3P5;
-    private javax.swing.JLabel lblT4P1;
-    private javax.swing.JLabel lblT4P2;
-    private javax.swing.JLabel lblT4P3;
-    private javax.swing.JLabel lblT4P4;
-    private javax.swing.JLabel lblT4P5;
-    private javax.swing.JLabel lblT5P1;
-    private javax.swing.JLabel lblT5P2;
-    private javax.swing.JLabel lblT5P3;
-    private javax.swing.JLabel lblT5P4;
-    private javax.swing.JLabel lblT5P5;
-    private javax.swing.JLabel lblTrangThaiT1P1;
-    private javax.swing.JLabel lblTrangThaiT1P2;
-    private javax.swing.JLabel lblTrangThaiT1P3;
-    private javax.swing.JLabel lblTrangThaiT1P4;
-    private javax.swing.JLabel lblTrangThaiT1P5;
-    private javax.swing.JLabel lblTrangThaiT2P1;
-    private javax.swing.JLabel lblTrangThaiT2P2;
-    private javax.swing.JLabel lblTrangThaiT2P3;
-    private javax.swing.JLabel lblTrangThaiT2P4;
-    private javax.swing.JLabel lblTrangThaiT2P5;
-    private javax.swing.JLabel lblTrangThaiT3P1;
-    private javax.swing.JLabel lblTrangThaiT3P2;
-    private javax.swing.JLabel lblTrangThaiT3P3;
-    private javax.swing.JLabel lblTrangThaiT3P4;
-    private javax.swing.JLabel lblTrangThaiT3P5;
-    private javax.swing.JLabel lblTrangThaiT4P1;
-    private javax.swing.JLabel lblTrangThaiT4P2;
-    private javax.swing.JLabel lblTrangThaiT4P3;
-    private javax.swing.JLabel lblTrangThaiT4P4;
-    private javax.swing.JLabel lblTrangThaiT4P5;
-    private javax.swing.JLabel lblTrangThaiT5P1;
-    private javax.swing.JLabel lblTrangThaiT5P2;
-    private javax.swing.JLabel lblTrangThaiT5P3;
-    private javax.swing.JLabel lblTrangThaiT5P4;
-    private javax.swing.JLabel lblTrangThaiT5P5;
-    private javax.swing.JPanel panelT1P1;
-    private javax.swing.JPanel panelT1P2;
-    private javax.swing.JPanel panelT1P3;
-    private javax.swing.JPanel panelT1P4;
-    private javax.swing.JPanel panelT1P5;
-    private javax.swing.JPanel panelT2P1;
-    private javax.swing.JPanel panelT2P2;
-    private javax.swing.JPanel panelT2P3;
-    private javax.swing.JPanel panelT2P4;
-    private javax.swing.JPanel panelT2P5;
-    private javax.swing.JPanel panelT3P1;
-    private javax.swing.JPanel panelT3P2;
-    private javax.swing.JPanel panelT3P3;
-    private javax.swing.JPanel panelT3P4;
-    private javax.swing.JPanel panelT3P5;
-    private javax.swing.JPanel panelT4P1;
-    private javax.swing.JPanel panelT4P2;
-    private javax.swing.JPanel panelT4P3;
-    private javax.swing.JPanel panelT4P4;
-    private javax.swing.JPanel panelT4P5;
-    private javax.swing.JPanel panelT5P1;
-    private javax.swing.JPanel panelT5P2;
-    private javax.swing.JPanel panelT5P3;
-    private javax.swing.JPanel panelT5P4;
-    private javax.swing.JPanel panelT5P5;
+    private javax.swing.JLabel lblLoai1;
+    private javax.swing.JLabel lblLoai10;
+    private javax.swing.JLabel lblLoai11;
+    private javax.swing.JLabel lblLoai12;
+    private javax.swing.JLabel lblLoai13;
+    private javax.swing.JLabel lblLoai14;
+    private javax.swing.JLabel lblLoai15;
+    private javax.swing.JLabel lblLoai16;
+    private javax.swing.JLabel lblLoai17;
+    private javax.swing.JLabel lblLoai18;
+    private javax.swing.JLabel lblLoai19;
+    private javax.swing.JLabel lblLoai2;
+    private javax.swing.JLabel lblLoai20;
+    private javax.swing.JLabel lblLoai21;
+    private javax.swing.JLabel lblLoai22;
+    private javax.swing.JLabel lblLoai23;
+    private javax.swing.JLabel lblLoai24;
+    private javax.swing.JLabel lblLoai25;
+    private javax.swing.JLabel lblLoai3;
+    private javax.swing.JLabel lblLoai4;
+    private javax.swing.JLabel lblLoai5;
+    private javax.swing.JLabel lblLoai6;
+    private javax.swing.JLabel lblLoai7;
+    private javax.swing.JLabel lblLoai8;
+    private javax.swing.JLabel lblLoai9;
+    private javax.swing.JLabel lblSoPhong1;
+    private javax.swing.JLabel lblSoPhong10;
+    private javax.swing.JLabel lblSoPhong11;
+    private javax.swing.JLabel lblSoPhong12;
+    private javax.swing.JLabel lblSoPhong13;
+    private javax.swing.JLabel lblSoPhong14;
+    private javax.swing.JLabel lblSoPhong15;
+    private javax.swing.JLabel lblSoPhong16;
+    private javax.swing.JLabel lblSoPhong17;
+    private javax.swing.JLabel lblSoPhong18;
+    private javax.swing.JLabel lblSoPhong19;
+    private javax.swing.JLabel lblSoPhong2;
+    private javax.swing.JLabel lblSoPhong20;
+    private javax.swing.JLabel lblSoPhong21;
+    private javax.swing.JLabel lblSoPhong22;
+    private javax.swing.JLabel lblSoPhong23;
+    private javax.swing.JLabel lblSoPhong24;
+    private javax.swing.JLabel lblSoPhong25;
+    private javax.swing.JLabel lblSoPhong3;
+    private javax.swing.JLabel lblSoPhong4;
+    private javax.swing.JLabel lblSoPhong5;
+    private javax.swing.JLabel lblSoPhong6;
+    private javax.swing.JLabel lblSoPhong7;
+    private javax.swing.JLabel lblSoPhong8;
+    private javax.swing.JLabel lblSoPhong9;
+    private javax.swing.JLabel lblTrangThai1;
+    private javax.swing.JLabel lblTrangThai10;
+    private javax.swing.JLabel lblTrangThai11;
+    private javax.swing.JLabel lblTrangThai12;
+    private javax.swing.JLabel lblTrangThai13;
+    private javax.swing.JLabel lblTrangThai14;
+    private javax.swing.JLabel lblTrangThai15;
+    private javax.swing.JLabel lblTrangThai16;
+    private javax.swing.JLabel lblTrangThai17;
+    private javax.swing.JLabel lblTrangThai18;
+    private javax.swing.JLabel lblTrangThai19;
+    private javax.swing.JLabel lblTrangThai2;
+    private javax.swing.JLabel lblTrangThai20;
+    private javax.swing.JLabel lblTrangThai21;
+    private javax.swing.JLabel lblTrangThai22;
+    private javax.swing.JLabel lblTrangThai23;
+    private javax.swing.JLabel lblTrangThai24;
+    private javax.swing.JLabel lblTrangThai25;
+    private javax.swing.JLabel lblTrangThai3;
+    private javax.swing.JLabel lblTrangThai4;
+    private javax.swing.JLabel lblTrangThai5;
+    private javax.swing.JLabel lblTrangThai6;
+    private javax.swing.JLabel lblTrangThai7;
+    private javax.swing.JLabel lblTrangThai8;
+    private javax.swing.JLabel lblTrangThai9;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel10;
+    private javax.swing.JPanel panel11;
+    private javax.swing.JPanel panel12;
+    private javax.swing.JPanel panel13;
+    private javax.swing.JPanel panel14;
+    private javax.swing.JPanel panel15;
+    private javax.swing.JPanel panel16;
+    private javax.swing.JPanel panel17;
+    private javax.swing.JPanel panel18;
+    private javax.swing.JPanel panel19;
+    private javax.swing.JPanel panel2;
+    private javax.swing.JPanel panel20;
+    private javax.swing.JPanel panel21;
+    private javax.swing.JPanel panel22;
+    private javax.swing.JPanel panel23;
+    private javax.swing.JPanel panel24;
+    private javax.swing.JPanel panel25;
+    private javax.swing.JPanel panel3;
+    private javax.swing.JPanel panel4;
+    private javax.swing.JPanel panel5;
+    private javax.swing.JPanel panel6;
+    private javax.swing.JPanel panel7;
+    private javax.swing.JPanel panel8;
+    private javax.swing.JPanel panel9;
+    private javax.swing.JPanel panelTam1;
+    private javax.swing.JPanel panelTam10;
+    private javax.swing.JPanel panelTam11;
+    private javax.swing.JPanel panelTam12;
+    private javax.swing.JPanel panelTam13;
+    private javax.swing.JPanel panelTam14;
+    private javax.swing.JPanel panelTam15;
+    private javax.swing.JPanel panelTam16;
+    private javax.swing.JPanel panelTam17;
+    private javax.swing.JPanel panelTam18;
+    private javax.swing.JPanel panelTam19;
+    private javax.swing.JPanel panelTam2;
+    private javax.swing.JPanel panelTam20;
+    private javax.swing.JPanel panelTam21;
+    private javax.swing.JPanel panelTam22;
+    private javax.swing.JPanel panelTam23;
+    private javax.swing.JPanel panelTam24;
+    private javax.swing.JPanel panelTam25;
+    private javax.swing.JPanel panelTam3;
+    private javax.swing.JPanel panelTam4;
+    private javax.swing.JPanel panelTam5;
+    private javax.swing.JPanel panelTam6;
+    private javax.swing.JPanel panelTam7;
+    private javax.swing.JPanel panelTam8;
+    private javax.swing.JPanel panelTam9;
     private javax.swing.JPanel panelTang;
     private javax.swing.JPanel panelTang1;
     private javax.swing.JPanel panelTang2;
