@@ -6,6 +6,7 @@
 package com.exemple.entity;
 
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,17 +21,49 @@ public class DanhMucSoDoPhong {
     JLabel soPhong;
     JLabel loaiPhong;
     JLabel trangThai;
+    JPanel panelTam;
+    JButton btnChiTiet;
+    JButton btnChucNang;
 
     public DanhMucSoDoPhong() {
     }
 
-    public DanhMucSoDoPhong(String chuThich, JPanel panel, JLabel soPhong, JLabel loaiPhong, JLabel trangThai) {
+    public DanhMucSoDoPhong(String chuThich, JPanel panel, JLabel soPhong, JLabel loaiPhong, JLabel trangThai, JPanel panelTam, JButton btnChiTiet, JButton btnChucNang) {
         this.chuThich = chuThich;
         this.panel = panel;
         this.soPhong = soPhong;
         this.loaiPhong = loaiPhong;
         this.trangThai = trangThai;
+        this.panelTam = panelTam;
+        this.btnChiTiet = btnChiTiet;
+        this.btnChucNang = btnChucNang;
     }
+
+    public JPanel getPanelTam() {
+        return panelTam;
+    }
+
+    public void setPanelTam(JPanel panelTam) {
+        this.panelTam = panelTam;
+    }
+
+    public JButton getBtnChiTiet() {
+        return btnChiTiet;
+    }
+
+    public void setBtnChiTiet(JButton btnChiTiet) {
+        this.btnChiTiet = btnChiTiet;
+    }
+
+    public JButton getBtnChucNang() {
+        return btnChucNang;
+    }
+
+    public void setBtnChucNang(JButton btnChucNang) {
+        this.btnChucNang = btnChucNang;
+    }
+
+  
 
     public String getChuThich() {
         return chuThich;
