@@ -13,17 +13,18 @@ import java.util.Date;
  */
 public class HoaDon {
     private int maHoaDon;
-    private int ngayTao;
+    private Date ngayTao;
     private Date ngayNhanPhong;
     private Date ngayTraPhong;
     private float thanhToan;
     private String CMND_CCCD;
     private String maKhuyenMai;
+    private String TaiKhoanNV;
 
     public HoaDon() {
     }
 
-    public HoaDon(int maHoaDon, int ngayTao, Date ngayNhanPhong, Date ngayTraPhong, float thanhToan, String CMND_CCCD, String maKhuyenMai) {
+    public HoaDon(int maHoaDon, Date ngayTao, Date ngayNhanPhong, Date ngayTraPhong, float thanhToan, String CMND_CCCD, String maKhuyenMai, String TaiKhoanNV) {
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
         this.ngayNhanPhong = ngayNhanPhong;
@@ -31,6 +32,7 @@ public class HoaDon {
         this.thanhToan = thanhToan;
         this.CMND_CCCD = CMND_CCCD;
         this.maKhuyenMai = maKhuyenMai;
+        this.TaiKhoanNV = TaiKhoanNV;
     }
 
     public int getMaHoaDon() {
@@ -41,11 +43,11 @@ public class HoaDon {
         this.maHoaDon = maHoaDon;
     }
 
-    public int getNgayTao() {
+    public Date getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(int ngayTao) {
+    public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
     }
 
@@ -88,6 +90,14 @@ public class HoaDon {
     public void setMaKhuyenMai(String maKhuyenMai) {
         this.maKhuyenMai = maKhuyenMai;
     }
-    
+
+    public String getTaiKhoanNV() {
+        return TaiKhoanNV;
+    }
+
+    public void setTaiKhoanNV(String TaiKhoanNV) {
+        this.TaiKhoanNV = TaiKhoanNV;
+    }
+
     
 }
