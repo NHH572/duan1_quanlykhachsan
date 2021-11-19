@@ -23,6 +23,8 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
     String DELETE_SQL = "delete from NhanVien where TaiKhoanNV=?";
     String SELECT_ALL_SQL = "select*from NhanVien";
     String SELECT_BY_ID_SQL = "select * from NhanVien where TaiKhoanNV = ?";
+        String SELECT_BY_keyword_SQL = "select * from NhanVien where HoTen like ?";
+
 
     @Override
     public void insert(NhanVien entity) {
@@ -77,6 +79,14 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
             return list;
         } catch (Exception e) {
             throw new RuntimeException(e);
+<<<<<<< Updated upstream
         }    }
 
+=======
+        }
+    }
+public List<NhanVien> selectByKeyword(String hoTen){
+    return selectBySql(SELECT_BY_keyword_SQL,"%" + hoTen + "%");
+}
+>>>>>>> Stashed changes
 }

@@ -5,7 +5,6 @@
  */
 package com.exemple.helper;
 
-
 import java.awt.Image;
 import java.io.File;
 import java.net.URL;
@@ -20,29 +19,32 @@ import javax.swing.ImageIcon;
  * @author hp
  */
 public class XImage {
- 
- public static Image getAppIcon(){
-     URL url = XImage.class.getResource("/com/edusys/icon/fpt.png");
-     return new ImageIcon(url).getImage();
- }
- 
- public static void save(File src){
-     File dst = new File("logos", src.getName());
-     if(dst.getParentFile().exists()){
-         dst.getParentFile().mkdirs();// Tạo thư mục logos nếu chưa tồn tại
-     }
-     try {
-         Path from = Paths.get(src.getAbsolutePath());
-         Path to = Paths.get(dst.getAbsolutePath());
-         Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING); // Copy file vào thư mục logos
-     } catch (Exception e) {
-         throw new RuntimeException(e);
-     }
- }
- 
- public static ImageIcon read(String fileName){
-     File path = new File("Logos", fileName);
-     return new ImageIcon( new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(200, 250, Image.SCALE_DEFAULT));
- }
- 
+
+    public static Image getAppIcon() {
+        URL url = XImage.class.getResource("/com/edusys/icon/fpt.png");
+        return new ImageIcon(url).getImage();
+    }
+
+    public static ImageIcon readLogo(String fileName) {
+        File path = new File("logos", fileName);
+        return new ImageIcon(new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT));
+    }
+
+    public static boolean saveLogo(File file) {
+        File dir = new File("logos");  //khai báo thư mục logos ngang hàng với src
+        // Tạo thư mục nếu chưa tồn tại
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        File newFile = new File(dir, file.getName());
+        try {
+            // Copy vào thư mục logos (đè nếu đã tồn tại)
+            Path source = Paths.get(file.getAbsolutePath());
+            Path destination = Paths.get(newFile.getAbsolutePath());
+            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }
