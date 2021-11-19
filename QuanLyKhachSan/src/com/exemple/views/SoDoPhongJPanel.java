@@ -281,7 +281,7 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         btnChucNang25 = new javax.swing.JButton();
 
         panelTang1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelTang1.setLayout(new java.awt.GridLayout());
+        panelTang1.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTang.setBackground(new java.awt.Color(0, 153, 255));
         panelTang.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -315,6 +315,11 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panelTam1.setLayout(new java.awt.GridBagLayout());
 
         btnChiTiet1.setText("Chi tiết");
+        btnChiTiet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTiet1ActionPerformed(evt);
+            }
+        });
         panelTam1.add(btnChiTiet1, new java.awt.GridBagConstraints());
 
         btnChucNang1.setText("Nút 2");
@@ -1264,6 +1269,10 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
     private void panel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel25MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_panel25MouseEntered
+
+    private void btnChiTiet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTiet1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChiTiet1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

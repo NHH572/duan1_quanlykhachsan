@@ -231,7 +231,8 @@ GO
 	VALUES ('KHTT1',N'Khách hàng thân thiết 1',10,'2021/11/11','2021/12/12'),
 	('KHTT2',N'Khách hàng thân thiết 2',20,'2021/11/01','2021/12/31'),
 	('KHTT3',N'Khách hàng thân thiết 3',50,'2021/11/01','2021/12/31'),
-	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31')
+	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31'),
+	('NONE',null,0,null,null)
 -- Đối tác
 	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
 	VALUES ('CTTP',N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
@@ -253,12 +254,74 @@ GO
 -- Hóa đơn
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)
 	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
-	('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567',null)
+	('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567','NONE')
 -- Chi tiết hóa đơn
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
 	(2,5,5,2,200000), (2,2,5,3,90000), (2,1,5,2,40000)
 
+-- TẠO PROC
+--1
+IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
+DROP PROC sp_DoanhThuHoaDon
+GO
+CREATE PROC sp_DoanhThuHoaDon(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT hd.MaHoaDon, kh.TenKhachHang, hd.NgayTao, km.GiaTri,hd.ThanhTien
+	FROM HoaDon hd,KhuyenMai km,KhachHang kh
+	WHERE hd.SoCMTKhachHang = kh.SoCMTKhachHang
+	AND hd.MaKhuyenMai = km.MaKhuyenMai
+	AND MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
+--2
+IF OBJECT_ID('sp_SoLuongKhachHang') is not null
+DROP PROC sp_SoLuongKhachHang
+GO
+CREATE PROC sp_SoLuongKhachHang(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT kh.SoCMTKhachHang, kh.TenKhachHang, kh.NgaySinh,kh.GioiTinh,kh.QuocTich
+	FROM KhachHang kh
+	inner join HoaDon hd
+	on kh.SoCMTKhachHang=hd.SoCMTKhachHang
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
+--3
+IF OBJECT_ID('sp_DoanhThuTienPhong') is not null
+DROP PROC sp_DoanhThuTienPhong
+GO
+CREATE PROC sp_DoanhThuTienPhong(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT p.SoPhong, lp.TenLoaiPhong, count(cthd.MaHoaDon) as 'SoLanThue', sum(cthd.TongTien) as 'TongTien'
+	FROM Phong p
+	inner join LoaiPhong lp
+	on p.MaPhong=lp.MaLoaiPhong
+	inner join ChiTietHoaDon cthd
+	on cthd.MaPhong=p.MaPhong
+	inner join HoaDon hd
+	on hd.MaHoaDon=cthd.MaHoaDon	
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	GROUP BY p.SoPhong, lp.TenLoaiPhong
+END
+--4
+IF OBJECT_ID('sp_DoanhThuDichVu') is not null
+DROP PROC sp_DoanhThuDichVu
+GO
+CREATE PROC sp_DoanhThuDichVu(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT dv.TenDichVu, kh.TenKhachHang,hd.TaiKhoanNV, hd.NgayTao, cthd.SoLanThueDichVu, dv.GiaDichVu
+	FROM DichVu dv
+	inner join ChiTietHoaDon cthd
+	on cthd.MaDichVu=dv.MaDichVu
+	inner join HoaDon hd
+	on hd.MaHoaDon=cthd.MaHoaDon
+	inner join KhachHang kh
+	on hd.SoCMTKhachHang=kh.SoCMTKhachHang
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
 
 
 	
