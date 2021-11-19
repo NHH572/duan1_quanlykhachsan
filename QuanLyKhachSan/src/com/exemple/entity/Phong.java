@@ -10,7 +10,7 @@ package com.exemple.entity;
  * @author hp
  */
 public class Phong {
-    private int Phong;
+    private int maPhong;
     private int soPhong;
     private int Lau;
     private String trangThai;
@@ -19,20 +19,20 @@ public class Phong {
     public Phong() {
     }
 
-    public Phong(int Phong, int soPhong, int Lau, String trangThai, int maLoaiPhong) {
-        this.Phong = Phong;
+    public Phong(int maPhong, int soPhong, int Lau, String trangThai, int maLoaiPhong) {
+        this.maPhong = maPhong;
         this.soPhong = soPhong;
         this.Lau = Lau;
         this.trangThai = trangThai;
         this.maLoaiPhong = maLoaiPhong;
     }
 
-    public int getPhong() {
-        return Phong;
+    public int getMaPhong() {
+        return maPhong;
     }
 
-    public void setPhong(int Phong) {
-        this.Phong = Phong;
+    public void setMaPhong(int Phong) {
+        this.maPhong = Phong;
     }
 
     public int getSoPhong() {
@@ -66,7 +66,10 @@ public class Phong {
     public void setMaLoaiPhong(int maLoaiPhong) {
         this.maLoaiPhong = maLoaiPhong;
     }
-    
+          @Override
+     public String toString() {
+        return this.trangThai;
+    }
     
     
 }

@@ -7,30 +7,45 @@ package com.exemple.entity;
 
 /**
  *
- * @author hp
+ * @author ACER
  */
-public class LoaiPhong {
+public class Quanlyphong {
+      private int maPhong;
+    private int soPhong;
+    private int Lau;
+    private String trangThai;
     private int maLoaiPhong;
-    private String tenLoaiPhong;
-    private int donGiaTheoNgay;
-    private int donGiaTheoGio;
-    private int giaSauMotGio;
-    private int mucTangCuoiTuan;
-    private int mucTangNgayLe;
-    private String moTa;
 
-    public LoaiPhong() {
+    public int getMaPhong() {
+        return maPhong;
     }
 
-    public LoaiPhong(int maLoaiPhong, String tenLoaiPhong, int donGiaTheoNgay, int donGiaTheoGio, int giaSauMotGio, int mucTangCuoiTuan, int mucTangNgayLe, String moTa) {
-        this.maLoaiPhong = maLoaiPhong;
-        this.tenLoaiPhong = tenLoaiPhong;
-        this.donGiaTheoNgay = donGiaTheoNgay;
-        this.donGiaTheoGio = donGiaTheoGio;
-        this.giaSauMotGio = giaSauMotGio;
-        this.mucTangCuoiTuan = mucTangCuoiTuan;
-        this.mucTangNgayLe = mucTangNgayLe;
-        this.moTa = moTa;
+    public void setMaPhong(int maPhong) {
+        this.maPhong = maPhong;
+    }
+
+    public int getSoPhong() {
+        return soPhong;
+    }
+
+    public void setSoPhong(int soPhong) {
+        this.soPhong = soPhong;
+    }
+
+    public int getLau() {
+        return Lau;
+    }
+
+    public void setLau(int Lau) {
+        this.Lau = Lau;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
 
     public int getMaLoaiPhong() {
@@ -96,10 +111,13 @@ public class LoaiPhong {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
-        @Override
-     public String toString() {
-        return this.tenLoaiPhong;
-     }   
-    
+
+    private String tenLoaiPhong;
+    private int donGiaTheoNgay;
+    private int donGiaTheoGio;
+    private int giaSauMotGio;
+    private int mucTangCuoiTuan;
+    private int mucTangNgayLe;
+    private String moTa;
     
 }
