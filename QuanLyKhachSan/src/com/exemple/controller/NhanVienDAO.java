@@ -80,6 +80,7 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
             return list;
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }    }
+        }  
+        }
 
 }
