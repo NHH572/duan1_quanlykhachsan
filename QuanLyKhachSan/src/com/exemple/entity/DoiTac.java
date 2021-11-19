@@ -10,34 +10,34 @@ package com.exemple.entity;
  * @author hp
  */
 public class DoiTac {
-    private int maDoiTac;
-    private int tenDoiTac;
+    private String maDoiTac;
+    private String tenDoiTac;
     private String soDienThoai;
     private String danhGia;
 
     public DoiTac() {
     }
 
-    public DoiTac(int maDoiTac, int tenDoiTac, String soDienThoai, String danhGia) {
+    public DoiTac(String maDoiTac, String tenDoiTac, String soDienThoai, String danhGia) {
         this.maDoiTac = maDoiTac;
         this.tenDoiTac = tenDoiTac;
         this.soDienThoai = soDienThoai;
         this.danhGia = danhGia;
     }
 
-    public int getMaDoiTac() {
+    public String getMaDoiTac() {
         return maDoiTac;
     }
 
-    public void setMaDoiTac(int maDoiTac) {
+    public void setMaDoiTac(String maDoiTac) {
         this.maDoiTac = maDoiTac;
     }
 
-    public int getTenDoiTac() {
+    public String getTenDoiTac() {
         return tenDoiTac;
     }
 
-    public void setTenDoiTac(int tenDoiTac) {
+    public void setTenDoiTac(String tenDoiTac) {
         this.tenDoiTac = tenDoiTac;
     }
 
