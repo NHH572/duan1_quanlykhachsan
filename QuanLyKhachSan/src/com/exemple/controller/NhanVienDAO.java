@@ -27,13 +27,13 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
     @Override
     public void insert(NhanVien entity) {
         JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(),
-                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(),entity.getHinh());
+                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(), entity.getHinh());
     }
 
     @Override
     public void update(NhanVien entity) {
         JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(),
-                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(),entity.getHinh(), entity.getMaNV());
+                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
     }
 
     @Override
@@ -55,31 +55,40 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
         return list.get(0);
 
     }
-@Override
-        protected List<NhanVien> selectBySql(String sqlString, Object... args) {
-   List<NhanVien> list = new ArrayList<NhanVien>();
+
+    @Override
+    protected List<NhanVien> selectBySql(String sqlString, Object... args) {
+        List<NhanVien> list = new ArrayList<NhanVien>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sqlString, args);
-            while(rs.next()){
+            while (rs.next()) {
                 NhanVien entity = new NhanVien();
                 entity.setMaNV(rs.getString("TaiKhoanNV"));
+
                 entity.setHoTen(rs.getString("HoTen"));// chay thu di
                 entity.setMatKhau(rs.getString("MatKhauNV"));
+
+                entity.setMatKhau(rs.getString("MatKhauNV"));
+                entity.setHoTen(rs.getString("HoTen"));
+
                 entity.setNgaySinh(rs.getDate("NgaySinh"));
                 entity.setGioiTinh(rs.getBoolean("GioiTinh"));
                 entity.setCMND_CCCD(rs.getString("SoCMT"));
                 entity.setDiaChi(rs.getString("DiaChi"));
                 entity.setSoDienThoai(rs.getString("SoDienThoai"));
                 entity.setVaiTro(rs.getBoolean("VaiTro"));
+
                 entity.setHinh(rs.getString("hinh"));
-                
-                
+
+                entity.setHinh(rs.getString("Hinh"));
+
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }    }
+        }
+    }
 
 }
