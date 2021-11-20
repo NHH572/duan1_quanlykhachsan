@@ -26,7 +26,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
-    JFileChooser fileChooser = new JFileChooser("C:\\Users\\Laptop\\Desktop\\DuAn1\\duan1_quanlykhachsan\\QuanLyKhachSan\\logos");
+    JFileChooser fileChooser = new JFileChooser("...\\QuanLyKhachSan\\logos");
 
     /**
      * Creates new form QuanLyNhanVienJPanel
@@ -45,7 +45,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDanhsach.getModel();
         model.setRowCount(0);
         try {
-            String hoTen=txtSearch.getText();            
+            String hoTen = txtSearch.getText();
             List<NhanVien> list = dao.selectByKeyword(hoTen);
             for (NhanVien nv : list) {
                 Object[] row = {nv.getHoTen(),
@@ -68,7 +68,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     }
 
     void chonAnh() {
- if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { //nếu người dùng đã chọn đc file
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { //nếu người dùng đã chọn đc file
             File file = fileChooser.getSelectedFile();    //lấy file người dùng chọn
             if (XImage.saveLogo(file)) {  //sao chép file đã chọn thư mục logos
                 // Hiển thị hình lên form
@@ -711,14 +711,14 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
     private void lblHinhMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMousePressed
         // TODO add your handling code here:
-         if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             chonAnh();
         }
     }//GEN-LAST:event_lblHinhMousePressed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-      fillTable();
-      
+        fillTable();
+
     }//GEN-LAST:event_txtSearchKeyReleased
 
 
