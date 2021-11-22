@@ -275,6 +275,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHoten">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="T&#xea;n" noResource="true"/>
+              </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="H&#x1ecd; t&#xea;n"/>
               </AccessibilityProperties>
@@ -331,16 +334,25 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCMND">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="CMND" noResource="true"/>
+              </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="S&#x1ed1; CMND"/>
               </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDiachi">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;" noResource="true"/>
+              </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;"/>
               </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtSDT">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" noResource="true"/>
+              </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i"/>
               </AccessibilityProperties>
@@ -405,8 +417,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUser">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="UserName" noResource="true"/>
+                  </Properties>
                   <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="UserName"/>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                   </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -418,8 +433,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="txtPass">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="PassWord" noResource="true"/>
+                  </Properties>
                   <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="PassWord"/>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                   </AccessibilityProperties>
                 </Component>
               </SubComponents>

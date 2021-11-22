@@ -10,12 +10,18 @@ import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
 import com.exemple.helper.XImage;
+import com.exemple.helper.utilityHelper;
+import java.awt.Color;
+import static java.awt.Color.pink;
+import static java.awt.Color.red;
+import static java.awt.Color.white;
 import java.awt.Image;
 import java.io.File;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -184,24 +190,26 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     }
 
     void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền truy cập");
-        } else {
-            String manv = txtUser.getText();
-            if (manv.equals(Auth.user.getMaNV())) {
-                MsgBox.alert(this, "Bạn không được xóa chính bạn");
-            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này ?")) {
-                try {
-                    dao.delete(manv);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại!");
+//        if (!Auth.isManager()) {
+//            MsgBox.alert(this, "Bạn không có quyền truy cập");
+//        } else {
+//            String manv = txtUser.getText();
+//            if (manv.equals(Auth.user.getMaNV())) {
+//                MsgBox.alert(this, "Bạn không được xóa chính bạn");
+//            } else 
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này ?")) {
+            try {
+                String manv = txtUser.getText();
+                dao.delete(manv);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xóa thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
 
-                }
             }
         }
+//        }
     }
 
     void first() {
@@ -300,6 +308,8 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Số điện thoại:");
 
+        txtHoten.setName("Tên"); // NOI18N
+
         cboVaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý", " " }));
 
         buttonGroup1.add(rdoNam);
@@ -320,13 +330,23 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtCMND.setName("CMND"); // NOI18N
+
+        txtDiachi.setName("Địa chỉ"); // NOI18N
+
+        txtSDT.setName("Số điện thoại"); // NOI18N
+
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tài khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Username:");
 
+        txtUser.setName("UserName"); // NOI18N
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Password:");
+
+        txtPass.setName("PassWord"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -359,8 +379,8 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        txtUser.getAccessibleContext().setAccessibleName("UserName");
-        txtPass.getAccessibleContext().setAccessibleName("PassWord");
+        txtUser.getAccessibleContext().setAccessibleName("");
+        txtPass.getAccessibleContext().setAccessibleName("");
 
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnThem.setText("Thêm ");
@@ -654,10 +674,36 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhMouseClicked
-
+    public boolean checkTrungMa(JTextField txt) {
+        txt.setBackground(white);
+        if (dao.selectById(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(red);
+            MsgBox.alert(this, txt.getName() + " User đã bị tồn tại.");
+            return false;
+        }
+    }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        insert();
+        if (utilityHelper.checkUserNV(txtUser)
+                && utilityHelper.checkNullText(txtCMND)
+                && utilityHelper.checkNullText(txtDiachi)
+                && utilityHelper.checkSDT(txtSDT)
+                && utilityHelper.checkName(txtHoten)
+                && utilityHelper.checkNullText(txtPass)) {
+            if (utilityHelper.checkUserNV(txtUser)
+                    && utilityHelper.checkName(txtHoten)
+                    && utilityHelper.checkNullText(txtCMND)
+                    && utilityHelper.checkNullText(txtDiachi)
+                    && utilityHelper.checkSDT(txtSDT)
+                    && utilityHelper.checkNullText(txtPass)) {
+                if (checkTrungMa(txtUser)) {
+                    this.insert();
+
+                }
+            }
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -667,7 +713,20 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        update();
+        if (utilityHelper.checkNullText(txtHoten)
+                && utilityHelper.checkNullText(txtCMND)
+                && utilityHelper.checkNullText(txtDiachi)
+                && utilityHelper.checkSDT(txtSDT)
+                && utilityHelper.checkNullText(txtPass)) {
+            if (utilityHelper.checkName(txtHoten)
+                    && utilityHelper.checkNullText(txtCMND)
+                    && utilityHelper.checkNullText(txtDiachi)
+                    && utilityHelper.checkSDT(txtSDT)
+                    && utilityHelper.checkNullText(txtPass)) {
+                this.update();
+
+            }
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed

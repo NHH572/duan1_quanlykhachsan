@@ -5,6 +5,29 @@
  */
 package com.exemple.views;
 
+<<<<<<< Updated upstream
+=======
+import com.exemple.controller.DoiTacDAO;
+import com.exemple.entity.DoiTac;
+import com.exemple.helper.Auth;
+import com.exemple.helper.JdbcHelper;
+import static com.exemple.helper.JdbcHelper.dburl;
+import static com.exemple.helper.JdbcHelper.password;
+import static com.exemple.helper.JdbcHelper.username;
+import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
+import static java.awt.Color.pink;
+import static java.awt.Color.white;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.List;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+>>>>>>> Stashed changes
 /**
  *
  * @author Minh Triet
@@ -16,6 +39,140 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
      */
     public QuanLyDoiTacJPanel() {
         initComponents();
+<<<<<<< Updated upstream
+=======
+        fillTable();
+        txt_SLHT.disable();
+    }
+
+    int index = 0;
+    DoiTacDAO dao = new DoiTacDAO();
+
+    void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tbl_DoiTac.getModel();
+        model.setRowCount(0);   //đưa số dòng về 0 (xóa bảng)
+        try {
+            List<DoiTac> list = dao.selectAll();   //lấy tất cả nhân viên trong CSDL đưa vào list
+            for (DoiTac dt : list) {
+                Object[] row = {
+                    dt.getMaDoiTac(),
+                    dt.getTenDoiTac(),
+                    dt.getSoDienThoai(),
+                    dt.getDanhGia()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void setForm(DoiTac model) {
+        txt_MaDT.setText(model.getMaDoiTac());
+        txt_TenDT.setText(model.getTenDoiTac());
+        txt_SDT.setText(model.getSoDienThoai());
+        txt_DanhGia.setText(model.getDanhGia());
+    }
+
+    //return nhanVien
+    //lấy thông tin trên form cho vào đt nhanVien
+    DoiTac getForm() {
+        DoiTac model = new DoiTac();
+        model.setMaDoiTac(txt_MaDT.getText());
+        model.setTenDoiTac(txt_TenDT.getText());
+        model.setSoDienThoai(txt_SDT.getText());  //chuyển char[] thành String
+        model.setDanhGia(txt_DanhGia.getText());
+        return model;
+    }
+
+    void clear() {
+        this.setForm(new DoiTac());
+    }
+
+    void insert() {
+        DoiTac model = getForm();
+        try {
+            dao.insert(model);
+            this.fillTable();
+            this.clear();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void update() {
+        DoiTac model = getForm();
+        try {
+            dao.update(model);
+            this.fillTable();
+            this.clear();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
+            String macd = txt_MaDT.getText();
+            try {
+                dao.delete(macd);
+                this.fillTable();
+                this.clear();
+                MsgBox.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
+        }
+    }
+
+    public void setTrang() {
+        txt_MaDT.setBackground(white);
+        txt_TenDT.setBackground(white);
+        txt_SDT.setBackground(white);
+        txt_DanhGia.setBackground(white);
+    }
+
+    void edit() {
+        setTrang();
+        try {
+            txt_SLHT.setText("0");
+            index = tbl_DoiTac.getSelectedRow();
+            if (index >= 0) {
+                String madt = (String) tbl_DoiTac.getValueAt(this.index, 0);
+                DoiTac model = dao.selectById(madt);
+                if (model != null) {
+                    this.setForm(model);
+
+                }
+                SoLanHopTac();
+
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    public void SoLanHopTac() {
+        try {
+            Connection con = DriverManager.getConnection(dburl, username, password);
+            index = tbl_DoiTac.getSelectedRow();
+            if (index >= 0) {
+                String maDT = (String) tbl_DoiTac.getValueAt(this.index, 0);
+                String sql = "select Count(kh.MaDoiTac) as SoLuong from HoaDon hd inner join KhachHang kh on hd.SoCMTKhachHang = kh.SoCMTKhachHang inner join DoiTac dt on kh.MaDoiTac = dt.MaDoiTac where kh.MaDoiTac = ? group by hd.SoCMTKhachHang";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, maDT);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt_SLHT.setText(rs.getString("SoLuong"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+>>>>>>> Stashed changes
     }
 
     /**
@@ -61,6 +218,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã đối tác");
 
+        txt_TenDT.setName("Tên đối tác"); // NOI18N
+
         jLabel3.setText("Tên đối tác");
 
         jLabel5.setText("Số lần hợp tác");
@@ -78,9 +237,29 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Đánh giá");
 
+<<<<<<< Updated upstream
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
+=======
+        txt_DanhGia.setColumns(20);
+        txt_DanhGia.setRows(5);
+        txt_DanhGia.setName("Đánh giá"); // NOI18N
+        jScrollPane2.setViewportView(txt_DanhGia);
+
+        txt_MaDT.setName("Mã đối tác"); // NOI18N
+
+        btn_Moi.setText("Mới");
+        btn_Moi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MoiActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Số điện thoại");
+>>>>>>> Stashed changes
+
+        txt_SDT.setName("Số điện thoại"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,6 +335,52 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< Updated upstream
+=======
+
+
+   
+    private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
+        if (utilityHelper.checkNullText(txt_TenDT)
+                && utilityHelper.checkSDT(txt_SDT)
+                && utilityHelper.checkMaDoiTac(txt_MaDT)
+                && utilityHelper.checkNullText2(txt_DanhGia)) {
+            if (utilityHelper.checkMaDoiTac(txt_MaDT)
+                    && utilityHelper.checkSDT(txt_SDT)
+                    && utilityHelper.checkNameDoiTac(txt_TenDT)
+                    ) {
+                this.insert();
+            }
+        }
+
+    }//GEN-LAST:event_btn_ThemActionPerformed
+
+    private void tbl_DoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DoiTacMouseClicked
+        this.edit();
+    }//GEN-LAST:event_tbl_DoiTacMouseClicked
+
+    private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
+        if (!Auth.user.isVaiTro()) {
+            delete();
+        } else {
+            MsgBox.alert(this, "Chỉ trưởng phòng mới được phép xóa");
+        }
+    }//GEN-LAST:event_btn_XoaActionPerformed
+
+    private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
+   if (utilityHelper.checkNullText(txt_TenDT)
+                && utilityHelper.checkSDT(txt_SDT)
+                && utilityHelper.checkSDT(txt_MaDT)
+                && utilityHelper.checkNullText2(txt_DanhGia)) {
+            if (utilityHelper.checkMaDoiTac(txt_MaDT)
+                    && utilityHelper.checkSDT(txt_SDT)
+                    && utilityHelper.checkNameDoiTac(txt_TenDT)
+                    ) {
+                this.update();
+            }
+        }
+    }//GEN-LAST:event_btn_SuaActionPerformed
+>>>>>>> Stashed changes
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
