@@ -10,6 +10,7 @@ import com.exemple.helper.JdbcHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author ACER
@@ -21,7 +22,7 @@ public class LoaiPhongDAO extends EduSysDAO<LoaiPhong, String> {
     String UPDATE_SQL = "UPDATE LoaiPhong set TenLoaiPhong=?, DonGiaTheoNgay=?, DonGiaTheoGio=?,GiaSauMotGio=?"
             + "MucTangNgayLe=?,MucTangCuoiTuan=?, MoTa=? WHERE MaLoaiPhong=?";
     String DELETE_SQL = "DELETE from LoaiPhong WHERE MaLoaiPhong=?";
-        String SELECT_ALL_SQL = "SELECT*from LoaiPhong";
+        String SELECT_ALL_SQL = "select * from LoaiPhong";
     String SELECT_BY_ID_SQL = "select * from LoaiPhong where MaLoaiPhong= ?";
    
 
@@ -79,6 +80,60 @@ public class LoaiPhongDAO extends EduSysDAO<LoaiPhong, String> {
             throw new RuntimeException(e);
         }
     }
+    public List<LoaiPhong> getAll(){
+        String sql="Select * from LoaiPhong";
+        return findByCondition(sql);
     }
+    public LoaiPhong findByID(Integer maLoaiPhong) {
+        String sql = "select * from LoaiPhong where MaLoaiPhong=?";
+        List<LoaiPhong> list = findByCondition(sql, maLoaiPhong);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+    public String getTenLoaiPhong(Integer maLoaiPhong){
+        String sql = "select * from LoaiPhong where MaLoaiPhong=?";
+        List<LoaiPhong> list=findByCondition(sql, maLoaiPhong);
+        return list.size() > 0 ? list.get(0).getTenLoaiPhong() : null;
+    }
+
+    protected List<LoaiPhong> findByCondition(String sql, Object... args) {
+       List<LoaiPhong> listLoaiPhong = new ArrayList<LoaiPhong>();
+        ResultSet rs = null;
+        try {
+            rs = JdbcHelper.executeQuery(sql, args);
+            while (rs.next()) {
+                listLoaiPhong.add(readFromResultSet(rs));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.getStatement().getConnection().close();
+                } catch (SQLException ex) {
+
+                }
+            }
+        }
+        return listLoaiPhong;
+    }
+    
+    private LoaiPhong readFromResultSet(ResultSet rs) throws SQLException {
+        LoaiPhong lp = new LoaiPhong();
+        lp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
+        lp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
+        lp.setDonGiaTheoNgay(rs.getInt("DonGiaTheoNgay"));
+        lp.setDonGiaTheoGio(rs.getInt("DonGiaTheoGio"));
+        lp.setGiaSauMotGio(rs.getInt("GiaSauMotGio"));
+        lp.setMucTangCuoiTuan(rs.getInt("MucTangCuoiTuan"));
+        lp.setMucTangNgayLe(rs.getInt("MucTangNgayLe"));
+        lp.setMoTa(rs.getString("MoTa"));
+        return lp;
+    }
+    public int selectByDonGiaTheoNgay(int maLoaiPhong){
+        String sql="Select * from LoaiPhong where MaLoaiPhong = ?";
+        List<LoaiPhong> list=findByCondition(sql,maLoaiPhong);
+        return list.size()>0?list.get(0).getDonGiaTheoNgay():-1;
+    }
+}
 
 
