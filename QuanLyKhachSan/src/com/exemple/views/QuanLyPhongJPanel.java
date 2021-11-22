@@ -69,6 +69,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         for (LoaiPhong phong : list) {
             model.addElement(phong);
         }
+        updateStatus();
     }
     
     
@@ -94,8 +95,8 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
      boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblQuanLyPhong.getRowCount() - 1);
-        btnFirst.setEnabled(!edit && !first);
-        btnPrev.setEnabled(!edit && !first);
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
     }
@@ -144,6 +145,36 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Dữ liệu phải là số");
             return false;
         }
+    }
+        
+  
+        
+           void first() {
+        this.row = 0;
+      this.showInformation();
+      updateStatus();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+         this.showInformation();
+         updateStatus();
+        }
+    }
+
+    void next() {
+        if (this.row < tblQuanLyPhong.getRowCount() - 1) {
+            this.row++;
+            this.showInformation();
+            updateStatus();
+        }
+    }
+
+    void last() {
+        this.row = tblQuanLyPhong.getRowCount() - 1;
+     this.showInformation();
+     updateStatus();
     }
 
   
@@ -306,12 +337,27 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnFirst.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFirst.setText("|<");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
 
         btnPrev.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnPrev.setText("<<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Trạng thái");
@@ -523,8 +569,6 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.getAccessibleContext().setAccessibleName("Tìm kiếm theo tên");
-
         tabs.addTab("Danh sách", jPanel1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -553,6 +597,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
+        last();
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void cboMaLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaLoaiPhongActionPerformed
@@ -589,7 +634,8 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
          int i = tblQuanLyPhong.getSelectedRow();
             row = tblQuanLyPhong.getSelectedRow();
         if (row >= 0) {
-            showInformation();          
+            showInformation(); 
+            updateStatus();
         }
         tabs.setSelectedIndex(0);
      
@@ -686,6 +732,21 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Xóa thất bại!");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        first();
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        prev();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        next();
+    }//GEN-LAST:event_btnNextActionPerformed
     
     
 
