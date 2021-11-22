@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Minh Triet
  */
-public class DatPhongDAO extends EduSysDAO<DatPhong, String> {
+public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
 
     @Override
     public void insert(DatPhong entity) {
@@ -34,14 +34,12 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, String> {
     public void update(DatPhong entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public void delete(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateDatPhong(Integer maPhong, String taiKhoanNV, Integer maDatPhong, Integer maLoaiPhong){
+        String sql="update DatPhong set MaPhong=?,TaiKhoanNV=?,MaLoaiPhong=? where MaDatPhong=?";
+        JdbcHelper.executeUpdate(sql, maPhong,taiKhoanNV,maLoaiPhong,maDatPhong);
     }
-
     public List<DatPhong> selectFollowSearch(String soCMT) {
-        String sql = "SELECT dp.MaLoaiPhong, dp.NgayDat, dp.NgayHetHan, dp.NgayTraPhong, "
+        String sql = "SELECT dp.MaDatPhong,dp.MaLoaiPhong, dp.NgayDat, dp.NgayHetHan, dp.NgayTraPhong, "
                 + "DATEDIFF(day,dp.NgayHetHan,dp.NgayTraPhong) as 'TamTinh', kh.SoCMTKhachHang, "
                 + "kh.TenKhachHang, kh.GioiTinh, kh.SoDienThoai, kh.Email, kh.QuocTich,"
                 + "dp.MaPhong, dp.TaiKhoanNV "
@@ -54,7 +52,8 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, String> {
 
     public List<DatPhong> selectFollowComboBox(String nullOrNotNull,String soCMT) {
         String sql = "SELECT "
-                + " dp.MaLoaiPhong"
+                + " dp.MaDatPhong"
+                + ", dp.MaLoaiPhong"
                 + ", dp.NgayDat"
                 + ", dp.NgayHetHan"
                 + ", dp.NgayTraPhong"
@@ -101,6 +100,7 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, String> {
 
     public DatPhong readFromResultSet(ResultSet rs) throws SQLException {
         DatPhong dp = new DatPhong();
+        dp.setMaDatPhong(rs.getInt("MaDatPhong"));
         dp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
         Timestamp ngayDat = rs.getTimestamp("NgayDat");
         dp.setNgayDat(ngayDat);
@@ -118,14 +118,41 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, String> {
         return dp;
     }
 
-    @Override
-    public DatPhong selectById(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<DatPhong> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Integer key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public DatPhong selectById(Integer maDatPhong) {
+        String sql = "SELECT "
+                + " dp.MaDatPhong"
+                + ", dp.MaLoaiPhong"
+                + ", dp.NgayDat"
+                + ", dp.NgayHetHan"
+                + ", dp.NgayTraPhong"
+                + ", DATEDIFF(day,dp.NgayHetHan,dp.NgayTraPhong) as 'TamTinh'"
+                + ", kh.SoCMTKhachHang"
+                + ", kh.TenKhachHang"
+                + ", kh.GioiTinh"
+                + ", kh.SoDienThoai"
+                + ", kh.Email"
+                + ", kh.QuocTich"
+                + ", dp.MaPhong"
+                + ", dp.TaiKhoanNV "
+                + " FROM "
+                + " DatPhong dp "
+                + " join KhachHang kh on dp.SoCMTKhachHang=kh.SoCMTKhachHang "
+                + " join LoaiPhong lp on lp.MaLoaiPhong=dp.MaLoaiPhong "
+                + " WHERE dp.MaDatPhong = ? ";
+        List<DatPhong> list=selectBySql(sql,maDatPhong);
+        return list.size()>0?list.get(0):null;
     }
 
 }
