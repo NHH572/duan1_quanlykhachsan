@@ -85,4 +85,9 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
         JdbcHelper.executeUpdate(DELETE_SQL, mp);
     }
 
+    public List<Phong> selectByMaLoaiPhong(String maLoaiPhong){
+        int maLoaiPhongInt=Integer.parseInt(maLoaiPhong);
+        String sql="Select * from Phong where MaLoaiPhong=? and TrangThai=?";
+        return selectBySql(sql, maLoaiPhongInt,"Trống");
+    }
 }

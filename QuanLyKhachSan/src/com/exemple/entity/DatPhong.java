@@ -12,6 +12,7 @@ import java.util.Date;
  * @author hp
  */
 public class DatPhong {
+    private int maDatPhong;
     private int maLoaiPhong;
     private Date ngayDat;    
     private Date ngayNhanPhong;
@@ -29,7 +30,8 @@ public class DatPhong {
     public DatPhong() {
     }
 
-    public DatPhong(int maLoaiPhong, Date ngayDat, Date ngayNhanPhong, Date ngayMuonTra, float tamTinh, String soCMT, String hoTen, boolean gioiTinh, String soDienThoai, String email, String quocTich, int maPhong, String taiKhoanNV) {
+    public DatPhong(int maDatPhong, int maLoaiPhong, Date ngayDat, Date ngayNhanPhong, Date ngayMuonTra, float tamTinh, String soCMT, String hoTen, boolean gioiTinh, String soDienThoai, String email, String quocTich, int maPhong, String taiKhoanNV) {
+        this.maDatPhong = maDatPhong;
         this.maLoaiPhong = maLoaiPhong;
         this.ngayDat = ngayDat;
         this.ngayNhanPhong = ngayNhanPhong;
@@ -44,6 +46,16 @@ public class DatPhong {
         this.maPhong = maPhong;
         this.taiKhoanNV = taiKhoanNV;
     }
+
+    public int getMaDatPhong() {
+        return maDatPhong;
+    }
+
+    public void setMaDatPhong(int maDatPhong) {
+        this.maDatPhong = maDatPhong;
+    }
+
+    
 
     public int getMaLoaiPhong() {
         return maLoaiPhong;
