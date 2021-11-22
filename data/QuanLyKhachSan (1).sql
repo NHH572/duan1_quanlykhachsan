@@ -134,7 +134,7 @@ CREATE TABLE DatPhong
   MaDatPhong INT IDENTITY(1,1),
   NgayDat DATETIME,
   NgayHetHan DATE,
-  ThoiGianThue NVARCHAR(20),
+  NgayTraPhong DATE,
   TamTinh FLOAT,
   MaPhong INT,
   SoCMTKhachHang VARCHAR(20),
@@ -322,7 +322,8 @@ AS BEGIN
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
 END
-
-
-	
-
+GO
+insert into DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
+values ('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,1),
+('2021/11/22','2021/11/25','2021/11/30',1000000,1,'124567893','pnmtriet',1),
+('2021/11/22','2021/11/25','2021/11/30',1000000,2,'272433567','nhhai',1)
