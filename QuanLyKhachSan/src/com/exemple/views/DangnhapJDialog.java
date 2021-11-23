@@ -96,6 +96,9 @@ public class DangnhapJDialog extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -212,6 +215,17 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
       exit();
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    
+    void oppenQuenMatKhau(){
+        new QuenMatKhauJDialog(null,true).setVisible(true);
+        
+    }
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        oppenQuenMatKhau();
+          
+    }//GEN-LAST:event_jLabel2MousePressed
 
     /**
      * @param args the command line arguments
