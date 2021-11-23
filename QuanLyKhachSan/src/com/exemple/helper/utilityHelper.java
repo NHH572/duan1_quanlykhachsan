@@ -53,7 +53,7 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + "  phải là tên tiếng việt hoặc không đấu \n từ 3-25 kí tự");
+            MsgBox.alert(txt.getRootPane(), txt.getName() + "  phải là tên tiếng việt hoặc không dấu \n từ 3-25 kí tự");
             return false;
         }
     }
@@ -107,7 +107,7 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " Email không đúng định dạng");
+            MsgBox.alert(txt.getRootPane(), txt.getName() + "  không đúng định dạng");
             return false;
         }
     }

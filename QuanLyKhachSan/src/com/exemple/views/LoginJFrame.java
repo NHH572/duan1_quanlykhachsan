@@ -8,6 +8,7 @@ import com.exemple.controller.NhanVienDAO;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 
 /**
  *
@@ -83,15 +84,15 @@ NhanVienDAO dao = new NhanVienDAO();
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 132, 360, 20));
 
         txtMatkhau.setForeground(new java.awt.Color(102, 102, 102));
-        txtMatkhau.setText("jPasswordField1");
         txtMatkhau.setBorder(null);
+        txtMatkhau.setName("Password"); // NOI18N
         txtMatkhau.setOpaque(false);
         jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 360, 30));
 
         txtTendangnhap.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         txtTendangnhap.setForeground(new java.awt.Color(51, 51, 51));
-        txtTendangnhap.setText("Enter Username");
         txtTendangnhap.setBorder(null);
+        txtTendangnhap.setName("User"); // NOI18N
         txtTendangnhap.setOpaque(false);
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,9 +145,8 @@ NhanVienDAO dao = new NhanVienDAO();
     private void txtTendangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTendangnhapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTendangnhapActionPerformed
-
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-         String manv = txtTendangnhap.getText();
+public void dangnhap(){
+       String manv = txtTendangnhap.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
             NhanVien nhanVien = dao.selectById(manv);
@@ -166,6 +166,12 @@ NhanVienDAO dao = new NhanVienDAO();
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
     }
+}
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+      if(utilityHelper.checkNullText(txtTendangnhap)
+              && utilityHelper.checkNullPass(txtMatkhau)){
+          this.dangnhap();
+      }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnQuenMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMKActionPerformed

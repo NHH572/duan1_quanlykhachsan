@@ -8,6 +8,7 @@ package com.exemple.views;
 import com.exemple.controller.HoaDonDAO;
 import com.exemple.entity.HoaDon;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -263,7 +264,7 @@ HoaDon getModel(){
             }
         });
 
-        txtThanhTien.setName("mã khuyến mãi"); // NOI18N
+        txtThanhTien.setName("Thành tiền"); // NOI18N
 
         jdcNgayTraPhong.setDateFormatString("dd-MM-yyyy hh:mm:ss");
         jdcNgayTraPhong.setName("ngày trả phòng"); // NOI18N
@@ -282,13 +283,13 @@ HoaDon getModel(){
 
         jLabel5.setText("Thành tiền: ");
 
-        txtMaKM.setName("mã khuyến mãi"); // NOI18N
+        txtMaKM.setName("Mã khuyến mãi"); // NOI18N
 
-        txtTKNV.setName("mã khuyến mãi"); // NOI18N
+        txtTKNV.setName("Tài khoản"); // NOI18N
 
-        txtCCCD.setName("mã khuyến mãi"); // NOI18N
+        txtCCCD.setName("CMND"); // NOI18N
 
-        txtMaHoaDon.setName("mã khuyến mãi"); // NOI18N
+        txtMaHoaDon.setName("Mã hóa đơn"); // NOI18N
 
         jLabel1.setText("Mã hóa đơn: ");
 
@@ -416,7 +417,13 @@ HoaDon getModel(){
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        this.insert();
+          if(utilityHelper.checkNullText(txtMaHoaDon)
+               && utilityHelper.checkNullText(txtCCCD)
+               && utilityHelper.checkNullText(txtMaKM)
+               && utilityHelper.checkNullText(txtThanhTien)
+               && utilityHelper.checkNullText(txtTKNV)){
+           this.insert();
+       }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -424,7 +431,13 @@ HoaDon getModel(){
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        this.update();
+             if(utilityHelper.checkNullText(txtMaHoaDon)
+               && utilityHelper.checkNullText(txtCCCD)
+               && utilityHelper.checkNullText(txtMaKM)
+               && utilityHelper.checkNullText(txtThanhTien)
+               && utilityHelper.checkNullText(txtTKNV)){
+           this.update();
+       }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed

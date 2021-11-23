@@ -13,6 +13,7 @@ import static com.exemple.helper.JdbcHelper.dburl;
 import static com.exemple.helper.JdbcHelper.password;
 import static com.exemple.helper.JdbcHelper.username;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.sql.Connection;
@@ -217,6 +218,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã đối tác");
 
+        txt_TenDT.setName("Tên đối tác"); // NOI18N
+
         jLabel3.setText("Tên đối tác");
 
         jLabel5.setText("Số lần hợp tác");
@@ -246,7 +249,10 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         txt_DanhGia.setColumns(20);
         txt_DanhGia.setRows(5);
+        txt_DanhGia.setName("Đánh giá"); // NOI18N
         jScrollPane2.setViewportView(txt_DanhGia);
+
+        txt_MaDT.setName("Mã đối tác"); // NOI18N
 
         btn_Moi.setText("Mới");
         btn_Moi.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +262,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
         });
 
         jLabel6.setText("Số điện thoại");
+
+        txt_SDT.setName("Số điện thoại"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -346,33 +354,18 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    public static boolean checkNullText(JTextField txt) {
-        txt.setBackground(white);
-        if (txt.getText().trim().length() > 0) {
-            return true;
-        } else {
-            txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
-            return false;
-        }
-    }
 
-    public static boolean checkNullText(JTextArea txt) {
-        txt.setBackground(white);
-        if (txt.getText().trim().length() > 0) {
-            return true;
-        } else {
-            txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
-            return false;
-        }
-    }
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-        if (checkNullText(txt_TenDT)
-                && checkNullText(txt_SDT)
-                && checkNullText(txt_DanhGia)) {
-            insert();
-        }
+  if(utilityHelper.checkNullText(txt_MaDT)
+               && utilityHelper.checkNullText(txt_SDT)
+               && utilityHelper.checkNullText(txt_TenDT)
+               && utilityHelper.checkNullText2(txt_DanhGia)){
+           if(utilityHelper.checkMaDoitac(txt_MaDT)
+                   && utilityHelper.checkName(txt_TenDT)
+                   && utilityHelper.checkSDT(txt_SDT)){
+               this.insert();
+           }
+       }
 
     }//GEN-LAST:event_btn_ThemActionPerformed
 
@@ -389,11 +382,16 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_XoaActionPerformed
 
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
-        if (checkNullText(txt_TenDT)
-                && checkNullText(txt_SDT)
-                && checkNullText(txt_DanhGia)) {
-            this.update();
-        }
+          if(utilityHelper.checkNullText(txt_MaDT)
+               && utilityHelper.checkNullText(txt_SDT)
+               && utilityHelper.checkNullText(txt_TenDT)
+               && utilityHelper.checkNullText2(txt_DanhGia)){
+           if(utilityHelper.checkMaDoitac(txt_MaDT)
+                   && utilityHelper.checkName(txt_TenDT)
+                   && utilityHelper.checkSDT(txt_SDT)){
+               this.update();
+           }
+       }
     }//GEN-LAST:event_btn_SuaActionPerformed
 
     private void btn_MoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MoiActionPerformed

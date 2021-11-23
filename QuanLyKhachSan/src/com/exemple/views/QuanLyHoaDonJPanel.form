@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -236,7 +236,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtThanhTien">
       <Properties>
-        <Property name="name" type="java.lang.String" value="m&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="Th&#xe0;nh ti&#x1ec1;n" noResource="true"/>
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jdcNgayTraPhong">
@@ -279,22 +279,22 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtMaKM">
       <Properties>
-        <Property name="name" type="java.lang.String" value="m&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="M&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTKNV">
       <Properties>
-        <Property name="name" type="java.lang.String" value="m&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCCCD">
       <Properties>
-        <Property name="name" type="java.lang.String" value="m&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="CMND" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMaHoaDon">
       <Properties>
-        <Property name="name" type="java.lang.String" value="m&#xe3; khuy&#x1ebf;n m&#xe3;i" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="M&#xe3; h&#xf3;a &#x111;&#x1a1;n" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
