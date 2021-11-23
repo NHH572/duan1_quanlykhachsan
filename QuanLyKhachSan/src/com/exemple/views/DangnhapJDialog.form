@@ -121,15 +121,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtTendangnhap">
           <Properties>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <Property name="name" type="java.lang.String" value="T&#xea;n &#x110;&#x103;ng Nh&#x1ead;p" noResource="true"/>
-=======
             <Property name="name" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" noResource="true"/>
->>>>>>> Stashed changes
-=======
-            <Property name="name" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" noResource="true"/>
->>>>>>> Stashed changes
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTendangnhapActionPerformed"/>
@@ -166,9 +158,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoatActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDangnhap">
           <Properties>
