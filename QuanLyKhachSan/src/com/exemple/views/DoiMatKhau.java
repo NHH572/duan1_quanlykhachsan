@@ -17,6 +17,39 @@ public class DoiMatKhau extends javax.swing.JPanel {
     public DoiMatKhau() {
         initComponents();
     }
+<<<<<<< Updated upstream
+=======
+
+    DoiMatKhau(Login aThis, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void clear(){
+        txtTendangnhap.setText("");
+        txtMatkhau.setText("");
+        txtMatkhauNew.setText("");
+        txtXacnhanMK.setText("");
+    }
+    public void DoiMK(){
+        String manv = txtTendangnhap.getText();
+        NhanVien nhanvien = dao.selectById(manv);
+        Auth.user = nhanvien;
+        String matkhau = new String (txtMatkhau.getPassword());
+        String matkhauNew = new String (txtMatkhauNew.getPassword());
+        String matkhauNew2 = new String(txtXacnhanMK.getPassword());
+        if(!manv.equalsIgnoreCase(Auth.user.getMaNV())){
+            MsgBox.alert(this, "Sai tên đăng nhập !");
+        }else if(!matkhau.equals(Auth.user.getMatKhau())){
+            MsgBox.alert(this, "Sai mật khẩu !");
+        }else if(!matkhauNew.equals(matkhauNew2)){
+            MsgBox.alert(this, "Xác nhận mật khẩu không đứng !");
+        }else {
+            Auth.user.setMatKhau(matkhauNew);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công ");
+            this.clear();
+        }
+    }
+>>>>>>> Stashed changes
 
     /**
      * This method is called from within the constructor to initialize the form.
