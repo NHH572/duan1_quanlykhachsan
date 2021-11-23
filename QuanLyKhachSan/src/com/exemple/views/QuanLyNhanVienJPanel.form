@@ -279,7 +279,11 @@
             <Component class="javax.swing.JTextField" name="txtHoten">
               <Properties>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <Property name="name" type="java.lang.String" value="T&#xea;n" noResource="true"/>
+=======
+                <Property name="name" type="java.lang.String" value="H&#x1ecd; t&#xea;n" noResource="true"/>
+>>>>>>> Stashed changes
 =======
                 <Property name="name" type="java.lang.String" value="H&#x1ecd; t&#xea;n" noResource="true"/>
 >>>>>>> Stashed changes

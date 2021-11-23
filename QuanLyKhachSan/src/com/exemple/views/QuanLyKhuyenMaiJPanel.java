@@ -9,7 +9,10 @@ import com.exemple.controller.KhuyenMaiDAO;
 import com.exemple.entity.KhuyenMai;
 import com.exemple.helper.MsgBox;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import com.exemple.helper.utilityHelper;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -143,6 +146,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         jButton4.setText("Sửa");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +154,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         txtNgayBatDau.setDateFormatString("dd/MM/yyyy");
@@ -168,6 +174,13 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -326,11 +339,30 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
       
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+          if(utilityHelper.checkNullText(txtMaKhuyenMai)
+                && utilityHelper.checkNullText(txtGiaTri)
+                 && utilityHelper.checkNullText(txtTenKhuyenMai)){
+            this.update();
+=======
+
+if (evt.getClickCount() == 2) {
+            this.index = tblKhuyenMai.rowAtPoint(evt.getPoint());
+            if (this.index >= 0) {
+                this.edit();
+//                tabs.setSelectedIndex(0);
+            }
+>>>>>>> Stashed changes
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:

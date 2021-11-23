@@ -171,7 +171,11 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         txtMaKM.setName("Mã khuyến mãi"); // NOI18N
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         txtTKNV.setName("Tài khoản"); // NOI18N
+=======
+        txtTKNV.setName("Tài khoản Nhân Viên"); // NOI18N
+>>>>>>> Stashed changes
 =======
         txtTKNV.setName("Tài khoản Nhân Viên"); // NOI18N
 >>>>>>> Stashed changes
@@ -214,6 +218,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
            if (utilityHelper.checkNullText(txtMaHoaDon)
                 && utilityHelper.checkNullText(txtCCCD)
                 && utilityHelper.checkNullText(txtTKNV)
@@ -222,6 +227,8 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
            this.insert();
         }
 =======
+=======
+>>>>>>> Stashed changes
        if(utilityHelper.checkNullText(txtMaHoaDon)
                && utilityHelper.checkNullText(txtCCCD)
                && utilityHelper.checkNullText(txtMaKM)
@@ -229,6 +236,9 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                && utilityHelper.checkNullText(txtTKNV)){
            this.insert();
        }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -238,6 +248,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           if (utilityHelper.checkNullText(txtMaHoaDon)
                 && utilityHelper.checkNullText(txtCCCD)
                 && utilityHelper.checkNullText(txtTKNV)
@@ -246,6 +257,8 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
            this.update();
         }
 =======
+=======
+>>>>>>> Stashed changes
          if(utilityHelper.checkNullText(txtMaHoaDon)
                && utilityHelper.checkNullText(txtCCCD)
                && utilityHelper.checkNullText(txtMaKM)
@@ -253,6 +266,9 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                && utilityHelper.checkNullText(txtTKNV)){
            this.update();
        }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }//GEN-LAST:event_btnSuaActionPerformed
 

@@ -13,12 +13,15 @@ import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
 import com.exemple.helper.utilityHelper;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 import com.exemple.helper.utilityHelper;
 
 import com.exemple.helper.utilityHelper;
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -70,7 +73,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         txtTendangnhap.setName("Tên Đăng Nhập"); // NOI18N
+=======
+        txtTendangnhap.setName("Tên đăng nhập"); // NOI18N
+>>>>>>> Stashed changes
 =======
         txtTendangnhap.setName("Tên đăng nhập"); // NOI18N
 >>>>>>> Stashed changes
@@ -211,6 +218,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
         // TODO add your handling code here:
 
@@ -223,10 +231,15 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         }
 
 =======
+=======
+>>>>>>> Stashed changes
     if(utilityHelper.checkNullText(txtTendangnhap)
             && utilityHelper.checkNullPass(txtMatkhau)){
         this.Login();
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }//GEN-LAST:event_btnDangnhapActionPerformed
 

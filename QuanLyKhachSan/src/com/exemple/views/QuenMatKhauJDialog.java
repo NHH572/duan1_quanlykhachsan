@@ -37,8 +37,13 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void QuenMK(){
          String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
+=======
+public void QuenMK(){
+      String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
+>>>>>>> Stashed changes
 =======
 public void QuenMK(){
       String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
@@ -84,8 +89,12 @@ public void QuenMK(){
             JOptionPane.showMessageDialog(rootPane, ex);
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }
 
+=======
+}
+>>>>>>> Stashed changes
 =======
 }
 >>>>>>> Stashed changes
@@ -121,10 +130,13 @@ public void QuenMK(){
         txtEmail.setName("Email"); // NOI18N
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         btnGui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/xacnhan.png"))); // NOI18N
         btnGui.setText("Gửi mật khẩu về email");
         btnGui.addActionListener(new java.awt.event.ActionListener() {
 =======
+=======
+>>>>>>> Stashed changes
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/xacnhan.png"))); // NOI18N
         jButton1.setText("Gửi mật khẩu về email");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,12 +201,15 @@ public void QuenMK(){
     private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
         // TODO add your handling code here:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if(utilityHelper.checkNullText(txtTaiKhoan)
                 && utilityHelper.checkEmail(txtEmail)){
             this.QuenMK();
         }
     }//GEN-LAST:event_btnGuiActionPerformed
 =======
+=======
+>>>>>>> Stashed changes
        if(utilityHelper.checkNullText(txtTaiKhoan)
                &&utilityHelper.checkNullText(txtEmail)){
            if(utilityHelper.checkEmail(txtEmail)){

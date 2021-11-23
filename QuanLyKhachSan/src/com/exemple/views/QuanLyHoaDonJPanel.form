@@ -174,7 +174,11 @@
     <Component class="javax.swing.JTextField" name="txtTKNV">
       <Properties>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <Property name="name" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n" noResource="true"/>
+=======
+        <Property name="name" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n Nh&#xe2;n Vi&#xea;n" noResource="true"/>
+>>>>>>> Stashed changes
 =======
         <Property name="name" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n Nh&#xe2;n Vi&#xea;n" noResource="true"/>
 >>>>>>> Stashed changes

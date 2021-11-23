@@ -263,6 +263,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         txt_SDT.setName("Số điện thoại"); // NOI18N
 
+        txt_SDT.setName("Số điện thoại"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,6 +341,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 
 
@@ -358,6 +361,10 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 =======
   
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
+=======
+  
+    private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
+>>>>>>> Stashed changes
        if(utilityHelper.checkNullText(txt_MaDT)
                && utilityHelper.checkNullText(txt_SDT)
                && utilityHelper.checkNullText(txt_TenDT)
@@ -368,6 +375,9 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                this.insert();
            }
        }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     }//GEN-LAST:event_btn_ThemActionPerformed
@@ -386,6 +396,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    if (utilityHelper.checkNullText(txt_TenDT)
                 && utilityHelper.checkSDT(txt_SDT)
                 && utilityHelper.checkSDT(txt_MaDT)
@@ -398,6 +409,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
             }
         }
 =======
+=======
+>>>>>>> Stashed changes
          if(utilityHelper.checkNullText(txt_MaDT)
                && utilityHelper.checkNullText(txt_SDT)
                && utilityHelper.checkNullText(txt_TenDT)
@@ -408,6 +421,9 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                this.update();
            }
        }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }//GEN-LAST:event_btn_SuaActionPerformed
 >>>>>>> Stashed changes
