@@ -186,6 +186,7 @@ public class DoiMatKhau extends javax.swing.JPanel {
     private void btnXacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacnhanActionPerformed
         // TODO add your handling code here:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
        if(utilityHelper.checkNullText(txtTendangnhap)
                && utilityHelper.checkNullPass(txtMatkhau)
                && utilityHelper.checkNullPass(txtMatkhauNew)
@@ -193,6 +194,8 @@ public class DoiMatKhau extends javax.swing.JPanel {
            this.DoiMK();
        }
 =======
+=======
+>>>>>>> Stashed changes
         if (utilityHelper.checkNullText(txtTendangnhap)
                 && utilityHelper.checkNullPass(txtMatkhau)
                 && utilityHelper.checkNullPass(txtMatkhauNew)
@@ -202,6 +205,9 @@ public class DoiMatKhau extends javax.swing.JPanel {
             }
         }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }//GEN-LAST:event_btnXacnhanActionPerformed
 

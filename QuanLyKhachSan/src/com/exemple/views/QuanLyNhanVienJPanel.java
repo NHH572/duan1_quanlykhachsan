@@ -12,9 +12,13 @@ import com.exemple.helper.MsgBox;
 import com.exemple.helper.XImage;
 import com.exemple.helper.utilityHelper;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.red;
+=======
+import static java.awt.Color.pink;
+>>>>>>> Stashed changes
 =======
 import static java.awt.Color.pink;
 >>>>>>> Stashed changes
@@ -72,7 +76,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!!");
         }
 
     }
@@ -313,7 +317,11 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         jLabel8.setText("Số điện thoại:");
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         txtHoten.setName("Tên"); // NOI18N
+=======
+        txtHoten.setName("Họ tên"); // NOI18N
+>>>>>>> Stashed changes
 =======
         txtHoten.setName("Họ tên"); // NOI18N
 >>>>>>> Stashed changes
@@ -694,8 +702,13 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
             return true;
         } else {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             txt.setBackground(red);
             MsgBox.alert(this, txt.getName() + " User đã bị tồn tại.");
+=======
+            txt.setBackground(pink);
+            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+>>>>>>> Stashed changes
 =======
             txt.setBackground(pink);
             MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
@@ -705,6 +718,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         if (utilityHelper.checkUserNV(txtUser)
                 && utilityHelper.checkNullText(txtCMND)
@@ -722,6 +736,8 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                     this.insert();
 
 =======
+=======
+>>>>>>> Stashed changes
         if (utilityHelper.checkNullText(txtHoten)
                 && utilityHelper.checkNullText(txtCMND)
                 && utilityHelper.checkNullText(txtDiachi)
@@ -733,6 +749,9 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                     && utilityHelper.checkSDT(txtSDT)) {
                 if (checkTrungMa(txtUser)) {
                    this.insert();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 }
             }
@@ -747,6 +766,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (utilityHelper.checkNullText(txtHoten)
                 && utilityHelper.checkNullText(txtCMND)
                 && utilityHelper.checkNullText(txtDiachi)
@@ -760,6 +780,8 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                 this.update();
 
 =======
+=======
+>>>>>>> Stashed changes
                 if (utilityHelper.checkNullText(txtHoten)
                 && utilityHelper.checkNullText(txtCMND)
                 && utilityHelper.checkNullText(txtDiachi)
@@ -772,6 +794,9 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
                 if (checkTrungMa(txtUser)) {
                    this.update();
                 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         }

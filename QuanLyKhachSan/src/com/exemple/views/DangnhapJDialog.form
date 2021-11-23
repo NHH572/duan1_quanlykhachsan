@@ -122,7 +122,11 @@
         <Component class="javax.swing.JTextField" name="txtTendangnhap">
           <Properties>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <Property name="name" type="java.lang.String" value="T&#xea;n &#x110;&#x103;ng Nh&#x1ead;p" noResource="true"/>
+=======
+            <Property name="name" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" noResource="true"/>
+>>>>>>> Stashed changes
 =======
             <Property name="name" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" noResource="true"/>
 >>>>>>> Stashed changes
