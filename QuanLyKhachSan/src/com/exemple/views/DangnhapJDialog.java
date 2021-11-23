@@ -5,6 +5,15 @@
  */
 package com.exemple.views;
 
+<<<<<<< Updated upstream
+=======
+import com.exemple.controller.NhanVienDAO;
+import com.exemple.entity.NhanVien;
+import com.exemple.helper.Auth;
+import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
+
+>>>>>>> Stashed changes
 /**
  *
  * @author Laptop
@@ -51,12 +60,14 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
+        txtTendangnhap.setName("Tên đăng nhập"); // NOI18N
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTendangnhapActionPerformed(evt);
             }
         });
 
+        txtMatkhau.setName("Mật khẩu"); // NOI18N
         txtMatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatkhauActionPerformed(evt);
@@ -186,7 +197,14 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTendangnhapActionPerformed
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
+<<<<<<< Updated upstream
         // TODO add your handling code here:
+=======
+    if(utilityHelper.checkNullText(txtTendangnhap)
+            && utilityHelper.checkNullPass(txtMatkhau)){
+        this.Login();
+    }
+>>>>>>> Stashed changes
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
     private void txtMatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatkhauActionPerformed

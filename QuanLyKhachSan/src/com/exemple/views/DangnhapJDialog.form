@@ -120,11 +120,17 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtTendangnhap">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTendangnhapActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtMatkhau">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMatkhauActionPerformed"/>
           </Events>
