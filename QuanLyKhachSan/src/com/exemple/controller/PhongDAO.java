@@ -90,4 +90,8 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
         String sql="Select * from Phong where MaLoaiPhong=? and TrangThai=?";
         return selectBySql(sql, maLoaiPhongInt,"Trống");
     }
+    public void updateTrangThai(int maPhong){
+        String sql="update Phong set TrangThai=? where MaPhong=?";
+        JdbcHelper.executeUpdate(sql, "Đang thuê",maPhong);
+    }
 }
