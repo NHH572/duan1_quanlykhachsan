@@ -8,6 +8,12 @@ package com.exemple.views;
 import com.exemple.controller.KhuyenMaiDAO;
 import com.exemple.entity.KhuyenMai;
 import com.exemple.helper.MsgBox;
+<<<<<<< Updated upstream
+=======
+import com.exemple.helper.utilityHelper;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -64,6 +70,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+<<<<<<< Updated upstream
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -71,15 +78,28 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         txtNgayHenHan = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+=======
+        btnXoa = new javax.swing.JButton();
+        btnMoi = new javax.swing.JButton();
+        txtNgayBatDau = new com.toedter.calendar.JDateChooser();
+        txtNgayHenHan = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblKhuyenMai = new javax.swing.JTable();
+        btnSua = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+>>>>>>> Stashed changes
 
         jLabel1.setText("Mã khuyến mãi");
 
+        txtMaKhuyenMai.setName("Mã khuyến mãi"); // NOI18N
         txtMaKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaKhuyenMaiActionPerformed(evt);
             }
         });
 
+        txtTenKhuyenMai.setName("Tên khuyến mãi"); // NOI18N
         txtTenKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenKhuyenMaiActionPerformed(evt);
@@ -88,6 +108,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Tên khuyến mãi");
 
+        txtGiaTri.setName("Giá trị"); // NOI18N
         txtGiaTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGiaTriActionPerformed(evt);
@@ -121,6 +142,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< Updated upstream
         jButton4.setText("Sửa");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +150,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
+=======
+>>>>>>> Stashed changes
         txtNgayBatDau.setDateFormatString("dd/MM/yyyy");
 
         txtNgayHenHan.setDateFormatString("dd/MM/yyyy");
@@ -145,11 +169,19 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,6 +207,32 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel4)
                                     .addGap(18, 18, 18)
                                     .addComponent(txtNgayBatDau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(btnXoa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSua)
+                .addGap(28, 28, 28)
+                .addComponent(btnMoi)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMaKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> Stashed changes
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addGap(18, 18, 18)
@@ -216,10 +274,17 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
+<<<<<<< Updated upstream
                     .addComponent(jButton2)
                     .addComponent(jButton4)
                     .addComponent(jButton3))
                 .addContainerGap())
+=======
+                    .addComponent(btnXoa)
+                    .addComponent(btnMoi)
+                    .addComponent(btnSua))
+                .addContainerGap(59, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -236,9 +301,14 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGiaTriActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.insert();
+        if(utilityHelper.checkNullText(txtMaKhuyenMai)
+                && utilityHelper.checkNullText(txtGiaTri)
+                 && utilityHelper.checkNullText(txtTenKhuyenMai)){
+            this.insert();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+<<<<<<< Updated upstream
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -246,10 +316,30 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+=======
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        clearForm();    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
+      
+>>>>>>> Stashed changes
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+          if(utilityHelper.checkNullText(txtMaKhuyenMai)
+                && utilityHelper.checkNullText(txtGiaTri)
+                 && utilityHelper.checkNullText(txtTenKhuyenMai)){
+            this.update();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
