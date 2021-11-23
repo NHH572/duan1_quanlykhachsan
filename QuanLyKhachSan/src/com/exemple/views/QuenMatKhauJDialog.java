@@ -36,8 +36,13 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
+<<<<<<< Updated upstream
     public void QuenMK(){
          String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
+=======
+public void QuenMK(){
+      String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
+>>>>>>> Stashed changes
         try {
             con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;database=QuanLyKhachSan","sa","admin");
             pst=con.prepareStatement(query);
@@ -78,8 +83,12 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex);
         }
+<<<<<<< Updated upstream
     }
 
+=======
+}
+>>>>>>> Stashed changes
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,9 +120,15 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
         txtEmail.setName("Email"); // NOI18N
 
+<<<<<<< Updated upstream
         btnGui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/xacnhan.png"))); // NOI18N
         btnGui.setText("Gửi mật khẩu về email");
         btnGui.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/xacnhan.png"))); // NOI18N
+        jButton1.setText("Gửi mật khẩu về email");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> Stashed changes
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuiActionPerformed(evt);
             }
@@ -173,11 +188,21 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
     private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
         if(utilityHelper.checkNullText(txtTaiKhoan)
                 && utilityHelper.checkEmail(txtEmail)){
             this.QuenMK();
         }
     }//GEN-LAST:event_btnGuiActionPerformed
+=======
+       if(utilityHelper.checkNullText(txtTaiKhoan)
+               &&utilityHelper.checkNullText(txtEmail)){
+           if(utilityHelper.checkEmail(txtEmail)){
+               this.QuenMK();
+           }
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+>>>>>>> Stashed changes
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
