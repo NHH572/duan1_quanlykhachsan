@@ -14,7 +14,7 @@ public class LoaiPhong {
     private String tenLoaiPhong;
     private int donGiaTheoNgay;
     private int donGiaTheoGio;
-    private int giaSauMotMio;
+    private int giaSauMotGio;
     private int mucTangCuoiTuan;
     private int mucTangNgayLe;
     private String moTa;
@@ -22,12 +22,12 @@ public class LoaiPhong {
     public LoaiPhong() {
     }
 
-    public LoaiPhong(int maLoaiPhong, String tenLoaiPhong, int donGiaTheoNgay, int donGiaTheoGio, int giaSauMotMio, int mucTangCuoiTuan, int mucTangNgayLe, String moTa) {
+    public LoaiPhong(int maLoaiPhong, String tenLoaiPhong, int donGiaTheoNgay, int donGiaTheoGio, int giaSauMotGio, int mucTangCuoiTuan, int mucTangNgayLe, String moTa) {
         this.maLoaiPhong = maLoaiPhong;
         this.tenLoaiPhong = tenLoaiPhong;
         this.donGiaTheoNgay = donGiaTheoNgay;
         this.donGiaTheoGio = donGiaTheoGio;
-        this.giaSauMotMio = giaSauMotMio;
+        this.giaSauMotGio = giaSauMotGio;
         this.mucTangCuoiTuan = mucTangCuoiTuan;
         this.mucTangNgayLe = mucTangNgayLe;
         this.moTa = moTa;
@@ -65,12 +65,12 @@ public class LoaiPhong {
         this.donGiaTheoGio = donGiaTheoGio;
     }
 
-    public int getGiaSauMotMio() {
-        return giaSauMotMio;
+    public int getGiaSauMotGio() {
+        return giaSauMotGio;
     }
 
-    public void setGiaSauMotMio(int giaSauMotMio) {
-        this.giaSauMotMio = giaSauMotMio;
+    public void setGiaSauMotGio(int giaSauMotGio) {
+        this.giaSauMotGio = giaSauMotGio;
     }
 
     public int getMucTangCuoiTuan() {
@@ -96,6 +96,10 @@ public class LoaiPhong {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
+        @Override
+     public String toString() {
+        return this.tenLoaiPhong;
+     }   
     
     
 }

@@ -9,10 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author hp
- */
 public class XDate {
     public static final SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("dd/MM/yyyy");
     // Chuyển đổi String sang Date => đưa vào data

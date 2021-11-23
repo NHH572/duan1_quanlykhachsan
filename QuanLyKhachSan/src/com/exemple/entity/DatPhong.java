@@ -5,34 +5,46 @@
  */
 package com.exemple.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author hp
  */
 public class DatPhong {
-    int maDatPhong;
-    int ngayDat;
-    int ngayHetHan;
-    String thoiGianThue;
-    int tamTinh;
-    int maPhong;
-    String CMND_CCCD;
-    String maNV;
-    int maLoaiPhong;
+    private int maDatPhong;
+    private int maLoaiPhong;
+    private Date ngayDat;    
+    private Date ngayNhanPhong;
+    private Date ngayMuonTra;
+    private float tamTinh;
+    private String soCMT;
+    private String hoTen;
+    private boolean gioiTinh;
+    private String soDienThoai;
+    private String email;
+    private String quocTich;
+    private int maPhong;
+    private String taiKhoanNV;
 
     public DatPhong() {
     }
 
-    public DatPhong(int maDatPhong, int ngayDat, int ngayHetHan, String thoiGianThue, int tamTinh, int maPhong, String CMND_CCCD, String maNV, int maLoaiPhong) {
+    public DatPhong(int maDatPhong, int maLoaiPhong, Date ngayDat, Date ngayNhanPhong, Date ngayMuonTra, float tamTinh, String soCMT, String hoTen, boolean gioiTinh, String soDienThoai, String email, String quocTich, int maPhong, String taiKhoanNV) {
         this.maDatPhong = maDatPhong;
-        this.ngayDat = ngayDat;
-        this.ngayHetHan = ngayHetHan;
-        this.thoiGianThue = thoiGianThue;
-        this.tamTinh = tamTinh;
-        this.maPhong = maPhong;
-        this.CMND_CCCD = CMND_CCCD;
-        this.maNV = maNV;
         this.maLoaiPhong = maLoaiPhong;
+        this.ngayDat = ngayDat;
+        this.ngayNhanPhong = ngayNhanPhong;
+        this.ngayMuonTra = ngayMuonTra;
+        this.tamTinh = tamTinh;
+        this.soCMT = soCMT;
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.quocTich = quocTich;
+        this.maPhong = maPhong;
+        this.taiKhoanNV = taiKhoanNV;
     }
 
     public int getMaDatPhong() {
@@ -43,36 +55,94 @@ public class DatPhong {
         this.maDatPhong = maDatPhong;
     }
 
-    public int getNgayDat() {
+    
+
+    public int getMaLoaiPhong() {
+        return maLoaiPhong;
+    }
+
+    public void setMaLoaiPhong(int maLoaiPhong) {
+        this.maLoaiPhong = maLoaiPhong;
+    }
+
+    public Date getNgayDat() {
         return ngayDat;
     }
 
-    public void setNgayDat(int ngayDat) {
+    public void setNgayDat(Date ngayDat) {
         this.ngayDat = ngayDat;
     }
 
-    public int getNgayHetHan() {
-        return ngayHetHan;
+    public Date getNgayNhanPhong() {
+        return ngayNhanPhong;
     }
 
-    public void setNgayHetHan(int ngayHetHan) {
-        this.ngayHetHan = ngayHetHan;
+    public void setNgayNhanPhong(Date ngayNhanPhong) {
+        this.ngayNhanPhong = ngayNhanPhong;
     }
 
-    public String getThoiGianThue() {
-        return thoiGianThue;
+    public Date getNgayMuonTra() {
+        return ngayMuonTra;
     }
 
-    public void setThoiGianThue(String thoiGianThue) {
-        this.thoiGianThue = thoiGianThue;
+    public void setNgayMuonTra(Date ngayMuonTra) {
+        this.ngayMuonTra = ngayMuonTra;
     }
 
-    public int getTamTinh() {
+    public float getTamTinh() {
         return tamTinh;
     }
 
-    public void setTamTinh(int tamTinh) {
+    public void setTamTinh(float tamTinh) {
         this.tamTinh = tamTinh;
+    }
+
+    public String getSoCMT() {
+        return soCMT;
+    }
+
+    public void setSoCMT(String soCMT) {
+        this.soCMT = soCMT;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getQuocTich() {
+        return quocTich;
+    }
+
+    public void setQuocTich(String quocTich) {
+        this.quocTich = quocTich;
     }
 
     public int getMaPhong() {
@@ -83,27 +153,13 @@ public class DatPhong {
         this.maPhong = maPhong;
     }
 
-    public String getCMND_CCCD() {
-        return CMND_CCCD;
+    public String getTaiKhoanNV() {
+        return taiKhoanNV;
     }
 
-    public void setCMND_CCCD(String CMND_CCCD) {
-        this.CMND_CCCD = CMND_CCCD;
+    public void setTaiKhoanNV(String taiKhoanNV) {
+        this.taiKhoanNV = taiKhoanNV;
     }
-
-    public String getMaNV() {
-        return maNV;
-    }
-
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
-    }
-
-    public int getMaLoaiPhong() {
-        return maLoaiPhong;
-    }
-
-    public void setMaLoaiPhong(int maLoaiPhong) {
-        this.maLoaiPhong = maLoaiPhong;
-    }
+    
+    
 }

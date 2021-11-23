@@ -44,6 +44,7 @@ CREATE TABLE NhanVien
   DiaChi NVARCHAR(255),
   SoDienThoai VARCHAR(15),
   VaiTro BIT,
+  Hinh varchar(255),
   PRIMARY KEY (TaiKhoanNV)
 );
 
@@ -58,7 +59,7 @@ CREATE TABLE DichVu
 
 CREATE TABLE DoiTac
 (
-  MaDoiTac INT IDENTITY(1,1),
+  MaDoiTac varchar(10),
   TenDoiTac NVARCHAR(50),
   SoDienThoai NVARCHAR(15),
   DanhGiaKhachSan NVARCHAR(300),
@@ -72,9 +73,10 @@ CREATE TABLE KhachHang
   NgaySinh DATE,
   GioiTinh BIT,  
   SoDienThoai VARCHAR(15),
+  Email NVARCHAR(30),
   QuocTich NVARCHAR(20),
   SoLanThue INT,
-  MaDoiTac INT,
+  MaDoiTac varchar(10),
   PRIMARY KEY (SoCMTKhachHang),
   FOREIGN KEY (MaDoiTac) REFERENCES DoiTac(MaDoiTac)
 );
@@ -132,7 +134,7 @@ CREATE TABLE DatPhong
   MaDatPhong INT IDENTITY(1,1),
   NgayDat DATETIME,
   NgayHetHan DATE,
-  ThoiGianThue NVARCHAR(20),
+  NgayTraPhong DATE,
   TamTinh FLOAT,
   MaPhong INT,
   SoCMTKhachHang VARCHAR(20),
@@ -191,7 +193,7 @@ GO
 	(504,5,N'Đang thuê',3),
 	(505,5,N'Trống',3)
 -- NHÂN VIÊN
-	INSERT INTO NhanVien
+	INSERT INTO NhanVien(TaiKhoanNV,MatKhauNV,HoTen,NgaySinh,GioiTinh,SoCMT,DiaChi,SoDienThoai,VaiTro)
 	VALUES ('admin','admin',N'Lê Văn Phụng','1972/10/10',0,'765666271',N'12 Thái Thị Nhạn, Q.Tân Bình, TP. HCM','0393796446',0),
 	('pnmtriet','123456',N'Phạm Nguyễn Minh Triết','1999/08/22',0,'272123456',N'1 Hồng Lạc, Q.Tân Bình, TP. HCM','0393796446',1),
 	('nhhai','123456',N'Nguyễn Hoàng Hải','2001/01/01',0,'546728901',N'1 Trưng Vương, Q.Cầu Giấy, Hà Nội','0976253623',1),
@@ -229,17 +231,18 @@ GO
 	VALUES ('KHTT1',N'Khách hàng thân thiết 1',10,'2021/11/11','2021/12/12'),
 	('KHTT2',N'Khách hàng thân thiết 2',20,'2021/11/01','2021/12/31'),
 	('KHTT3',N'Khách hàng thân thiết 3',50,'2021/11/01','2021/12/31'),
-	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31')
+	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31'),
+	('NONE',null,0,null,null)
 -- Đối tác
-	INSERT INTO DoiTac(TenDoiTac,SoDienThoai,DanhGiaKhachSan)
-	VALUES (N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
-	(N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
-	(N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
+	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
+	VALUES ('CTTP',N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
+	('CTTT',N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
+	('CTPT',N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
 -- Khách hàng
-	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,QuocTich,SoLanThue,MaDoiTac)
-	VALUES ('272433567',N'Phạm Nguyễn Minh Triết','1990/09/09',0,N'Việt Nam',null,null),
-	('767265819',N'John Tom','1982/01/01',0,N'Singapore',null,1),
-	('124567893',N'Nguyễn Hoàng Hải','1989/11/11',0,N'Việt Nam',2,2)
+	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue,MaDoiTac)
+	VALUES ('272433567',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
+	('767265819',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
+	('124567893',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT')
 -- Dịch Vụ
 	INSERT INTO DichVu(TenDichVu,GiaDichVu,MoTa)
 	VALUES (N'Giặt ủi',20000,N'Giá theo kg'),
@@ -251,13 +254,80 @@ GO
 -- Hóa đơn
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)
 	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
-	('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567',null)
+	('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567','NONE')
 -- Chi tiết hóa đơn
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
 	(2,5,5,2,200000), (2,2,5,3,90000), (2,1,5,2,40000)
 
-
-
-	
-
+-- TẠO PROC
+--1
+IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
+DROP PROC sp_DoanhThuHoaDon
+GO
+CREATE PROC sp_DoanhThuHoaDon(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT hd.MaHoaDon, kh.TenKhachHang, hd.NgayTao, km.GiaTri,hd.ThanhTien
+	FROM HoaDon hd,KhuyenMai km,KhachHang kh
+	WHERE hd.SoCMTKhachHang = kh.SoCMTKhachHang
+	AND hd.MaKhuyenMai = km.MaKhuyenMai
+	AND MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
+--2
+IF OBJECT_ID('sp_SoLuongKhachHang') is not null
+DROP PROC sp_SoLuongKhachHang
+GO
+CREATE PROC sp_SoLuongKhachHang(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT kh.SoCMTKhachHang, kh.TenKhachHang, kh.NgaySinh,kh.GioiTinh,kh.QuocTich
+	FROM KhachHang kh
+	inner join HoaDon hd
+	on kh.SoCMTKhachHang=hd.SoCMTKhachHang
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
+--3
+IF OBJECT_ID('sp_DoanhThuTienPhong') is not null
+DROP PROC sp_DoanhThuTienPhong
+GO
+CREATE PROC sp_DoanhThuTienPhong(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT p.SoPhong, lp.TenLoaiPhong, count(cthd.MaHoaDon) as 'SoLanThue', sum(cthd.TongTien) as 'TongTien'
+	FROM Phong p
+	inner join LoaiPhong lp
+	on p.MaPhong=lp.MaLoaiPhong
+	inner join ChiTietHoaDon cthd
+	on cthd.MaPhong=p.MaPhong
+	inner join HoaDon hd
+	on hd.MaHoaDon=cthd.MaHoaDon	
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	GROUP BY p.SoPhong, lp.TenLoaiPhong
+END
+--4
+IF OBJECT_ID('sp_DoanhThuDichVu') is not null
+DROP PROC sp_DoanhThuDichVu
+GO
+CREATE PROC sp_DoanhThuDichVu(@thangBatDau INT, @thangKetThuc INT)
+AS BEGIN
+	SELECT dv.TenDichVu, kh.TenKhachHang,hd.TaiKhoanNV, hd.NgayTao, cthd.SoLanThueDichVu, dv.GiaDichVu
+	FROM DichVu dv
+	inner join ChiTietHoaDon cthd
+	on cthd.MaDichVu=dv.MaDichVu
+	inner join HoaDon hd
+	on hd.MaHoaDon=cthd.MaHoaDon
+	inner join KhachHang kh
+	on hd.SoCMTKhachHang=kh.SoCMTKhachHang
+	WHERE MONTH(hd.NgayTao) >= @thangBatDau
+	AND MONTH(hd.NgayTao) <= @thangKetThuc
+END
+GO
+insert into DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
+values ('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,2),
+('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,3),
+('2021/11/22','2021/11/25','2021/11/29',1000000,null,'767265819',null,4),
+('2021/11/22','2021/11/25','2021/11/28',1000000,null,'767265819',null,5),
+('2021/11/22','2021/11/25','2021/11/27',1000000,null,'767265819',null,1),
+('2021/11/22','2021/11/25','2021/11/30',1000000,1,'124567893','pnmtriet',1),
+('2021/11/22','2021/11/25','2021/11/30',1000000,2,'272433567','nhhai',1)

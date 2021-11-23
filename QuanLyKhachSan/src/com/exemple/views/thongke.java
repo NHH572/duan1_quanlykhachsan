@@ -57,27 +57,25 @@ public class thongke extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblTongDoanhThu = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        cboTBDDoanhThu = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        cboTKTDoanhThu = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã Hóa Đơn", "Khách Hàng", "Phòng", "Ngày Lập", "Dịch Vụ", "GIảm GIá", "Tổng tiền"
+                "Mã Hóa Đơn", "Khách Hàng", "Ngày Lập", "Giảm giá", "Tổng tiền"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("THÁNG BẮT ĐẦU");
@@ -137,15 +135,20 @@ public class thongke extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "số cmt khách hàng", "Tên Khách Hàng", "Ngày Sinh", "GIới Tính", "Quốc Tịch"
+                "Số CMT khách hàng", "Tên Khách Hàng", "Ngày Sinh", "Giới Tính", "Quốc Tịch"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jLabel3.setText("Tháng Bắt Đầu");
@@ -192,15 +195,20 @@ public class thongke extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "TÊN PHÒNG", "Loại Phòng", "Số Người", "Ngày Đến", "Ngày ĐI", "Tổng Tiền ", "GHI Chú"
+                "Tên Phòng", "Loại Phòng", "Số lần thuê", "Tổng tiền"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(jTable4);
 
         jLabel7.setText("Tháng Bắt Đầu");
@@ -247,13 +255,10 @@ public class thongke extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Tên Dịch Vụ", "Nhân Viên", "Ngày Xuât", "Số Lượng", "Đơn GÍá", "Tổng Tiền"
+                "Tên Dịch Vụ", "Khách hàng thuê", "Nhân viên", "Ngày thuê", "Số lần thuê", "Đơn giá", "Tổng tiền"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -299,64 +304,6 @@ public class thongke extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("DOANH THU DỊCH VỤ", jPanel3);
-
-        tblTongDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Mã Phiếu", "Loại Thu Chi", "Ngày Thu Chi", "Nhân Viên Thu", "Tổng Tiền", "Ghi Chú"
-            }
-        ));
-        jScrollPane5.setViewportView(tblTongDoanhThu);
-
-        jLabel9.setText("Tháng Bắt Đầu ");
-
-        cboTBDDoanhThu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6", "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12" }));
-
-        jLabel10.setText("Tháng Kết Thúc");
-
-        cboTKTDoanhThu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6", "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12" }));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboTBDDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboTKTDoanhThu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cboTBDDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(cboTKTDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("TỔNG DOANH THU", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -415,8 +362,6 @@ public class thongke extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnInBaoCao;
-    private javax.swing.JComboBox<String> cboTBDDoanhThu;
-    private javax.swing.JComboBox<String> cboTKTDoanhThu;
     private javax.swing.JComboBox<String> cbothangbatdau;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -426,7 +371,6 @@ public class thongke extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -434,22 +378,18 @@ public class thongke extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable tblTongDoanhThu;
     // End of variables declaration//GEN-END:variables
 }

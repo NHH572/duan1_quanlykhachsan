@@ -92,13 +92,33 @@ public class HoTroJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Gọi đến 0999999999 hoặc gửi vấn đề của bạn qua form");
 
+        txtName.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        txtName.setForeground(new java.awt.Color(102, 102, 102));
+        txtName.setText("Tên của bạn");
+
+        txtEmail.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmail.setText("Email của bạn");
+
+        txtSubject.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        txtSubject.setForeground(new java.awt.Color(102, 102, 102));
+        txtSubject.setText("Tiêu đề");
+
         txtContent.setColumns(20);
+        txtContent.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        txtContent.setForeground(new java.awt.Color(102, 102, 102));
         txtContent.setRows(5);
+        txtContent.setText("Mô tả vấn đề của bạn...");
         jScrollPane1.setViewportView(txtContent);
 
         btnGui.setBackground(new java.awt.Color(51, 153, 255));
         btnGui.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGui.setText("Gửi");
+        btnGui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,6 +159,10 @@ public class HoTroJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

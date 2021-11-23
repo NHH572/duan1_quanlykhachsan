@@ -80,4 +80,8 @@ public class DichVuDAO extends EduSysDAO<DichVu, Integer> {
         }
         return listDichVu;
     }
+    public List<DichVu> selectSearch(String text){
+        String sql="select * from DichVu where TenDichVu like ?";
+        return selectBySql(sql, "%"+text+"%");
+    }
 }
