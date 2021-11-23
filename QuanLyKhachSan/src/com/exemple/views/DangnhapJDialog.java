@@ -5,15 +5,11 @@
  */
 package com.exemple.views;
 
-<<<<<<< Updated upstream
-=======
 import com.exemple.controller.NhanVienDAO;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
-import com.exemple.helper.utilityHelper;
 
->>>>>>> Stashed changes
 /**
  *
  * @author Laptop
@@ -60,14 +56,12 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        txtTendangnhap.setName("Tên đăng nhập"); // NOI18N
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTendangnhapActionPerformed(evt);
             }
         });
 
-        txtMatkhau.setName("Mật khẩu"); // NOI18N
         txtMatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatkhauActionPerformed(evt);
@@ -82,6 +76,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
         btnThoat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         btnDangnhap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnDangnhap.setText("Đăng nhập ");
@@ -197,14 +196,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTendangnhapActionPerformed
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-<<<<<<< Updated upstream
-        // TODO add your handling code here:
-=======
-    if(utilityHelper.checkNullText(txtTendangnhap)
-            && utilityHelper.checkNullPass(txtMatkhau)){
-        this.Login();
-    }
->>>>>>> Stashed changes
+    Login();
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
     private void txtMatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatkhauActionPerformed
@@ -216,6 +208,10 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
  
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+      exit();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +238,8 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DangnhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -274,4 +272,33 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTendangnhap;
     // End of variables declaration//GEN-END:variables
-}
+NhanVienDAO dao = new NhanVienDAO();
+    private void Login() {
+        String manv = txtTendangnhap.getText();
+        String matKhau = new String(txtMatkhau.getPassword());
+        try {
+            NhanVien nhanVien = dao.selectById(manv);
+            if (nhanVien != null) {
+                String matKhau2 = nhanVien.getMatKhau();
+                if (matKhau.equals(matKhau2)) {
+                    Auth.user = nhanVien;
+                    MsgBox.alert(this, "Đăng nhập thành công!");
+                    this.dispose();
+                } else {
+                    MsgBox.alert(this, "Sai mật khẩu!");
+                }
+            } else {
+                MsgBox.alert(this, "Sai tên đăng nhập!");
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+    }
+    }
+
+    private void exit() {
+         if (MsgBox.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
+            System.exit(0);
+    }
+    
+}}
