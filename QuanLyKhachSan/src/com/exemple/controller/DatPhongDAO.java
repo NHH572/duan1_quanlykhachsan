@@ -18,6 +18,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,31 +28,56 @@ import java.util.concurrent.TimeUnit;
 public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
 
     @Override
-    public void insert(DatPhong entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insert(DatPhong dp) {
+        String sql = "insert DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong) "
+                + " values (?,?,?,?,?,?,?,?)";
+        try {
+            JdbcHelper.executeQuery(sql, dp.getNgayDat(), dp.getNgayNhanPhong(),
+                    dp.getNgayMuonTra(), dp.getTamTinh(), dp.getMaPhong(), dp.getSoCMT(),
+                    dp.getTaiKhoanNV(), dp.getMaLoaiPhong());
+        } catch (SQLException ex) {
+            Logger.getLogger(DatPhongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update(DatPhong entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public void updateDatPhong(Integer maPhong, String taiKhoanNV, Integer maDatPhong, Integer maLoaiPhong){
-        String sql="update DatPhong set MaPhong=?,TaiKhoanNV=?,MaLoaiPhong=? where MaDatPhong=?";
-        JdbcHelper.executeUpdate(sql, maPhong,taiKhoanNV,maLoaiPhong,maDatPhong);
-    }
-    public List<DatPhong> selectFollowSearch(String soCMT) {
-        String sql = "SELECT dp.MaDatPhong,dp.MaLoaiPhong, dp.NgayDat, dp.NgayHetHan, dp.NgayTraPhong, "
-                + "DATEDIFF(day,dp.NgayHetHan,dp.NgayTraPhong) as 'TamTinh', kh.SoCMTKhachHang, "
-                + "kh.TenKhachHang, kh.GioiTinh, kh.SoDienThoai, kh.Email, kh.QuocTich,"
-                + "dp.MaPhong, dp.TaiKhoanNV "
-                + "FROM DatPhong dp "
-                + "join KhachHang kh on dp.SoCMTKhachHang=kh.SoCMTKhachHang "
-                + "join LoaiPhong lp on lp.MaLoaiPhong=dp.MaLoaiPhong "
-                + " where kh.SoCMTKhachHang like ?";
-        return selectBySql(sql,"%"+soCMT+"%");
+
     }
 
-    public List<DatPhong> selectFollowComboBox(String nullOrNotNull,String soCMT) {
+    public void updateDatPhong(Integer maPhong, String taiKhoanNV, Integer maDatPhong, Integer maLoaiPhong) {
+        String sql = "update DatPhong "
+                + " set MaPhong=? "
+                + " ,TaiKhoanNV=? "
+                + " ,MaLoaiPhong=? "
+                + " where MaDatPhong=?";
+        JdbcHelper.executeUpdate(sql, maPhong, taiKhoanNV, maLoaiPhong, maDatPhong);
+    }
+
+    public List<DatPhong> selectFollowSearch(String soCMT) {
+        String sql = "select "
+                + " dp.MaDatPhong"
+                + " ,dp.MaLoaiPhong"
+                + " ,dp.NgayDat "
+                + " ,dp.NgayHetHan "
+                + " ,dp.NgayTraPhong"
+                + " ,DATEDIFF(day,dp.NgayHetHan,dp.NgayTraPhong) as 'TamTinh' "
+                + " , kh.SoCMTKhachHang "
+                + " ,kh.TenKhachHang "
+                + " , kh.GioiTinh "
+                + " , kh.SoDienThoai "
+                + " , kh.Email "
+                + " , kh.QuocTich "
+                + " ,dp.MaPhong "
+                + " , dp.TaiKhoanNV "
+                + " FROM DatPhong dp "
+                + " join KhachHang kh on dp.SoCMTKhachHang=kh.SoCMTKhachHang "
+                + " join LoaiPhong lp on lp.MaLoaiPhong=dp.MaLoaiPhong "
+                + " where kh.SoCMTKhachHang like ?";
+        return selectBySql(sql, "%" + soCMT + "%");
+    }
+
+    public List<DatPhong> selectFollowComboBox(String nullOrNotNull, String soCMT) {
         String sql = "SELECT "
                 + " dp.MaDatPhong"
                 + ", dp.MaLoaiPhong"
@@ -70,9 +97,9 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + " DatPhong dp "
                 + " join KhachHang kh on dp.SoCMTKhachHang=kh.SoCMTKhachHang "
                 + " join LoaiPhong lp on lp.MaLoaiPhong=dp.MaLoaiPhong "
-                + " WHERE dp.MaPhong IS " + nullOrNotNull 
-                +" and kh.SoCMTKhachHang like ?";
-        return selectBySql(sql,"%"+soCMT+"%");
+                + " WHERE dp.MaPhong IS " + nullOrNotNull
+                + " and kh.SoCMTKhachHang like ?";
+        return selectBySql(sql, "%" + soCMT + "%");
     }
 
     @Override
@@ -118,7 +145,6 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
         return dp;
     }
 
-
     @Override
     public List<DatPhong> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -151,8 +177,8 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + " join KhachHang kh on dp.SoCMTKhachHang=kh.SoCMTKhachHang "
                 + " join LoaiPhong lp on lp.MaLoaiPhong=dp.MaLoaiPhong "
                 + " WHERE dp.MaDatPhong = ? ";
-        List<DatPhong> list=selectBySql(sql,maDatPhong);
-        return list.size()>0?list.get(0):null;
+        List<DatPhong> list = selectBySql(sql, maDatPhong);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
 }

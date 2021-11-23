@@ -142,10 +142,10 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnFirst = new javax.swing.JButton();
+        btnPrevious = new javax.swing.JButton();
         txtTamTinh = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -313,6 +313,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< Updated upstream
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton8.setText(">|");
 
@@ -324,6 +325,39 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
 
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton11.setText("<<");
+=======
+        btnLast.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/Last.png"))); // NOI18N
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/next.png"))); // NOI18N
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnFirst.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/First.png"))); // NOI18N
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+
+        btnPrevious.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/previous.png"))); // NOI18N
+        btnPrevious.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreviousActionPerformed(evt);
+            }
+        });
+>>>>>>> Stashed changes
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin khách hàng"));
 
@@ -525,6 +559,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addGap(236, 236, 236)
                 .addComponent(jButton10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -534,6 +569,32 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton8)
                 .addGap(0, 0, Short.MAX_VALUE))
+=======
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(btnFirst)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPrevious)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLast))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 153, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDatPhong)
+                .addGap(301, 301, 301))
+>>>>>>> Stashed changes
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,10 +632,10 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton11)
-                    .addComponent(jButton10))
+                    .addComponent(btnLast)
+                    .addComponent(btnNext)
+                    .addComponent(btnPrevious)
+                    .addComponent(btnFirst))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -629,7 +690,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         DatPhongDAO dpDAO = new DatPhongDAO();
         DatPhong dp = dpDAO.selectById(maDatPhong);
         int maLoaiPhong = dp.getMaLoaiPhong();
+<<<<<<< Updated upstream
         cbbLoaiPhong.setSelectedIndex(maLoaiPhong);
+=======
+        cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
+>>>>>>> Stashed changes
         txtNgayDat.setDate(dp.getNgayDat());
         txtNgayNhanPhong.setDate(dp.getNgayNhanPhong());
         txtNgayMuonTra.setDate(dp.getNgayMuonTra());
@@ -686,19 +751,26 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblPhongTrongMouseClicked
 
     private void btnDatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatPhongActionPerformed
-        if(maPhong == -1)
-        {
+        if (maPhong == -1) {
             return;
         }
         DatPhongDAO dpDAO = new DatPhongDAO();
         /// Sửa lại tài khoản nhân viên        
         String taiKhoanNV = "pnmtriet";
         int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
+<<<<<<< Updated upstream
         int maLoaiPhong = cbbLoaiPhong.getSelectedIndex();
         dpDAO.updateDatPhong(maPhong, taiKhoanNV, maDatPhong, maLoaiPhong);
         JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+=======
+        int maLoaiPhong = cbbLoaiPhong.getSelectedIndex() + 1;
+        dpDAO.updateDatPhong(maPhong, taiKhoanNV, maDatPhong, maLoaiPhong);
+        PhongDAO pDAO = new PhongDAO();
+        pDAO.updateTrangThai(maPhong);
+>>>>>>> Stashed changes
         fillToTableDatPhong();
         showInformation();
+        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDatPhongActionPerformed
     private void clearForm() {
         cbbLoaiPhong.setSelectedIndex(-1);
@@ -723,11 +795,53 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         fillTotablePhongTrong(listPhong);
     }//GEN-LAST:event_cbbLoaiPhongItemStateChanged
 
+<<<<<<< Updated upstream
+=======
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (rowDatPhong < tblDatPhong.getRowCount() - 1) {
+            rowDatPhong++;
+        } else {
+            rowDatPhong = 0;
+        }
+        showInformation();
+        Tabs.setSelectedIndex(1);
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        rowDatPhong = tblDatPhong.getRowCount() - 1;
+        showInformation();
+        Tabs.setSelectedIndex(1);
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        rowDatPhong = 0;
+        showInformation();
+        Tabs.setSelectedIndex(1);
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
+        if (rowDatPhong > 0) {
+            rowDatPhong--;
+        } else {
+            rowDatPhong = tblDatPhong.getRowCount() - 1;
+        }
+        showInformation();
+        Tabs.setSelectedIndex(1);
+    }//GEN-LAST:event_btnPreviousActionPerformed
+
+>>>>>>> Stashed changes
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Tabs;
     private javax.swing.JButton btnDatPhong;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
+<<<<<<< Updated upstream
     private javax.swing.JComboBox<String> cbbLoai;
     private javax.swing.JComboBox<String> cbbLoaiPhong;
     private javax.swing.JButton jButton1;
@@ -735,9 +849,16 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+=======
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrevious;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cbbLoai;
+    private javax.swing.JComboBox<String> cbbLoaiPhong;
+>>>>>>> Stashed changes
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
