@@ -170,7 +170,11 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
         txtMaKM.setName("Mã khuyến mãi"); // NOI18N
 
+<<<<<<< Updated upstream
         txtTKNV.setName("Tài khoản"); // NOI18N
+=======
+        txtTKNV.setName("Tài khoản Nhân Viên"); // NOI18N
+>>>>>>> Stashed changes
 
         txtCCCD.setName("CMND"); // NOI18N
 
@@ -209,6 +213,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+<<<<<<< Updated upstream
            if (utilityHelper.checkNullText(txtMaHoaDon)
                 && utilityHelper.checkNullText(txtCCCD)
                 && utilityHelper.checkNullText(txtTKNV)
@@ -216,6 +221,15 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                 && utilityHelper.checkNullText(txtThanhTien)) {
            this.insert();
         }
+=======
+       if(utilityHelper.checkNullText(txtMaHoaDon)
+               && utilityHelper.checkNullText(txtCCCD)
+               && utilityHelper.checkNullText(txtMaKM)
+               && utilityHelper.checkNullText(txtThanhTien)
+               && utilityHelper.checkNullText(txtTKNV)){
+           this.insert();
+       }
+>>>>>>> Stashed changes
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -223,6 +237,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+<<<<<<< Updated upstream
           if (utilityHelper.checkNullText(txtMaHoaDon)
                 && utilityHelper.checkNullText(txtCCCD)
                 && utilityHelper.checkNullText(txtTKNV)
@@ -230,6 +245,15 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                 && utilityHelper.checkNullText(txtThanhTien)) {
            this.update();
         }
+=======
+         if(utilityHelper.checkNullText(txtMaHoaDon)
+               && utilityHelper.checkNullText(txtCCCD)
+               && utilityHelper.checkNullText(txtMaKM)
+               && utilityHelper.checkNullText(txtThanhTien)
+               && utilityHelper.checkNullText(txtTKNV)){
+           this.update();
+       }
+>>>>>>> Stashed changes
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
