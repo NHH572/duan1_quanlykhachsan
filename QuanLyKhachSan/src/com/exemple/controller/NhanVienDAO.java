@@ -17,23 +17,23 @@ import java.util.List;
  */
 public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
 
-    String INSERT_SQL = "insert into NhanVien(TaiKhoanNV,MatKhauNV,HoTen,NgaySinh,GioiTinh,SoCMT,DiaChi,SoDienThoai,VaiTro,hinh) Values(?,?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "update NhanVien set MatKhauNV=?, HoTen=?,NgaySinh=?,GioiTinh=?"
-            + "SoCMT=?,DiaChi=?,SoDienThoai=?,VaiTro=?,hinh=? where TaiKhoanNV=?";
+    String INSERT_SQL = "insert into NhanVien(TaiKhoanNV,MatKhauNV,HoTen,NgaySinh,GioiTinh,SoCMT,DiaChi,SoDienThoai,VaiTro,Hinh) Values(?,?,?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "update NhanVien set MatKhauNV=?, HoTen=?,NgaySinh=?,GioiTinh=?,SoCMT=?,DiaChi=?,SoDienThoai=?,VaiTro=?, Hinh=? where TaiKhoanNV=?";
     String DELETE_SQL = "delete from NhanVien where TaiKhoanNV=?";
     String SELECT_ALL_SQL = "select*from NhanVien";
     String SELECT_BY_ID_SQL = "select * from NhanVien where TaiKhoanNV = ?";
+    String SELECT_BY_keyword_SQL = "select * from NhanVien where HoTen like ?";
 
     @Override
     public void insert(NhanVien entity) {
         JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(),
-                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(), entity.getHinh());
+                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(),entity.getHinh());
     }
 
     @Override
     public void update(NhanVien entity) {
         JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(),
-                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+                entity.getNgaySinh(), entity.isGioiTinh(), entity.getCMND_CCCD(), entity.getDiaChi(), entity.getSoDienThoai(), entity.isVaiTro(),entity.getHinh(), entity.getMaNV());
     }
 
     @Override
@@ -64,31 +64,27 @@ public class NhanVienDAO extends EduSysDAO<NhanVien, String> {
             while (rs.next()) {
                 NhanVien entity = new NhanVien();
                 entity.setMaNV(rs.getString("TaiKhoanNV"));
-
-                entity.setHoTen(rs.getString("HoTen"));// chay thu di
-                entity.setMatKhau(rs.getString("MatKhauNV"));
-
-                entity.setMatKhau(rs.getString("MatKhauNV"));
                 entity.setHoTen(rs.getString("HoTen"));
-
+                entity.setMatKhau(rs.getString("MatKhauNV"));
                 entity.setNgaySinh(rs.getDate("NgaySinh"));
                 entity.setGioiTinh(rs.getBoolean("GioiTinh"));
                 entity.setCMND_CCCD(rs.getString("SoCMT"));
                 entity.setDiaChi(rs.getString("DiaChi"));
                 entity.setSoDienThoai(rs.getString("SoDienThoai"));
                 entity.setVaiTro(rs.getBoolean("VaiTro"));
-
-                entity.setHinh(rs.getString("hinh"));
-
                 entity.setHinh(rs.getString("Hinh"));
-
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             throw new RuntimeException(e);
+
         }
+    }
+
+    public List<NhanVien> selectByKeyword(String hoTen) {
+        return selectBySql(SELECT_BY_keyword_SQL, "%" + hoTen + "%");
     }
 
 }

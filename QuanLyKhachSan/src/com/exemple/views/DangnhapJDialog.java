@@ -9,6 +9,7 @@ import com.exemple.controller.NhanVienDAO;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 
 /**
  *
@@ -56,12 +57,14 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
+        txtTendangnhap.setName("Tên đăng nhập"); // NOI18N
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTendangnhapActionPerformed(evt);
             }
         });
 
+        txtMatkhau.setName("Mật khẩu"); // NOI18N
         txtMatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatkhauActionPerformed(evt);
@@ -95,6 +98,9 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
             }
         });
 
@@ -196,7 +202,10 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTendangnhapActionPerformed
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-    Login();
+      if(utilityHelper.checkNullText(txtTendangnhap)
+            && utilityHelper.checkNullPass(txtMatkhau)){
+        this.Login();
+    }
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
     private void txtMatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatkhauActionPerformed
@@ -212,6 +221,17 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
       exit();
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    
+    void oppenQuenMatKhau(){
+        new QuenMatKhauJDialog(null,true).setVisible(true);
+        
+    }
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        oppenQuenMatKhau();
+          
+    }//GEN-LAST:event_jLabel2MousePressed
 
     /**
      * @param args the command line arguments

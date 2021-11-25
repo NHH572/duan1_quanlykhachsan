@@ -21,7 +21,8 @@ public class JdbcHelper {
     public static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
     public static String dburl="jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan";
     public static String username="sa";
-    public static String password="Aa123456";
+    public static String password="admin";
+    public static Connection con;
     
     //nạp driver
     static{
@@ -34,7 +35,7 @@ public class JdbcHelper {
     
  
     public static PreparedStatement preparedStatement(String sql,Object...args)throws SQLException{
-        Connection con=DriverManager.getConnection(dburl, username, password);
+        con=DriverManager.getConnection(dburl, username, password);
         PreparedStatement pstmt=null;
         if(sql.startsWith("{"))pstmt=con.prepareCall(sql); 
         else pstmt=con.prepareStatement(sql);

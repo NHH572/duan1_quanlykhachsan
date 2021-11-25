@@ -96,7 +96,10 @@ public class LoaiPhong {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
-
+        @Override
+     public String toString() {
+        return this.tenLoaiPhong;
+     }   
     
     
 }

@@ -8,6 +8,7 @@ package com.exemple.views;
 import com.exemple.controller.KhuyenMaiDAO;
 import com.exemple.entity.KhuyenMai;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,22 +87,24 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        btnSua = new javax.swing.JButton();
         txtNgayBatDau = new com.toedter.calendar.JDateChooser();
         txtNgayHenHan = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhuyenMai = new javax.swing.JTable();
+        btnSua = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setText("Mã khuyến mãi");
 
+        txtMaKhuyenMai.setName("Mã khuyến mãi"); // NOI18N
         txtMaKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaKhuyenMaiActionPerformed(evt);
             }
         });
 
+        txtTenKhuyenMai.setName("Tên khuyến mãi"); // NOI18N
         txtTenKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenKhuyenMaiActionPerformed(evt);
@@ -110,6 +113,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Tên khuyến mãi");
 
+        txtGiaTri.setName("Giá trị"); // NOI18N
         txtGiaTri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGiaTriActionPerformed(evt);
@@ -143,13 +147,6 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-
         txtNgayBatDau.setDateFormatString("dd/MM/yyyy");
 
         txtNgayHenHan.setDateFormatString("dd/MM/yyyy");
@@ -180,6 +177,13 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblKhuyenMai);
 
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,9 +208,9 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtMaKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
@@ -256,8 +260,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnXoa)
-                    .addComponent(btnSua)
-                    .addComponent(btnMoi))
+                    .addComponent(btnMoi)
+                    .addComponent(btnSua))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -275,7 +279,11 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGiaTriActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.insert();
+        if(utilityHelper.checkNullText(txtMaKhuyenMai)
+                && utilityHelper.checkNullText(txtGiaTri)
+                 && utilityHelper.checkNullText(txtTenKhuyenMai)){
+            this.insert();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -284,9 +292,6 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         clearForm();    }//GEN-LAST:event_btnMoiActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        update();    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
 //        int row = tblKhuyenMai.getSelectedRow();
@@ -300,6 +305,15 @@ if (evt.getClickCount() == 2) {
             }
         }
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        if(utilityHelper.checkNullText(txtMaKhuyenMai)
+            && utilityHelper.checkNullText(txtGiaTri)
+            && utilityHelper.checkNullText(txtTenKhuyenMai)){
+            this.update();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

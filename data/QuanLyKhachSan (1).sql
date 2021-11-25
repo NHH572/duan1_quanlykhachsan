@@ -331,3 +331,14 @@ values ('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,2),
 ('2021/11/22','2021/11/25','2021/11/27',1000000,null,'767265819',null,1),
 ('2021/11/22','2021/11/25','2021/11/30',1000000,1,'124567893','pnmtriet',1),
 ('2021/11/22','2021/11/25','2021/11/30',1000000,2,'272433567','nhhai',1)
+
+
+
+use QuanLyKhachSan;
+select * from Phong;
+select * from DichVu;
+select * from HoaDon;
+select * from ChiTietHoaDon;
+
+	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
+	VALUES (1,1,1,1,80000)
