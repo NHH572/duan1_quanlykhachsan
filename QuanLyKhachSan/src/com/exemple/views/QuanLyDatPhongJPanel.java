@@ -30,12 +30,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
+    
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
     private List<LoaiPhong> listLoaiPhong = lpDAO.getAll();
     private String textDefault = "Tìm kiếm theo số chứng minh nhân dân....";
     private int rowDatPhong = -1;
-    private int maPhong = -1;
-    
+    private int maPhong = -1;    
     public QuanLyDatPhongJPanel() {
         initComponents();
         init();
