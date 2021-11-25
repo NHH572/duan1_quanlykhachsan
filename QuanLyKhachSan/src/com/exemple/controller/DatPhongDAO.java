@@ -31,13 +31,9 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
     public void insert(DatPhong dp) {
         String sql = "insert DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong) "
                 + " values (?,?,?,?,?,?,?,?)";
-        try {
-            JdbcHelper.executeQuery(sql, dp.getNgayDat(), dp.getNgayNhanPhong(),
-                    dp.getNgayMuonTra(), dp.getTamTinh(), dp.getMaPhong(), dp.getSoCMT(),
-                    dp.getTaiKhoanNV(), dp.getMaLoaiPhong());
-        } catch (SQLException ex) {
-            Logger.getLogger(DatPhongDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        JdbcHelper.executeUpdate(sql, dp.getNgayDat(), dp.getNgayNhanPhong(),
+                dp.getNgayMuonTra(), dp.getTamTinh(), dp.getMaPhong(), dp.getSoCMT(),
+                dp.getTaiKhoanNV(), dp.getMaLoaiPhong());
     }
 
     @Override
