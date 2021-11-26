@@ -57,7 +57,8 @@ public class DichVuDAO extends EduSysDAO<DichVu, Integer> {
         List<DichVu> list = selectBySql(sqlString, maDichVu);
         return list.size() > 0 ? list.get(0) : null;
     }
-
+    
+    
     @Override
     protected List<DichVu> selectBySql(String sql, Object... args) {
         List<DichVu> listDichVu = new ArrayList<DichVu>();

@@ -31,7 +31,7 @@ public class Test_2 extends javax.swing.JFrame {
         try {
             
             Hashtable map = new Hashtable();
-            JasperReport report = JasperCompileManager.compileReport("./src/com/exemple/views/XuatHoaDon.jrxml");
+            JasperReport report = JasperCompileManager.compileReport("src/com/exemple/views/XuatHoaDon.jrxml");
             
             map.put("SoPhong", idhd);
                   
