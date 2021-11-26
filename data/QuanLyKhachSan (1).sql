@@ -172,26 +172,37 @@ GO
 	(103,1,N'Đang thuê',1),
 	(104,1,N'Trống',1),
 	(105,1,N'Đang thuê',1),
+	(106,1,N'Đang thuê',3),
 	(201,2,N'Trống',2),
 	(202,2,N'Trống',2),
 	(203,2,N'Đang thuê',3),
 	(204,2,N'Trống',3),
 	(205,2,N'Đang thuê',1),
+	(206,2,N'Trống',4),
 	(301,3,N'Trống',1),
 	(302,3,N'Đang thuê',4),
 	(303,3,N'Trống',4),
 	(304,3,N'Trống',5),
 	(305,3,N'Đang thuê',5),
+	(306,3,N'Đang thuê',1),
 	(401,4,N'Trống',2),
 	(402,4,N'Trống',2),
 	(403,4,N'Đang thuê',3),
 	(404,4,N'Trống',3),
 	(405,4,N'Trống',1),
+	(406,4,N'Trống',3),
 	(501,5,N'Trống',5),
 	(502,5,N'Đang thuê',5),
 	(503,5,N'Trống',5),
 	(504,5,N'Đang thuê',3),
-	(505,5,N'Trống',3)
+	(505,5,N'Trống',3),
+	(506,5,N'Trống',1),
+	(601,5,N'Đang thuê',5),
+	(602,5,N'Trống',2),
+	(603,5,N'Đang thuê',5),
+	(604,5,N'Trống',4),
+	(605,5,N'Trống',3),
+	(606,5,N'Trống',1)
 -- NHÂN VIÊN
 	INSERT INTO NhanVien(TaiKhoanNV,MatKhauNV,HoTen,NgaySinh,GioiTinh,SoCMT,DiaChi,SoDienThoai,VaiTro)
 	VALUES ('admin','admin',N'Lê Văn Phụng','1972/10/10',0,'765666271',N'12 Thái Thị Nhạn, Q.Tân Bình, TP. HCM','0393796446',0),
@@ -259,7 +270,18 @@ GO
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
 	(2,5,5,2,200000), (2,2,5,3,90000), (2,1,5,2,40000)
-
+-- Đặt phòng
+GO
+	INSERT INTO
+	DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
+	VALUES
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,2),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,3),
+	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'767265819',null,4),
+	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'767265819',null,5),
+	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'767265819',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,1,'124567893','pnmtriet',1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,2,'272433567','nhhai',1)
 -- TẠO PROC
 --1
 IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
@@ -322,23 +344,7 @@ AS BEGIN
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
 END
-GO
-insert into DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
-values ('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,2),
-('2021/11/22','2021/11/25','2021/11/30',1000000,null,'767265819',null,3),
-('2021/11/22','2021/11/25','2021/11/29',1000000,null,'767265819',null,4),
-('2021/11/22','2021/11/25','2021/11/28',1000000,null,'767265819',null,5),
-('2021/11/22','2021/11/25','2021/11/27',1000000,null,'767265819',null,1),
-('2021/11/22','2021/11/25','2021/11/30',1000000,1,'124567893','pnmtriet',1),
-('2021/11/22','2021/11/25','2021/11/30',1000000,2,'272433567','nhhai',1)
 
 
 
-use QuanLyKhachSan;
-select * from Phong;
-select * from DichVu;
-select * from HoaDon;
-select * from ChiTietHoaDon;
 
-	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
-	VALUES (1,1,1,1,80000)

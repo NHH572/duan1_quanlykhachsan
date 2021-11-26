@@ -31,8 +31,9 @@ import com.exemple.views.SoDoPhongJPanel;
  */
 public class ChuyenManHinhController {
 
-    public static Color colorDefault = new Color(102, 102, 102);
-    public static Color colorChange = new Color(153, 153, 153);
+    public static Color colorDefault = new Color(77,73,73);
+    public static Color colorChange = new Color(212,187,0);
+    public static Color colorHover = new Color(212,187,0);
     private JPanel mainPanel;
     private String kindSelected = "";
     private List<DanhMuc> listDanhMuc = null;
@@ -135,8 +136,8 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(colorChange);
-            jlbItem.setBackground(colorChange);
+            jpnItem.setBackground(colorHover);
+            jlbItem.setBackground(colorHover);
             opaque.setOpaque(true);
         }
 

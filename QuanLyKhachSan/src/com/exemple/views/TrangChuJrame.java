@@ -5,14 +5,16 @@
  */
 package com.exemple.views;
 
-
 import com.exemple.controller.ChuyenManHinhController;
 import com.exemple.entity.DanhMuc;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 
 /**
  *
@@ -21,44 +23,52 @@ import javax.swing.JPanel;
 public class TrangChuJrame extends javax.swing.JFrame {
 
     ChuyenManHinhController controller;
+
     public TrangChuJrame() {
         initComponents();
         init();
     }
-     void init() {
+
+    void init() {
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
-        controller=new ChuyenManHinhController(mainPanel);        
-        controller.setView(panelSoDoPhong, lblSoDoPhong,Opaque10);
-        List<DanhMuc> listDanhMuc=new ArrayList<>();
-        listDanhMuc.add(new DanhMuc("SoDoPhong",panelSoDoPhong,lblSoDoPhong,Opaque10));
-        listDanhMuc.add(new DanhMuc("QuanLyPhong",panelPhong,lblPhong,Opaque1));
-        listDanhMuc.add(new DanhMuc("NhanVien",panelNhanVien,lblNhanVien,Opaque2));
-        listDanhMuc.add(new DanhMuc("DichVu",panelDichVu,lblDichVu,Opaque3));
-        listDanhMuc.add(new DanhMuc("HoaDon",panelHoaDon,lblHoaDon,Opaque4));
-        listDanhMuc.add(new DanhMuc("DatPhong",panelDatPhong,lblDatPhong,Opaque5));
-        listDanhMuc.add(new DanhMuc("DoiTac",panelDoiTac,lblDoiTac,Opaque6));
-        listDanhMuc.add(new DanhMuc("KhoHang",panelKhoHang,lblKhoHang,Opaque7));
-        listDanhMuc.add(new DanhMuc("KhuyenMai",panelKhuyenMai,lblKhuyenMai,Opaque8));
-        listDanhMuc.add(new DanhMuc("DangXuat",panelDangXuat,lblDangXuat,Opaque9));        
+        controller = new ChuyenManHinhController(mainPanel);
+        controller.setView(panelSoDoPhong, lblSoDoPhong, Opaque10);
+        List<DanhMuc> listDanhMuc = new ArrayList<>();
+        listDanhMuc.add(new DanhMuc("SoDoPhong", panelSoDoPhong, lblSoDoPhong, Opaque10));
+        listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
+        listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
+        listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
+        listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
+        listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
+        listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
+        listDanhMuc.add(new DanhMuc("KhoHang", panelKhoHang, lblKhoHang, Opaque7));
+        listDanhMuc.add(new DanhMuc("KhuyenMai", panelKhuyenMai, lblKhuyenMai, Opaque8));
         controller.setEvent(listDanhMuc);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainPanel.setPreferredSize(new Dimension(1320, 700));
+        
     }
+
     void setColor(JPanel panel) {
-        panel.setBackground(new Color(153, 153, 153));// Màu khi click vô
+        panel.setBackground(new Color(212,187,0));// Màu khi click vô
     }
 
     void resetColor(JPanel panel) {
-        panel.setBackground(new Color(102, 102, 102));// Màu ban đầu, trùng với màu của SlidePanel
+        panel.setBackground(new Color(77,73,73));// Màu ban đầu, trùng với màu của SlidePanel
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         slidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        panelSoDoPhong = new javax.swing.JPanel();
+        Opaque10 = new javax.swing.JPanel();
+        lblSoDoPhong = new javax.swing.JLabel();
         panelPhong = new javax.swing.JPanel();
         Opaque1 = new javax.swing.JPanel();
         lblPhong = new javax.swing.JLabel();
@@ -83,13 +93,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelKhuyenMai = new javax.swing.JPanel();
         Opaque8 = new javax.swing.JPanel();
         lblKhuyenMai = new javax.swing.JLabel();
-        panelDangXuat = new javax.swing.JPanel();
-        Opaque9 = new javax.swing.JPanel();
-        lblDangXuat = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        panelSoDoPhong = new javax.swing.JPanel();
-        Opaque10 = new javax.swing.JPanel();
-        lblSoDoPhong = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -107,16 +110,19 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
         jButton19 = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
+        jButton20 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
 
-        slidePanel.setBackground(new java.awt.Color(102, 102, 102));
-        slidePanel.setLayout(new java.awt.GridBagLayout());
+        slidePanel.setBackground(new java.awt.Color(77, 73, 73));
+        slidePanel.setMaximumSize(new java.awt.Dimension(209, 700));
+        slidePanel.setLayout(new java.awt.GridLayout(0, 1));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(77, 73, 73));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,33 +132,54 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 54, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel12)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = -9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        slidePanel.add(jPanel2, gridBagConstraints);
+        slidePanel.add(jPanel2);
 
-        panelPhong.setBackground(new java.awt.Color(102, 102, 102));
+        panelSoDoPhong.setBackground(new java.awt.Color(212, 187, 0));
+        panelSoDoPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelSoDoPhongMousePressed(evt);
+            }
+        });
+        panelSoDoPhong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Opaque10.setEnabled(false);
+        Opaque10.setOpaque(false);
+
+        javax.swing.GroupLayout Opaque10Layout = new javax.swing.GroupLayout(Opaque10);
+        Opaque10.setLayout(Opaque10Layout);
+        Opaque10Layout.setHorizontalGroup(
+            Opaque10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        Opaque10Layout.setVerticalGroup(
+            Opaque10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        panelSoDoPhong.add(Opaque10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 10, 70));
+
+        lblSoDoPhong.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblSoDoPhong.setForeground(new java.awt.Color(255, 255, 255));
+        lblSoDoPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/sodoPhong.png"))); // NOI18N
+        lblSoDoPhong.setText("Sơ đồ phòng");
+        panelSoDoPhong.add(lblSoDoPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
+
+        slidePanel.add(panelSoDoPhong);
+
+        panelPhong.setBackground(new java.awt.Color(77, 73, 73));
         panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
@@ -171,27 +198,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque1Layout.setVerticalGroup(
             Opaque1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelPhong.add(Opaque1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelPhong.add(Opaque1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 70));
 
         lblPhong.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblPhong.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLyPhong2.png"))); // NOI18N
         lblPhong.setText("Quản lý phòng");
-        panelPhong.add(lblPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
+        panelPhong.add(lblPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 180, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        slidePanel.add(panelPhong, gridBagConstraints);
+        slidePanel.add(panelPhong);
 
-        panelNhanVien.setBackground(new java.awt.Color(102, 102, 102));
+        panelNhanVien.setBackground(new java.awt.Color(77, 73, 73));
         panelNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelNhanVienMousePressed(evt);
@@ -210,27 +230,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque2Layout.setVerticalGroup(
             Opaque2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelNhanVien.add(Opaque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelNhanVien.add(Opaque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLyNhanVien.png"))); // NOI18N
         lblNhanVien.setText("Nhân viên");
         panelNhanVien.add(lblNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        slidePanel.add(panelNhanVien, gridBagConstraints);
+        slidePanel.add(panelNhanVien);
 
-        panelDichVu.setBackground(new java.awt.Color(102, 102, 102));
+        panelDichVu.setBackground(new java.awt.Color(77, 73, 73));
         panelDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelDichVuMousePressed(evt);
@@ -249,27 +262,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque3Layout.setVerticalGroup(
             Opaque3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelDichVu.add(Opaque3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelDichVu.add(Opaque3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDichVu.setForeground(new java.awt.Color(255, 255, 255));
+        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLydichvu.png"))); // NOI18N
         lblDichVu.setText("Dịch vụ");
         panelDichVu.add(lblDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        slidePanel.add(panelDichVu, gridBagConstraints);
+        slidePanel.add(panelDichVu);
 
-        panelHoaDon.setBackground(new java.awt.Color(102, 102, 102));
+        panelHoaDon.setBackground(new java.awt.Color(77, 73, 73));
         panelHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelHoaDonMousePressed(evt);
@@ -288,27 +294,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque4Layout.setVerticalGroup(
             Opaque4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelHoaDon.add(Opaque4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelHoaDon.add(Opaque4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        lblHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/hoadon2.png"))); // NOI18N
         lblHoaDon.setText("Hóa đơn");
         panelHoaDon.add(lblHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        slidePanel.add(panelHoaDon, gridBagConstraints);
+        slidePanel.add(panelHoaDon);
 
-        panelDatPhong.setBackground(new java.awt.Color(102, 102, 102));
+        panelDatPhong.setBackground(new java.awt.Color(77, 73, 73));
         panelDatPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelDatPhongMousePressed(evt);
@@ -327,27 +326,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque5Layout.setVerticalGroup(
             Opaque5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelDatPhong.add(Opaque5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelDatPhong.add(Opaque5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblDatPhong.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDatPhong.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/datPhong3.png"))); // NOI18N
         lblDatPhong.setText("Đặt phòng");
         panelDatPhong.add(lblDatPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
-        slidePanel.add(panelDatPhong, gridBagConstraints);
+        slidePanel.add(panelDatPhong);
 
-        panelDoiTac.setBackground(new java.awt.Color(102, 102, 102));
+        panelDoiTac.setBackground(new java.awt.Color(77, 73, 73));
         panelDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelDoiTacMousePressed(evt);
@@ -362,31 +354,24 @@ public class TrangChuJrame extends javax.swing.JFrame {
         Opaque6.setLayout(Opaque6Layout);
         Opaque6Layout.setHorizontalGroup(
             Opaque6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         Opaque6Layout.setVerticalGroup(
             Opaque6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelDoiTac.add(Opaque6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelDoiTac.add(Opaque6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 10, 70));
 
         lblDoiTac.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDoiTac.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/doitac2.png"))); // NOI18N
         lblDoiTac.setText("Đối tác");
         panelDoiTac.add(lblDoiTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        slidePanel.add(panelDoiTac, gridBagConstraints);
+        slidePanel.add(panelDoiTac);
 
-        panelKhoHang.setBackground(new java.awt.Color(102, 102, 102));
+        panelKhoHang.setBackground(new java.awt.Color(77, 73, 73));
         panelKhoHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelKhoHangMousePressed(evt);
@@ -405,27 +390,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque7Layout.setVerticalGroup(
             Opaque7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelKhoHang.add(Opaque7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelKhoHang.add(Opaque7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblKhoHang.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblKhoHang.setForeground(new java.awt.Color(255, 255, 255));
-        lblKhoHang.setText("Kho hàng");
+        lblKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/hotro.png"))); // NOI18N
+        lblKhoHang.setText("Hỗ trợ");
         panelKhoHang.add(lblKhoHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        slidePanel.add(panelKhoHang, gridBagConstraints);
+        slidePanel.add(panelKhoHang);
 
-        panelKhuyenMai.setBackground(new java.awt.Color(102, 102, 102));
+        panelKhuyenMai.setBackground(new java.awt.Color(77, 73, 73));
         panelKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelKhuyenMaiMousePressed(evt);
@@ -444,131 +422,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
         Opaque8Layout.setVerticalGroup(
             Opaque8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        panelKhuyenMai.add(Opaque8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
+        panelKhuyenMai.add(Opaque8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
         lblKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblKhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
+        lblKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/khuyenmai.png"))); // NOI18N
         lblKhuyenMai.setText("Khuyến mãi");
         panelKhuyenMai.add(lblKhuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
-        slidePanel.add(panelKhuyenMai, gridBagConstraints);
+        slidePanel.add(panelKhuyenMai);
 
-        panelDangXuat.setBackground(new java.awt.Color(102, 102, 102));
-        panelDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelDangXuatMousePressed(evt);
-            }
-        });
-        panelDangXuat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Opaque9.setEnabled(false);
-        Opaque9.setOpaque(false);
-
-        javax.swing.GroupLayout Opaque9Layout = new javax.swing.GroupLayout(Opaque9);
-        Opaque9.setLayout(Opaque9Layout);
-        Opaque9Layout.setHorizontalGroup(
-            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
-        );
-        Opaque9Layout.setVerticalGroup(
-            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
-        );
-
-        panelDangXuat.add(Opaque9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
-
-        lblDangXuat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lblDangXuat.setForeground(new java.awt.Color(255, 255, 255));
-        lblDangXuat.setText("Đăng xuất");
-        panelDangXuat.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
-        slidePanel.add(panelDangXuat, gridBagConstraints);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        slidePanel.add(jPanel3, gridBagConstraints);
-
-        panelSoDoPhong.setBackground(new java.awt.Color(102, 102, 102));
-        panelSoDoPhong.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelSoDoPhongMousePressed(evt);
-            }
-        });
-        panelSoDoPhong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Opaque10.setEnabled(false);
-        Opaque10.setOpaque(false);
-
-        javax.swing.GroupLayout Opaque10Layout = new javax.swing.GroupLayout(Opaque10);
-        Opaque10.setLayout(Opaque10Layout);
-        Opaque10Layout.setHorizontalGroup(
-            Opaque10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
-        );
-        Opaque10Layout.setVerticalGroup(
-            Opaque10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
-        );
-
-        panelSoDoPhong.add(Opaque10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, -1));
-
-        lblSoDoPhong.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lblSoDoPhong.setForeground(new java.awt.Color(255, 255, 255));
-        lblSoDoPhong.setText("Sơ đồ phòng");
-        panelSoDoPhong.add(lblSoDoPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 58;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        slidePanel.add(panelSoDoPhong, gridBagConstraints);
-
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -576,8 +443,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(slidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -668,6 +535,15 @@ public class TrangChuJrame extends javax.swing.JFrame {
         jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton19.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton19);
+        jToolBar1.add(jSeparator9);
+
+        jButton20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dangxuat.png"))); // NOI18N
+        jButton20.setText("Đăng xuất");
+        jButton20.setFocusable(false);
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton20.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton20);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
@@ -677,13 +553,15 @@ public class TrangChuJrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(195, 195, 195))
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -692,7 +570,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -719,7 +597,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
     private void panelDatPhongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDatPhongMousePressed
 
-   
+
     }//GEN-LAST:event_panelDatPhongMousePressed
 
     private void panelDoiTacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDoiTacMousePressed
@@ -727,16 +605,12 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }//GEN-LAST:event_panelDoiTacMousePressed
 
     private void panelKhoHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKhoHangMousePressed
-        
+
     }//GEN-LAST:event_panelKhoHangMousePressed
 
     private void panelKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKhuyenMaiMousePressed
-       
+
     }//GEN-LAST:event_panelKhuyenMaiMousePressed
-
-    private void panelDangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDangXuatMousePressed
-
-    }//GEN-LAST:event_panelDangXuatMousePressed
 
     private void panelSoDoPhongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSoDoPhongMousePressed
 
@@ -795,11 +669,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel Opaque6;
     private javax.swing.JPanel Opaque7;
     private javax.swing.JPanel Opaque8;
-    private javax.swing.JPanel Opaque9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -808,7 +682,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
@@ -816,8 +689,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblDatPhong;
     private javax.swing.JLabel lblDichVu;
     private javax.swing.JLabel lblDoiTac;
@@ -828,7 +701,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhong;
     private javax.swing.JLabel lblSoDoPhong;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JPanel panelDangXuat;
     private javax.swing.JPanel panelDatPhong;
     private javax.swing.JPanel panelDichVu;
     private javax.swing.JPanel panelDoiTac;
