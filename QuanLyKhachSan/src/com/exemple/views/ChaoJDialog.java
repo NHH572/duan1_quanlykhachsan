@@ -6,6 +6,7 @@
 package com.exemple.views;
 
 import AppPackage.AnimationClass;
+import java.awt.Color;
 
 /**
  *
@@ -23,13 +24,33 @@ public class ChaoJDialog extends javax.swing.JDialog {
     }
 
     public void init(){
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
         AnimationClass anim = new AnimationClass();
         anim.jLabelXLeft(lbldo.getX(),-1000 ,3, 1, lbldo);
         anim.jLabelXRight(lblvang.getX(),1000 ,3, 1, lblvang);
         anim.jLabelYDown(lblxanhchuoi.getY(),1000 ,3, 1, lblxanhchuoi);
         anim.jLabelYDown(lblxanhbien.getY(),1000 ,5, 1, lblxanhbien);
         anim.jLabelXRight(-500, 10, 1, HEIGHT, lblWellCome);
+         Thread t = new Thread() {
+            int i = -1;
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        i++;                        
+                        if (i == 110) {
+                            ChaoJDialog.this.dispose();   
+                            break;
+                        }
+                        Thread.sleep(20); 
+                    } catch (InterruptedException ex) {
+                        break;
+                    }
+                }
+            }
+        };
+        t.start();
+ 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,6 +155,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
                     }
                 });
                 dialog.setVisible(true);
+               
             }
         });
     }

@@ -39,6 +39,14 @@ public class NhanVien {
         this.hinh = hinh;
     }
 
+    public String getTenVaiTro(){
+        if(isVaiTro()){
+            return "Nhân viên";
+        }else{
+            return "Quản lý";
+        }
+    }
+
     public String getHinh() {
         return hinh;
     }

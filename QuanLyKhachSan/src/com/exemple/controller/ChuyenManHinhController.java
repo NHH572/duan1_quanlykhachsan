@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import com.exemple.entity.DanhMuc;
+import com.exemple.views.HoTroJPanel;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
 import com.exemple.views.SoDoPhongJPanel;
 
@@ -100,8 +101,8 @@ public class ChuyenManHinhController {
                 case "DoiTac":
                     node = new QuanLyDoiTacJPanel();
                     break;
-                case "KhoHang":
-                    node = new QuanLyKhoJPanel();
+                case "HoTro":
+                    node = new HoTroJPanel();
                     break;
                 case "KhuyenMai":
                     node = new QuanLyKhuyenMaiJPanel();
