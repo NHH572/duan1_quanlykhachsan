@@ -37,8 +37,20 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
     }
 
     @Override
-    public void update(DatPhong entity) {
-
+    public void update(DatPhong dp) {
+        String sql = "update DatPhong "
+                + " set NgayDat=? "
+                + " ,NgayHetHan=? "
+                + " ,NgayTraPhong=? "
+                + " ,TamTinh=? "
+                + " ,MaPhong=? "
+                + " ,SoCMTKhachHang=? "
+                + " ,TaiKhoanNV=? "
+                + " ,MaLoaiPhong=? "
+                + " where MaDatPhong=?";
+        JdbcHelper.executeUpdate(sql, dp.getNgayDat(), dp.getNgayNhanPhong(),
+                dp.getNgayMuonTra(), dp.getTamTinh(), dp.getMaPhong(), dp.getSoCMT(),
+                dp.getTaiKhoanNV(), dp.getMaLoaiPhong());
     }
 
     public void updateDatPhong(Integer maPhong, String taiKhoanNV, Integer maDatPhong, Integer maLoaiPhong) {
@@ -58,9 +70,10 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + " ,dp.NgayHetHan "
                 + " ,dp.NgayTraPhong"
                 + " ,DATEDIFF(day,dp.NgayHetHan,dp.NgayTraPhong) as 'TamTinh' "
-                + " , kh.SoCMTKhachHang "
+                + " ,kh.SoCMTKhachHang "
                 + " ,kh.TenKhachHang "
                 + " , kh.GioiTinh "
+                + " , kh.NgaySinh "
                 + " , kh.SoDienThoai "
                 + " , kh.Email "
                 + " , kh.QuocTich "
@@ -84,6 +97,7 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + ", kh.SoCMTKhachHang"
                 + ", kh.TenKhachHang"
                 + ", kh.GioiTinh"
+                + ", kh.NgaySinh "
                 + ", kh.SoDienThoai"
                 + ", kh.Email"
                 + ", kh.QuocTich"
@@ -133,6 +147,7 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
         dp.setSoCMT(rs.getString("SoCMTKhachHang"));
         dp.setHoTen(rs.getString("TenKhachHang"));
         dp.setGioiTinh(rs.getBoolean("GioiTinh"));
+        dp.setNgaySinh(rs.getDate("NgaySinh"));
         dp.setSoDienThoai(rs.getString("SoDienThoai"));
         dp.setEmail(rs.getString("Email"));
         dp.setQuocTich(rs.getString("QuocTich"));
@@ -147,8 +162,9 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
     }
 
     @Override
-    public void delete(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(Integer maDatPhong) {
+        String sql="delete from DatPhong where MaDatPhong=?";
+        JdbcHelper.executeUpdate(sql, maDatPhong);
     }
 
     @Override
@@ -163,6 +179,7 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + ", kh.SoCMTKhachHang"
                 + ", kh.TenKhachHang"
                 + ", kh.GioiTinh"
+                + ", kh.NgaySinh"
                 + ", kh.SoDienThoai"
                 + ", kh.Email"
                 + ", kh.QuocTich"

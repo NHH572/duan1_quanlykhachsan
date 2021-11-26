@@ -12,15 +12,17 @@ import java.util.Date;
  * @author hp
  */
 public class DatPhong {
+
     private int maDatPhong;
     private int maLoaiPhong;
-    private Date ngayDat;    
+    private Date ngayDat;
     private Date ngayNhanPhong;
     private Date ngayMuonTra;
-    private float tamTinh;
+    private int tamTinh;
     private String soCMT;
     private String hoTen;
     private boolean gioiTinh;
+    private Date ngaySinh;
     private String soDienThoai;
     private String email;
     private String quocTich;
@@ -30,7 +32,7 @@ public class DatPhong {
     public DatPhong() {
     }
 
-    public DatPhong(int maDatPhong, int maLoaiPhong, Date ngayDat, Date ngayNhanPhong, Date ngayMuonTra, float tamTinh, String soCMT, String hoTen, boolean gioiTinh, String soDienThoai, String email, String quocTich, int maPhong, String taiKhoanNV) {
+    public DatPhong(int maDatPhong, int maLoaiPhong, Date ngayDat, Date ngayNhanPhong, Date ngayMuonTra, int tamTinh, String soCMT, String hoTen, boolean gioiTinh, Date ngaySinh, String soDienThoai, String email, String quocTich, int maPhong, String taiKhoanNV) {
         this.maDatPhong = maDatPhong;
         this.maLoaiPhong = maLoaiPhong;
         this.ngayDat = ngayDat;
@@ -40,11 +42,20 @@ public class DatPhong {
         this.soCMT = soCMT;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
         this.soDienThoai = soDienThoai;
         this.email = email;
         this.quocTich = quocTich;
         this.maPhong = maPhong;
         this.taiKhoanNV = taiKhoanNV;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public int getMaDatPhong() {
@@ -54,8 +65,6 @@ public class DatPhong {
     public void setMaDatPhong(int maDatPhong) {
         this.maDatPhong = maDatPhong;
     }
-
-    
 
     public int getMaLoaiPhong() {
         return maLoaiPhong;
@@ -89,11 +98,11 @@ public class DatPhong {
         this.ngayMuonTra = ngayMuonTra;
     }
 
-    public float getTamTinh() {
+    public int getTamTinh() {
         return tamTinh;
     }
 
-    public void setTamTinh(float tamTinh) {
+    public void setTamTinh(int tamTinh) {
         this.tamTinh = tamTinh;
     }
 
@@ -160,6 +169,5 @@ public class DatPhong {
     public void setTaiKhoanNV(String taiKhoanNV) {
         this.taiKhoanNV = taiKhoanNV;
     }
-    
-    
+
 }

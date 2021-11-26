@@ -30,24 +30,25 @@ import javax.swing.table.DefaultTableModel;
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
-    
+
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
     private List<LoaiPhong> listLoaiPhong = lpDAO.getAll();
     private String textDefault = "Tìm kiếm theo số chứng minh nhân dân....";
     private int rowDatPhong = -1;
-    private int maPhong = -1;    
+    private int maPhong = -1;
+
     public QuanLyDatPhongJPanel() {
         initComponents();
         init();
     }
-    
+
     private void init() {
         fillComboBoxLoaiPhong();
         placeHolder(txtSearch, textDefault);
         addToModelDatPhong(0, "");
         lblTrangThai.setText("");
     }
-    
+
     private void placeHolder(JTextField txtFiled, String text) {
         txtFiled.addFocusListener(new FocusListener() {
             @Override
@@ -57,7 +58,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                     txtFiled.setForeground(Color.BLACK);
                 }
             }
-            
+
             @Override
             public void focusLost(FocusEvent e) {
                 if (txtFiled.getText().isEmpty()) {
@@ -67,7 +68,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             }
         });
     }
-    
+
     private void fillToTableDatPhong() {
         if (txtSearch.getText().equalsIgnoreCase(textDefault) || txtSearch.getText().isEmpty()) {
             addToModelDatPhong(cbbLoai.getSelectedIndex(), "");
@@ -75,7 +76,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             addToModelDatPhong(cbbLoai.getSelectedIndex(), txtSearch.getText());
         }
     }
-    
+
     private void addToModelDatPhong(int indexCbb, String txtSearch) {
         DefaultTableModel model = (DefaultTableModel) tblDatPhong.getModel();
         model.setRowCount(0);
@@ -105,7 +106,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
+
     private void fillComboBoxLoaiPhong() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbLoaiPhong.getModel();
@@ -116,7 +117,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     /**
@@ -166,9 +167,9 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         txtQuocTich = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        txtNgaySinh = new com.toedter.calendar.JDateChooser();
+        rdoNam = new javax.swing.JRadioButton();
+        rdoNu = new javax.swing.JRadioButton();
         btnDatPhong = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lblTrangThai = new javax.swing.JLabel();
@@ -404,11 +405,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setText("Ngày sinh:");
 
-        buttonGroupGioiTinh.add(jRadioButton1);
-        jRadioButton1.setText("Nam");
+        buttonGroupGioiTinh.add(rdoNam);
+        rdoNam.setText("Nam");
 
-        buttonGroupGioiTinh.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
+        buttonGroupGioiTinh.add(rdoNu);
+        rdoNu.setText("Nữ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -429,16 +430,16 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtHoTen)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtQuocTich, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                             .addComponent(txtSoDienThoai)
                             .addComponent(txtEmail)
                             .addComponent(txtSoCMTKH)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jRadioButton1)
+                        .addComponent(rdoNam)
                         .addGap(26, 26, 26)
-                        .addComponent(jRadioButton2)
+                        .addComponent(rdoNu)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,12 +463,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(rdoNam)
+                            .addComponent(rdoNu))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,8 +511,20 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Ngày nhận phòng:");
 
+        txtNgayNhanPhong.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtNgayNhanPhongPropertyChange(evt);
+            }
+        });
+
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("Ngày muốn trả:");
+
+        txtNgayMuonTra.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtNgayMuonTraPropertyChange(evt);
+            }
+        });
 
         tblPhongTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -701,7 +714,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         txtNgayDat.setDate(dp.getNgayDat());
         txtNgayNhanPhong.setDate(dp.getNgayNhanPhong());
         txtNgayMuonTra.setDate(dp.getNgayMuonTra());
-        float tamTinh = dp.getTamTinh() * lpDAO.selectByDonGiaTheoNgay(maLoaiPhong);
+        int tamTinh = dp.getTamTinh() * lpDAO.selectByDonGiaTheoNgay(maLoaiPhong);
         txtTamTinh.setText(String.valueOf(tamTinh));
         if (dp.getMaPhong() == 0) {
             lblTrangThai.setText("Chưa xác nhận");
@@ -713,10 +726,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         txtSoCMTKH.setText(dp.getSoCMT());
         txtHoTen.setText(dp.getHoTen());
         if (dp.isGioiTinh()) {
-            lblGioiTinh.setText("Nữ");
+            rdoNu.setSelected(true);
         } else {
-            lblGioiTinh.setText("Nam");
+            rdoNam.setSelected(true);
         }
+        txtNgaySinh.setDate(dp.getNgaySinh());
         txtSoDienThoai.setText(dp.getSoDienThoai());
         txtEmail.setText(dp.getEmail());
         txtQuocTich.setText(dp.getQuocTich());
@@ -724,7 +738,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(maLoaiPhong));
         fillTotablePhongTrong(listPhong);
     }
-    
+
     private void fillTotablePhongTrong(List<Phong> listPhong) {
         DefaultTableModel model = (DefaultTableModel) tblPhongTrong.getModel();
         model.setRowCount(0);
@@ -780,7 +794,9 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         txtHoTen.setText("");
         txtSoDienThoai.setText("");
         txtEmail.setText("");
-        lblGioiTinh.setText("");
+        rdoNam.setSelected(true);
+        txtNgaySinh.setDate(null);
+        txtQuocTich.setText("");
     }
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         clearForm();
@@ -790,36 +806,56 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         PhongDAO pDAO = new PhongDAO();
         List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(cbbLoaiPhong.getSelectedIndex() + 1));
         fillTotablePhongTrong(listPhong);
+        setTamTinh();
     }//GEN-LAST:event_cbbLoaiPhongItemStateChanged
     private boolean insertDatPhong() {
-        DatPhong dp = new DatPhong();
-        Date ngayDat = new Date();
-        dp.setNgayDat(ngayDat);
-        dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
-        dp.setNgayMuonTra(txtNgayMuonTra.getDate());
-        dp.setTamTinh(Float.valueOf(txtTamTinh.getText()));
-        dp.setMaPhong(maPhong);
-        dp.setSoCMT(txtSoCMTKH.getText());
-        dp.setTaiKhoanNV("pnmtriet");
-        dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
-        KhachHangDAO khDAO = new KhachHangDAO();
-        KhachHang kh = new KhachHang();
-        kh.setCMND(txtSoCMTKH.getText());
-        kh.setTenKhachHang(txtHoTen.getText());
-        kh.setGioiTinh(true);
-        kh.setSoDienThoai(txtSoDienThoai.getText());
-        khDAO.insert(kh);
-        DatPhongDAO dpDAO = new DatPhongDAO();
-        dpDAO.insert(dp);
-        return true;
+        try {
+            DatPhong dp = new DatPhong();
+            Date ngayDat = new Date();
+            dp.setNgayDat(ngayDat);
+            dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
+            dp.setNgayMuonTra(txtNgayMuonTra.getDate());
+            dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
+            dp.setMaPhong(maPhong);
+            dp.setSoCMT(txtSoCMTKH.getText());
+            dp.setTaiKhoanNV("pnmtriet");
+            dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
+
+            KhachHangDAO khDAO = new KhachHangDAO();
+            KhachHang kh = new KhachHang();
+            kh.setCMND(txtSoCMTKH.getText());
+            kh.setTenKhachHang(txtHoTen.getText());
+            if (rdoNu.isSelected()) {
+                kh.setGioiTinh(true);
+            } else {
+                kh.setGioiTinh(false);
+            }
+            kh.setNgaySinh(txtNgaySinh.getDate());
+            kh.setSoDienThoai(txtSoDienThoai.getText());
+            kh.setEmail(txtEmail.getText());
+            kh.setQuocTich(txtQuocTich.getText());
+            kh.setSoLanThue(0);
+            khDAO.insert(kh);
+
+            new DatPhongDAO().insert(dp);
+
+            fillToTableDatPhong();
+            clearForm();
+            rowDatPhong = -1;
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (rowDatPhong == -1) {
+            return;
+        }
         if (insertDatPhong()) {
             JOptionPane.showMessageDialog(this, "Thêm thành công!");
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -855,12 +891,86 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSoCMTKHActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
+         if (rowDatPhong == -1) {
+            return;
+        }
+        if (updateDatPhong()) {
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
+    private boolean updateDatPhong() {
+        try {
+            DatPhong dp = new DatPhong();
+            Date ngayDat = new Date();
+            dp.setNgayDat(ngayDat);
+            dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
+            dp.setNgayMuonTra(txtNgayMuonTra.getDate());
+            dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
+            dp.setMaPhong(maPhong);
+            dp.setSoCMT(txtSoCMTKH.getText());
+            dp.setTaiKhoanNV("pnmtriet");
+            dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
 
+            KhachHangDAO khDAO = new KhachHangDAO();
+            KhachHang kh = new KhachHang();
+            kh.setCMND(txtSoCMTKH.getText());
+            kh.setTenKhachHang(txtHoTen.getText());
+            if (rdoNu.isSelected()) {
+                kh.setGioiTinh(true);
+            } else {
+                kh.setGioiTinh(false);
+            }
+            kh.setNgaySinh(txtNgaySinh.getDate());
+            kh.setSoDienThoai(txtSoDienThoai.getText());
+            kh.setEmail(txtEmail.getText());
+            kh.setQuocTich(txtQuocTich.getText());
+            kh.setSoLanThue(0);
+            khDAO.update(kh);
+
+            new DatPhongDAO().update(dp);
+
+            fillToTableDatPhong();
+            clearForm();
+            rowDatPhong = -1;
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
+        if (rowDatPhong == -1) {
+            return;
+        }
+        if (insertDatPhong()) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
+    private int getDifferenceDays(Date d1, Date d2) {
+        long diff = d2.getTime() - d1.getTime();
+        //Trừ ra ngày
+        return (int) diff / (60 * 60 * 1000 * 24);
+    }
+
+    private void setTamTinh() {
+        if (txtNgayNhanPhong.getDate() == null || txtNgayMuonTra.getDate() == null) {
+            return;
+        } else {
+            int soNgayThue = getDifferenceDays(txtNgayNhanPhong.getDate(), txtNgayMuonTra.getDate());
+            int tamTinh = listLoaiPhong.get(cbbLoaiPhong.getSelectedIndex()).getDonGiaTheoNgay() * soNgayThue;
+            txtTamTinh.setText(String.valueOf(tamTinh));
+        }
+    }
+    private void txtNgayMuonTraPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtNgayMuonTraPropertyChange
+        setTamTinh();
+    }//GEN-LAST:event_txtNgayMuonTraPropertyChange
+
+    private void txtNgayNhanPhongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtNgayNhanPhongPropertyChange
+        setTamTinh();
+    }//GEN-LAST:event_txtNgayNhanPhongPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -878,7 +988,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbLoai;
     private javax.swing.JComboBox<String> cbbLoaiPhong;
     private javax.swing.JButton jButton5;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -899,12 +1008,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblGioiTinh;
     private javax.swing.JLabel lblTrangThai;
+    private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblDatPhong;
     private javax.swing.JTable tblPhongTrong;
     private javax.swing.JTextField txtEmail;
@@ -912,10 +1021,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser txtNgayDat;
     private com.toedter.calendar.JDateChooser txtNgayMuonTra;
     private com.toedter.calendar.JDateChooser txtNgayNhanPhong;
+    private com.toedter.calendar.JDateChooser txtNgaySinh;
     private javax.swing.JTextField txtQuocTich;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSoCMTKH;
     private javax.swing.JTextField txtSoDienThoai;
     private javax.swing.JTextField txtTamTinh;
     // End of variables declaration//GEN-END:variables
+
 }

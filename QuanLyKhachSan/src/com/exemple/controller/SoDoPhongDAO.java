@@ -75,9 +75,9 @@ public class SoDoPhongDAO {
             dmsdp.setTextLoaiPhong(item.getTenLoaiPhong());
             dmsdp.setTextTrangThai(item.getTrangThai());
             if (item.getTrangThai().equalsIgnoreCase("Trống")) {
-                dmsdp.setBackgroundColorPanel(Color.green);
+                dmsdp.setBackgroundColorPanel(new Color(95, 184, 92));
             } else {
-                dmsdp.setBackgroundColorPanel(Color.red);
+                dmsdp.setBackgroundColorPanel(new Color(217, 83, 79));
             }
             i++;
         }
