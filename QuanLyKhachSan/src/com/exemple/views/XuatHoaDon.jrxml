@@ -8,131 +8,48 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     DatPhong."MaDatPhong" AS DatPhong_MaDatPhong,
-     DatPhong."NgayDat" AS DatPhong_NgayDat,
-     DatPhong."NgayHetHan" AS DatPhong_NgayHetHan,
-     DatPhong."NgayTraPhong" AS DatPhong_NgayTraPhong,
-     DatPhong."TamTinh" AS DatPhong_TamTinh,
-     DatPhong."MaPhong" AS DatPhong_MaPhong,
-     DatPhong."SoCMTKhachHang" AS DatPhong_SoCMTKhachHang,
-     DatPhong."TaiKhoanNV" AS DatPhong_TaiKhoanNV,
-     DatPhong."MaLoaiPhong" AS DatPhong_MaLoaiPhong,
-     ChiTietHoaDon."MaChiTietHoaDon" AS ChiTietHoaDon_MaChiTietHoaDon,
-     ChiTietHoaDon."MaPhong" AS ChiTietHoaDon_MaPhong,
-     ChiTietHoaDon."MaHoaDon" AS ChiTietHoaDon_MaHoaDon,
-     ChiTietHoaDon."MaDichVu" AS ChiTietHoaDon_MaDichVu,
-     ChiTietHoaDon."SoLanThueDichVu" AS ChiTietHoaDon_SoLanThueDichVu,
      ChiTietHoaDon."TongTien" AS ChiTietHoaDon_TongTien,
      DichVu."MaDichVu" AS DichVu_MaDichVu,
      DichVu."TenDichVu" AS DichVu_TenDichVu,
      DichVu."GiaDichVu" AS DichVu_GiaDichVu,
-     DichVu."MoTa" AS DichVu_MoTa,
-     HoaDon."MaHoaDon" AS HoaDon_MaHoaDon,
      HoaDon."NgayTao" AS HoaDon_NgayTao,
      HoaDon."NgayNhanPhong" AS HoaDon_NgayNhanPhong,
      HoaDon."NgayTraPhong" AS HoaDon_NgayTraPhong,
      HoaDon."ThanhTien" AS HoaDon_ThanhTien,
-     HoaDon."TaiKhoanNV" AS HoaDon_TaiKhoanNV,
-     HoaDon."SoCMTKhachHang" AS HoaDon_SoCMTKhachHang,
-     HoaDon."MaKhuyenMai" AS HoaDon_MaKhuyenMai,
      KhachHang."SoCMTKhachHang" AS KhachHang_SoCMTKhachHang,
      KhachHang."TenKhachHang" AS KhachHang_TenKhachHang,
-     KhachHang."NgaySinh" AS KhachHang_NgaySinh,
-     KhachHang."GioiTinh" AS KhachHang_GioiTinh,
-     KhachHang."SoDienThoai" AS KhachHang_SoDienThoai,
-     KhachHang."Email" AS KhachHang_Email,
-     KhachHang."QuocTich" AS KhachHang_QuocTich,
-     KhachHang."SoLanThue" AS KhachHang_SoLanThue,
-     KhachHang."MaDoiTac" AS KhachHang_MaDoiTac,
      KhuyenMai."MaKhuyenMai" AS KhuyenMai_MaKhuyenMai,
-     KhuyenMai."TenKhuyenMai" AS KhuyenMai_TenKhuyenMai,
      KhuyenMai."GiaTri" AS KhuyenMai_GiaTri,
-     KhuyenMai."NgayBatDau" AS KhuyenMai_NgayBatDau,
-     KhuyenMai."NgayHetHan" AS KhuyenMai_NgayHetHan,
-     NhanVien."TaiKhoanNV" AS NhanVien_TaiKhoanNV,
-     NhanVien."MatKhauNV" AS NhanVien_MatKhauNV,
      NhanVien."HoTen" AS NhanVien_HoTen,
-     NhanVien."NgaySinh" AS NhanVien_NgaySinh,
-     NhanVien."GioiTinh" AS NhanVien_GioiTinh,
-     NhanVien."SoCMT" AS NhanVien_SoCMT,
-     NhanVien."DiaChi" AS NhanVien_DiaChi,
-     NhanVien."SoDienThoai" AS NhanVien_SoDienThoai,
-     NhanVien."VaiTro" AS NhanVien_VaiTro,
-     NhanVien."Hinh" AS NhanVien_Hinh,
-     Phong."MaPhong" AS Phong_MaPhong,
      Phong."SoPhong" AS Phong_SoPhong,
-     Phong."Lau" AS Phong_Lau,
-     Phong."TrangThai" AS Phong_TrangThai,
-     Phong."MaLoaiPhong" AS Phong_MaLoaiPhong
+     KhachHang."SoDienThoai" AS KhachHang_SoDienThoai,
+     HoaDon."MaHoaDon" AS HoaDon_MaHoaDon
 FROM
      "dbo"."DichVu" DichVu INNER JOIN "dbo"."ChiTietHoaDon" ChiTietHoaDon ON DichVu."MaDichVu" = ChiTietHoaDon."MaDichVu"
      INNER JOIN "dbo"."HoaDon" HoaDon ON ChiTietHoaDon."MaHoaDon" = HoaDon."MaHoaDon"
      INNER JOIN "dbo"."Phong" Phong ON ChiTietHoaDon."MaPhong" = Phong."MaPhong"
-     INNER JOIN "dbo"."DatPhong" DatPhong ON Phong."MaPhong" = DatPhong."MaPhong"
-     INNER JOIN "dbo"."KhachHang" KhachHang ON DatPhong."SoCMTKhachHang" = KhachHang."SoCMTKhachHang"
-     INNER JOIN "dbo"."NhanVien" NhanVien ON DatPhong."TaiKhoanNV" = NhanVien."TaiKhoanNV"
-     AND NhanVien."TaiKhoanNV" = HoaDon."TaiKhoanNV"
-     AND KhachHang."SoCMTKhachHang" = HoaDon."SoCMTKhachHang"
+     INNER JOIN "dbo"."NhanVien" NhanVien ON HoaDon."TaiKhoanNV" = NhanVien."TaiKhoanNV"
+     INNER JOIN "dbo"."KhachHang" KhachHang ON HoaDon."SoCMTKhachHang" = KhachHang."SoCMTKhachHang"
      INNER JOIN "dbo"."KhuyenMai" KhuyenMai ON HoaDon."MaKhuyenMai" = KhuyenMai."MaKhuyenMai"
 WHERE
      SoPhong = $P{SoPhong}]]>
 	</queryString>
-	<field name="DatPhong_MaDatPhong" class="java.lang.Integer"/>
-	<field name="DatPhong_NgayDat" class="java.sql.Timestamp"/>
-	<field name="DatPhong_NgayHetHan" class="java.sql.Date"/>
-	<field name="DatPhong_NgayTraPhong" class="java.sql.Date"/>
-	<field name="DatPhong_TamTinh" class="java.lang.Double"/>
-	<field name="DatPhong_MaPhong" class="java.lang.Integer"/>
-	<field name="DatPhong_SoCMTKhachHang" class="java.lang.String"/>
-	<field name="DatPhong_TaiKhoanNV" class="java.lang.String"/>
-	<field name="DatPhong_MaLoaiPhong" class="java.lang.Integer"/>
-	<field name="ChiTietHoaDon_MaChiTietHoaDon" class="java.lang.Integer"/>
-	<field name="ChiTietHoaDon_MaPhong" class="java.lang.Integer"/>
-	<field name="ChiTietHoaDon_MaHoaDon" class="java.lang.Integer"/>
-	<field name="ChiTietHoaDon_MaDichVu" class="java.lang.Integer"/>
-	<field name="ChiTietHoaDon_SoLanThueDichVu" class="java.lang.Integer"/>
 	<field name="ChiTietHoaDon_TongTien" class="java.lang.Double"/>
 	<field name="DichVu_MaDichVu" class="java.lang.Integer"/>
 	<field name="DichVu_TenDichVu" class="java.lang.String"/>
 	<field name="DichVu_GiaDichVu" class="java.lang.Double"/>
-	<field name="DichVu_MoTa" class="java.lang.String"/>
-	<field name="HoaDon_MaHoaDon" class="java.lang.Integer"/>
 	<field name="HoaDon_NgayTao" class="java.sql.Timestamp"/>
 	<field name="HoaDon_NgayNhanPhong" class="java.sql.Timestamp"/>
 	<field name="HoaDon_NgayTraPhong" class="java.sql.Timestamp"/>
 	<field name="HoaDon_ThanhTien" class="java.lang.Double"/>
-	<field name="HoaDon_TaiKhoanNV" class="java.lang.String"/>
-	<field name="HoaDon_SoCMTKhachHang" class="java.lang.String"/>
-	<field name="HoaDon_MaKhuyenMai" class="java.lang.String"/>
 	<field name="KhachHang_SoCMTKhachHang" class="java.lang.String"/>
 	<field name="KhachHang_TenKhachHang" class="java.lang.String"/>
-	<field name="KhachHang_NgaySinh" class="java.sql.Date"/>
-	<field name="KhachHang_GioiTinh" class="java.lang.Boolean"/>
-	<field name="KhachHang_SoDienThoai" class="java.lang.String"/>
-	<field name="KhachHang_Email" class="java.lang.String"/>
-	<field name="KhachHang_QuocTich" class="java.lang.String"/>
-	<field name="KhachHang_SoLanThue" class="java.lang.Integer"/>
-	<field name="KhachHang_MaDoiTac" class="java.lang.String"/>
 	<field name="KhuyenMai_MaKhuyenMai" class="java.lang.String"/>
-	<field name="KhuyenMai_TenKhuyenMai" class="java.lang.String"/>
 	<field name="KhuyenMai_GiaTri" class="java.lang.Integer"/>
-	<field name="KhuyenMai_NgayBatDau" class="java.sql.Date"/>
-	<field name="KhuyenMai_NgayHetHan" class="java.sql.Date"/>
-	<field name="NhanVien_TaiKhoanNV" class="java.lang.String"/>
-	<field name="NhanVien_MatKhauNV" class="java.lang.String"/>
 	<field name="NhanVien_HoTen" class="java.lang.String"/>
-	<field name="NhanVien_NgaySinh" class="java.sql.Date"/>
-	<field name="NhanVien_GioiTinh" class="java.lang.Boolean"/>
-	<field name="NhanVien_SoCMT" class="java.lang.String"/>
-	<field name="NhanVien_DiaChi" class="java.lang.String"/>
-	<field name="NhanVien_SoDienThoai" class="java.lang.String"/>
-	<field name="NhanVien_VaiTro" class="java.lang.Boolean"/>
-	<field name="NhanVien_Hinh" class="java.lang.String"/>
-	<field name="Phong_MaPhong" class="java.lang.Integer"/>
 	<field name="Phong_SoPhong" class="java.lang.Integer"/>
-	<field name="Phong_Lau" class="java.lang.Integer"/>
-	<field name="Phong_TrangThai" class="java.lang.String"/>
-	<field name="Phong_MaLoaiPhong" class="java.lang.Integer"/>
+	<field name="KhachHang_SoDienThoai" class="java.lang.String"/>
+	<field name="HoaDon_MaHoaDon" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

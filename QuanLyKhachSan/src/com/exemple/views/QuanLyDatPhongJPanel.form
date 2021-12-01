@@ -587,7 +587,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel19" pref="22" max="32767" attributes="0"/>
+                                      <Component id="jLabel19" max="32767" attributes="0"/>
                                       <Component id="txtNgaySinh" max="32767" attributes="0"/>
                                   </Group>
                               </Group>

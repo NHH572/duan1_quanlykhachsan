@@ -7,10 +7,7 @@ package com.exemple.entity;
 
 import java.util.Date;
 
-/**
- *
- * @author hp
- */
+
 public class HoaDon {
     private int maHoaDon;
     private Date ngayTao;

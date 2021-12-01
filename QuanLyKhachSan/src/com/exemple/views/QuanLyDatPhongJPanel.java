@@ -706,7 +706,8 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         fillToTableDatPhong();
     }//GEN-LAST:event_txtSearchKeyReleased
     private void showInformation() {
-        int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
+        try {
+            int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
         DatPhongDAO dpDAO = new DatPhongDAO();
         DatPhong dp = dpDAO.selectById(maDatPhong);
         int maLoaiPhong = dp.getMaLoaiPhong();
@@ -737,6 +738,10 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         PhongDAO pDAO = new PhongDAO();
         List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(maLoaiPhong));
         fillTotablePhongTrong(listPhong);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     private void fillTotablePhongTrong(List<Phong> listPhong) {

@@ -428,12 +428,10 @@
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jTextField9" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTongTien" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTongTien" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jTextField9" min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jTextField4" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>

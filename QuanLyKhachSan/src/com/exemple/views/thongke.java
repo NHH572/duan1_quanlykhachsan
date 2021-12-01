@@ -229,7 +229,7 @@ public class thongke extends javax.swing.JFrame {
         cbo_kt3 = new javax.swing.JComboBox<>();
         btn_IHD = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tbl_DTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -579,6 +579,7 @@ public class thongke extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbo_bdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_bdActionPerformed
