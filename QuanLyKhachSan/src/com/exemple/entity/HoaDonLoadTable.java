@@ -22,18 +22,19 @@ public class HoaDonLoadTable {
     private Date ngayTao ;
     private String thuNgan ;
     private Date ngaynhanPhong ;
-    private String diaChi ;
+    private int maPhong ;
     private Date ngayTraPhong ;
     private String soDienThoai ;
     private float tienPhong ;
     private String maGiamGia;
     private float giamTien ;
     private String tongTien ;
+    private int maDichVu;
 
     public HoaDonLoadTable() {
     }
 
-    public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu, String CMND_CCCD, String maHoaDon, String tenKhachHang, Date ngayTao, String thuNgan, Date ngaynhanPhong, String diaChi, Date ngayTraPhong, String soDienThoai, float tienPhong, String maGiamGia, float giamTien, String tongTien) {
+public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu, String CMND_CCCD, String maHoaDon, String tenKhachHang, Date ngayTao, String thuNgan, Date ngaynhanPhong, int maPhong, Date ngayTraPhong, String soDienThoai, float tienPhong, String maGiamGia, float giamTien, String tongTien, int maDichVu) {
         this.SoPhong = SoPhong;
         this.tenDichVu = tenDichVu;
         this.soLan = soLan;
@@ -44,15 +45,16 @@ public class HoaDonLoadTable {
         this.ngayTao = ngayTao;
         this.thuNgan = thuNgan;
         this.ngaynhanPhong = ngaynhanPhong;
-        this.diaChi = diaChi;
+        this.maPhong = maPhong;
         this.ngayTraPhong = ngayTraPhong;
         this.soDienThoai = soDienThoai;
         this.tienPhong = tienPhong;
         this.maGiamGia = maGiamGia;
         this.giamTien = giamTien;
         this.tongTien = tongTien;
+        this.maDichVu = maDichVu;
     }
-
+    
     public float getTienPhong() {
         return tienPhong;
     }
@@ -61,9 +63,6 @@ public class HoaDonLoadTable {
         this.tienPhong = tienPhong;
     }
 
-
-    
-
     public String getCMND_CCCD() {
         return CMND_CCCD;
     }
@@ -71,8 +70,7 @@ public class HoaDonLoadTable {
     public void setCMND_CCCD(String CMND_CCCD) {
         this.CMND_CCCD = CMND_CCCD;
     }
-
-
+    
     public String getMaHoaDon() {
         return maHoaDon;
     }
@@ -113,14 +111,22 @@ public class HoaDonLoadTable {
         this.ngaynhanPhong = ngaynhanPhong;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public int getMaPhong() {
+        return maPhong;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setMaPhong(int maPhong) {
+        this.maPhong = maPhong;
     }
 
+    public int getMaDichVu() {
+        return maDichVu;
+    }
+
+    public void setMaDichVu(int maDichVu) {
+        this.maDichVu = maDichVu;
+    }
+    
     public Date getNgayTraPhong() {
         return ngayTraPhong;
     }

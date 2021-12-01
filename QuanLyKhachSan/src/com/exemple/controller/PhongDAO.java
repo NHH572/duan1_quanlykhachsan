@@ -21,6 +21,7 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
     String UPDATE_SQL = "UPDATE Phong SET TrangThai=?, MaLoaiPhong=? WHERE MaPhong=?";
     String DELETE_SQL = "DELETE from Phong Where MaPhong=?";
     String SELECT_ALL_SQL = "SELECT*from Phong";
+    String SELECT_BY_TRANGTHAI ="select * from Phong where TrangThai ='Đang thuê'";
     String SELECT_BY_ID_SQL = "select * from Phong where MaPhong= ?";
 
     @Override
@@ -41,6 +42,10 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
     @Override
     public List<Phong> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
+    }
+    
+    public List<Phong> selectByTrangThai() {
+        return this.selectBySql(SELECT_BY_TRANGTHAI);
     }
 
     @Override

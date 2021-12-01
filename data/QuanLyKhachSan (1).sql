@@ -366,6 +366,7 @@ KhachHang.TenKhachHang AS TenKhachHang,
 KhachHang.SoDienThoai  AS SoDienThoai,
 NhanVien.HoTen  AS HoTen,
 Phong.SoPhong  AS SoPhong,
+Phong.MaPhong AS MaPhong,
 LoaiPhong.DonGiaTheoNgay AS GIAPHONG,
 DichVu.MaDichVu  AS MaDichVu,
 COUNT(DichVu.MaDichVu) AS SOLAN,
@@ -373,11 +374,11 @@ DichVu.TenDichVu  AS TenDichVu,
 DichVu.GiaDichVu  AS GiaDichVu,
 KhuyenMai.MaKhuyenMai  AS MaKhuyenMai,
 KhuyenMai.GiaTri AS GiaTri,
+HoaDon.MaHoaDon AS MaHoaDon,
 HoaDon.NgayTao AS NgayTao,
 HoaDon.NgayNhanPhong AS NgayNhanPhong,
 HoaDon.NgayTraPhong AS NgayTraPhong,
-HoaDon.ThanhTien AS ThanhTien,
-ChiTietHoaDon.TongTien AS ChiTietHoaDon_TongTien
+ChiTietHoaDon.TongTien AS TongTien
 FROM
 dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu
 INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon
@@ -404,54 +405,17 @@ KhuyenMai.GiaTri,
 HoaDon.NgayTao,
 HoaDon.NgayNhanPhong ,
 HoaDon.NgayTraPhong ,
-HoaDon.ThanhTien,
-ChiTietHoaDon.TongTien 
+ChiTietHoaDon.TongTien ,
+HoaDon.MaHoaDon ,
+Phong.MaPhong
 
 
-SELECT
- HoaDon.MaHoaDon ,
- KhachHang.SoCMTKhachHang ,
- KhachHang.TenKhachHang ,
- KhachHang.SoDienThoai ,
- NhanVien.HoTen ,
- Phong.SoPhong  ,
- DichVu.MaDichVu  ,
- COUNT(DichVu.MaDichVu) AS SOLAN,
- DichVu.TenDichVu  ,
- DichVu.GiaDichVu  ,
- KhuyenMai.MaKhuyenMai ,
- KhuyenMai.GiaTri ,
- HoaDon.NgayTao ,
- HoaDon.NgayNhanPhong,
- HoaDon.NgayTraPhong ,
- HoaDon.ThanhTien ,
- ChiTietHoaDon.TongTien 
- FROM
- dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu
- INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon
- INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong
- INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV
- INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang
- INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai
- WHERE
- SoPhong = '101'
- GROUP BY 
- HoaDon.MaHoaDon ,
- KhachHang.SoCMTKhachHang ,
- KhachHang.TenKhachHang ,
- KhachHang.SoDienThoai ,
- NhanVien.HoTen ,
- Phong.SoPhong ,
- DichVu.MaDichVu ,
- DichVu.TenDichVu ,
- DichVu.GiaDichVu ,
- KhuyenMai.MaKhuyenMai ,
- KhuyenMai.GiaTri,
- HoaDon.NgayTao,
- HoaDon.NgayNhanPhong ,
- HoaDon.NgayTraPhong ,
- HoaDon.ThanhTien,
- ChiTietHoaDon.TongTien 
 
 
- SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.HoTen ,  Phong.SoPhong  ,  DichVu.MaDichVu  ,  COUNT(DichVu.MaDichVu) AS SOLAN,  DichVu.TenDichVu  ,  DichVu.GiaDichVu  ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien ,  ChiTietHoaDon.TongTien   FROM  dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu  INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong  INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV  INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang  INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai  WHERE  SoPhong = '102'  GROUP BY   HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.HoTen ,  Phong.SoPhong ,  DichVu.MaDichVu ,  DichVu.TenDichVu ,  DichVu.GiaDichVu ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri,  HoaDon.NgayTao,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien,  ChiTietHoaDon.TongTien  
+SELECT HoaDon.MaHoaDon ,KhachHang.SoCMTKhachHang ,KhachHang.TenKhachHang ,KhachHang.SoDienThoai  ,NhanVien.HoTen  ,Phong.SoPhong ,Phong.MaPhong ,LoaiPhong.DonGiaTheoNgay,DichVu.MaDichVu  ,COUNT(DichVu.MaDichVu) AS SOLAN,DichVu.TenDichVu  ,DichVu.GiaDichVu  ,KhuyenMai.MaKhuyenMai  ,KhuyenMai.GiaTri,HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong,HoaDon.ThanhTien ,ChiTietHoaDon.TongTien FROM dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai WHERE SoPhong = '101' GROUP BY  HoaDon.MaHoaDon , KhachHang.SoCMTKhachHang , KhachHang.TenKhachHang , KhachHang.SoDienThoai , NhanVien.HoTen , Phong.SoPhong ,LoaiPhong.DonGiaTheoNgay,DichVu.MaDichVu ,DichVu.TenDichVu ,DichVu.GiaDichVu ,KhuyenMai.MaKhuyenMai ,KhuyenMai.GiaTri,HoaDon.NgayTao,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien,ChiTietHoaDon.TongTien ,HoaDon.MaHoaDon ,Phong.MaPhong
+
+
+SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.TaiKhoanNV , Phong.MaPhong, Phong.SoPhong  ,LoaiPhong.DonGiaTheoNgay ,  DichVu.MaDichVu  ,  COUNT(DichVu.MaDichVu) AS SOLAN,  DichVu.TenDichVu  ,  DichVu.GiaDichVu  ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong,  HoaDon.NgayTraPhong ,  ChiTietHoaDon.TongTien   FROM  dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu  INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong  INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV  INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang  INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai  WHERE  SoPhong = '101' GROUP BY   HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai , NhanVien.TaiKhoanNV,  Phong.MaPhong,Phong.SoPhong , LoaiPhong.DonGiaTheoNgay, DichVu.MaDichVu ,  DichVu.TenDichVu ,  DichVu.GiaDichVu ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri,  HoaDon.NgayTao,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,   ChiTietHoaDon.TongTien  
+
+
+INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
