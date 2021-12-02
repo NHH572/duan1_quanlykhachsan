@@ -20,12 +20,12 @@ public class KhachHang {
     private String email;
     private String quocTich;
     private int soLanThue;
-    private int maDoiTac;
+    private String maDoiTac;
 
     public KhachHang() {
     }
 
-    public KhachHang(String CMND, String tenKhachHang, Date ngaySinh, boolean gioiTinh, String soDienThoai, String email, String quocTich, int soLanThue, int maDoiTac) {
+    public KhachHang(String CMND, String tenKhachHang, Date ngaySinh, boolean gioiTinh, String soDienThoai, String email, String quocTich, int soLanThue, String maDoiTac) {
         this.CMND = CMND;
         this.tenKhachHang = tenKhachHang;
         this.ngaySinh = ngaySinh;
@@ -103,12 +103,16 @@ public class KhachHang {
         this.soLanThue = soLanThue;
     }
 
-    public int getMaDoiTac() {
+    public String getMaDoiTac() {
         return maDoiTac;
     }
 
-    public void setMaDoiTac(int maDoiTac) {
+    public void setMaDoiTac(String maDoiTac) {
         this.maDoiTac = maDoiTac;
+    }
+    
+         public String toString() {
+        return this.maDoiTac;
     }
     
     

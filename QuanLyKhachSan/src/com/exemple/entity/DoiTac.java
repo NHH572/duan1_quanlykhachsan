@@ -57,5 +57,9 @@ public class DoiTac {
         this.danhGia = danhGia;
     }
     
+       public String toString() {
+        return this.tenDoiTac;
+    }
+    
     
 }
