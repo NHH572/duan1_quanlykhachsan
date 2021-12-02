@@ -223,7 +223,7 @@ GO
 -- CHI TIẾT VẬT DỤNG
 	INSERT INTO ChiTietVatDung
 	VALUES (1,1,2),(1,2,2),(1,3,2),(1,4,2),(1,5,4),
-	    (1,6,4),(1,7,4),(1,8,4),(1,9,4),(1,10,4),
+	(1,6,4),(1,7,4),(1,8,4),(1,9,4),(1,10,4),
 		   (1,11,4),(1,12,4),(1,13,4),(1,14,4),(1,15,4),
 		   (1,16,4),(1,17,4),(1,18,4),(1,19,4),(1,20,4),
 		   (1,21,4),(1,22,4),(1,23,4),(1,24,4),(1,25,4),
@@ -344,105 +344,6 @@ AS BEGIN
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
 END
-
-
-
-INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
-	VALUES (1,1,1,1,80000)
-select * from DatPhong;
-select * from LoaiPhong;
-select * from Phong;
-select * from DichVu;
-
+select * from HoaDon;
 select * from ChiTietHoaDon;
-select * from hoadon;
-
-SELECT
-  HoaDon.MaHoaDon AS MaHoaDon,
-  HoaDon.NgayTao AS NgayTao,
-  HoaDon.NgayNhanPhong AS NgayNhanPhong,
-  HoaDon.NgayTraPhong AS NgayTraPhong,
-  HoaDon.ThanhTien AS ThanhTien,
-  HoaDon.TaiKhoanNV AS TaiKhoanNV,
-  HoaDon.SoCMTKhachHang AS SoCMTKhachHang,
-  HoaDon.MaKhuyenMai AS MaKhuyenMai,
-  Phong.SoPhong AS SoPhong
-FROM
-  dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
-  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong
-WHERE
-  SoPhong = '101'
-GROUP BY 
-	 HoaDon.MaHoaDon ,
-  HoaDon.NgayTao ,
-  HoaDon.NgayNhanPhong ,
-  HoaDon.NgayTraPhong ,
-  HoaDon.ThanhTien ,
-  HoaDon.TaiKhoanNV ,
-  HoaDon.SoCMTKhachHang ,
-  HoaDon.MaKhuyenMai ,
-  Phong.SoPhong 
-
-SELECT
-HoaDon.MaHoaDon AS HoaDon_MaHoaDon,
-KhachHang.SoCMTKhachHang AS SoCMTKhachHang,
-KhachHang.TenKhachHang AS TenKhachHang,
-KhachHang.SoDienThoai  AS SoDienThoai,
-NhanVien.HoTen  AS HoTen,
-Phong.SoPhong  AS SoPhong,
-Phong.MaPhong AS MaPhong,
-LoaiPhong.DonGiaTheoNgay AS GIAPHONG,
-DichVu.MaDichVu  AS MaDichVu,
-COUNT(DichVu.MaDichVu) AS SOLAN,
-DichVu.TenDichVu  AS TenDichVu,
-DichVu.GiaDichVu  AS GiaDichVu,
-KhuyenMai.MaKhuyenMai  AS MaKhuyenMai,
-KhuyenMai.GiaTri AS GiaTri,
-HoaDon.MaHoaDon AS MaHoaDon,
-HoaDon.NgayTao AS NgayTao,
-HoaDon.NgayNhanPhong AS NgayNhanPhong,
-HoaDon.NgayTraPhong AS NgayTraPhong,
-ChiTietHoaDon.TongTien AS TongTien
-FROM
-dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu
-INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon
-INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong
-INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong
-INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV
-INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang
-INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai
-WHERE
-SoPhong = '101'
-GROUP BY 
-HoaDon.MaHoaDon ,
-KhachHang.SoCMTKhachHang ,
-KhachHang.TenKhachHang ,
-KhachHang.SoDienThoai ,
-NhanVien.HoTen ,
-Phong.SoPhong ,
-LoaiPhong.DonGiaTheoNgay,
-DichVu.MaDichVu ,
-DichVu.TenDichVu ,
-DichVu.GiaDichVu ,
-KhuyenMai.MaKhuyenMai ,
-KhuyenMai.GiaTri,
-HoaDon.NgayTao,
-HoaDon.NgayNhanPhong ,
-HoaDon.NgayTraPhong ,
-ChiTietHoaDon.TongTien ,
-HoaDon.MaHoaDon ,
-Phong.MaPhong
-
-
-
-
-SELECT HoaDon.MaHoaDon ,KhachHang.SoCMTKhachHang ,KhachHang.TenKhachHang ,KhachHang.SoDienThoai  ,NhanVien.HoTen  ,Phong.SoPhong ,Phong.MaPhong ,LoaiPhong.DonGiaTheoNgay,DichVu.MaDichVu  ,COUNT(DichVu.MaDichVu) AS SOLAN,DichVu.TenDichVu  ,DichVu.GiaDichVu  ,KhuyenMai.MaKhuyenMai  ,KhuyenMai.GiaTri,HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong,HoaDon.ThanhTien ,ChiTietHoaDon.TongTien FROM dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai WHERE SoPhong = '101' GROUP BY  HoaDon.MaHoaDon , KhachHang.SoCMTKhachHang , KhachHang.TenKhachHang , KhachHang.SoDienThoai , NhanVien.HoTen , Phong.SoPhong ,LoaiPhong.DonGiaTheoNgay,DichVu.MaDichVu ,DichVu.TenDichVu ,DichVu.GiaDichVu ,KhuyenMai.MaKhuyenMai ,KhuyenMai.GiaTri,HoaDon.NgayTao,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien,ChiTietHoaDon.TongTien ,HoaDon.MaHoaDon ,Phong.MaPhong
-
-
-SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.TaiKhoanNV , Phong.MaPhong, Phong.SoPhong  ,LoaiPhong.DonGiaTheoNgay ,  DichVu.MaDichVu  ,  COUNT(DichVu.MaDichVu) AS SOLAN,  DichVu.TenDichVu  ,  DichVu.GiaDichVu  ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong,  HoaDon.NgayTraPhong ,  ChiTietHoaDon.TongTien   FROM  dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu  INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong  INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV  INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang  INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai  WHERE  SoPhong = '101' GROUP BY   HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai , NhanVien.TaiKhoanNV,  Phong.MaPhong,Phong.SoPhong , LoaiPhong.DonGiaTheoNgay, DichVu.MaDichVu ,  DichVu.TenDichVu ,  DichVu.GiaDichVu ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri,  HoaDon.NgayTao,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,   ChiTietHoaDon.TongTien  
-
-
-INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
-
-
-SELECT HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien , HoaDon.TaiKhoanNV , HoaDon.SoCMTKhachHang , HoaDon.MaKhuyenMai AS MaKhuyenMai, Phong.SoPhong  FROM dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong WHERE SoPhong = '101' GROUP BY 	 HoaDon.MaHoaDon ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien ,  HoaDon.TaiKhoanNV ,  HoaDon.SoCMTKhachHang ,  HoaDon.MaKhuyenMai ,  Phong.SoPhong 
+update HoaDon set ThanhTien = '123' where MaKhuyenMai ='khtt2' 

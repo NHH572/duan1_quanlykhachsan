@@ -18,10 +18,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Minh Triet
- */
+
 public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
      DichVuDAO dvdao = new DichVuDAO();

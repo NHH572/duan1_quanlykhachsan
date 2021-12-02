@@ -6,6 +6,9 @@
 package test;
 
 import com.exemple.helper.JdbcHelper;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.Hashtable;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -19,30 +22,31 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author hp
  */
 public class Test_2 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Test_2
-     */
+    Connection con;
+    PreparedStatement pst;
     public Test_2() {
         initComponents();
     }
 
-   public void XuatHoaDon(int idhd){
+  public void XuatHoaDon(int idhd){
         try {
-            
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+
             Hashtable map = new Hashtable();
-            JasperReport report = JasperCompileManager.compileReport("src/com/exemple/views/XuatHoaDon.jrxml");
+            JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
             
             map.put("SoPhong", idhd);
-                  
-            JasperPrint p = JasperFillManager.fillReport(report,  map, JdbcHelper.con );
-            JasperViewer.viewReport(p, false);
-            JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+            JasperPrint p = JasperFillManager.fillReport(report,map, con);
+            JasperViewer.viewReport(p);
+            JasperExportManager.exportReportToPdfFile(p,"test.pdf");
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
+   
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
