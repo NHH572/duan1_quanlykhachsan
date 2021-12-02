@@ -223,17 +223,17 @@ GO
 -- CHI TIẾT VẬT DỤNG
 	INSERT INTO ChiTietVatDung
 	VALUES (1,1,2),(1,2,2),(1,3,2),(1,4,2),(1,5,4),
-	       (1,6,4),(1,7,4),(1,8,4),(1,9,4),(1,10,4),
+	    (1,6,4),(1,7,4),(1,8,4),(1,9,4),(1,10,4),
 		   (1,11,4),(1,12,4),(1,13,4),(1,14,4),(1,15,4),
 		   (1,16,4),(1,17,4),(1,18,4),(1,19,4),(1,20,4),
 		   (1,21,4),(1,22,4),(1,23,4),(1,24,4),(1,25,4),
 		   (2,1,2),(2,2,2),(2,3,2),(2,4,2),(2,5,4),
-	       (2,6,4),(2,7,4),(2,8,4),(2,9,4),(2,10,4),
+	    (2,6,4),(2,7,4),(2,8,4),(2,9,4),(2,10,4),
 		   (2,11,4),(2,12,4),(2,13,4),(2,14,4),(2,15,4),
 		   (2,16,4),(2,17,4),(2,18,4),(2,19,4),(2,20,4),
 		   (2,21,4),(2,22,4),(2,23,4),(2,24,4),(2,25,4),
 		   (4,1,2),(4,2,2),(4,3,2),(4,4,2),(4,5,2),
-	       (4,6,2),(4,7,2),(4,8,4),(4,9,4),(4,10,4),
+	    (4,6,2),(4,7,2),(4,8,4),(4,9,4),(4,10,4),
 		   (4,11,4),(4,12,4),(4,13,4),(4,14,4),(4,15,4),
 		   (4,16,4),(4,17,2),(4,18,2),(4,19,4),(4,20,2),
 		   (4,21,4),(4,22,4),(4,23,2),(4,24,4),(4,25,4)
@@ -353,11 +353,35 @@ select * from DatPhong;
 select * from LoaiPhong;
 select * from Phong;
 select * from DichVu;
-select * from hoadon;
+
 select * from ChiTietHoaDon;
+select * from hoadon;
 
-
-
+SELECT
+  HoaDon.MaHoaDon AS MaHoaDon,
+  HoaDon.NgayTao AS NgayTao,
+  HoaDon.NgayNhanPhong AS NgayNhanPhong,
+  HoaDon.NgayTraPhong AS NgayTraPhong,
+  HoaDon.ThanhTien AS ThanhTien,
+  HoaDon.TaiKhoanNV AS TaiKhoanNV,
+  HoaDon.SoCMTKhachHang AS SoCMTKhachHang,
+  HoaDon.MaKhuyenMai AS MaKhuyenMai,
+  Phong.SoPhong AS SoPhong
+FROM
+  dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
+  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong
+WHERE
+  SoPhong = '101'
+GROUP BY 
+	 HoaDon.MaHoaDon ,
+  HoaDon.NgayTao ,
+  HoaDon.NgayNhanPhong ,
+  HoaDon.NgayTraPhong ,
+  HoaDon.ThanhTien ,
+  HoaDon.TaiKhoanNV ,
+  HoaDon.SoCMTKhachHang ,
+  HoaDon.MaKhuyenMai ,
+  Phong.SoPhong 
 
 SELECT
 HoaDon.MaHoaDon AS HoaDon_MaHoaDon,
@@ -419,3 +443,6 @@ SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang , 
 
 
 INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
+
+
+SELECT HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien , HoaDon.TaiKhoanNV , HoaDon.SoCMTKhachHang , HoaDon.MaKhuyenMai AS MaKhuyenMai, Phong.SoPhong  FROM dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong WHERE SoPhong = '101' GROUP BY 	 HoaDon.MaHoaDon ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien ,  HoaDon.TaiKhoanNV ,  HoaDon.SoCMTKhachHang ,  HoaDon.MaKhuyenMai ,  Phong.SoPhong 

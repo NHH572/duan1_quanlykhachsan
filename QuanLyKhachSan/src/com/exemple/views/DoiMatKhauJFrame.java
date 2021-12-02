@@ -26,7 +26,6 @@ public class DoiMatKhauJFrame extends javax.swing.JFrame {
         } else {
             txtTendangnhap.setText(Auth.user.getMaNV());
         }
-        init();
     }
     
 
