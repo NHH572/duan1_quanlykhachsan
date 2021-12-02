@@ -97,7 +97,7 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
                 hd.getMaGiamGia()
                 );
     }
-     
+    
      public void insertChiTietHoaDon(HoaDonLoadTable hd){
          String sql = "INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien) VALUES (?,?,?,?,?)";
         JdbcHelper.executeUpdate(sql, 

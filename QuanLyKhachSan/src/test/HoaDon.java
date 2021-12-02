@@ -8,12 +8,23 @@ import com.exemple.controller.TableHoaDonDAO;
 import com.exemple.entity.Phong;
 import com.exemple.entity.TableHoaDon;
 import com.exemple.helper.MsgBox;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class HoaDon extends javax.swing.JFrame {
-
+  Connection con;
+    PreparedStatement pst;
     DichVuDAO dvdao = new DichVuDAO();
     PhongDAO pdao = new PhongDAO();
     LoadTableHoaDonDAO lthdDao = new LoadTableHoaDonDAO();
@@ -191,7 +202,23 @@ public class HoaDon extends javax.swing.JFrame {
         String soPhong2 = String.valueOf(soPhong);
         return tinhtien(soPhong);
     }
+    public void XuatHoaDon(){
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
 
+            Hashtable map = new Hashtable();
+            JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
+            int soPhong = (int) cboPhong.getSelectedItem();
+            map.put("SoPhong", soPhong);
+            JasperPrint p = JasperFillManager.fillReport(report,map, con);
+            JasperViewer.viewReport(p);
+            JasperExportManager.exportReportToPdfFile(p,"test.pdf");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -637,6 +664,7 @@ public class HoaDon extends javax.swing.JFrame {
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         this.insert();
+        this.XuatHoaDon();
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
