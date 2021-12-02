@@ -87,5 +87,9 @@ public class QuanLyPhongDAO extends EduSysDAO<Quanlyphong, String> {
     public List<Quanlyphong> selectBykeyword (String ten){
         return selectBySql(selectByTen,"%"+ten+"%");
     }
-
+    public Quanlyphong selectByMaPhong(int maPhong) {
+        String sql ="select p.MaPhong,lp.MaLoaiPhong,p.SoPhong,lp.TenLoaiPhong,p.Lau,lp.DonGiaTheoNgay,lp.DonGiaTheoGio,p.TrangThai,lp.MucTangCuoiTuan,lp.MucTangNgayLe,lp.MoTa from LoaiPhong lp inner join Phong p on lp.MaLoaiPhong=p.MaLoaiPhong where p.MaPhong=?";
+        List<Quanlyphong> list = this.selectBySql(selectByTen,maPhong);
+        return list.get(0);
+    }
 }

@@ -41,20 +41,23 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
      */
     public QuanLyPhongJPanel() {
         initComponents();
-        fillTable();
-        fillComBoBoxLoaiPhong();
-      
-        
-
+        init();
     }
 
+    private void init() {
+        fillTable();
+        fillComBoBoxLoaiPhong();
+//        if (SoDoPhongJPanel.maPhong != 0) {
+//            tblQuanLyPhongClick(SoDoPhongJPanel.maPhong - 1);
+//        }
+    }
+    
     void fillTable() {
-        
         DefaultTableModel model = (DefaultTableModel) tblQuanLyPhong.getModel();
         model.setRowCount(0);
-        String tenlp =txtSearch.getText();
+        String tenlp = txtSearch.getText();
         List<Quanlyphong> list = qlpdao.selectBykeyword(tenlp);
-       // List<Quanlyphong> list = qlpdao.selectPhong();
+        // List<Quanlyphong> list = qlpdao.selectPhong();
         for (Quanlyphong ql : list) {
             Object[] row = {ql.getMaPhong(), ql.getMaLoaiPhong(), ql.getSoPhong(), ql.getTenLoaiPhong(), ql.getLau(), ql.getDonGiaTheoNgay(),
                 ql.getDonGiaTheoGio(), ql.getTrangThai(), ql.getMucTangCuoiTuan(), ql.getMucTangNgayLe(), ql.getMoTa()};
@@ -71,10 +74,9 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
         updateStatus();
     }
-    
-    
+
     void ChonMaLoaiPhong() {
-        try {     
+        try {
             LoaiPhong lp = (LoaiPhong) cboMaLoaiPhong.getSelectedItem();
             txtMaLoaiPhong.setText(Integer.valueOf(lp.getMaLoaiPhong()).toString());
             txtTenLoaiPhong.setText(lp.getTenLoaiPhong());
@@ -92,7 +94,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     }
 
     void updateStatus() {
-     boolean edit = (this.row >= 0);
+        boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblQuanLyPhong.getRowCount() - 1);
         btnFirst.setEnabled(edit && !first);
@@ -101,19 +103,17 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         btnLast.setEnabled(edit && !last);
     }
 
-    
-    
     Phong getForm() {
         Phong p = new Phong();
         p.setMaPhong(Integer.valueOf(txtMaPhong.getText()));
         p.setMaLoaiPhong(Integer.valueOf(cboMaLoaiPhong.getSelectedIndex()));
         p.setSoPhong(Integer.valueOf(txtSoPhong.getText()));
         p.setLau(Integer.valueOf(txtLau.getText()));
-        p.setTrangThai(String.valueOf(cboTrangThai.getSelectedItem()).toString());   
+        p.setTrangThai(String.valueOf(cboTrangThai.getSelectedItem()).toString());
         return p;
     }
-    
-    private void clearText(){
+
+    private void clearText() {
         txtMaPhong.setText("");
         txtMaLoaiPhong.setText("");
         txtSoPhong.setText("");
@@ -124,11 +124,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         txtGiaSauMotGio.setText("");
         txtGiaTheoCuoiTuan.setText("");
         txtGiaTheoNgayLe.setText("");
-        txtMoTa.setText("");       
+        txtMoTa.setText("");
     }
-    
-    private boolean checkNull(JTextField txt){
-            if (txt.getText().trim().length() > 0) {
+
+    private boolean checkNull(JTextField txt) {
+        if (txt.getText().trim().length() > 0) {
             txt.setBackground(Color.white);
             return true;
         } else {
@@ -137,29 +137,28 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             return false;
         }
     }
-        private boolean checkNumber(JTextField txt){
-        try{
+
+    private boolean checkNumber(JTextField txt) {
+        try {
             Float.parseFloat(txt.getText());
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             MsgBox.alert(this, "Dữ liệu phải là số");
             return false;
         }
     }
-        
-  
-        
-           void first() {
+
+    void first() {
         this.row = 0;
-      this.showInformation();
-      updateStatus();
+        this.showInformation();
+        updateStatus();
     }
 
     void prev() {
         if (this.row > 0) {
             this.row--;
-         this.showInformation();
-         updateStatus();
+            this.showInformation();
+            updateStatus();
         }
     }
 
@@ -173,11 +172,9 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
     void last() {
         this.row = tblQuanLyPhong.getRowCount() - 1;
-     this.showInformation();
-     updateStatus();
+        this.showInformation();
+        updateStatus();
     }
-
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -613,16 +610,15 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         ChonMaLoaiPhong();
     }//GEN-LAST:event_cboMaLoaiPhongActionPerformed
 
-    
-    
-     private String getTextFromTable(int col) {
+    private String getTextFromTable(int col) {
         return String.valueOf(tblQuanLyPhong.getValueAt(row, col));
     }
+
     private void showInformation() {
         txtMaPhong.setText(getTextFromTable(0));
         txtMaLoaiPhong.setText(getTextFromTable(1));
         txtSoPhong.setText(getTextFromTable(2));
-        txtLau.setText(getTextFromTable(4));  
+        txtLau.setText(getTextFromTable(4));
         txtDonGiaTheoNgay.setText(getTextFromTable(5));
         txtDonGiaTheoGio.setText(getTextFromTable(6));
         txtGiaTheoCuoiTuan.setText(getTextFromTable(8));
@@ -630,29 +626,37 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         txtMoTa.setText(getTextFromTable(10));
         txtTenLoaiPhong.setText(getTextFromTable(3));
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaLoaiPhong.getModel(); //kết nối model với cbo
-       // model.removeAllElements();
-        model.setSelectedItem(getTextFromTable(3).toString());             
-      cboTrangThai.setSelectedItem(getTextFromTable(7));
-        
+        // model.removeAllElements();
+        model.setSelectedItem(getTextFromTable(3).toString());
+        cboTrangThai.setSelectedItem(getTextFromTable(7));
+
     }
-    private void tblQuanLyPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyPhongMouseClicked
-        // TODO add your handling code here:
+
+    private void tblQuanLyPhongClick(int i) {
         TableModel model = tblQuanLyPhong.getModel();
         LoaiPhong lp = new LoaiPhong();
-         int i = tblQuanLyPhong.getSelectedRow();
-            row = tblQuanLyPhong.getSelectedRow();
+        row = tblQuanLyPhong.getSelectedRow();
         if (row >= 0) {
-            showInformation(); 
+            showInformation();
             updateStatus();
         }
         tabs.setSelectedIndex(0);
-     
-           
+    }
+    private void tblQuanLyPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyPhongMouseClicked
+        TableModel model = tblQuanLyPhong.getModel();
+        LoaiPhong lp = new LoaiPhong();
+        int i = tblQuanLyPhong.getSelectedRow();
+        row = tblQuanLyPhong.getSelectedRow();
+        if (row >= 0) {
+            showInformation();
+            updateStatus();
+        }
+        tabs.setSelectedIndex(0);
+
     }//GEN-LAST:event_tblQuanLyPhongMouseClicked
 
-    
-    private boolean Insert(){
-        try { 
+    private boolean Insert() {
+        try {
             PhongDAO pdao = new PhongDAO();
             Phong p = new Phong();
             p.setSoPhong(Integer.valueOf(txtSoPhong.getText()));
@@ -660,25 +664,25 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             p.setTrangThai(String.valueOf(cboTrangThai.getSelectedItem()));
             p.setMaLoaiPhong(Integer.valueOf(txtMaLoaiPhong.getText()));
             pdao.insert(p);
-           return true;
-            
+            return true;
+
         } catch (Exception e) {
         }
         return false;
     }
-    
+
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-      if(checkNull(txtSoPhong) && checkNumber(txtSoPhong) && checkNull(txtLau) && checkNumber(txtLau) && 
-              checkNull(txtMaLoaiPhong) && checkNumber(txtMaLoaiPhong)){
-         if (Insert()){
-          fillTable();
-          MsgBox.alert(this,"Thêm thành công");
-      }else{
-          MsgBox.alert(this, "Thêm thất bại");
-      }
-      } 
-        
-      
+        if (checkNull(txtSoPhong) && checkNumber(txtSoPhong) && checkNull(txtLau) && checkNumber(txtLau)
+                && checkNull(txtMaLoaiPhong) && checkNumber(txtMaLoaiPhong)) {
+            if (Insert()) {
+                fillTable();
+                MsgBox.alert(this, "Thêm thành công");
+            } else {
+                MsgBox.alert(this, "Thêm thất bại");
+            }
+        }
+
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
@@ -686,30 +690,29 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         clearText();
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private boolean Update(){
-        if(checkNull(txtMaLoaiPhong)){
-           
-           Phong p = new Phong();
-           int mp = (int) tblQuanLyPhong.getValueAt(row, 0);
-           p.setMaPhong(mp);
-           p.setTrangThai(String.valueOf(cboTrangThai.getSelectedItem()));
-           p.setMaLoaiPhong(Integer.valueOf(txtMaLoaiPhong.getText()));
-          pdao.update(p);
-          fillTable();
-          MsgBox.alert(this,"Sửa trạng thái thành công");                            
-        }else{
-            MsgBox.alert(this,"Sửa trạng thái thất bại");
-        }  
-        
-        
+    private boolean Update() {
+        if (checkNull(txtMaLoaiPhong)) {
+
+            Phong p = new Phong();
+            int mp = (int) tblQuanLyPhong.getValueAt(row, 0);
+            p.setMaPhong(mp);
+            p.setTrangThai(String.valueOf(cboTrangThai.getSelectedItem()));
+            p.setMaLoaiPhong(Integer.valueOf(txtMaLoaiPhong.getText()));
+            pdao.update(p);
+            fillTable();
+            MsgBox.alert(this, "Sửa trạng thái thành công");
+        } else {
+            MsgBox.alert(this, "Sửa trạng thái thất bại");
+        }
+
         return false;
     }
-    
-    
+
+
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         Update();
-       
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
@@ -717,22 +720,21 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         fillTable();
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    
-    private boolean Delete(){
+    private boolean Delete() {
         try {
-            int mp = (int) tblQuanLyPhong.getValueAt(row,0);
+            int mp = (int) tblQuanLyPhong.getValueAt(row, 0);
             pdao.delete(mp);
-                return true;
+            return true;
         } catch (Exception e) {
         }
         return false;
     }
-    
+
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-            if (Delete()) {
+        if (Delete()) {
             if (MsgBox.confirm(this, "Bạn có muốn xóa không?")) {
-               fillTable();
+                fillTable();
                 clearText();
                 MsgBox.alert(this, "Xóa thành công!");
             }
@@ -755,8 +757,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         next();
     }//GEN-LAST:event_btnNextActionPerformed
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;

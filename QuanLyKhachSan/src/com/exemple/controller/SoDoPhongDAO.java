@@ -28,7 +28,7 @@ public class SoDoPhongDAO {
     public static Color colorDefault = new Color(102, 102, 102);
     public static Color colorChange = new Color(153, 153, 153);
     private List<DanhMucSoDoPhong> listDanhMucSoDoPhong = null;
-    String sqlSoDoPhong = "select p.SoPhong,lp.TenLoaiPhong,p.TrangThai from LoaiPhong lp inner join Phong p on lp.MaLoaiPhong=p.MaLoaiPhong";
+    String sqlSoDoPhong = "select p.MaPhong,p.SoPhong,lp.TenLoaiPhong,p.TrangThai from LoaiPhong lp inner join Phong p on lp.MaLoaiPhong=p.MaLoaiPhong";
 
     public SoDoPhongDAO() {
     }
@@ -61,6 +61,7 @@ public class SoDoPhongDAO {
 
     public SoDoPhong readFromResultSet(ResultSet rs) throws SQLException {
         SoDoPhong sdp = new SoDoPhong();
+        sdp.setMaPhong(rs.getInt("MaPhong"));
         sdp.setSoPhong(rs.getInt("SoPhong"));
         sdp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
         sdp.setTrangThai(rs.getString("TrangThai"));

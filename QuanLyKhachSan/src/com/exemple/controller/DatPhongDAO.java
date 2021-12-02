@@ -50,7 +50,7 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
                 + " where MaDatPhong=?";
         JdbcHelper.executeUpdate(sql, dp.getNgayDat(), dp.getNgayNhanPhong(),
                 dp.getNgayMuonTra(), dp.getTamTinh(), dp.getMaPhong(), dp.getSoCMT(),
-                dp.getTaiKhoanNV(), dp.getMaLoaiPhong());
+                dp.getTaiKhoanNV(), dp.getMaLoaiPhong(),dp.getMaDatPhong());
     }
 
     public void updateDatPhong(Integer maPhong, String taiKhoanNV, Integer maDatPhong, Integer maLoaiPhong) {
