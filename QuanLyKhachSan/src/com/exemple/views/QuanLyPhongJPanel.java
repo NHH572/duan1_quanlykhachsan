@@ -256,6 +256,10 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Đơn giá/ngày:");
 
+        txtMaPhong.setName("Mã phòng"); // NOI18N
+
+        txtLau.setName("Lầu"); // NOI18N
+
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chính sách tăng giá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -362,6 +366,8 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Trạng thái");
 
+        txtSoPhong.setName("Tên phòng"); // NOI18N
+
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Mô tả:");
 
@@ -377,6 +383,8 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel13.setText("Giá sau một giờ");
+
+        txtMaLoaiPhong.setName("Mã loại phòng"); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Chọn loại phòng");
