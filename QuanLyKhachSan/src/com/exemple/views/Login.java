@@ -8,6 +8,7 @@ import com.exemple.controller.NhanVienDAO;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -132,6 +133,11 @@ public class Login extends javax.swing.JFrame {
         txtTendangnhap.setForeground(new java.awt.Color(102, 102, 102));
         txtTendangnhap.setText("Enter UserName");
         txtTendangnhap.setBorder(null);
+        txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTendangnhapActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtTendangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 390, 30));
 
         chkHienMatKhau.setBackground(new java.awt.Color(0, 0, 0));
@@ -198,8 +204,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+public void dangnhap() {
         String manv = txtTendangnhap.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
@@ -220,6 +225,12 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
+        }
+    }
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        if (utilityHelper.checkNullText(txtTendangnhap)
+                && utilityHelper.checkNullPass(txtMatkhau)) {
+            this.dangnhap();
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
@@ -243,8 +254,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_chkHienMatKhauActionPerformed
 
     private void lblQuenMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMatKhauMouseClicked
-       new QuenMatKhauJDialog(this, true).setVisible(true);
+        new QuenMatKhauJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_lblQuenMatKhauMouseClicked
+
+    private void txtTendangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTendangnhapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTendangnhapActionPerformed
 
     /**
      * @param args the command line arguments

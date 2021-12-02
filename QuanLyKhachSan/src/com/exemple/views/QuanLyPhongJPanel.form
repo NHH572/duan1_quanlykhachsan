@@ -267,10 +267,16 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMaPhong">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="M&#xe3; ph&#xf2;ng" noResource="true"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTenLoaiPhong">
             </Component>
             <Component class="javax.swing.JTextField" name="txtLau">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="L&#x1ea7;u" noResource="true"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDonGiaTheoNgay">
             </Component>
@@ -446,6 +452,9 @@
             <Component class="javax.swing.JTextField" name="txtGiaSauMotGio">
             </Component>
             <Component class="javax.swing.JTextField" name="txtSoPhong">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="T&#xea;n ph&#xf2;ng" noResource="true"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -494,6 +503,9 @@
             <Component class="javax.swing.JTextField" name="txtDonGiaTheoGio">
             </Component>
             <Component class="javax.swing.JTextField" name="txtMaLoaiPhong">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="M&#xe3; lo&#x1ea1;i ph&#xf2;ng" noResource="true"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
