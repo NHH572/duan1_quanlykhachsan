@@ -734,39 +734,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         fillToTableDatPhong();
     }//GEN-LAST:event_txtSearchKeyReleased
     private void showInformation() {
-<<<<<<< Updated upstream
-        int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
-        DatPhongDAO dpDAO = new DatPhongDAO();
-        DatPhong dp = dpDAO.selectById(maDatPhong);
-        int maLoaiPhong = dp.getMaLoaiPhong();
-        cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
-        txtNgayDat.setDate(dp.getNgayDat());
-        txtNgayNhanPhong.setDate(dp.getNgayNhanPhong());
-        txtNgayMuonTra.setDate(dp.getNgayMuonTra());
-        int tamTinh = dp.getTamTinh() * lpDAO.selectByDonGiaTheoNgay(maLoaiPhong);
-        txtTamTinh.setText(String.valueOf(tamTinh));
-        if (dp.getMaPhong() == 0) {
-            lblTrangThai.setText("Chưa xác nhận");
-            lblTrangThai.setForeground(Color.red);
-        } else {
-            lblTrangThai.setText("Đã xác nhận");
-            lblTrangThai.setForeground(Color.green);
-        }
-        txtSoCMTKH.setText(dp.getSoCMT());
-        txtHoTen.setText(dp.getHoTen());
-        if (dp.isGioiTinh()) {
-            rdoNu.setSelected(true);
-        } else {
-            rdoNam.setSelected(true);
-        }
-        txtNgaySinh.setDate(dp.getNgaySinh());
-        txtSoDienThoai.setText(dp.getSoDienThoai());
-        txtEmail.setText(dp.getEmail());
-        txtQuocTich.setText(dp.getQuocTich());
-        PhongDAO pDAO = new PhongDAO();
-        List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(maLoaiPhong));
-        fillTotablePhongTrong(listPhong);
-=======
         try {
             int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
             DatPhongDAO dpDAO = new DatPhongDAO();
@@ -802,8 +769,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
->>>>>>> Stashed changes
     }
 
     private void fillTotablePhongTrong(List<Phong> listPhong) {
