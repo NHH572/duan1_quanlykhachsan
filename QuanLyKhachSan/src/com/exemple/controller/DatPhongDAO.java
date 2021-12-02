@@ -193,5 +193,4 @@ public class DatPhongDAO extends EduSysDAO<DatPhong, Integer> {
         List<DatPhong> list = selectBySql(sql, maDatPhong);
         return list.size() > 0 ? list.get(0) : null;
     }
-
 }

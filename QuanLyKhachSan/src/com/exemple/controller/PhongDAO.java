@@ -21,7 +21,7 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
     String UPDATE_SQL = "UPDATE Phong SET TrangThai=?, MaLoaiPhong=? WHERE MaPhong=?";
     String DELETE_SQL = "DELETE from Phong Where MaPhong=?";
     String SELECT_ALL_SQL = "SELECT*from Phong";
-    String SELECT_BY_TRANGTHAI ="select * from Phong where TrangThai ='Đang thuê'";
+    String SELECT_BY_TRANGTHAI = "select * from Phong where TrangThai ='Đang thuê'";
     String SELECT_BY_ID_SQL = "select * from Phong where MaPhong= ?";
 
     @Override
@@ -48,9 +48,10 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
         return this.selectBySql(SELECT_BY_TRANGTHAI);
     }
 
+
     @Override
     public Phong selectById(String key) {
-        List<Phong> list = this.selectBySql(SELECT_BY_ID_SQL, key);
+        List<Phong> list = this.selectBySql(SELECT_BY_ID_SQL, Integer.valueOf(key));
         if (list.isEmpty()) {
             return null;
         }
@@ -90,13 +91,19 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
         JdbcHelper.executeUpdate(DELETE_SQL, mp);
     }
 
-    public List<Phong> selectByMaLoaiPhong(String maLoaiPhong){
-        int maLoaiPhongInt=Integer.parseInt(maLoaiPhong);
-        String sql="Select * from Phong where MaLoaiPhong=? and TrangThai=?";
-        return selectBySql(sql, maLoaiPhongInt,"Trống");
+    public List<Phong> selectByMaLoaiPhong(String maLoaiPhong) {
+        int maLoaiPhongInt = Integer.parseInt(maLoaiPhong);
+        String sql = "Select * from Phong where MaLoaiPhong=? and TrangThai=?";
+        return selectBySql(sql, maLoaiPhongInt, "Trống");
     }
-    public void updateTrangThai(int maPhong){
-        String sql="update Phong set TrangThai=? where MaPhong=?";
-        JdbcHelper.executeUpdate(sql, "Đang thuê",maPhong);
+
+    public void updateTrangThai(int maPhong) {
+        String sql = "update Phong set TrangThai=? where MaPhong=?";
+        JdbcHelper.executeUpdate(sql, "Đang thuê", maPhong);
+    }
+
+    public void updateTrangThaiTrong(int maPhong) {
+        String sql = "update Phong set TrangThai=? where MaPhong=?";
+        JdbcHelper.executeUpdate(sql, "Trống", maPhong);
     }
 }
