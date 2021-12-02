@@ -28,13 +28,10 @@ public class DoiMatKhauJFrame extends javax.swing.JFrame {
         }
         init();
     }
+    
 
-    void init() {
-
-        setTitle("Đổi Mật Khẩu")
+        
                 ;
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
