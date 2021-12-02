@@ -5,6 +5,7 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.ChuyenManHinhController;
 import com.exemple.controller.SoDoPhongDAO;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.SoDoPhong;
@@ -13,6 +14,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.GroupLayout;
@@ -28,8 +31,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  */
 public class SoDoPhongJPanel extends javax.swing.JPanel {
 
-    List<DanhMucSoDoPhong> listDanhMucSoDoPhong = new ArrayList<>();
-    List<SoDoPhong> listDataDanhMucSoDoPhong = new ArrayList<>();
+    public List<DanhMucSoDoPhong> listDanhMucSoDoPhong = new ArrayList<>();
+    public static int maPhong = 0;
 
     public SoDoPhongJPanel() {
         initComponents();
@@ -38,7 +41,7 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
 
     private void init() {
         SoDoPhongDAO sdpDAO = new SoDoPhongDAO();
-        listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
+        List<SoDoPhong> listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
         addToListDanhMucSoDoPhong();
         sdpDAO.setInformationSoDoPhong(listDanhMucSoDoPhong, listDataDanhMucSoDoPhong);
         SoDoPhongDAO spDAO = new SoDoPhongDAO();
@@ -394,14 +397,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong1.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong1.setText("Số phòng");
         panel1.add(lblSoPhong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai1.setText("Loại:");
         panel1.add(lblLoai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai1.setText("Trạng thái:");
         panel1.add(lblTrangThai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -430,14 +435,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong2.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong2.setText("Số phòng");
         panel2.add(lblSoPhong2, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai2.setText("Loại:");
         panel2.add(lblLoai2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai2.setText("Trạng thái:");
         panel2.add(lblTrangThai2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -461,14 +468,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong3.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong3.setText("Số phòng");
         panel3.add(lblSoPhong3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai3.setText("Loại:");
         panel3.add(lblLoai3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai3.setText("Trạng thái:");
         panel3.add(lblTrangThai3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -492,14 +501,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong4.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong4.setText("Số phòng");
         panel4.add(lblSoPhong4, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai4.setText("Loại:");
         panel4.add(lblLoai4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai4.setText("Trạng thái:");
         panel4.add(lblTrangThai4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -523,14 +534,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong5.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong5.setText("Số phòng");
         panel5.add(lblSoPhong5, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai5.setText("Loại:");
         panel5.add(lblLoai5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai5.setText("Trạng thái:");
         panel5.add(lblTrangThai5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -554,14 +567,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel31.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong31.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong31.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong31.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong31.setText("Số phòng");
         panel31.add(lblSoPhong31, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai31.setText("Loại:");
         panel31.add(lblLoai31, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai31.setText("Trạng thái:");
         panel31.add(lblTrangThai31, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -605,14 +620,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong6.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong6.setText("Số phòng");
         panel6.add(lblSoPhong6, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai6.setText("Loại:");
         panel6.add(lblLoai6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai6.setText("Trạng thái:");
         panel6.add(lblTrangThai6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -636,14 +653,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong7.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong7.setText("Số phòng");
         panel7.add(lblSoPhong7, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai7.setText("Loại:");
         panel7.add(lblLoai7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai7.setText("Trạng thái:");
         panel7.add(lblTrangThai7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -667,14 +686,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong8.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong8.setText("Số phòng");
         panel8.add(lblSoPhong8, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai8.setText("Loại:");
         panel8.add(lblLoai8, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai8.setText("Trạng thái:");
         panel8.add(lblTrangThai8, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -698,14 +719,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong9.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong9.setText("Số phòng");
         panel9.add(lblSoPhong9, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai9.setText("Loại:");
         panel9.add(lblLoai9, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai9.setText("Trạng thái:");
         panel9.add(lblTrangThai9, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -729,14 +752,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong10.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong10.setText("Số phòng");
         panel10.add(lblSoPhong10, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai10.setText("Loại:");
         panel10.add(lblLoai10, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai10.setText("Trạng thái:");
         panel10.add(lblTrangThai10, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -760,14 +785,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel32.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong32.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong32.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong32.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong32.setText("Số phòng");
         panel32.add(lblSoPhong32, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai32.setText("Loại:");
         panel32.add(lblLoai32, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai32.setText("Trạng thái:");
         panel32.add(lblTrangThai32, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -811,14 +838,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong11.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong11.setText("Số phòng");
         panel11.add(lblSoPhong11, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai11.setText("Loại:");
         panel11.add(lblLoai11, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai11.setText("Trạng thái:");
         panel11.add(lblTrangThai11, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -842,14 +871,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong12.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong12.setText("Số phòng");
         panel12.add(lblSoPhong12, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai12.setText("Loại:");
         panel12.add(lblLoai12, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai12.setText("Trạng thái:");
         panel12.add(lblTrangThai12, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -873,14 +904,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong13.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong13.setText("Số phòng");
         panel13.add(lblSoPhong13, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai13.setText("Loại:");
         panel13.add(lblLoai13, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai13.setText("Trạng thái:");
         panel13.add(lblTrangThai13, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -904,14 +937,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong14.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong14.setText("Số phòng");
         panel14.add(lblSoPhong14, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai14.setText("Loại:");
         panel14.add(lblLoai14, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai14.setText("Trạng thái:");
         panel14.add(lblTrangThai14, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -935,14 +970,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong15.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong15.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong15.setText("Số phòng");
         panel15.add(lblSoPhong15, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai15.setText("Loại:");
         panel15.add(lblLoai15, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai15.setText("Trạng thái:");
         panel15.add(lblTrangThai15, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -966,14 +1003,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel33.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong33.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong33.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong33.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong33.setText("Số phòng");
         panel33.add(lblSoPhong33, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai33.setText("Loại:");
         panel33.add(lblLoai33, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai33.setText("Trạng thái:");
         panel33.add(lblTrangThai33, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1017,14 +1056,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong16.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong16.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong16.setText("Số phòng");
         panel16.add(lblSoPhong16, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai16.setText("Loại:");
         panel16.add(lblLoai16, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai16.setText("Trạng thái:");
         panel16.add(lblTrangThai16, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1048,14 +1089,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong17.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong17.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong17.setText("Số phòng");
         panel17.add(lblSoPhong17, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai17.setText("Loại:");
         panel17.add(lblLoai17, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai17.setText("Trạng thái:");
         panel17.add(lblTrangThai17, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1079,14 +1122,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong18.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong18.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong18.setText("Số phòng");
         panel18.add(lblSoPhong18, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai18.setText("Loại:");
         panel18.add(lblLoai18, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai18.setText("Trạng thái:");
         panel18.add(lblTrangThai18, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1110,14 +1155,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong19.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong19.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong19.setText("Số phòng");
         panel19.add(lblSoPhong19, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai19.setText("Loại:");
         panel19.add(lblLoai19, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai19.setText("Trạng thái:");
         panel19.add(lblTrangThai19, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1141,14 +1188,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong20.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong20.setText("Số phòng");
         panel20.add(lblSoPhong20, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai20.setText("Loại:");
         panel20.add(lblLoai20, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai20.setText("Trạng thái:");
         panel20.add(lblTrangThai20, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1172,14 +1221,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel34.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong34.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong34.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong34.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong34.setText("Số phòng");
         panel34.add(lblSoPhong34, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai34.setText("Loại:");
         panel34.add(lblLoai34, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai34.setText("Trạng thái:");
         panel34.add(lblTrangThai34, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1223,14 +1274,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong21.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong21.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong21.setText("Số phòng");
         panel21.add(lblSoPhong21, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai21.setText("Loại:");
         panel21.add(lblLoai21, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai21.setText("Trạng thái:");
         panel21.add(lblTrangThai21, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1254,14 +1307,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong22.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong22.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong22.setText("Số phòng");
         panel22.add(lblSoPhong22, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai22.setText("Loại:");
         panel22.add(lblLoai22, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai22.setText("Trạng thái:");
         panel22.add(lblTrangThai22, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1285,14 +1340,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong23.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong23.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong23.setText("Số phòng");
         panel23.add(lblSoPhong23, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai23.setText("Loại:");
         panel23.add(lblLoai23, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai23.setText("Trạng thái:");
         panel23.add(lblTrangThai23, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1316,14 +1373,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong24.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong24.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong24.setText("Số phòng");
         panel24.add(lblSoPhong24, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai24.setText("Loại:");
         panel24.add(lblLoai24, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai24.setText("Trạng thái:");
         panel24.add(lblTrangThai24, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1347,14 +1406,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong25.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong25.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong25.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong25.setText("Số phòng");
         panel25.add(lblSoPhong25, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai25.setText("Loại:");
         panel25.add(lblLoai25, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai25.setText("Trạng thái:");
         panel25.add(lblTrangThai25, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1378,14 +1439,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong35.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong35.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong35.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong35.setText("Số phòng");
         panel35.add(lblSoPhong35, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai35.setText("Loại:");
         panel35.add(lblLoai35, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai35.setText("Trạng thái:");
         panel35.add(lblTrangThai35, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1424,14 +1487,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panel26.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong26.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong26.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong26.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong26.setText("Số phòng");
         panel26.add(lblSoPhong26, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai26.setText("Loại:");
         panel26.add(lblLoai26, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai26.setText("Trạng thái:");
         panel26.add(lblTrangThai26, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1450,14 +1515,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panel27.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong27.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong27.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong27.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong27.setText("Số phòng");
         panel27.add(lblSoPhong27, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai27.setText("Loại:");
         panel27.add(lblLoai27, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai27.setText("Trạng thái:");
         panel27.add(lblTrangThai27, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1476,14 +1543,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panel28.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong28.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong28.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong28.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong28.setText("Số phòng");
         panel28.add(lblSoPhong28, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai28.setText("Loại:");
         panel28.add(lblLoai28, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai28.setText("Trạng thái:");
         panel28.add(lblTrangThai28, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1502,14 +1571,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panel29.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel29.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong29.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong29.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong29.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong29.setText("Số phòng");
         panel29.add(lblSoPhong29, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai29.setText("Loại:");
         panel29.add(lblLoai29, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai29.setText("Trạng thái:");
         panel29.add(lblTrangThai29, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1528,14 +1599,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         panel30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel30.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong30.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong30.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong30.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong30.setText("Số phòng");
         panel30.add(lblSoPhong30, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai30.setText("Loại:");
         panel30.add(lblLoai30, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai30.setText("Trạng thái:");
         panel30.add(lblTrangThai30, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 
@@ -1559,14 +1632,16 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         });
         panel36.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSoPhong36.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSoPhong36.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblSoPhong36.setForeground(new java.awt.Color(255, 255, 255));
         lblSoPhong36.setText("Số phòng");
         panel36.add(lblSoPhong36, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 9, -1, -1));
 
+        lblLoai36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLoai36.setText("Loại:");
         panel36.add(lblLoai36, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
+        lblTrangThai36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTrangThai36.setText("Trạng thái:");
         panel36.add(lblTrangThai36, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 62, -1, -1));
 

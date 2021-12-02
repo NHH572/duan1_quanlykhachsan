@@ -22,9 +22,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import com.exemple.entity.DanhMuc;
+import com.exemple.entity.DanhMucSoDoPhong;
+import com.exemple.entity.SoDoPhong;
 import com.exemple.views.HoTroJPanel;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
 import com.exemple.views.SoDoPhongJPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -32,12 +36,13 @@ import com.exemple.views.SoDoPhongJPanel;
  */
 public class ChuyenManHinhController {
 
-    public static Color colorDefault = new Color(77,73,73);
-    public static Color colorChange = new Color(212,187,0);
-    public static Color colorHover = new Color(212,187,0);
+    public static Color colorDefault = new Color(77, 73, 73);
+    public static Color colorChange = new Color(212, 187, 0);
+    public static Color colorHover = new Color(212, 187, 0);
     private JPanel mainPanel;
     private String kindSelected = "";
     private List<DanhMuc> listDanhMuc = null;
+    private List<DanhMucSoDoPhong> listDanhMucSoDoPhong = null;
 
     public ChuyenManHinhController(JPanel mainPanel) {
         this.mainPanel = mainPanel;
@@ -60,7 +65,7 @@ public class ChuyenManHinhController {
         for (DanhMuc item : listDanhMuc) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb(), item.getObq()));
         }
-    }
+    }   
 
     class LabelEvent implements MouseInputListener {
 

@@ -6,15 +6,22 @@
 package com.exemple.views;
 
 import com.exemple.controller.ChuyenManHinhController;
+import static com.exemple.controller.ChuyenManHinhController.colorDefault;
 import com.exemple.entity.DanhMuc;
+import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.NhanVien;
+import com.exemple.entity.SoDoPhong;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import static com.exemple.views.SoDoPhongJPanel.maPhong;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +37,9 @@ import javax.swing.JPanel;
  */
 public class TrangChuJrame extends javax.swing.JFrame {
 
+//    public static Color colorDefault = new Color(77, 73, 73);
+//    public static Color colorChange = new Color(212, 187, 0);
+//    public static Color colorHover = new Color(212, 187, 0);
     ChuyenManHinhController controller;
 
     public TrangChuJrame() {
@@ -56,8 +66,35 @@ public class TrangChuJrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPanel.setPreferredSize(new Dimension(1320, 700));
         setTxtXinChao();
+//        setEventClickButton();
 
     }
+
+//    public void setEventClickButton() {
+//        for (int i = 0; i < listDanhMucSoDoPhong.size(); i++) {
+//            DanhMucSoDoPhong itemDanhMucSoDoPhong = listDanhMucSoDoPhong.get(i);
+//            SoDoPhong itemSoDoPhong = listDataDanhMucSoDoPhong.get(i);
+//            itemDanhMucSoDoPhong.getBtnChiTiet().addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    maPhong = itemSoDoPhong.getMaPhong();
+//                    mainPanel.removeAll();
+//                    mainPanel.setLayout(new BorderLayout());
+//                    mainPanel.add(new QuanLyPhongJPanel());
+//                    mainPanel.validate();
+//                    mainPanel.repaint();
+//                    panelPhong.setBackground(colorChange);
+//                    lblPhong.setBackground(colorChange);
+//                    Opaque1.setOpaque(true);
+//                    panelSoDoPhong.setBackground(colorDefault);
+//                    lblSoDoPhong.setBackground(colorDefault);
+//                    Opaque10.setOpaque(false);
+//                    System.out.println(maPhong);
+//                }
+//            });
+//
+//        }
+//    }
 
     private void setTxtXinChao() {
         if (Auth.user == null) {
@@ -190,7 +227,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         slidePanel.add(panelSoDoPhong);
 
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
-        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {        
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
             }
@@ -666,20 +703,21 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
-       new DoiMatKhauJFrame().setVisible(true);
+        new DoiMatKhauJFrame().setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnHoTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoTroActionPerformed
-       new HoTroJDialog(this, true).setVisible(true);
+        new HoTroJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btnHoTroActionPerformed
 
     private void btnGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGioiThieuActionPerformed
-       try {
+        try {
             Desktop.getDesktop().browse(new File("help/index.html").toURI());
         } catch (Exception e) {
             MsgBox.alert(this, "Không tìm thấy trang giới thiệu!");
         }
     }//GEN-LAST:event_btnGioiThieuActionPerformed
+
 
     /**
      * @param args the command line arguments

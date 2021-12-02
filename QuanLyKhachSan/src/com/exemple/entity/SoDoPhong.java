@@ -10,7 +10,8 @@ package com.exemple.entity;
  * @author Minh Triet
  */
 public class SoDoPhong {
-
+    
+    private int maPhong;
     private int soPhong;
     private String tenLoaiPhong;
     private String trangThai;
@@ -22,6 +23,22 @@ public class SoDoPhong {
         this.tenLoaiPhong = tenLoaiPhong;
         this.trangThai = trangThai;
     }    
+
+    public SoDoPhong(int maPhong, int soPhong, String tenLoaiPhong, String trangThai) {
+        this.maPhong = maPhong;
+        this.soPhong = soPhong;
+        this.tenLoaiPhong = tenLoaiPhong;
+        this.trangThai = trangThai;
+    }
+
+    public int getMaPhong() {
+        return maPhong;
+    }
+
+    public void setMaPhong(int maPhong) {
+        this.maPhong = maPhong;
+    }
+    
 
     public int getSoPhong() {
         return soPhong;
