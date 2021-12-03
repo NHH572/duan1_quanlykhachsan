@@ -18,6 +18,9 @@ import java.util.List;
 public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
       String SELECT_ALL_SQL = "select*from khachhang";
     String SELECT_BY_ID_SQL = "select * from khachhang where SoCMTKhachHang=?";
+    String selectKhachChuaThue="Select*from KhachHang where SoLanThue=0";
+    String selectKhachTiemNang="Select*from KhachHang where SoLanThue>0 and SoLanThue<5";
+    String selectKhachViP ="select *from KhachHang where SoLanThue >=5";
     @Override
     public void insert(KhachHang kh) {
         String sql = "insert into "
@@ -44,6 +47,15 @@ public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
     @Override
     public List<KhachHang> selectAll() {
 return this.selectBySql(SELECT_ALL_SQL);
+    }
+        public List<KhachHang> selectKhachChuaThue() {
+return this.selectBySql(selectKhachChuaThue);
+    }
+            public List<KhachHang> selectKhachTiemNang() {
+return this.selectBySql(selectKhachTiemNang);
+    }
+                public List<KhachHang> selectKhachVip() {
+return this.selectBySql(selectKhachViP);
     }
 
     @Override

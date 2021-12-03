@@ -37,7 +37,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
     public QuanLyKhachHangJFrame() {
         initComponents();
         filltable();
-        fillComboBoxDoiTac();
        
     }
 
@@ -68,7 +67,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         KhachHang kh = new KhachHang();
         this.setForm(kh);
         lblKhachHang.setText("");
-        cboDoiTac.setSelectedIndex(0);
         this.row = -1;
         updateStatus();
     }
@@ -113,25 +111,25 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         }
     }
 
-    public void fillComboBoxDoiTac() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboDoiTac.getModel();
-          model.removeAllElements();
-        List<DoiTac> list = dtdao.selectAll();
-        for (DoiTac dt : list) {
-            model.addElement(dt);
-        }
-    }
+//    public void fillComboBoxDoiTac() {
+//        DefaultComboBoxModel model = (DefaultComboBoxModel) cboDoiTac.getModel();
+//          model.removeAllElements();
+//        List<DoiTac> list = dtdao.selectAll();
+//        for (DoiTac dt : list) {
+//            model.addElement(dt);
+//        }
+//    }
 
-    public void selectComBobox() {
-        try {  
-            DoiTac doiTac = (DoiTac) cboDoiTac.getSelectedItem();
-            txtMaDoiTac.setText(doiTac.getMaDoiTac());
-            this.row = -1;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    public void selectComBobox() {
+//        try {  
+//            DoiTac doiTac = (DoiTac) cboDoiTac.getSelectedItem();
+//            txtMaDoiTac.setText(doiTac.getMaDoiTac());
+//            this.row = -1;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
     public void Insert(){
         KhachHang kh = getForm();
                 try {
@@ -232,8 +230,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        cboDoiTac = new javax.swing.JComboBox<>();
         txtQuocTich = new javax.swing.JTextField();
         txtMaDoiTac = new javax.swing.JTextField();
         lblKhachHang = new javax.swing.JLabel();
@@ -245,8 +241,7 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        txtTimsoLanThue = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        cboLoaiKhach = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -322,14 +317,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Danh sách đối tác");
-
-        cboDoiTac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDoiTacActionPerformed(evt);
-            }
-        });
-
         lblKhachHang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblKhachHang.setForeground(new java.awt.Color(0, 0, 204));
 
@@ -375,8 +362,7 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addGap(50, 50, 50)
                         .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(JPanelLayout.createSequentialGroup()
                         .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,8 +388,7 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                     .addComponent(txtQuocTich, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(txtSolanThue)
                     .addComponent(txtEmail)
-                    .addComponent(txtMaDoiTac)
-                    .addComponent(cboDoiTac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtMaDoiTac))
                 .addGap(28, 28, 28))
             .addGroup(JPanelLayout.createSequentialGroup()
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,12 +447,10 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                     .addComponent(rdNu)
                     .addComponent(jLabel9)
                     .addComponent(txtMaDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(cboDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -480,7 +463,7 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                     .addComponent(btnPrev)
                     .addComponent(btnNext)
                     .addComponent(btnLast))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         tabs.addTab("Cập Nhật", JPanel);
@@ -503,18 +486,12 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKhachHang);
 
-        jLabel12.setText("Số lần thuê");
+        jLabel12.setText("Loại Khách Hàng");
 
-        txtTimsoLanThue.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimsoLanThueKeyReleased(evt);
-            }
-        });
-
-        jButton4.setText("Nhập");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        cboLoaiKhach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null", "Khách chưa thuê", "Khách hàng tiềm năng", "Khách VIP" }));
+        cboLoaiKhach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cboLoaiKhachActionPerformed(evt);
             }
         });
 
@@ -522,14 +499,12 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTimsoLanThue, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cboLoaiKhach, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -538,11 +513,10 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(txtTimsoLanThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addGap(15, 15, 15)
+                    .addComponent(cboLoaiKhach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         tabs.addTab("Danh Sách", jPanel2);
@@ -593,12 +567,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void cboDoiTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoiTacActionPerformed
-        // TODO add your handling code here:
-      selectComBobox();
-
-    }//GEN-LAST:event_cboDoiTacActionPerformed
-
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
        if(utilityHelper.checkNullText(txtSoCmt) && utilityHelper.checkCMT(txtSoCmt) 
@@ -628,41 +596,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void txtTimsoLanThueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimsoLanThueKeyReleased
-        // TODO add your handling code here:
-        filltable();
-    }//GEN-LAST:event_txtTimsoLanThueKeyReleased
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-          DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
-        model.setRowCount(0);
-       String slt = txtTimsoLanThue.getText();
-        try {
-            
-            List<KhachHang> list = dao.selectbySolanThue(slt);
-            for (KhachHang Kh : list) {
-                Object[] row = {
-                    Kh.getCMND(),
-                    Kh.getTenKhachHang(),
-                    Kh.getNgaySinh(),
-                    Kh.isGioiTinh(),
-                    Kh.getSoDienThoai(),
-                    Kh.getEmail(),
-                    Kh.getQuocTich(),
-                    Kh.getSoLanThue(),
-                    Kh.getMaDoiTac()
-                   
-                };
-                model.addRow(row);
-            }
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-            e.printStackTrace();
-        }
-    
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
         next();
@@ -682,6 +615,108 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         prev();
     }//GEN-LAST:event_btnPrevActionPerformed
+private void fillKhachChuaThue(){
+     DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setRowCount(0);
+       
+        try {
+            
+            List<KhachHang> list = dao.selectKhachChuaThue();
+            for (KhachHang Kh : list) {
+                Object[] row = {
+                    Kh.getCMND(),
+                    Kh.getTenKhachHang(),
+                    Kh.getNgaySinh(),
+                    Kh.isGioiTinh(),
+                    Kh.getSoDienThoai(),
+                    Kh.getEmail(),
+                    Kh.getQuocTich(),
+                    Kh.getSoLanThue(),
+                    Kh.getMaDoiTac()
+                   
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+}
+
+private void fillKhachTiemNang(){
+     DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setRowCount(0);
+       
+        try {
+            
+            List<KhachHang> list = dao.selectKhachTiemNang();
+            for (KhachHang Kh : list) {
+                Object[] row = {
+                    Kh.getCMND(),
+                    Kh.getTenKhachHang(),
+                    Kh.getNgaySinh(),
+                    Kh.isGioiTinh(),
+                    Kh.getSoDienThoai(),
+                    Kh.getEmail(),
+                    Kh.getQuocTich(),
+                    Kh.getSoLanThue(),
+                    Kh.getMaDoiTac()
+                   
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+}
+
+private void fillKhachVIP(){
+     DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setRowCount(0);
+       
+        try {
+            
+            List<KhachHang> list = dao.selectKhachVip();
+            for (KhachHang Kh : list) {
+                Object[] row = {
+                    Kh.getCMND(),
+                    Kh.getTenKhachHang(),
+                    Kh.getNgaySinh(),
+                    Kh.isGioiTinh(),
+                    Kh.getSoDienThoai(),
+                    Kh.getEmail(),
+                    Kh.getQuocTich(),
+                    Kh.getSoLanThue(),
+                    Kh.getMaDoiTac()
+                   
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+}
+    
+    
+    
+    private void cboLoaiKhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiKhachActionPerformed
+        // TODO add your handling code here:
+     int index = cboLoaiKhach.getSelectedIndex();
+     if(index==0){
+         filltable();
+     }
+     if(index==1){
+         fillKhachChuaThue();
+     }
+     if(index==2){
+         fillKhachTiemNang();
+     }
+     if(index==3){
+         fillKhachVIP();
+     }
+    }//GEN-LAST:event_cboLoaiKhachActionPerformed
 
     
     
@@ -732,12 +767,10 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cboDoiTac;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> cboLoaiKhach;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -762,7 +795,6 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtSoCmt;
     private javax.swing.JTextField txtSolanThue;
     private javax.swing.JTextField txtTenKhachHang;
-    private javax.swing.JTextField txtTimsoLanThue;
     // End of variables declaration//GEN-END:variables
 
     private void filltable() {
