@@ -476,7 +476,7 @@ public class QuanLyKhachHangJFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "số cmt Khách Hàng", "Tên Khách Hàng", "Ngày Sinh", "Gioi Tính ", "Số Điên Thoại", "Email", "Quốc Tịch", "Số Lần Thuê", "Mã Đối Tác"
+                "số cmt Khách Hàng", "Tên Khách Hàng", "Ngày Sinh", "Giới Tính ", "Số Điên Thoại", "Email", "Quốc Tịch", "Số Lần Thuê", "Mã Đối Tác"
             }
         ));
         tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -627,7 +627,7 @@ private void fillKhachChuaThue(){
                     Kh.getCMND(),
                     Kh.getTenKhachHang(),
                     Kh.getNgaySinh(),
-                    Kh.isGioiTinh(),
+                    Kh.isGioiTinh()? "Nam":"Nữ",
                     Kh.getSoDienThoai(),
                     Kh.getEmail(),
                     Kh.getQuocTich(),
@@ -655,7 +655,7 @@ private void fillKhachTiemNang(){
                     Kh.getCMND(),
                     Kh.getTenKhachHang(),
                     Kh.getNgaySinh(),
-                    Kh.isGioiTinh(),
+                    Kh.isGioiTinh()? "Nam":"Nữ",
                     Kh.getSoDienThoai(),
                     Kh.getEmail(),
                     Kh.getQuocTich(),
@@ -683,7 +683,7 @@ private void fillKhachVIP(){
                     Kh.getCMND(),
                     Kh.getTenKhachHang(),
                     Kh.getNgaySinh(),
-                    Kh.isGioiTinh(),
+                    Kh.isGioiTinh()? "Nam":"Nữ",
                     Kh.getSoDienThoai(),
                     Kh.getEmail(),
                     Kh.getQuocTich(),
@@ -809,7 +809,7 @@ private void fillKhachVIP(){
                     Kh.getCMND(),
                     Kh.getTenKhachHang(),
                     Kh.getNgaySinh(),
-                    Kh.isGioiTinh(),
+                    Kh.isGioiTinh()? "Nam":"Nữ",
                     Kh.getSoDienThoai(),
                     Kh.getEmail(),
                     Kh.getQuocTich(),
