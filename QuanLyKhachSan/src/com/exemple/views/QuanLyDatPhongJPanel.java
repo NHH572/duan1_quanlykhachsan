@@ -55,12 +55,24 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         lblTrangThai.setText("");
         setColorTableDatPhong();
         enableButton();
-        disposeLabelSoPhong();
+        if (SoDoPhongJPanel.maPhong != -1) {
+            PhongDAO pDAO = new PhongDAO();
+            Phong p = pDAO.selectById(String.valueOf(SoDoPhongJPanel.maPhong));
+            int maLoaiPhong = p.getMaLoaiPhong();
+            cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
+            lblSoPhong.setText(String.valueOf(p.getSoPhong()));
+            tblPhongTrong.setRowSelectionInterval(SoDoPhongJPanel.maPhong-1, SoDoPhongJPanel.maPhong-1);
+            Tabs.setSelectedIndex(1);
+        } else {
+            disposeLabelSoPhong();
+        }
     }
-    private void disposeLabelSoPhong(){
+
+    private void disposeLabelSoPhong() {
         lblSoPhong1.setVisible(false);
         lblSoPhong.setVisible(false);
     }
+
     private void placeHolder(JTextField txtFiled, String text) {
         txtFiled.addFocusListener(new FocusListener() {
             @Override
@@ -725,10 +737,10 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Tabs)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(232, 232, 232)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -777,7 +789,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 lblTrangThai.setText("Đã xác nhận");
                 lblSoPhong1.setVisible(true);
                 lblSoPhong.setVisible(true);
-                Phong p=new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
+                Phong p = new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
                 lblSoPhong.setText(String.valueOf(p.getSoPhong()));
                 lblTrangThai.setForeground(new Color(0, 204, 0));
                 btnDatPhong.setEnabled(false);
@@ -1015,11 +1027,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
             dp.setNgayMuonTra(txtNgayMuonTra.getDate());
             dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
-            if(maPhong==-1){
+            if (maPhong == -1) {
                 dp.setMaPhong((int) tblDatPhong.getValueAt(rowDatPhong, 8));
-            }else{
+            } else {
                 dp.setMaPhong(maPhong);
-            }            
+            }
             dp.setSoCMT(txtSoCMTKH.getText());
             dp.setTaiKhoanNV(Auth.user.getMaNV());
             dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
@@ -1037,18 +1049,17 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             kh.setSoDienThoai(txtSoDienThoai.getText());
             kh.setEmail(txtEmail.getText());
             kh.setQuocTich(txtQuocTich.getText());
-            kh.setSoLanThue(0);            
+            kh.setSoLanThue(0);
             khDAO.update(kh);
-            DatPhongDAO dpDAO = new DatPhongDAO();            
+            DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dpOld = dpDAO.selectById(maDatPhong);
             int maPhongOld = dpOld.getMaPhong();
             PhongDAO pDAO = new PhongDAO();
             pDAO.updateTrangThaiTrong(maPhongOld);
-            
-            dpDAO.update(dp);            
-            pDAO.updateTrangThai(maPhong); 
-            
-            
+
+            dpDAO.update(dp);
+            pDAO.updateTrangThai(maPhong);
+
             showInformation();
             updateDanhSachPhongTrong();
             fillToTableDatPhong();

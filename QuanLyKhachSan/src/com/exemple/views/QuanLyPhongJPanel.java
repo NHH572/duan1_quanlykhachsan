@@ -12,6 +12,7 @@ import com.exemple.entity.LoaiPhong;
 import com.exemple.entity.Phong;
 import com.exemple.entity.Quanlyphong;
 import com.exemple.helper.MsgBox;
+import static com.exemple.views.SoDoPhongJPanel.maPhong;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,11 +48,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private void init() {
         fillTable();
         fillComBoBoxLoaiPhong();
-//        if (SoDoPhongJPanel.maPhong != 0) {
-//            tblQuanLyPhongClick(SoDoPhongJPanel.maPhong - 1);
-//        }
+        if (maPhong != -1) {
+            tblQuanLyPhongClick(SoDoPhongJPanel.maPhong);
+        }
     }
-    
+
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblQuanLyPhong.getModel();
         model.setRowCount(0);
@@ -627,7 +628,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private void tblQuanLyPhongClick(int i) {
         TableModel model = tblQuanLyPhong.getModel();
         LoaiPhong lp = new LoaiPhong();
-        row = tblQuanLyPhong.getSelectedRow();
+        row = i-1;
         if (row >= 0) {
             showInformation();
             updateStatus();
