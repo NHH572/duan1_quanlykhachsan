@@ -8,6 +8,7 @@ package com.exemple.views;
 import java.util.List;
 import com.exemple.controller.thongKeDAO;
 import com.exemple.entity.Thongke;
+import com.exemple.helper.MsgBox;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.io.BufferedWriter;
@@ -91,10 +92,18 @@ public class thongke extends javax.swing.JFrame {
             int thang_bd = Integer.parseInt(cbo_bd.getSelectedItem().toString());
             int thang_kt = Integer.parseInt(cbo_kt.getSelectedItem().toString());
             int nam = Integer.parseInt(cbo_Nam.getSelectedItem().toString());
-            List<Object[]> list = dao.getDoanhThuHoaDon(thang_bd, thang_kt, nam);
-            for (Object[] row : list) {
-                model.addRow(row);
+            if(thang_bd > thang_kt){
+                MsgBox.alert(this, "Tháng bắt đầu phải nhỏ hơn tháng kết thúc");
+                cbo_bd.setSelectedItem("1");
+                this.fillTableDoanhThu();
             }
+            else{
+                List<Object[]> list = dao.getDoanhThuHoaDon(thang_bd, thang_kt, nam);
+                for (Object[] row : list) {
+                    model.addRow(row);
+                }
+            }
+            
 
         } catch (Exception e) {
         }
@@ -107,9 +116,16 @@ public class thongke extends javax.swing.JFrame {
             int thang_bd = Integer.parseInt(cbo_bd1.getSelectedItem().toString());
             int thang_kt = Integer.parseInt(cbo_kt1.getSelectedItem().toString());
             int nam = Integer.parseInt(cbo_Nam1.getSelectedItem().toString());
-            List<Object[]> list = dao.getSLKH(thang_bd, thang_kt, nam);
-            for (Object[] row : list) {
-                model.addRow(row);
+            if(thang_bd > thang_kt){
+                MsgBox.alert(this, "Tháng bắt đầu phải nhỏ hơn tháng kết thúc");
+                cbo_bd1.setSelectedItem("1");
+                this.fillTableSLKH();
+            }
+            else{
+                List<Object[]> list = dao.getSLKH(thang_bd, thang_kt, nam);
+                for (Object[] row : list) {
+                    model.addRow(row);
+                }
             }
 
         } catch (Exception e) {
@@ -123,9 +139,16 @@ public class thongke extends javax.swing.JFrame {
             int thang_bd = Integer.parseInt(cbo_bd2.getSelectedItem().toString());
             int thang_kt = Integer.parseInt(cbo_kt2.getSelectedItem().toString());
             int nam = Integer.parseInt(cbo_Nam2.getSelectedItem().toString());
-            List<Object[]> list = dao.getDoanhThuTienPhong(thang_bd, thang_kt, nam);
-            for (Object[] row : list) {
-                model.addRow(row);
+            if(thang_bd > thang_kt){
+                MsgBox.alert(this, "Tháng bắt đầu phải nhỏ hơn tháng kết thúc");
+                cbo_bd2.setSelectedItem("1");
+                this.fillTableDoanhThuTienPhong();
+            }
+            else{
+                List<Object[]> list = dao.getDoanhThuTienPhong(thang_bd, thang_kt, nam);
+                for (Object[] row : list) {
+                    model.addRow(row);
+                }
             }
 
         } catch (Exception e) {
@@ -139,9 +162,16 @@ public class thongke extends javax.swing.JFrame {
             int thang_bd = Integer.parseInt(cbo_bd3.getSelectedItem().toString());
             int thang_kt = Integer.parseInt(cbo_kt3.getSelectedItem().toString());
             int nam = Integer.parseInt(cbo_Nam3.getSelectedItem().toString());
-            List<Object[]> list = dao.getDoanhThuDichVu(thang_bd, thang_kt, nam);
-            for (Object[] row : list) {
-                model.addRow(row);
+            if(thang_bd > thang_kt){
+                MsgBox.alert(this, "Tháng bắt đầu phải nhỏ hơn tháng kết thúc");
+                cbo_bd3.setSelectedItem("1");
+                this.fillTableDoanhThuDichVu();
+            }
+            else{
+                List<Object[]> list = dao.getDoanhThuDichVu(thang_bd, thang_kt, nam);
+                for (Object[] row : list) {
+                    model.addRow(row);
+                }
             }
 
         } catch (Exception e) {
