@@ -155,4 +155,14 @@ public class utilityHelper {
             return false;
         }
     }
+         public  static boolean checkNumber(JTextField txt) {
+             txt.setBackground(white);
+        try {
+            Float.parseFloat(txt.getText());
+            return true;
+        } catch (Exception e) {
+            MsgBox.alert(txt.getRootPane(),txt.getName() + " phải là số" );
+            return false;
+        }
+    }
 }

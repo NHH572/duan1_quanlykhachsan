@@ -126,6 +126,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Ngày hết hạn");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/add.png"))); // NOI18N
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +135,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/deleteService.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +144,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnMoi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/new.png"))); // NOI18N
         btnMoi.setText("Mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +183,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblKhuyenMai);
 
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/update.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,7 +270,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                     .addComponent(btnXoa)
                     .addComponent(btnMoi)
                     .addComponent(btnSua))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -281,7 +289,8 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(utilityHelper.checkNullText(txtMaKhuyenMai)
                 && utilityHelper.checkNullText(txtGiaTri)
-                 && utilityHelper.checkNullText(txtTenKhuyenMai)){
+                 && utilityHelper.checkNullText(txtTenKhuyenMai))
+        if(utilityHelper.checkNumber(txtGiaTri)){
             this.insert();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
