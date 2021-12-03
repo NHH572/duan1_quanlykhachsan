@@ -265,7 +265,17 @@ GO
 -- Hóa đơn
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)
 	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
-	('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567','NONE')
+			('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567','NONE'),
+			('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
+			('2019/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE'),
+			('2019/01/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
+			('2019/01/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE'),
+			('20120/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
+			('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE'),
+			('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
+			('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE'),
+			('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
+			('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE')
 -- Chi tiết hóa đơn
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
@@ -287,7 +297,7 @@ GO
 IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
 DROP PROC sp_DoanhThuHoaDon
 GO
-CREATE PROC sp_DoanhThuHoaDon(@thangBatDau INT, @thangKetThuc INT)
+CREATE PROC sp_DoanhThuHoaDon(@thangBatDau INT, @thangKetThuc INT,@year int)
 AS BEGIN
 	SELECT hd.MaHoaDon, kh.TenKhachHang, hd.NgayTao, km.GiaTri,hd.ThanhTien
 	FROM HoaDon hd,KhuyenMai km,KhachHang kh
@@ -295,27 +305,30 @@ AS BEGIN
 	AND hd.MaKhuyenMai = km.MaKhuyenMai
 	AND MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	AND YEAR(hd.NgayTao) = @year
 END
 --2
 IF OBJECT_ID('sp_SoLuongKhachHang') is not null
 DROP PROC sp_SoLuongKhachHang
 GO
-CREATE PROC sp_SoLuongKhachHang(@thangBatDau INT, @thangKetThuc INT)
+CREATE PROC sp_SoLuongKhachHang(@thangBatDau INT, @thangKetThuc INT,@year int)
 AS BEGIN
-	SELECT kh.SoCMTKhachHang, kh.TenKhachHang, kh.NgaySinh,kh.GioiTinh,kh.QuocTich
+	SELECT kh.SoCMTKhachHang, kh.TenKhachHang, kh.NgaySinh,hd.NgayTao,kh.GioiTinh,kh.QuocTich
 	FROM KhachHang kh
 	inner join HoaDon hd
 	on kh.SoCMTKhachHang=hd.SoCMTKhachHang
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	AND YEAR(hd.NgayTao) = @year
 END
+
 --3
 IF OBJECT_ID('sp_DoanhThuTienPhong') is not null
 DROP PROC sp_DoanhThuTienPhong
 GO
-CREATE PROC sp_DoanhThuTienPhong(@thangBatDau INT, @thangKetThuc INT)
+CREATE PROC sp_DoanhThuTienPhong(@thangBatDau INT, @thangKetThuc INT,@year int)
 AS BEGIN
-	SELECT p.SoPhong, lp.TenLoaiPhong, count(cthd.MaHoaDon) as 'SoLanThue', sum(cthd.TongTien) as 'TongTien'
+	SELECT p.SoPhong, lp.TenLoaiPhong, count(cthd.MaHoaDon) as 'SoLanThue', sum(cthd.TongTien) as 'TongTien',hd.NgayTao
 	FROM Phong p
 	inner join LoaiPhong lp
 	on p.MaPhong=lp.MaLoaiPhong
@@ -325,13 +338,14 @@ AS BEGIN
 	on hd.MaHoaDon=cthd.MaHoaDon	
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	AND YEAR(hd.NgayTao) = @year
 	GROUP BY p.SoPhong, lp.TenLoaiPhong
 END
 --4
 IF OBJECT_ID('sp_DoanhThuDichVu') is not null
 DROP PROC sp_DoanhThuDichVu
 GO
-CREATE PROC sp_DoanhThuDichVu(@thangBatDau INT, @thangKetThuc INT)
+CREATE PROC sp_DoanhThuDichVu(@thangBatDau INT, @thangKetThuc INT,@year int)
 AS BEGIN
 	SELECT dv.TenDichVu, kh.TenKhachHang,hd.TaiKhoanNV, hd.NgayTao, cthd.SoLanThueDichVu, dv.GiaDichVu
 	FROM DichVu dv
@@ -343,8 +357,5 @@ AS BEGIN
 	on hd.SoCMTKhachHang=kh.SoCMTKhachHang
 	WHERE MONTH(hd.NgayTao) >= @thangBatDau
 	AND MONTH(hd.NgayTao) <= @thangKetThuc
+	AND YEAR(hd.NgayTao) = @year
 END
-
-
-
-
