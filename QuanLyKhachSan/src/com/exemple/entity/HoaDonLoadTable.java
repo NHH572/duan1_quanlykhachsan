@@ -17,7 +17,7 @@ public class HoaDonLoadTable {
     private int soLan;
     private float giaDichVu;
     private String CMND_CCCD;
-    private String maHoaDon;
+    private int maHoaDon;
     private String tenKhachHang;
     private Date ngayTao ;
     private String thuNgan ;
@@ -30,11 +30,12 @@ public class HoaDonLoadTable {
     private float giamTien ;
     private String tongTien ;
     private int maDichVu;
+    private int maChiTietHoaDon;
 
     public HoaDonLoadTable() {
     }
 
-public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu, String CMND_CCCD, String maHoaDon, String tenKhachHang, Date ngayTao, String thuNgan, Date ngaynhanPhong, int maPhong, Date ngayTraPhong, String soDienThoai, float tienPhong, String maGiamGia, float giamTien, String tongTien, int maDichVu) {
+    public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu, String CMND_CCCD, int maHoaDon, String tenKhachHang, Date ngayTao, String thuNgan, Date ngaynhanPhong, int maPhong, Date ngayTraPhong, String soDienThoai, float tienPhong, String maGiamGia, float giamTien, String tongTien, int maDichVu, int maChiTietHoaDon) {
         this.SoPhong = SoPhong;
         this.tenDichVu = tenDichVu;
         this.soLan = soLan;
@@ -53,6 +54,17 @@ public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu
         this.giamTien = giamTien;
         this.tongTien = tongTien;
         this.maDichVu = maDichVu;
+        this.maChiTietHoaDon = maChiTietHoaDon;
+    }
+
+   
+
+    public int getMaChiTietHoaDon() {
+        return maChiTietHoaDon;
+    }
+
+    public void setMaChiTietHoaDon(int maChiTietHoaDon) {
+        this.maChiTietHoaDon = maChiTietHoaDon;
     }
     
     public float getTienPhong() {
@@ -70,14 +82,15 @@ public HoaDonLoadTable(int SoPhong, String tenDichVu, int soLan, float giaDichVu
     public void setCMND_CCCD(String CMND_CCCD) {
         this.CMND_CCCD = CMND_CCCD;
     }
-    
-    public String getMaHoaDon() {
+
+    public int getMaHoaDon() {
         return maHoaDon;
     }
 
-    public void setMaHoaDon(String maHoaDon) {
+    public void setMaHoaDon(int maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
+    
 
     public String getTenKhachHang() {
         return tenKhachHang;

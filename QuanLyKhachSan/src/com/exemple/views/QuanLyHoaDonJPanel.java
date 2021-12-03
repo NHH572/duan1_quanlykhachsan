@@ -5,7 +5,6 @@
  */
 package com.exemple.views;
 
-
 import com.exemple.controller.DichVuDAO;
 import com.exemple.controller.LoadTableHoaDonDAO;
 import com.exemple.controller.PhongDAO;
@@ -14,47 +13,44 @@ import com.exemple.entity.HoaDonLoadTable;
 import com.exemple.entity.Phong;
 import com.exemple.entity.TableHoaDon;
 import com.exemple.helper.MsgBox;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
-     DichVuDAO dvdao = new DichVuDAO();
+    Connection con;
+    PreparedStatement pst;
+    DichVuDAO dvdao = new DichVuDAO();
     PhongDAO pdao = new PhongDAO();
     LoadTableHoaDonDAO lthdDao = new LoadTableHoaDonDAO();
     TableHoaDonDAO tblhddao = new TableHoaDonDAO();
     private int maPhong;
     private int maDichVu;
+    private int maCHiTietHoaDOn ;
     int index;
+
     public QuanLyHoaDonJPanel() {
         initComponents();
-         init();
+        init();
     }
- void init() {
+
+    void init() {
         fillComboBoxPhong();
         loadToTable();
     }
 
-    void loadToTable() {
-        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
-        model.setRowCount(0);
-        List<TableHoaDon> list = tblhddao.selectAll();
-        for (TableHoaDon hd : list) {
-            Object[] row = {
-                hd.getMaHoaDon(),
-                hd.getSoPhong(),
-                hd.getSoCMND(),
-                hd.getNgayTao(),
-                hd.getNgaynhanPhong(),
-                hd.getNgayTraPhong(),
-                hd.getTaiKhoanNV(),
-                hd.getMaKhuyenMai()
-            };
-            model.addRow(row);
-        }
-    }
+    
 
     private void fillComboBoxPhong() {
         try {
@@ -76,6 +72,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }
 
     void setModel(HoaDonLoadTable hd) {
+        maCHiTietHoaDOn = hd.getMaChiTietHoaDon();
         maDichVu = hd.getMaDichVu();
         maPhong = hd.getMaPhong();
         txtThuNgan.setText(hd.getThuNgan());
@@ -83,7 +80,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         jdcNgayTao.setDate(hd.getNgayTao());
         jdcNgayTra.setDate(hd.getNgayTraPhong());
         txtCCCD.setText(hd.getCMND_CCCD());
-        txtSoHoaDon.setText(hd.getMaHoaDon());
+        txtSoHoaDon.setText(String.valueOf(hd.getMaHoaDon()));
         txtKhachHang.setText(hd.getTenKhachHang());
         txtSoDienThoai.setText(hd.getSoDienThoai());
         txtGiamTien.setText(String.valueOf(hd.getGiamTien()));
@@ -93,6 +90,8 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
     HoaDonLoadTable getModel() {
         HoaDonLoadTable hd = new HoaDonLoadTable();
+        hd.setMaChiTietHoaDon(maCHiTietHoaDOn);
+        hd.setMaHoaDon(Integer.parseInt(txtSoHoaDon.getText()));
         hd.setMaPhong(maPhong);
         hd.setMaDichVu(maDichVu);
         hd.setNgayTao(jdcNgayNhan.getDate());
@@ -103,14 +102,29 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         hd.setCMND_CCCD(txtCCCD.getText());
         hd.setMaGiamGia(txtMaGiamGia.getText());
         hd.setTongTien(txtTongTien.getText());
-
+        int soPhong = (int) cboPhong.getSelectedItem();
+        System.out.println("So phong : " + soPhong);
+        System.out.println("Tong tien : "+ txtTongTien.getText());
+        hd.setSoPhong(soPhong);
         return hd;
     }
 
-    void insert() {
-        HoaDonLoadTable hd = getModel();
-        lthdDao.insertHoaDon(hd);
-        lthdDao.insertChiTietHoaDon(hd);
+//    void insert() {
+//        HoaDonLoadTable hd = getModel();
+//        lthdDao.insertHoaDon(hd);
+//        lthdDao.insertChiTietHoaDon(hd);
+//    }
+
+    void update() {
+        try {
+            HoaDonLoadTable hd = getModel();
+            lthdDao.updateHoaDon(hd);
+            lthdDao.updateChiTietHoaDon(hd);
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Lỗi hệ thống");
+        }
+
     }
 
     void editByCombox() {
@@ -166,7 +180,24 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
             System.out.println("error" + e.getMessage());
         }
     }
-
+void loadToTable() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        List<TableHoaDon> list = tblhddao.selectAll();
+        for (TableHoaDon hd : list) {
+            Object[] row = {
+                hd.getMaHoaDon(),
+                hd.getSoPhong(),
+                hd.getSoCMND(),
+                hd.getNgayTao(),
+                hd.getNgaynhanPhong(),
+                hd.getNgayTraPhong(),
+                hd.getTaiKhoanNV(),
+                hd.getMaKhuyenMai()
+            };
+            model.addRow(row);
+        }
+    }
     float tinhtien(int soPhong) {
         List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
         float count = 0;
@@ -195,7 +226,25 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         String soPhong2 = String.valueOf(soPhong);
         return tinhtien(soPhong);
     }
-    
+
+    public void XuatHoaDon() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+
+            Hashtable map = new Hashtable();
+            JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
+            int soPhong = (int) cboPhong.getSelectedItem();
+            map.put("SoPhong", soPhong);
+            JasperPrint p = JasperFillManager.fillReport(report, map, con);
+            JasperViewer.viewReport(p);
+            JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -463,8 +512,9 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                     .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTaoMoi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnThanhToan))
+                        .addGap(310, 310, 310)
+                        .addComponent(btnThanhToan)
+                        .addGap(11, 11, 11))
                     .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,9 +569,9 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(btnTaoMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTaoMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -636,7 +686,8 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGiamTienActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        this.insert();
+        this.update();
+        this.XuatHoaDon();
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed

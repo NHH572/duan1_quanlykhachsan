@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24a4687c-271c-4319-a74f-dc7863cc1732">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="98"/>
+	<property name="ireport.y" value="54"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -14,7 +14,7 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="SoPhong" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[101]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[105]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -114,7 +114,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="161" splitType="Stretch">
+		<band height="154" splitType="Stretch">
 			<line>
 				<reportElement x="1" y="152" width="554" height="1" uuid="021541b3-bf63-4585-bc15-b13a07cfe6ad"/>
 			</line>
@@ -264,37 +264,37 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="57" splitType="Stretch">
+		<band height="47" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="0" y="0" width="138" height="18" uuid="7007948d-2cbc-439b-9532-aea3c3eb5f80"/>
+				<reportElement style="Detail" positionType="Float" x="1" y="11" width="138" height="18" uuid="7007948d-2cbc-439b-9532-aea3c3eb5f80"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_MaDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="138" y="0" width="138" height="18" uuid="59b1e941-f6e5-43e6-a314-29d2916c0fce"/>
+				<reportElement style="Detail" positionType="Float" x="139" y="11" width="138" height="18" uuid="59b1e941-f6e5-43e6-a314-29d2916c0fce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_TenDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="276" y="0" width="134" height="18" uuid="050eb5d1-d76b-4d36-ac8b-8a83c8e01b93"/>
+				<reportElement style="Detail" positionType="Float" x="277" y="11" width="134" height="18" uuid="050eb5d1-d76b-4d36-ac8b-8a83c8e01b93"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_GiaDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="410" y="0" width="144" height="18" uuid="2b4ec6eb-a160-49c8-97ac-8d271e2e928e"/>
+				<reportElement style="Detail" positionType="Float" x="411" y="11" width="144" height="18" uuid="2b4ec6eb-a160-49c8-97ac-8d271e2e928e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_MoTa}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="54" width="554" height="1" uuid="c2bd0c07-1368-4299-a93a-e3a62cd3679f"/>
+				<reportElement x="1" y="39" width="554" height="1" uuid="c2bd0c07-1368-4299-a93a-e3a62cd3679f"/>
 			</line>
 		</band>
 	</detail>
