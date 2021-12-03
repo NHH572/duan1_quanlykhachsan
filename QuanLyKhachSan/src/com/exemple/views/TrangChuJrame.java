@@ -7,6 +7,7 @@ package com.exemple.views;
 
 import com.exemple.controller.ChuyenManHinhController;
 import static com.exemple.controller.ChuyenManHinhController.colorDefault;
+import com.exemple.controller.SoDoPhongDAO;
 import com.exemple.entity.DanhMuc;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.NhanVien;
@@ -40,9 +41,9 @@ import javax.swing.JPanel;
  */
 public class TrangChuJrame extends javax.swing.JFrame {
 
-//    public static Color colorDefault = new Color(77, 73, 73);
-//    public static Color colorChange = new Color(212, 187, 0);
-//    public static Color colorHover = new Color(212, 187, 0);
+    public Color colorDefault = new Color(77, 73, 73);
+    public Color colorChange = new Color(212, 187, 0);
+    public Color colorHover = new Color(212, 187, 0);
     ChuyenManHinhController controller;
 
     public TrangChuJrame() {
@@ -69,35 +70,71 @@ public class TrangChuJrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPanel.setPreferredSize(new Dimension(1320, 700));
         setTxtXinChao();
-//        setEventClickButton();
+        setEventClickButton();
 
     }
 
-//    public void setEventClickButton() {
-//        for (int i = 0; i < listDanhMucSoDoPhong.size(); i++) {
-//            DanhMucSoDoPhong itemDanhMucSoDoPhong = listDanhMucSoDoPhong.get(i);
-//            SoDoPhong itemSoDoPhong = listDataDanhMucSoDoPhong.get(i);
-//            itemDanhMucSoDoPhong.getBtnChiTiet().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    maPhong = itemSoDoPhong.getMaPhong();
-//                    mainPanel.removeAll();
-//                    mainPanel.setLayout(new BorderLayout());
-//                    mainPanel.add(new QuanLyPhongJPanel());
-//                    mainPanel.validate();
-//                    mainPanel.repaint();
-//                    panelPhong.setBackground(colorChange);
-//                    lblPhong.setBackground(colorChange);
-//                    Opaque1.setOpaque(true);
-//                    panelSoDoPhong.setBackground(colorDefault);
-//                    lblSoDoPhong.setBackground(colorDefault);
-//                    Opaque10.setOpaque(false);
-//                    System.out.println(maPhong);
-//                }
-//            });
-//
-//        }
-//    }
+    public void setEventClickButton() {
+        SoDoPhongDAO sdpDAO = new SoDoPhongDAO();
+        List<SoDoPhong> listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
+        for (int i = 0; i < SoDoPhongJPanel.listDanhMucSoDoPhongPublic.size(); i++) {
+            DanhMucSoDoPhong itemDanhMucSoDoPhong = SoDoPhongJPanel.listDanhMucSoDoPhongPublic.get(i);
+            SoDoPhong itemSoDoPhong = listDataDanhMucSoDoPhong.get(i);
+            itemDanhMucSoDoPhong.getBtnChiTiet().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    maPhong = itemSoDoPhong.getMaPhong();
+                    fillJPanel(new QuanLyPhongJPanel());
+                    panelPhong.setBackground(colorChange);
+                    lblPhong.setBackground(colorChange);
+                    Opaque1.setOpaque(true);
+                    panelSoDoPhong.setBackground(colorDefault);
+                    lblSoDoPhong.setBackground(colorDefault);
+                    Opaque10.setOpaque(false);
+                    System.out.println(maPhong);
+                }
+            });
+            if (itemSoDoPhong.getTrangThai().equalsIgnoreCase("Trống")) {
+                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        maPhong = itemSoDoPhong.getMaPhong();
+                        fillJPanel(new QuanLyDatPhongJPanel());
+                        panelDatPhong.setBackground(colorChange);
+                        lblDatPhong.setBackground(colorChange);
+                        Opaque5.setOpaque(true);
+                        panelSoDoPhong.setBackground(colorDefault);
+                        lblSoDoPhong.setBackground(colorDefault);
+                        Opaque10.setOpaque(false);
+                        System.out.println(maPhong);
+                    }
+                });
+            } else {
+//                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                        maPhong = itemSoDoPhong.getMaPhong();
+//                        fillJPanel(new QuanLyHoaDonJPanel());
+//                        panelPhong.setBackground(colorChange);
+//                        lblPhong.setBackground(colorChange);
+//                        Opaque1.setOpaque(true);
+//                        panelSoDoPhong.setBackground(colorDefault);
+//                        lblSoDoPhong.setBackground(colorDefault);
+//                        Opaque10.setOpaque(false);
+//                        System.out.println(maPhong);
+//                    }
+//                });
+            }
+        }
+    }
+
+    private void fillJPanel(JPanel jpanel) {
+        mainPanel.removeAll();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.add(jpanel);
+        mainPanel.validate();
+        mainPanel.repaint();
+    }
 
     private void setTxtXinChao() {
         if (Auth.user == null) {
@@ -723,7 +760,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
             MsgBox.alert(this, "Không tìm thấy trang giới thiệu!");
         }
     }//GEN-LAST:event_btnGioiThieuActionPerformed
-
 
     /**
      * @param args the command line arguments
