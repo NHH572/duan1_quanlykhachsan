@@ -441,7 +441,7 @@
                         <Column editable="true" title="s&#x1ed1; cmt Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
                         <Column editable="true" title="T&#xea;n Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
                         <Column editable="true" title="Ng&#xe0;y Sinh" type="java.lang.Object"/>
-                        <Column editable="true" title="Gioi T&#xed;nh " type="java.lang.Object"/>
+                        <Column editable="true" title="Gi&#x1edb;i T&#xed;nh " type="java.lang.Object"/>
                         <Column editable="true" title="S&#x1ed1; &#x110;i&#xea;n Tho&#x1ea1;i" type="java.lang.Object"/>
                         <Column editable="true" title="Email" type="java.lang.Object"/>
                         <Column editable="true" title="Qu&#x1ed1;c T&#x1ecb;ch" type="java.lang.Object"/>
