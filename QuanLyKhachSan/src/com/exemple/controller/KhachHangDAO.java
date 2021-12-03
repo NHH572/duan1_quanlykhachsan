@@ -17,15 +17,14 @@ import java.util.List;
  */
 public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
       String SELECT_ALL_SQL = "select*from khachhang";
-    String SELECT_BY_ID_SQL = "select * from khachhang where SoCMTKhachHang = ?";
-
+    String SELECT_BY_ID_SQL = "select * from khachhang where SoCMTKhachHang=?";
     @Override
     public void insert(KhachHang kh) {
         String sql = "insert into "
-                + " KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue) "
-                + " values (?,?,?,?,?,?,?,?)";
+                + " KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue,MaDoiTac) "
+                + " values (?,?,?,?,?,?,?,?,?)";
         JdbcHelper.executeUpdate(sql, kh.getCMND(), kh.getTenKhachHang(), kh.getNgaySinh(), kh.isGioiTinh(),
-                kh.getSoDienThoai(), kh.getEmail(), kh.getQuocTich(), kh.getSoLanThue());
+                kh.getSoDienThoai(), kh.getEmail(), kh.getQuocTich(), kh.getSoLanThue(), kh.getMaDoiTac());
     }
 
     @Override
@@ -72,7 +71,7 @@ return this.selectBySql(SELECT_ALL_SQL);
                 entity.setQuocTich(rs.getString("QuocTich"));
                 entity.setSoLanThue(rs.getInt("SoLanThue"));
                 entity.setMaDoiTac(rs.getString("MaDoiTac"));
-
+                
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
@@ -80,6 +79,12 @@ return this.selectBySql(SELECT_ALL_SQL);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }}
+    public List<KhachHang> selectbySolanThue(String solanThue){
+         String sql = "Select * from khachhang where SoLanThue=?";
+         return this.selectBySql(sql, solanThue);
     }
+    
+    }
+
 
 
