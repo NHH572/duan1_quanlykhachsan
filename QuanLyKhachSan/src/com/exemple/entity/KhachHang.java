@@ -35,6 +35,8 @@ public class KhachHang {
         this.quocTich = quocTich;
         this.soLanThue = soLanThue;
         this.maDoiTac = maDoiTac;
+        
+    
     }
 
     public String getEmail() {
@@ -110,10 +112,5 @@ public class KhachHang {
     public void setMaDoiTac(String maDoiTac) {
         this.maDoiTac = maDoiTac;
     }
-    
-         public String toString() {
-        return this.maDoiTac;
-    }
-    
-    
+        
 }
