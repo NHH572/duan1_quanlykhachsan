@@ -15,12 +15,12 @@ import javax.swing.JTextField;
  *
  * @author Minh Triet
  */
-public class HoTroJPanel extends javax.swing.JPanel {
+public class QuanLyKhachHangJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HoTroJPanel
      */
-    public HoTroJPanel() {
+    public QuanLyKhachHangJPanel() {
         initComponents();
         init();
     }

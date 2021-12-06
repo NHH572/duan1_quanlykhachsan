@@ -24,7 +24,7 @@ import javax.swing.event.MouseInputListener;
 import com.exemple.entity.DanhMuc;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.SoDoPhong;
-import com.exemple.views.HoTroJPanel;
+import com.exemple.views.QuanLyKhachHangJPanel;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
 import com.exemple.views.SoDoPhongJPanel;
 import java.awt.event.ActionEvent;
@@ -107,7 +107,7 @@ public class ChuyenManHinhController {
                     node = new QuanLyDoiTacJPanel();
                     break;
                 case "HoTro":
-                    node = new HoTroJPanel();
+                    node = new QuanLyKhachHangJPanel();
                     break;
                 case "KhuyenMai":
                     node = new QuanLyKhuyenMaiJPanel();

@@ -90,14 +90,14 @@ public class Login extends javax.swing.JFrame {
         txtMatkhau.setBackground(new java.awt.Color(0, 0, 0));
         txtMatkhau.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtMatkhau.setForeground(new java.awt.Color(153, 153, 153));
-        txtMatkhau.setText("Enter password");
+        txtMatkhau.setText("admin");
         txtMatkhau.setBorder(null);
         txtMatkhau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMatkhauKeyPressed(evt);
             }
         });
-        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 450, -1));
+        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 390, -1));
 
         btnDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
         txtTendangnhap.setBackground(new java.awt.Color(0, 0, 0));
         txtTendangnhap.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         txtTendangnhap.setForeground(new java.awt.Color(102, 102, 102));
-        txtTendangnhap.setText("Enter UserName");
+        txtTendangnhap.setText("admin");
         txtTendangnhap.setBorder(null);
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

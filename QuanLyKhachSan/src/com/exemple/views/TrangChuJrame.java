@@ -52,7 +52,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }
 
     void init() {
-        setLocationRelativeTo(null);
+        try {
+            setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
         controller = new ChuyenManHinhController(mainPanel);
         controller.setView(panelSoDoPhong, lblSoDoPhong, Opaque10);
@@ -71,6 +72,10 @@ public class TrangChuJrame extends javax.swing.JFrame {
         mainPanel.setPreferredSize(new Dimension(1320, 700));
         setTxtXinChao();
         setEventClickButton();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
 
     }
 

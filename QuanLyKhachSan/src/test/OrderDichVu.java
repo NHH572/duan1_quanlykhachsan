@@ -42,7 +42,8 @@ public class OrderDichVu extends javax.swing.JFrame {
     }
 
     void fillTableKhachHang(int soPhong) {
-        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
         model.setRowCount(0);
         List<HoaDonLoadTable> list = lthdDao.selectBySoPhong1(soPhong);
         int i = 1;
@@ -62,12 +63,14 @@ public class OrderDichVu extends javax.swing.JFrame {
             i++;
             model.addRow(row);
         }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
     }
     
     void themDichVu(){
         try {
-            
-        
         for(int row :tblDichVu.getSelectedRows()){
             HoaDonLoadTable hd = new HoaDonLoadTable();
             hd.setMaPhong(maPhong);
@@ -76,6 +79,7 @@ public class OrderDichVu extends javax.swing.JFrame {
             hd.setSoLan(soLanThue);
             lthdDao.insertChiTietHoaDon(hd);
         }} catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi hệ thống");
         }
