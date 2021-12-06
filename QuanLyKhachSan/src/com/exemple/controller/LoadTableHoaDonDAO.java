@@ -25,7 +25,10 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
           return this.selectBySql(sql, soPhong);
     }
       
-       
+      public List<HoaDonLoadTable> selectDichVuKhachHangBySoPhong(Integer soPhong) {
+String sql ="SELECT  ChiTietHoaDon.MaChiTietHoaDon  , ChiTietHoaDon.MaPhong  , ChiTietHoaDon.MaHoaDon  , KhachHang.TenKhachHang  , Phong.SoPhong  , ChiTietHoaDon.MaDichVu  	 FROM dbo.KhachHang KhachHang INNER JOIN dbo.HoaDon HoaDon ON KhachHang.SoCMTKhachHang = HoaDon.SoCMTKhachHang INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon     INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong	 WHERE SoPhong = ?";          
+          return this.selectBySql_3(sql, soPhong);
+    }
        
        public List<HoaDonLoadTable>selectAll(){
 String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.TaiKhoanNV , Phong.MaPhong, Phong.SoPhong  ,LoaiPhong.DonGiaTheoNgay ,  DichVu.MaDichVu  ,  COUNT(DichVu.MaDichVu) AS SOLAN,  DichVu.TenDichVu  ,  DichVu.GiaDichVu  ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong,  HoaDon.NgayTraPhong ,  ChiTietHoaDon.TongTien,ChiTietHoaDon.MaChiTietHoaDon   FROM  dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu  INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong  INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV  INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang  INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai  WHERE  SoPhong = ? GROUP BY   HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai , NhanVien.TaiKhoanNV,  Phong.MaPhong,Phong.SoPhong , LoaiPhong.DonGiaTheoNgay, DichVu.MaDichVu ,  DichVu.TenDichVu ,  DichVu.GiaDichVu ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri,  HoaDon.NgayTao,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,   ChiTietHoaDon.TongTien ,ChiTietHoaDon.MaChiTietHoaDon ";
@@ -141,6 +144,14 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
         );
      }
      
+     public void updateDichVuChiTietHoaDon(HoaDonLoadTable hd){
+         String sql = "update ChiTietHoaDon set TongTien = ? from ChiTietHoaDon inner join Phong on ChiTietHoaDon.MaPhong=Phong.MaPhong where SoPhong =?;                                  ";
+        JdbcHelper.executeUpdate(sql, 
+                hd.getTongTien(),
+                hd.getSoPhong()
+        );
+     }
+     
      public void insertChiTietHoaDon(ChiTietHoaDon cthd){
          String sql ="insert into ChiTietHoaDon(MaPhong,MaHoaDon) values(?,?)";
          JdbcHelper.executeUpdate(sql, 
@@ -191,6 +202,42 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
         dv.setTongTien(rs.getString("TongTien"));
         dv.setMaPhong(rs.getInt("MaPhong"));
         dv.setMaChiTietHoaDon(rs.getInt("MaChiTietHoaDon"));
+        return dv;
+    }
+     
+     protected List<HoaDonLoadTable> selectBySql_3(String sql, Object... args) {
+        List<HoaDonLoadTable> listDichVu = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            rs = JdbcHelper.executeQuery(sql, args);
+            while (rs.next()) {
+                listDichVu.add(readFromResultSet_3(rs));
+            }
+        } catch (Exception e) {
+            System.out.println("error"+e.getMessage());
+            e.printStackTrace();
+            
+            throw new RuntimeException();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.getStatement().getConnection().close();
+                } catch (SQLException ex) {
+
+                }
+            }
+        }
+        return listDichVu;
+    }
+     
+     public HoaDonLoadTable readFromResultSet_3(ResultSet rs) throws SQLException {
+        HoaDonLoadTable dv = new HoaDonLoadTable();
+        dv.setMaHoaDon(rs.getInt("MaHoaDon"));
+        dv.setSoPhong(rs.getInt("SoPhong"));
+        dv.setTenKhachHang(rs.getString("TenKhachHang"));
+        dv.setMaPhong(rs.getInt("MaPhong"));
+        dv.setMaHoaDon(rs.getInt("MaHoaDon"));
+        dv.setMaDichVu(rs.getInt("MaDichVu"));
         return dv;
     }
 }
