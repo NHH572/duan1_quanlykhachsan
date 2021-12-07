@@ -283,6 +283,11 @@ GO
 	('KHTT2',N'Khách hàng thân thiết 2',20,'2021/11/01','2021/12/31'),
 	('KHTT3',N'Khách hàng thân thiết 3',50,'2021/11/01','2021/12/31'),
 	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31'),
+	('TDL152',N'Tết Dương Lịch',109,'2022/01/01','2022/01/03'),
+	('L304',N'Lễ 30 THÁNG 4',150,'2021/04/30','2021/05/02'),
+	('QTTN',N'Quốc Tế Thiếu Nhi',1000,'2021/06/01','2021/06/05'),
+	('QTPN',N'Quốc Tế Phụ Nữ',1500,'2021/03/08','2021/03/11'),
+	('QT2010',N'Lễ 20 Tháng 10',1000,'2021/10/20','2021/10/25'),
 	('NONE',null,0,null,null)
 -- Đối tác
 	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
@@ -301,7 +306,18 @@ GO
 	('678912345',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
 	('789123456',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
 	('891234567',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
-	('912345678',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT')
+	('912345678',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
+	('301258900',N'jonny dang','1982/01/02',1,'0987563541','jnd@gmail.com',N'USA','3',null),
+	('301147852',N'Trân Duy Mạnh','1997/01/02',1,'0925896320','TDM@gmail.com',N'Thái Lan','3','CTTT'),
+	('301802451',N'Đỗ Duy Mạnh','1996/12/29',1,'0972569871','DDM@gmail.com',N'Việt Nam','3',null),
+	('301802452',N'Đặng Văn Lâm','1993/08/13',1,'0895148523','DVL@gmail.com',N'Nhật Bản','3','CTTT'),
+	('301802453',N'Nguyễn Công Phượng','1995/01/21','1','0879456320','NVP@gmail.com',N'Việt Nam','3',null),
+	('301258968',N'Nguyễn Tiến Linh ','1997/10/20',1,'0879523487','NTL@gmail.com',N'Việt Nam','3','CTTT'),
+	('301874631',N'Trần Văn Đạt','2000/12/26',1,'0987563541','jnd@gmail.com',N'USA','3',null),
+	('301258963',N'Trần Nguyên Mạnh ','1991/10/20',1,'0879523487','TNM@gmail.com',N'Việt Nam','3','CTTT'),
+	('301258982',N'Quan Văn Chuẩn ','1997/10/20',1,'0879523488','QVC@gmail.com',N'Việt Nam','3','CTTT'),
+	('301258961',N'Lương Xuân Trường','1995/04/28',1,'0879523451','NTP@gmail.com',N'Việt Nam','3','CTTT')
+
 -- Dịch Vụ
 	INSERT INTO DichVu(TenDichVu,GiaDichVu,MoTa)
 	VALUES (N'Giặt ủi',20000,N'Giá theo kg'),
@@ -310,6 +326,10 @@ GO
 	(N'Spa',500000,N'Full combo'),
 	(N'Xe đưa đón',100000,N'Đưa đón từ bến xe đến khách sạn'),
 	(N'Vận chuyển hành lý',30000,N'Vận chuyển hành lý '),
+	(N'Thuê Xe Máy Tự Lấy',30000,N'Thuê Xe'),
+	(N'Dịch Vụ Trông Trẻ Em',30000,N'Trông Trẻ Khi Khách Bận '),
+	(N'Dịch Vụ Karaoke',30000,N'Karaoke '),
+	(N'Spa',30000,N'Thư GIản'),
 	(N'Pepsi',20000,N'Lon'),
 	(N'Trà xanh không độ',20000,N'Lon'),
 	(N'Coca colai',20000,N'Lon'),
