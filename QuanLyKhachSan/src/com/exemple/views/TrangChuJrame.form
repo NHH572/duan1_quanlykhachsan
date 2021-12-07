@@ -360,7 +360,11 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< Updated upstream
                       <Image iconType="3" name="/com/exemple/icon/dichvuuu.png"/>
+=======
+                      <Image iconType="3" name="/com/exemple/icon/dichvu2.png"/>
+>>>>>>> Stashed changes
                     </Property>
                     <Property name="text" type="java.lang.String" value="D&#x1ecb;ch v&#x1ee5;"/>
                   </Properties>
@@ -386,21 +390,33 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
+<<<<<<< Updated upstream
                 <Container class="javax.swing.JPanel" name="Opaque11">
+=======
+                <Container class="javax.swing.JPanel" name="Opaque9">
+>>>>>>> Stashed changes
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+<<<<<<< Updated upstream
                       <AbsoluteConstraints x="-7" y="0" width="10" height="70"/>
+=======
+                      <AbsoluteConstraints x="0" y="0" width="3" height="70"/>
+>>>>>>> Stashed changes
                     </Constraint>
                   </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                           <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+=======
+                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">

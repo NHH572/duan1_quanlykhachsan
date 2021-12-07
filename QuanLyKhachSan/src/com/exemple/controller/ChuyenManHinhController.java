@@ -65,7 +65,7 @@ public class ChuyenManHinhController {
         for (DanhMuc item : listDanhMuc) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb(), item.getObq()));
         }
-    }   
+    }
 
     class LabelEvent implements MouseInputListener {
 
@@ -98,7 +98,11 @@ public class ChuyenManHinhController {
                     node = new QuanLyDichVuJPanel();
                     break;
                 case "OrderDichVu":
+<<<<<<< Updated upstream
                     
+=======
+
+>>>>>>> Stashed changes
                     break;
                 case "HoaDon":
                     node = new QuanLyHoaDonJPanel();
@@ -110,7 +114,11 @@ public class ChuyenManHinhController {
                     node = new QuanLyDoiTacJPanel();
                     break;
                 case "KhachHang":
+<<<<<<< Updated upstream
                     node = new HoTroJPanel();
+=======
+                    node = new QuanLyKhachHangJPanel();
+>>>>>>> Stashed changes
                     break;
                 case "KhuyenMai":
                     node = new QuanLyKhuyenMaiJPanel();
