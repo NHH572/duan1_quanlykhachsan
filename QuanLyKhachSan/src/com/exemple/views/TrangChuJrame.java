@@ -62,11 +62,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
         listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
         listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
-<<<<<<< Updated upstream
-        listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque11));
-=======
         listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque9));
->>>>>>> Stashed changes
         listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
         listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
         listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
@@ -183,11 +179,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         Opaque3 = new javax.swing.JPanel();
         lblDichVu = new javax.swing.JLabel();
         panelOrderDichVu = new javax.swing.JPanel();
-<<<<<<< Updated upstream
-        Opaque11 = new javax.swing.JPanel();
-=======
         Opaque9 = new javax.swing.JPanel();
->>>>>>> Stashed changes
         lblOrderDichVu = new javax.swing.JLabel();
         panelHoaDon = new javax.swing.JPanel();
         Opaque4 = new javax.swing.JPanel();
@@ -285,13 +277,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
         panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
-<<<<<<< Updated upstream
-            
-=======
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPhongMouseClicked(evt);
             }
->>>>>>> Stashed changes
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
             }
@@ -380,11 +368,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         lblDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDichVu.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< Updated upstream
-        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dichvuuu.png"))); // NOI18N
-=======
         lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dichvu2.png"))); // NOI18N
->>>>>>> Stashed changes
         lblDichVu.setText("Dịch vụ");
         panelDichVu.add(lblDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
@@ -398,23 +382,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
         });
         panelOrderDichVu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< Updated upstream
-        Opaque11.setEnabled(false);
-        Opaque11.setOpaque(false);
-
-        javax.swing.GroupLayout Opaque11Layout = new javax.swing.GroupLayout(Opaque11);
-        Opaque11.setLayout(Opaque11Layout);
-        Opaque11Layout.setHorizontalGroup(
-            Opaque11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Opaque11Layout.setVerticalGroup(
-            Opaque11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        panelOrderDichVu.add(Opaque11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 10, 70));
-=======
         Opaque9.setEnabled(false);
         Opaque9.setOpaque(false);
 
@@ -430,7 +397,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
         );
 
         panelOrderDichVu.add(Opaque9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
->>>>>>> Stashed changes
 
         lblOrderDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblOrderDichVu.setForeground(new java.awt.Color(255, 255, 255));
