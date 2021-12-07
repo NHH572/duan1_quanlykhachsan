@@ -30,6 +30,11 @@ public class ChiTietHoaDonDAO {
         );
      }
     
+     public void delete(int soPhong, int maDichVu) {
+        String sql="delete from ChiTietHoaDon where MaDichVu = ? and MaPhong in (select MaPhong from Phong where SoPhong = ?)";
+     JdbcHelper.executeUpdate(sql,maDichVu,soPhong);
+    }
+     
     protected List<ChiTietHoaDon> selectBySql(String sql, Object... args) {
         List<ChiTietHoaDon> listDichVu = new ArrayList<>();
         ResultSet rs = null;
