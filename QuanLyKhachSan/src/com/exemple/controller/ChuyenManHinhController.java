@@ -97,6 +97,9 @@ public class ChuyenManHinhController {
                 case "DichVu":
                     node = new QuanLyDichVuJPanel();
                     break;
+                case "OrderDichVu":
+                    
+                    break;
                 case "HoaDon":
                     node = new QuanLyHoaDonJPanel();
                     break;
@@ -106,14 +109,11 @@ public class ChuyenManHinhController {
                 case "DoiTac":
                     node = new QuanLyDoiTacJPanel();
                     break;
-                case "HoTro":
+                case "KhachHang":
                     node = new HoTroJPanel();
                     break;
                 case "KhuyenMai":
                     node = new QuanLyKhuyenMaiJPanel();
-                    break;
-                case "DangXuat":
-                    new DangnhapJDialog(null, true).setVisible(true);
                     break;
                 default:
                     break;
