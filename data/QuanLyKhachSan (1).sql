@@ -329,31 +329,22 @@ GO
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2012/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','789123456','KHTT2')
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','891234567','NONE')
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','912345678','KHTT2')
---	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE')
---	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2')
---	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE')
--- Chi tiết hóa đơn
+ --Chi tiết hóa đơn
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
 	(2,5,5,2,200000), (2,2,5,3,90000), (2,1,5,2,40000)
 -- Đặt phòng
 GO
---	'456789123'
---	'567891234'
---	'678912345'
---	'789123456'
---	'891234567'
---	'912345678'
-	INSERT INTO
-	DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
+
+	INSERT INTO DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
 	VALUES
 	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'123456789',null,2),
 	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'234567891',null,3),
 	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'345678912',null,4),
 	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'456789123',null,5),
 	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'567891234',null,1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,3,'678912345','pnmtriet',1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,5,'891234567','nhhai',1)
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'678912345',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'891234567',null,1)
 -- TẠO PROC
 --1
 IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
@@ -422,6 +413,10 @@ AS BEGIN
 	AND YEAR(hd.NgayTao) = @year
 END
 
+
+select * from HoaDon;
+select * from ChiTietHoaDon;
+
 /*
 update HoaDon set ThanhTien = '123' where MaKhuyenMai ='khtt2' 
 
@@ -453,12 +448,25 @@ SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang , 
 	*/
 
 
-	select * from HoaDon;
-	select * from ChiTietHoaDon
+	
+	/*
 	select * from KhachHang
 	select MaHoaDon from HoaDon where SoCMTKhachHang = '123456789'
 	select * from Phong where TrangThai ='Đang thuê'
 	select * from DatPhong
 	select * from Phong 
+	select * from HoaDon;
+	select * from ChiTietHoaDon
+	SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang ,  KhachHang.SoDienThoai ,  NhanVien.TaiKhoanNV , Phong.MaPhong, Phong.SoPhong  ,LoaiPhong.DonGiaTheoNgay ,  DichVu.MaDichVu  ,  SoLanThueDichVu,  DichVu.TenDichVu  ,  DichVu.GiaDichVu  ,  KhuyenMai.MaKhuyenMai ,  KhuyenMai.GiaTri ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong,  HoaDon.NgayTraPhong ,  ChiTietHoaDon.TongTien,ChiTietHoaDon.MaChiTietHoaDon   FROM  dbo.DichVu DichVu INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON DichVu.MaDichVu = ChiTietHoaDon.MaDichVu  INNER JOIN dbo.HoaDon HoaDon ON ChiTietHoaDon.MaHoaDon = HoaDon.MaHoaDon  INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong INNER JOIN dbo.LoaiPhong LoaiPhong ON Phong.MaLoaiPhong = LoaiPhong.MaLoaiPhong  INNER JOIN dbo.NhanVien NhanVien ON HoaDon.TaiKhoanNV = NhanVien.TaiKhoanNV  INNER JOIN dbo.KhachHang KhachHang ON HoaDon.SoCMTKhachHang = KhachHang.SoCMTKhachHang  INNER JOIN dbo.KhuyenMai KhuyenMai ON HoaDon.MaKhuyenMai = KhuyenMai.MaKhuyenMai  WHERE  SoPhong = '101'
+	DELETE from ChiTietHoaDon where Phong.SoPhong ='101' and MaDichVu ='3' 
+	slec
+	delete from ChiTietHoaDon where MaDichVu = '3' and MaPhong in (select MaPhong from Phong where SoPhong = '101')
 
-	insert into ChiTietHoaDon(MaPhong,MaHoaDon) values(?,?)
+	select * from Phong;
+	select * from DatPhong;
+
+	update Phong set TrangThai =N'Trống' where SoPhong ='302'
+	update DatPhong set MaPhong = null, TaiKhoanNV = null where MaPhong = '5'
+
+	
+	*/
