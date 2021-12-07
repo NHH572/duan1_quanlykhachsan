@@ -272,7 +272,10 @@ public class TrangChuJrame extends javax.swing.JFrame {
         slidePanel.add(panelSoDoPhong);
 
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
-        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {        
+        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPhongMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
             }
@@ -489,8 +492,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         lblKhoHang.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblKhoHang.setForeground(new java.awt.Color(255, 255, 255));
-        lblKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/hotro.png"))); // NOI18N
-        lblKhoHang.setText("Hỗ trợ");
+        lblKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/khachhangzzz.png"))); // NOI18N
+        lblKhoHang.setText("Khách hàng");
         panelKhoHang.add(lblKhoHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
         slidePanel.add(panelKhoHang);
@@ -639,11 +642,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 754, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(lblXinChao)
                 .addGap(83, 83, 83))
         );
