@@ -67,7 +67,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             int maLoaiPhong = p.getMaLoaiPhong();
             cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
             lblSoPhong.setText(String.valueOf(p.getSoPhong()));
-            tblPhongTrong.setRowSelectionInterval(SoDoPhongJPanel.maPhong - 1, SoDoPhongJPanel.maPhong - 1);
+            tblPhongTrong.setRowSelectionInterval(SoDoPhongJPanel.maPhong-1, SoDoPhongJPanel.maPhong-1);
             Tabs.setSelectedIndex(1);
         } else {
             disposeLabelSoPhong();
@@ -815,7 +815,8 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyReleased
     private void showInformation() {
         try {
-            int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);            
+            int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
+            
             DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dp = dpDAO.selectById(maDatPhong);
             int maLoaiPhong = dp.getMaLoaiPhong();
@@ -874,7 +875,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     }
     private void tblDatPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatPhongMouseClicked
         if (evt.getClickCount() == 2) {
-            rowDatPhong = tblDatPhong.getSelectedRow(); //lấy vị trí dòng được chọn
+            rowDatPhong = tblDatPhong.rowAtPoint(evt.getPoint()); //lấy vị trí dòng được chọn
             maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
             if (rowDatPhong >= 0) {
                 showInformation();
@@ -894,11 +895,15 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             return;
         }
         DatPhongDAO dpDAO = new DatPhongDAO();
+        /// Sửa lại tài khoản nhân viên        
         String taiKhoanNV = Auth.user.getMaNV();
+        int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
         int maLoaiPhong = cbbLoaiPhong.getSelectedIndex() + 1;
         dpDAO.updateDatPhong(maPhong, taiKhoanNV, maDatPhong, maLoaiPhong);
         PhongDAO pDAO = new PhongDAO();
         pDAO.updateTrangThai(maPhong);
+        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        fillToTableDatPhong();
         showInformation();
         this.insertHoaDon();
         this.insertChiTietHoaDon();
