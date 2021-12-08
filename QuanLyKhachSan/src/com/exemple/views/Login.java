@@ -12,6 +12,7 @@ import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 
 /**
@@ -90,7 +91,7 @@ public class Login extends javax.swing.JFrame {
         txtMatkhau.setBackground(new java.awt.Color(0, 0, 0));
         txtMatkhau.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtMatkhau.setForeground(new java.awt.Color(153, 153, 153));
-        txtMatkhau.setText("Enter password");
+        txtMatkhau.setText("admin");
         txtMatkhau.setBorder(null);
         txtMatkhau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -132,11 +133,16 @@ public class Login extends javax.swing.JFrame {
         txtTendangnhap.setBackground(new java.awt.Color(0, 0, 0));
         txtTendangnhap.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         txtTendangnhap.setForeground(new java.awt.Color(102, 102, 102));
-        txtTendangnhap.setText("Enter UserName");
+        txtTendangnhap.setText("admin");
         txtTendangnhap.setBorder(null);
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTendangnhapActionPerformed(evt);
+            }
+        });
+        txtTendangnhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTendangnhapKeyPressed(evt);
             }
         });
         jPanel1.add(txtTendangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 390, 30));
@@ -209,6 +215,7 @@ public void dangnhap() {
         String manv = txtTendangnhap.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
+            NhanVienDAO dao = new NhanVienDAO();
             NhanVien nhanVien = dao.selectById(manv);
             if (nhanVien != null) {
                 String matKhau2 = nhanVien.getMatKhau();
@@ -228,11 +235,15 @@ public void dangnhap() {
             e.printStackTrace();
         }
     }
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+
+    private void dangNhap() {
         if (utilityHelper.checkNullText(txtTendangnhap)
                 && utilityHelper.checkNullPass(txtMatkhau)) {
             this.dangnhap();
         }
+    }
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -243,7 +254,7 @@ public void dangnhap() {
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void txtMatkhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhauKeyPressed
-
+        setEventPressEnter(evt);
     }//GEN-LAST:event_txtMatkhauKeyPressed
 
     private void chkHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHienMatKhauActionPerformed
@@ -261,6 +272,15 @@ public void dangnhap() {
     private void txtTendangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTendangnhapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTendangnhapActionPerformed
+
+    private void setEventPressEnter(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            dangNhap();
+        }
+    }
+    private void txtTendangnhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTendangnhapKeyPressed
+        setEventPressEnter(evt);
+    }//GEN-LAST:event_txtTendangnhapKeyPressed
 
     /**
      * @param args the command line arguments
@@ -314,6 +334,5 @@ public void dangnhap() {
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTendangnhap;
     // End of variables declaration//GEN-END:variables
-NhanVienDAO dao = new NhanVienDAO();
 
 }
