@@ -69,6 +69,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtMatkhau = new javax.swing.JPasswordField();
+        btnQRCode = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -100,6 +101,18 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 450, -1));
 
+        btnQRCode.setBackground(new java.awt.Color(255, 255, 255));
+        btnQRCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnQRCode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/qr.png"))); // NOI18N
+        btnQRCode.setText("QR code");
+        btnQRCode.setBorder(null);
+        btnQRCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQRCodeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnQRCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, 40));
+
         btnDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dangnhap.png"))); // NOI18N
@@ -115,14 +128,14 @@ public class Login extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(255, 255, 255));
         btnThoat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/thoat.png"))); // NOI18N
-        btnThoat.setText("Thoát");
+        btnThoat.setText("Exit");
         btnThoat.setBorder(null);
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThoatActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 90, 40));
+        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 90, 40));
 
         jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 470, 10));
@@ -150,7 +163,7 @@ public class Login extends javax.swing.JFrame {
         chkHienMatKhau.setBackground(new java.awt.Color(0, 0, 0));
         chkHienMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkHienMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        chkHienMatKhau.setText("Hiện mật khẩu");
+        chkHienMatKhau.setText("Show password");
         chkHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkHienMatKhauActionPerformed(evt);
@@ -247,7 +260,6 @@ public void dangnhap() {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-
         if (MsgBox.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
             System.exit(0);
         }
@@ -281,6 +293,10 @@ public void dangnhap() {
     private void txtTendangnhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTendangnhapKeyPressed
         setEventPressEnter(evt);
     }//GEN-LAST:event_txtTendangnhapKeyPressed
+
+    private void btnQRCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQRCodeActionPerformed
+       new QRLogin().setVisible(true);
+    }//GEN-LAST:event_btnQRCodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +335,7 @@ public void dangnhap() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnQRCode;
     private javax.swing.JButton btnThoat;
     private javax.swing.JCheckBox chkHienMatKhau;
     private javax.swing.JLabel jLabel1;
