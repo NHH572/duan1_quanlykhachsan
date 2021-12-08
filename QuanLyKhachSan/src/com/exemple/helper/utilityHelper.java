@@ -16,6 +16,7 @@ import javax.swing.JTextField;
  * @author Laptop
  */
 public class utilityHelper {
+
     /*
     1-10 kí tự
     a-z, A-Z, 0-9
@@ -32,7 +33,8 @@ public class utilityHelper {
             return false;
         }
     }
-     //pass từ 3-16 kí tự
+    //pass từ 3-16 kí tự
+
     public static boolean checkPass(JPasswordField txt) {
         txt.setBackground(white);
         if (txt.getPassword().length > 2 && txt.getPassword().length < 17) {
@@ -43,6 +45,7 @@ public class utilityHelper {
             return false;
         }
     }
+
     //gồm các ký tự chữ đấu cách
     //từ 3-25 kí tự
     public static boolean checkName(JTextField txt) {
@@ -57,7 +60,8 @@ public class utilityHelper {
             return false;
         }
     }
-     public static boolean checkNameDoiTac(JTextField txt) {
+
+    public static boolean checkNameDoiTac(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
         String rgx = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{3,25}$";
@@ -69,7 +73,8 @@ public class utilityHelper {
             return false;
         }
     }
-     /*
+
+    /*
     đúng 4 kí tự
     a-z, A-Z, 0-9
      */
@@ -85,8 +90,9 @@ public class utilityHelper {
             return false;
         }
     }
-       //gồm 10 số 
+    //gồm 10 số 
     //các đầu 3 số của nhà mạng
+
     public static boolean checkSDT(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
@@ -99,20 +105,22 @@ public class utilityHelper {
             return false;
         }
     }
-    public static boolean checkCMT(JTextField txt){
+
+    public static boolean checkCMT(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
         String rgx = "[0-9]{12}";
-        if(id.matches(rgx)){
+        if (id.matches(rgx)) {
             return true;
-        }else{
+        } else {
             txt.setBackground(pink);
-             MsgBox.alert(txt.getRootPane(), txt.getName() + "Phải gồm 12 chữ số đúng với số CMT ");
+            MsgBox.alert(txt.getRootPane(), txt.getName() + " Phải gồm 12 chữ số đúng với số CMT ");
             return false;
-            
+
         }
     }
-     public static boolean checkEmail(JTextField txt) {
+
+    public static boolean checkEmail(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
         String rgx = "^[a-zA-Z][a-zA-Z0-9_\\.]{2,32}@[a-zA-Z0-9]{2,10}(\\.[a-zA-Z0-9]{2,4}){1,2}$";
@@ -124,7 +132,8 @@ public class utilityHelper {
             return false;
         }
     }
-         public static boolean checkNullText(JTextField txt) {
+
+    public static boolean checkNullText(JTextField txt) {
         txt.setBackground(white);
         if (txt.getText().trim().length() > 0) {
             return true;
@@ -145,13 +154,26 @@ public class utilityHelper {
             return false;
         }
     }
-        public static boolean checkNullPass(JPasswordField txt) {
+
+    public static boolean checkNullPass(JPasswordField txt) {
         txt.setBackground(white);
         if (txt.getPassword().length > 0) {
             return true;
         } else {
             txt.setBackground(pink);
             MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
+            return false;
+        }
+    }
+
+    public static boolean checkNumber(JTextField txt) {
+        txt.setBackground(white);
+        try {
+            Float.parseFloat(txt.getText());
+            return true;
+        } catch (Exception e) {
+            txt.setBackground(pink);
+            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là số");
             return false;
         }
     }

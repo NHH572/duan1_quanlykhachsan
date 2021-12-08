@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 /**
  *
  * @author Minh Triet
@@ -139,32 +140,33 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                 DoiTac model = dao.selectById(madt);
                 if (model != null) {
                     this.setForm(model);
-                    
+
                 }
                 SoLanHopTac();
-                
+
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    public void SoLanHopTac(){  
+
+    public void SoLanHopTac() {
         try {
-            Connection con=DriverManager.getConnection(dburl, username, password);
+            Connection con = DriverManager.getConnection(dburl, username, password);
             index = tbl_DoiTac.getSelectedRow();
             if (index >= 0) {
-             String maDT = (String) tbl_DoiTac.getValueAt(this.index, 0);
-            String sql = "select Count(kh.MaDoiTac) as SoLuong from HoaDon hd inner join KhachHang kh on hd.SoCMTKhachHang = kh.SoCMTKhachHang inner join DoiTac dt on kh.MaDoiTac = dt.MaDoiTac where kh.MaDoiTac = ? group by hd.SoCMTKhachHang";       
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, maDT);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                txt_SLHT.setText(rs.getString("SoLuong"));
+                String maDT = (String) tbl_DoiTac.getValueAt(this.index, 0);
+                String sql = "select Count(kh.MaDoiTac) as SoLuong from HoaDon hd inner join KhachHang kh on hd.SoCMTKhachHang = kh.SoCMTKhachHang inner join DoiTac dt on kh.MaDoiTac = dt.MaDoiTac where kh.MaDoiTac = ? group by hd.SoCMTKhachHang";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, maDT);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt_SLHT.setText(rs.getString("SoLuong"));
+                }
             }
-            }      
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     /**
@@ -224,6 +226,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Số lần hợp tác");
 
+        btn_Them.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_Them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/add.png"))); // NOI18N
         btn_Them.setText("Thêm");
         btn_Them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +235,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
             }
         });
 
+        btn_Xoa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_Xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/deleteService.png"))); // NOI18N
         btn_Xoa.setText("Xóa");
         btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +244,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
             }
         });
 
+        btn_Sua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/update.png"))); // NOI18N
         btn_Sua.setText("Sửa");
         btn_Sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +262,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
 
         txt_MaDT.setName("Mã đối tác"); // NOI18N
 
+        btn_Moi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_Moi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/new.png"))); // NOI18N
         btn_Moi.setText("Mới");
         btn_Moi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,39 +290,41 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(btn_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(btn_Them)
                 .addGap(18, 18, 18)
-                .addComponent(btn_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Xoa)
                 .addGap(18, 18, 18)
-                .addComponent(btn_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Sua)
                 .addGap(18, 18, 18)
-                .addComponent(btn_Moi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 121, Short.MAX_VALUE))
+                .addComponent(btn_Moi)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbDG, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3))
-                            .addGap(64, 64, 64)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_MaDT, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(txt_TenDT))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txt_SLHT, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lbDG)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_MaDT, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(txt_TenDT))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_SLHT, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -327,9 +339,8 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(txt_MaDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6)
+                    .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -355,16 +366,13 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-  if(utilityHelper.checkNullText(txt_MaDT)
-               && utilityHelper.checkNullText(txt_SDT)
-               && utilityHelper.checkNullText(txt_TenDT)
-               && utilityHelper.checkNullText2(txt_DanhGia)){
-           if(utilityHelper.checkMaDoitac(txt_MaDT)
-                   && utilityHelper.checkName(txt_TenDT)
-                   && utilityHelper.checkSDT(txt_SDT)){
-               this.insert();
-           }
-       }
+        if (utilityHelper.checkNullText(txt_MaDT) && utilityHelper.checkMaDoitac(txt_MaDT)
+                && utilityHelper.checkNullText(txt_SDT) && utilityHelper.checkSDT(txt_SDT)
+                && utilityHelper.checkNullText(txt_TenDT) && utilityHelper.checkName(txt_TenDT)
+                && utilityHelper.checkNullText2(txt_DanhGia)) {
+            this.insert();
+
+        }
 
     }//GEN-LAST:event_btn_ThemActionPerformed
 
@@ -381,16 +389,13 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_XoaActionPerformed
 
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
-          if(utilityHelper.checkNullText(txt_MaDT)
-               && utilityHelper.checkNullText(txt_SDT)
-               && utilityHelper.checkNullText(txt_TenDT)
-               && utilityHelper.checkNullText2(txt_DanhGia)){
-           if(utilityHelper.checkMaDoitac(txt_MaDT)
-                   && utilityHelper.checkName(txt_TenDT)
-                   && utilityHelper.checkSDT(txt_SDT)){
-               this.update();
-           }
-       }
+        if (utilityHelper.checkNullText(txt_MaDT) && utilityHelper.checkMaDoitac(txt_MaDT)
+                && utilityHelper.checkNullText(txt_SDT) && utilityHelper.checkSDT(txt_SDT)
+                && utilityHelper.checkNullText(txt_TenDT) && utilityHelper.checkName(txt_TenDT)
+                && utilityHelper.checkNullText2(txt_DanhGia)) {
+            this.update();
+
+        }
     }//GEN-LAST:event_btn_SuaActionPerformed
 
     private void btn_MoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MoiActionPerformed

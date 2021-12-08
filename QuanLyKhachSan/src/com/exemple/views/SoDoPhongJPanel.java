@@ -31,9 +31,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  */
 public class SoDoPhongJPanel extends javax.swing.JPanel {
 
-    private List<DanhMucSoDoPhong> listDanhMucSoDoPhong = new ArrayList<>();
-    public static List<DanhMucSoDoPhong> listDanhMucSoDoPhongPublic = new ArrayList<>();
-    public static int maPhong = -1;
+    public List<DanhMucSoDoPhong> listDanhMucSoDoPhong = new ArrayList<>();
+    public static int maPhong = 0;
 
     public SoDoPhongJPanel() {
         initComponents();
@@ -92,7 +91,6 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T6P4", panel29, lblSoPhong29, lblLoai29, lblTrangThai29, panelTam29, btnChiTiet29, btnChucNang29));
         listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T6P5", panel30, lblSoPhong30, lblLoai30, lblTrangThai30, panelTam30, btnChiTiet30, btnChucNang30));
         listDanhMucSoDoPhong.add(new DanhMucSoDoPhong("T6P6", panel36, lblSoPhong36, lblLoai36, lblTrangThai36, panelTam36, btnChiTiet36, btnChucNang36));
-        listDanhMucSoDoPhongPublic.addAll(listDanhMucSoDoPhong);
     }
 
     /**
