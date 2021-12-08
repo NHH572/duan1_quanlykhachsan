@@ -4,7 +4,9 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.MailSender;
 import com.exemple.controller.NhanVienDAO;
+import com.exemple.entity.GuiMailMaKhuyenMai;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
@@ -12,6 +14,16 @@ import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -68,6 +80,8 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtMatkhau = new javax.swing.JPasswordField();
+        btnSendMail = new javax.swing.JButton();
+        btnQRCode = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -97,7 +111,27 @@ public class Login extends javax.swing.JFrame {
                 txtMatkhauKeyPressed(evt);
             }
         });
-        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 390, -1));
+        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 450, -1));
+
+        btnSendMail.setText("Gửi");
+        btnSendMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendMailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSendMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+
+        btnQRCode.setBackground(new java.awt.Color(255, 255, 255));
+        btnQRCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnQRCode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/qr.png"))); // NOI18N
+        btnQRCode.setText("QR code");
+        btnQRCode.setBorder(null);
+        btnQRCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQRCodeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnQRCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, 40));
 
         btnDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -114,14 +148,14 @@ public class Login extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(255, 255, 255));
         btnThoat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/thoat.png"))); // NOI18N
-        btnThoat.setText("Thoát");
+        btnThoat.setText("Exit");
         btnThoat.setBorder(null);
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThoatActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 90, 40));
+        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 90, 40));
 
         jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 470, 10));
@@ -139,12 +173,17 @@ public class Login extends javax.swing.JFrame {
                 txtTendangnhapActionPerformed(evt);
             }
         });
+        txtTendangnhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTendangnhapKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtTendangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 390, 30));
 
         chkHienMatKhau.setBackground(new java.awt.Color(0, 0, 0));
         chkHienMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkHienMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        chkHienMatKhau.setText("Hiện mật khẩu");
+        chkHienMatKhau.setText("Show password");
         chkHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkHienMatKhauActionPerformed(evt);
@@ -209,6 +248,7 @@ public void dangnhap() {
         String manv = txtTendangnhap.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
+            NhanVienDAO dao = new NhanVienDAO();
             NhanVien nhanVien = dao.selectById(manv);
             if (nhanVien != null) {
                 String matKhau2 = nhanVien.getMatKhau();
@@ -228,22 +268,25 @@ public void dangnhap() {
             e.printStackTrace();
         }
     }
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+
+    private void dangNhap() {
         if (utilityHelper.checkNullText(txtTendangnhap)
                 && utilityHelper.checkNullPass(txtMatkhau)) {
             this.dangnhap();
         }
+    }
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-
         if (MsgBox.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void txtMatkhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhauKeyPressed
-
+        setEventPressEnter(evt);
     }//GEN-LAST:event_txtMatkhauKeyPressed
 
     private void chkHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHienMatKhauActionPerformed
@@ -262,6 +305,80 @@ public void dangnhap() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTendangnhapActionPerformed
 
+    private void setEventPressEnter(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            dangNhap();
+        }
+    }
+    private void txtTendangnhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTendangnhapKeyPressed
+        setEventPressEnter(evt);
+    }//GEN-LAST:event_txtTendangnhapKeyPressed
+
+    private void btnQRCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQRCodeActionPerformed
+       new QRLogin().setVisible(true);
+    }//GEN-LAST:event_btnQRCodeActionPerformed
+
+    private void btnSendMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMailActionPerformed
+        sendMailToCustomers();
+    }//GEN-LAST:event_btnSendMailActionPerformed
+    private void sendMailToCustomers(){
+        List<GuiMailMaKhuyenMai> listGuiMaKhuyenMai=new ArrayList<>();
+        listGuiMaKhuyenMai.add(new GuiMailMaKhuyenMai("abc", "trietpnmps17263@fpt.edu.vn",true, "Mã Khuyến Mãi"));
+         if (listGuiMaKhuyenMai.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Thêm 1 địa chỉ Email muốn gửi!", "Thông báo", JOptionPane.CANCEL_OPTION);
+            return;
+        }
+        String from = "quanlykhachsan1@gmail.com";
+        String subject = "Thông tin khuyến mãi";
+//        int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn gửi mail các sinh viên trong danh sách không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+//        if (option == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+        int count = 0;
+        for (GuiMailMaKhuyenMai item : listGuiMaKhuyenMai) {
+            try {
+                Message msg = null;
+                String to = item.getEmail();
+                String hoTen=item.getHoTen();
+                String body = "";
+                String maKhuyenMai = item.getMaKhuyenMai();
+                
+                String gioiTinh="";
+                if(item.isGioiTinh()){
+                    gioiTinh="chị";
+                }else{
+                    gioiTinh="anh";
+                }
+                
+                body = "Xin chào "+gioiTinh+" "+hoTen+". Khách sạn của chúng tôi xin gửi tặng đến quý khách mã khuyến mãi nhằm tri ân quy khách."
+                        + "\nMã khuyến mãi của "+gioiTinh+" là:"+maKhuyenMai;
+                Properties p = new Properties();
+                p.put("mail.smtp.auth", "true");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.host", "smtp.gmail.com");
+                p.put("mail.smtp.port", 587);
+                String accountName = "quanlykhachsan1@gmail.com";
+                String accountPassword = "Aa123456@";
+                Session s = Session.getInstance(p,
+                        new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(accountName, accountPassword);
+                    }
+                });
+                msg = new MimeMessage(s);
+                msg.setFrom(new InternetAddress(from));
+                msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                msg.setSubject(subject);
+                msg.setText(body);
+//                Transport.send(msg);
+                MailSender.queue((MimeMessage) msg);
+                count++;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Gửi Email thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
     /**
      * @param args the command line arguments
      */
@@ -299,6 +416,8 @@ public void dangnhap() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnQRCode;
+    private javax.swing.JButton btnSendMail;
     private javax.swing.JButton btnThoat;
     private javax.swing.JCheckBox chkHienMatKhau;
     private javax.swing.JLabel jLabel1;
@@ -314,6 +433,5 @@ public void dangnhap() {
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTendangnhap;
     // End of variables declaration//GEN-END:variables
-NhanVienDAO dao = new NhanVienDAO();
 
 }
