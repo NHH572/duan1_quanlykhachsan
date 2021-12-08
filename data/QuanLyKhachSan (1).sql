@@ -246,12 +246,26 @@ GO
 	('NONE',null,0,null,null)
 -- Đối tác
 	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
-	VALUES ('CTTP',N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
+	VALUES 
+	('CTSS',N'Công ty Sam Sung','0359998799',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
+	('CTAP',N'Công ty Apple','0989996584',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
+	('CTTC',N'Công ty du lịch Thành Công','0989965299',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
+	('CTTP',N'Công ty du lịch Trường Phát','0123555555',N'Chất lượng tốt, đầy đủ tiện nghi'),
 	('CTTT',N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
 	('CTPT',N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
 -- Khách hàng
 	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue,MaDoiTac)
-	VALUES ('272433567',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
+	VALUES 
+	('265283567',N'Nguyễn Thành Công','2000/08/09',0,'0982084232','ntcong@gmail.com',N'Việt Nam',null,'CTSS'),
+	('958283567',N'Phạm Công Vinh','1998/12/25',0,'0971564232','pcvinh@gmail.com',N'Việt Nam',null,'CTSS'),
+	('569883567',N'Trần Thị Lan ','1999/03/19',1,'0985244232','ttlan@gmail.com',N'Việt Nam',null,'CTSS'),
+	('52483567',N'Nguyễn Thanh Hường','2000/11/19',1,'0352484232','nthuong@gmail.com',N'Việt Nam',null,'CTAP'),
+	('85143567',N'Nguyễn Phương Vy','2000/05/29',1,'0352485242','npvy@gmail.com',N'Việt Nam',null,'CTAP'),
+	('85135767',N'Mai Thúy Lan','2000/05/09',1,'0352368442','mtlan@gmail.com',N'Việt Nam',null,'CTAP'),
+	('65843567',N'Chống Thanh Quý','1997/11/29',0,'0324485242','ctquy@gmail.com',N'Việt Nam',null,'CTTC'),
+	('85443567',N'Hồ Thanh Hương','1997/11/29',0,'0854485242','hthuong@gmail.com',N'Việt Nam',null,'CTTC'),
+	('36543567',N'Trần Liên Thanh','1997/11/29',0,'0854785242','ctquy@gmail.com',N'Việt Nam',null,'CTTC'),
+	('272433567',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
 	('767265819',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
 	('124567893',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT')
 -- Dịch Vụ
@@ -272,8 +286,19 @@ GO
 	(N'Fitness centre',50000,N'1 buổi'),
 	(N'Dịch vụ bể bơi 4 mùa',20000,N'1 vé')
 -- Hóa đơn
+
 	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)
-	VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
+	VALUES 
+			('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','569883567','KHTT2'),
+			('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','958283567','NONE'),
+			('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','265283567','KHTT2'),
+			('2020/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','85135767','KHTT2'),
+			('2020/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','85143567','NONE'),
+			('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','52483567','KHTT2'),
+			('2020/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','85143567','NONE'),
+			('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','52483567','KHTT2'),
+	
+			('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','124567893','KHTT2'),
 			('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','272433567','NONE'),
 			('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','124567893','KHTT2'),
 			('2019/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','272433567','NONE'),
