@@ -6,37 +6,39 @@
 package com.exemple.views;
 
 import com.exemple.controller.DatPhongDAO;
+import com.exemple.controller.HoaDonDAO;
 import com.exemple.controller.KhachHangDAO;
+import com.exemple.controller.LoadTableHoaDonDAO;
 import com.exemple.controller.LoaiPhongDAO;
 import com.exemple.controller.PhongDAO;
+import com.exemple.entity.ChiTietHoaDon;
 import com.exemple.entity.DatPhong;
+import com.exemple.entity.HoaDon;
 import com.exemple.entity.KhachHang;
 import com.exemple.entity.LoaiPhong;
 import com.exemple.entity.Phong;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.XDate;
 import com.exemple.helper.utilityHelper;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
-
+    private HoaDonDAO hddao = new HoaDonDAO();
+    LoadTableHoaDonDAO lthddao = new LoadTableHoaDonDAO();
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
     private List<LoaiPhong> listLoaiPhong = lpDAO.getAll();
     private String textDefault = "Tìm kiếm theo số chứng minh nhân dân....";
@@ -100,7 +102,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
 //            }
 //        });
     }
-
+    
     private void addToModelDatPhong(int indexCbb, String txtSearch) {
         DefaultTableModel model = (DefaultTableModel) tblDatPhong.getModel();
         model.setRowCount(0);
@@ -832,7 +834,50 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         int row = tblPhongTrong.getSelectedRow();
         maPhong = (int) tblPhongTrong.getValueAt(row, 0);
     }//GEN-LAST:event_tblPhongTrongMouseClicked
+    
+    HoaDon getModel() {
+        HoaDon hd = new HoaDon();
+        hd.setCMND_CCCD(txtSoCMTKH.getText());
+        hd.setNgayNhanPhong(txtNgayNhanPhong.getDate());
+        hd.setNgayTao(XDate.now());
+        hd.setNgayTraPhong(txtNgayMuonTra.getDate());
+        hd.setTaiKhoanNV(Auth.user.getMaNV());
+        hd.setThanhToan(Float.parseFloat(txtTamTinh.getText()));
+        return hd;
+    }
 
+    void insertHoaDon() {
+        try {
+            HoaDon hd = getModel();
+            if (hd.getMaKhuyenMai() == null) {
+                hd.setMaKhuyenMai("NONE");
+            }
+            hddao.insert(hd);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi hệ thống");
+        }
+    }
+
+    ChiTietHoaDon getModel2() {
+        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        String CMND = txtSoCMTKH.getText();
+        HoaDon hd = hddao.selectByCMND(CMND);
+        int maHoaDon = hd.getMaHoaDon();
+        cthd.setMaHoaDon(maHoaDon);
+        cthd.setMaPhong(maPhong);
+        return cthd;
+    }
+
+    void insertChiTietHoaDon() {
+        try {
+            ChiTietHoaDon cthd = getModel2();
+            lthddao.insertChiTietHoaDon(cthd);
+        } catch (Exception e) {
+            MsgBox.alert(this, "cthd ");
+            e.printStackTrace();
+        }
+
+    }
     private void btnDatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatPhongActionPerformed
         if (maPhong == -1) {
             return;
@@ -845,9 +890,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         dpDAO.updateDatPhong(maPhong, taiKhoanNV, maDatPhong, maLoaiPhong);
         PhongDAO pDAO = new PhongDAO();
         pDAO.updateTrangThai(maPhong);
-        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         fillToTableDatPhong();
         showInformation();
+        insertHoaDon();
+        insertChiTietHoaDon();
+        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);        
     }//GEN-LAST:event_btnDatPhongActionPerformed
     private void clearForm() {
         cbbLoaiPhong.setSelectedIndex(0);

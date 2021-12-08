@@ -13,6 +13,7 @@ import com.exemple.entity.HoaDonLoadTable;
 import com.exemple.helper.MsgBox;
 import com.exemple.helper.utilityHelper;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,22 +22,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OrderDichVuJPanel extends javax.swing.JPanel {
 
-   int row =0;
+    int row = 0;
     PhongDAO pdao = new PhongDAO();
     DichVuDAO dvdao = new DichVuDAO();
     LoadTableHoaDonDAO lthdDao = new LoadTableHoaDonDAO();
     OrderDichVuDAO oddvdao = new OrderDichVuDAO();
-    String tenKhachHang ;
+    String tenKhachHang;
     int maHoaDon;
-    int maPhong ;
+    int maPhong;
     int madichvu;
     int soLanThue;
+    int maChiTietHoaDon = -1;
+    int rowDichVu = -1;
+    boolean statusUpdate=true;
     public OrderDichVuJPanel() {
         initComponents();
         loadToTable();
     }
 
-   void loadToTable() {
+    void loadToTable() {
         DefaultTableModel model = (DefaultTableModel) tblDichVu.getModel();
         model.setRowCount(0);
         List<DichVu> list = dvdao.selectAll();
@@ -50,58 +54,104 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
         model.setRowCount(0);
         List<HoaDonLoadTable> list = lthdDao.selectBySoPhong1(soPhong);
-        int i = 1;
-        for (HoaDonLoadTable hd : list) {
+        if (list.isEmpty()) {
+            HoaDonLoadTable hd = lthdDao.selectBySoPhong4(soPhong);
             tenKhachHang = hd.getTenKhachHang();
-            maPhong=hd.getMaPhong();
+            maPhong = hd.getMaPhong();
             maHoaDon = hd.getMaHoaDon();
-            madichvu = hd.getMaDichVu();
-            soLanThue = hd.getSoLan();
-            Object[] row = {
-                i,
-                hd.getMaDichVu(),
-                hd.getTenDichVu(),
-                hd.getSoLan(),
-                hd.getGiaDichVu()
-            };
-            i++;
-            model.addRow(row);
+            maChiTietHoaDon = hd.getMaChiTietHoaDon();
+        } else {
+            int i = 1;
+            for (HoaDonLoadTable hd : list) {
+                tenKhachHang = hd.getTenKhachHang();
+                maPhong = hd.getMaPhong();
+                maHoaDon = hd.getMaHoaDon();
+                madichvu = hd.getMaDichVu();
+                soLanThue = hd.getSoLan();
+                Object[] row = {
+                    hd.getMaChiTietHoaDon(),
+                    hd.getMaDichVu(),
+                    hd.getTenDichVu(),
+                    hd.getSoLan(),
+                    hd.getGiaDichVu()
+                };
+                i++;
+                model.addRow(row);
+            }
+        }
+
+    }
+
+    private boolean checkNumber(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
-    
-    void themDichVu(){
-        try {
-        for(int row :tblDichVu.getSelectedRows()){
-            HoaDonLoadTable hd = new HoaDonLoadTable();
-            String soLuong = txtSoLuong.getText();
-            if(soLuong.equals("")){
-              hd.setSoLan(soLanThue);
-            }
-            else{
+
+    void themDichVu2() {
+        HoaDonLoadTable hd = new HoaDonLoadTable();
+        if (rowDichVu == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn 1 dịch vụ!");
+            return;
+        } else {
+            hd.setMaDichVu(Integer.parseInt(tblDichVu.getValueAt(rowDichVu, 0).toString()));
+        }
+        if (!checkNumber(txtSoLuong.getText())) {
+            JOptionPane.showMessageDialog(this, "Số lần thuê phải là số");
+            return;
+        } else {
+            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
+                JOptionPane.showMessageDialog(this, "Số lần thuê phải lớn hơn 0");
+                return;
+            } else {
                 hd.setSoLan(Integer.parseInt(txtSoLuong.getText()));
             }
-            hd.setMaPhong(maPhong);
-            hd.setMaHoaDon(maHoaDon);
-            hd.setMaDichVu( (int) tblDichVu.getValueAt(row, 0));
-            
-            lthdDao.insertChiTietHoaDon(hd);
-        }} catch (Exception e) {
+        }
+        if(maChiTietHoaDon!=-1){
+            hd.setMaChiTietHoaDon(maChiTietHoaDon);
+        }
+        LoadTableHoaDonDAO dao = new LoadTableHoaDonDAO();
+        dao.updateChiTietHoaDon2(hd);
+        statusUpdate=false;
+    }
+
+    void themDichVu() {
+        try {
+            for (int row : tblDichVu.getSelectedRows()) {
+                HoaDonLoadTable hd = new HoaDonLoadTable();
+                String soLuong = txtSoLuong.getText();
+                if (soLuong.equals("")) {
+                    hd.setSoLan(soLanThue);
+                } else {
+                    hd.setSoLan(Integer.parseInt(txtSoLuong.getText()));
+                }
+                hd.setMaPhong(maPhong);
+                hd.setMaHoaDon(maHoaDon);
+                hd.setMaDichVu((int) tblDichVu.getValueAt(row, 0));
+
+                lthdDao.insertChiTietHoaDon(hd);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi hệ thống");
         }
     }
-    
-    void removeDichVuKhachHang(){
-            int soPhong = Integer.parseInt(txtSoPhong.getText());
-            if(MsgBox.confirm(this, "Bạn muốn xóa các học viên được chọn ?")){
-                for(int row : tblKhachHang.getSelectedRows()){
-                    int maDichVu = (Integer) tblKhachHang.getValueAt(row, 1);
-                    oddvdao.delete(maDichVu,soPhong);
-                }
+
+    void removeDichVuKhachHang() {
+        int soPhong = Integer.parseInt(txtSoPhong.getText());
+        if (MsgBox.confirm(this, "Bạn muốn xóa các học viên được chọn ?")) {
+            for (int row : tblKhachHang.getSelectedRows()) {
+                int maDichVu = (Integer) tblKhachHang.getValueAt(row, 1);
+                oddvdao.delete(maDichVu, soPhong);
             }
-            this.fillTableKhachHang(soPhong);
-        
+        }
+        this.fillTableKhachHang(soPhong);
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,17 +167,19 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         tblKhachHang = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDichVu = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnThemDichVu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtSoLuong = new javax.swing.JTextField();
         btnXoa = new javax.swing.JButton();
         txtSoPhong = new javax.swing.JTextField();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
         jLabel1.setText("ORDER DỊCH VỤ");
 
         jLabel14.setText("Tên Khách Hàng");
 
+        txtTenKhachHang1.setEditable(false);
         txtTenKhachHang1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtTenKhachHang1.setName("Tên khách hàng"); // NOI18N
 
@@ -136,17 +188,14 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         tblKhachHang.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "STT", "Mã dịch vụ", "Tên dịch vụ", "Số lượng ", "Giá"
+                "Mã chi tiết hóa đơn", "Mã dịch vụ", "Tên dịch vụ", "Số lượng ", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false, true, true
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -158,10 +207,7 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         tblDichVu.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         tblDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Mã dịch vụ", "Tên dịch vụ", "Giá dịch vụ", "Số lần"
@@ -175,14 +221,19 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDichVuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDichVu);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/add.png"))); // NOI18N
-        jButton1.setText("THÊM");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThemDichVu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnThemDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/add.png"))); // NOI18N
+        btnThemDichVu.setText("THÊM");
+        btnThemDichVu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemDichVuActionPerformed(evt);
             }
         });
 
@@ -206,18 +257,21 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         khachLayout.setHorizontalGroup(
             khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(khachLayout.createSequentialGroup()
-                .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(khachLayout.createSequentialGroup()
+                        .addGap(0, 367, Short.MAX_VALUE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addGap(16, 16, 16)
                 .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(khachLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(10, 10, 10)
                         .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnThemDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)))
         );
         khachLayout.setVerticalGroup(
             khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,11 +279,11 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
                 .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(khachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtSoLuong, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnThemDichVu, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2))
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -282,13 +336,11 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(423, 423, 423)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,16 +353,35 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(utilityHelper.checkNullText(txtSoPhong)&& utilityHelper.checkNullText(txtTenKhachHang1)){
-            if(utilityHelper.checkNumber(txtSoPhong)&&utilityHelper.checkName(txtTenKhachHang1)){
-                this.themDichVu();
-                int soPhong =Integer.parseInt(txtSoPhong.getText());
+    private void btnThemDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDichVuActionPerformed
+        if (utilityHelper.checkNullText(txtSoPhong) && utilityHelper.checkNullText(txtTenKhachHang1)) {
+            if (utilityHelper.checkNumber(txtSoPhong) && utilityHelper.checkName(txtTenKhachHang1)) {
+                int soPhong = Integer.parseInt(txtSoPhong.getText());
+                if (statusUpdate) {
+                    this.themDichVu2();
+                } else {
+                    for(int i=0;i<tblKhachHang.getRowCount();i++){
+                        int maDichVuBangKhachHang=Integer.parseInt(tblKhachHang.getValueAt(i, 1).toString());
+                        int maDichVuBangDichVu=Integer.parseInt(tblDichVu.getValueAt(rowDichVu, 0).toString());
+                        if(maDichVuBangDichVu==maDichVuBangKhachHang){
+                            HoaDonLoadTable hd=new HoaDonLoadTable();                            
+                            int maChiTietHoaDon=Integer.parseInt(tblKhachHang.getValueAt(i, 0).toString());
+                            hd.setMaChiTietHoaDon(maChiTietHoaDon);
+                            int soLanThue=Integer.parseInt(tblKhachHang.getValueAt(i, 3).toString())+Integer.parseInt(txtSoLuong.getText());
+                            hd.setSoLan(soLanThue);
+                            new LoadTableHoaDonDAO().updateChiTietHoaDon3(hd);
+                            fillTableKhachHang(soPhong);
+                            return;
+                        }
+                    }
+                    this.themDichVu();
+                    
+                }
                 this.fillTableKhachHang(soPhong);
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnThemDichVuActionPerformed
 
     private void txtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongActionPerformed
         // TODO add your handling code here:
@@ -323,18 +394,32 @@ public class OrderDichVuJPanel extends javax.swing.JPanel {
     private void txtSoPhongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSoPhongFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSoPhongFocusGained
-
+    private boolean checkSoPhong(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     private void txtSoPhongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSoPhongFocusLost
+        if (!checkSoPhong(txtSoPhong.getText())) {
+            return;
+        }
         int soPhong = Integer.parseInt(txtSoPhong.getText());
         fillTableKhachHang(soPhong);
         txtTenKhachHang1.setText(tenKhachHang);
     }//GEN-LAST:event_txtSoPhongFocusLost
 
+    private void tblDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDichVuMouseClicked
+        rowDichVu = tblDichVu.getSelectedRow();
+    }//GEN-LAST:event_tblDichVuMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel1;
+    private javax.swing.JButton btnThemDichVu;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
