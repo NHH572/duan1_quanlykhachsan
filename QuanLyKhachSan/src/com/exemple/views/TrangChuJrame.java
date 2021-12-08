@@ -115,20 +115,20 @@ public class TrangChuJrame extends javax.swing.JFrame {
                     }
                 });
             } else {
-//                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        maPhong = itemSoDoPhong.getMaPhong();
-//                        fillJPanel(new QuanLyHoaDonJPanel());
-//                        panelPhong.setBackground(colorChange);
-//                        lblPhong.setBackground(colorChange);
-//                        Opaque1.setOpaque(true);
-//                        panelSoDoPhong.setBackground(colorDefault);
-//                        lblSoDoPhong.setBackground(colorDefault);
-//                        Opaque10.setOpaque(false);
-//                        System.out.println(maPhong);
-//                    }
-//                });
+                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        maPhong = itemSoDoPhong.getMaPhong();
+                        fillJPanel(new QuanLyHoaDonJPanel());
+                        panelHoaDon.setBackground(colorChange);
+                        lblHoaDon.setBackground(colorChange);
+                        Opaque4.setOpaque(true);
+                        panelSoDoPhong.setBackground(colorDefault);
+                        lblSoDoPhong.setBackground(colorDefault);
+                        Opaque10.setOpaque(false);
+                        System.out.println(maPhong);
+                    }
+                });
             }
         }
     }

@@ -12,6 +12,7 @@ import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 
 /**
@@ -35,6 +36,7 @@ public class Login extends javax.swing.JFrame {
         init();
         placeHolder(txtTendangnhap, txtUser);
         placeHolder(txtMatkhau, txtPassword);
+        
     }
 
     private void placeHolder(JTextField txtFiled, String text) {
@@ -139,6 +141,11 @@ public class Login extends javax.swing.JFrame {
                 txtTendangnhapActionPerformed(evt);
             }
         });
+        txtTendangnhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTendangnhapKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtTendangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 390, 30));
 
         chkHienMatKhau.setBackground(new java.awt.Color(0, 0, 0));
@@ -205,7 +212,8 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void dangnhap() {
+
+    public void dangnhap() {
         String manv = txtTendangnhap.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
@@ -241,9 +249,16 @@ public void dangnhap() {
             System.exit(0);
         }
     }//GEN-LAST:event_btnThoatActionPerformed
-
+    private void pressEnterForLogin(java.awt.event.KeyEvent evt){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (utilityHelper.checkNullText(txtTendangnhap)
+                    && utilityHelper.checkNullPass(txtMatkhau)) {
+                this.dangnhap();
+            }
+        }
+    }
     private void txtMatkhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhauKeyPressed
-
+        pressEnterForLogin(evt);
     }//GEN-LAST:event_txtMatkhauKeyPressed
 
     private void chkHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHienMatKhauActionPerformed
@@ -261,6 +276,10 @@ public void dangnhap() {
     private void txtTendangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTendangnhapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTendangnhapActionPerformed
+
+    private void txtTendangnhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTendangnhapKeyPressed
+       pressEnterForLogin(evt);
+    }//GEN-LAST:event_txtTendangnhapKeyPressed
 
     /**
      * @param args the command line arguments
