@@ -6,20 +6,16 @@
 package com.exemple.views;
 
 import com.exemple.controller.DatPhongDAO;
-import com.exemple.controller.HoaDonDAO;
 import com.exemple.controller.KhachHangDAO;
-import com.exemple.controller.LoadTableHoaDonDAO;
 import com.exemple.controller.LoaiPhongDAO;
 import com.exemple.controller.PhongDAO;
-import com.exemple.entity.ChiTietHoaDon;
 import com.exemple.entity.DatPhong;
-import com.exemple.entity.HoaDon;
 import com.exemple.entity.KhachHang;
 import com.exemple.entity.LoaiPhong;
 import com.exemple.entity.Phong;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
-import com.exemple.helper.XDate;
+import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.FocusEvent;
@@ -40,8 +36,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
-    LoadTableHoaDonDAO lthddao = new LoadTableHoaDonDAO();
-    private HoaDonDAO hddao = new HoaDonDAO();
+
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
     private List<LoaiPhong> listLoaiPhong = lpDAO.getAll();
     private String textDefault = "Tìm kiếm theo số chứng minh nhân dân....";
@@ -61,24 +56,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         lblTrangThai.setText("");
         setColorTableDatPhong();
         enableButton();
-        if (SoDoPhongJPanel.maPhong != -1) {
-            PhongDAO pDAO = new PhongDAO();
-            Phong p = pDAO.selectById(String.valueOf(SoDoPhongJPanel.maPhong));
-            int maLoaiPhong = p.getMaLoaiPhong();
-            cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
-            lblSoPhong.setText(String.valueOf(p.getSoPhong()));
-            tblPhongTrong.setRowSelectionInterval(SoDoPhongJPanel.maPhong-1, SoDoPhongJPanel.maPhong-1);
-            Tabs.setSelectedIndex(1);
-        } else {
-            disposeLabelSoPhong();
-        }
+        disposeLabelSoPhong();
     }
-
-    private void disposeLabelSoPhong() {
+    private void disposeLabelSoPhong(){
         lblSoPhong1.setVisible(false);
         lblSoPhong.setVisible(false);
     }
-
     private void placeHolder(JTextField txtFiled, String text) {
         txtFiled.addFocusListener(new FocusListener() {
             @Override
@@ -160,46 +143,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         }
 
     }
-    HoaDon getModel(){
-        HoaDon hd = new HoaDon();
-        hd.setCMND_CCCD(txtSoCMTKH.getText());
-        hd.setNgayNhanPhong(txtNgayNhanPhong.getDate());
-        hd.setNgayTao(XDate.now());
-        hd.setNgayTraPhong(txtNgayMuonTra.getDate());
-        hd.setTaiKhoanNV(Auth.user.getMaNV());
-        hd.setThanhToan(Float.parseFloat(txtTamTinh.getText()));
-        return hd;
-    }
-    void insertHoaDon(){
-        try {
-             HoaDon hd = getModel();
-            hddao.insert(hd);
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi hệ thống");
-        }
-    }
-    ChiTietHoaDon getModel2(){
-        ChiTietHoaDon cthd = new ChiTietHoaDon();
-        String CMND = txtSoCMTKH.getText();
-        HoaDon hd = hddao.selectByCMND(CMND);
-        int maHoaDon = hd.getMaHoaDon();
-        System.out.println("Ma hoa don : "+maHoaDon);
-        cthd.setMaHoaDon(maHoaDon);
-        cthd.setMaPhong(maPhong);
-        return cthd;
-    }
-    
-    void insertChiTietHoaDon(){
-        try {
-             ChiTietHoaDon cthd = getModel2();
-        lthddao.insertChiTietHoaDon(cthd);
-        } catch (Exception e) {
-            MsgBox.alert(this, "cthd ");
-            e.printStackTrace();
-        }
-       
-    }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,7 +159,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatPhong = new javax.swing.JTable();
         cbbLoai = new javax.swing.JComboBox<>();
@@ -266,7 +209,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         lblSoPhong = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
         jLabel1.setText("QUẢN LÝ ĐẶT PHÒNG");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -285,28 +228,21 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setText("Tìm");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tblDatPhong.setModel(new javax.swing.table.DefaultTableModel(
@@ -362,7 +298,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbbLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -372,12 +308,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                     .addComponent(cbbLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
-        Tabs.addTab("Danh sách", jPanel1);
+        Tabs.addTab("Danh sách", new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/Scroll list.png")), jPanel1); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Tạm tính:");
@@ -461,6 +397,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Số CMND KH:");
 
+        txtSoCMTKH.setName("Số CMND"); // NOI18N
         txtSoCMTKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSoCMTKHActionPerformed(evt);
@@ -469,6 +406,8 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Họ tên:");
+
+        txtHoTen.setName("Họ Tên"); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Giới tính:");
@@ -481,8 +420,14 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("Email:");
 
+        txtEmail.setName("Email"); // NOI18N
+
+        txtSoDienThoai.setName("Số điện thoại"); // NOI18N
+
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel16.setText("Quốc tịch");
+
+        txtQuocTich.setName("Quốc tịch"); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setText("Ngày sinh:");
@@ -542,7 +487,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGioiTinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rdoNam)
@@ -775,7 +720,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 .addGap(25, 25, 25))
         );
 
-        Tabs.addTab("Cập nhập", jPanel2);
+        Tabs.addTab("Cập nhập", new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/Edit.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -783,7 +728,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Tabs)
             .addGroup(layout.createSequentialGroup()
-                .addGap(232, 232, 232)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -816,7 +761,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private void showInformation() {
         try {
             int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
-            
             DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dp = dpDAO.selectById(maDatPhong);
             int maLoaiPhong = dp.getMaLoaiPhong();
@@ -835,7 +779,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 lblTrangThai.setText("Đã xác nhận");
                 lblSoPhong1.setVisible(true);
                 lblSoPhong.setVisible(true);
-                Phong p = new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
+                Phong p=new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
                 lblSoPhong.setText(String.valueOf(p.getSoPhong()));
                 lblTrangThai.setForeground(new Color(0, 204, 0));
                 btnDatPhong.setEnabled(false);
@@ -855,7 +799,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(maLoaiPhong));
             fillTotablePhongTrong(listPhong);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -905,8 +848,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         fillToTableDatPhong();
         showInformation();
-        this.insertHoaDon();
-        this.insertChiTietHoaDon();
     }//GEN-LAST:event_btnDatPhongActionPerformed
     private void clearForm() {
         cbbLoaiPhong.setSelectedIndex(0);
@@ -1014,6 +955,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         return false;
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if(utilityHelper.checkNullText(txtSoCMTKH)&&utilityHelper.checkCMT(txtSoCMTKH)
+                &&utilityHelper.checkNullText(txtHoTen)&&utilityHelper.checkName(txtHoTen)
+                &&utilityHelper.checkNullText(txtSoDienThoai)&&utilityHelper.checkSDT(txtSoDienThoai)
+                &&utilityHelper.checkNullText(txtEmail)&&utilityHelper.checkEmail(txtEmail)
+                &&utilityHelper.checkNullText(txtQuocTich)){
         if (maPhong == -1) {
             JOptionPane.showMessageDialog(this, "Chọn một phòng trống!");
             return;
@@ -1022,6 +968,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Thêm thành công!");
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -1076,11 +1023,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
             dp.setNgayMuonTra(txtNgayMuonTra.getDate());
             dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
-            if (maPhong == -1) {
+            if(maPhong==-1){
                 dp.setMaPhong((int) tblDatPhong.getValueAt(rowDatPhong, 8));
-            } else {
+            }else{
                 dp.setMaPhong(maPhong);
-            }
+            }            
             dp.setSoCMT(txtSoCMTKH.getText());
             dp.setTaiKhoanNV(Auth.user.getMaNV());
             dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
@@ -1098,17 +1045,18 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             kh.setSoDienThoai(txtSoDienThoai.getText());
             kh.setEmail(txtEmail.getText());
             kh.setQuocTich(txtQuocTich.getText());
-            kh.setSoLanThue(0);
+            kh.setSoLanThue(0);            
             khDAO.update(kh);
-            DatPhongDAO dpDAO = new DatPhongDAO();
+            DatPhongDAO dpDAO = new DatPhongDAO();            
             DatPhong dpOld = dpDAO.selectById(maDatPhong);
             int maPhongOld = dpOld.getMaPhong();
             PhongDAO pDAO = new PhongDAO();
             pDAO.updateTrangThaiTrong(maPhongOld);
-
-            dpDAO.update(dp);
-            pDAO.updateTrangThai(maPhong);
-
+            
+            dpDAO.update(dp);            
+            pDAO.updateTrangThai(maPhong); 
+            
+            
             showInformation();
             updateDanhSachPhongTrong();
             fillToTableDatPhong();
@@ -1200,7 +1148,6 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroupGioiTinh;
     private javax.swing.JComboBox<String> cbbLoai;
     private javax.swing.JComboBox<String> cbbLoaiPhong;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
