@@ -8,15 +8,23 @@ package com.exemple.controller;
 import com.exemple.entity.DoiTac;
 import java.util.List;
 import com.exemple.helper.JdbcHelper;
+import static com.exemple.helper.JdbcHelper.con;
+import static com.exemple.helper.JdbcHelper.dburl;
+import static com.exemple.helper.JdbcHelper.password;
+import static com.exemple.helper.JdbcHelper.username;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
+
 /**
  *
  * @author My PC
  */
-public class DoiTacDAO extends EduSysDAO<DoiTac, String>{
+public class DoiTacDAO extends EduSysDAO<DoiTac, String> {
+
+    public static int SLHT;
 
     @Override
     public void insert(DoiTac entity) {
@@ -49,16 +57,35 @@ public class DoiTacDAO extends EduSysDAO<DoiTac, String>{
         String sql = "SELECT * FROM DoiTac";
         return selectBySql(sql);
     }
-
+    
     @Override
     public DoiTac selectById(String key) {
         String sql = "SELECT * FROM DoiTac WHERE MaDoiTac=?";
         List<DoiTac> list = selectBySql(sql, key);
         return list.size() > 0 ? list.get(0) : null;
     }
+    
+    public int SoLanHopTac(String key) {
+
+        String sql = "select Count(kh.MaDoiTac) as SoLuong from HoaDon hd inner join KhachHang kh on hd.SoCMTKhachHang = kh.SoCMTKhachHang inner join DoiTac dt on kh.MaDoiTac = dt.MaDoiTac where kh.MaDoiTac = ? group by hd.SoCMTKhachHang";
+        try {
+            SLHT=0;
+            con = DriverManager.getConnection(dburl, username, password);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, key);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                SLHT = rs.getInt("SoLuong");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SLHT;
+    }
 
     @Override
-    protected List<DoiTac> selectBySql(String sql,Object...args) {
+    protected List<DoiTac> selectBySql(String sql, Object... args) {
         List<DoiTac> list = new ArrayList<>();
         try {
             ResultSet rs = null;
@@ -76,6 +103,7 @@ public class DoiTacDAO extends EduSysDAO<DoiTac, String>{
         }
         return list;
     }
+
     private DoiTac readFromResultSet(ResultSet rs) throws SQLException {
         DoiTac model = new DoiTac();
         model.setMaDoiTac(rs.getString("MaDoiTac"));
@@ -84,5 +112,5 @@ public class DoiTacDAO extends EduSysDAO<DoiTac, String>{
         model.setDanhGia(rs.getString("DanhGiaKhachSan"));
         return model;
     }
-    
+
 }
