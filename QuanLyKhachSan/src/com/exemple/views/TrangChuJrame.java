@@ -7,6 +7,7 @@ package com.exemple.views;
 
 import com.exemple.controller.ChuyenManHinhController;
 import static com.exemple.controller.ChuyenManHinhController.colorDefault;
+import com.exemple.controller.SoDoPhongDAO;
 import com.exemple.entity.DanhMuc;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.NhanVien;
@@ -23,8 +24,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,9 +41,9 @@ import javax.swing.JPanel;
  */
 public class TrangChuJrame extends javax.swing.JFrame {
 
-//    public static Color colorDefault = new Color(77, 73, 73);
-//    public static Color colorChange = new Color(212, 187, 0);
-//    public static Color colorHover = new Color(212, 187, 0);
+    public Color colorDefault = new Color(77, 73, 73);
+    public Color colorChange = new Color(212, 187, 0);
+    public Color colorHover = new Color(212, 187, 0);
     ChuyenManHinhController controller;
 
     public TrangChuJrame() {
@@ -48,20 +52,16 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }
 
     void init() {
-        setLocationRelativeTo(null);
+        try {
+            setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý khách sạn");
         controller = new ChuyenManHinhController(mainPanel);
         controller.setView(panelSoDoPhong, lblSoDoPhong, Opaque10);
         List<DanhMuc> listDanhMuc = new ArrayList<>();
         listDanhMuc.add(new DanhMuc("SoDoPhong", panelSoDoPhong, lblSoDoPhong, Opaque10));
         listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
-        if(!Auth.user.isVaiTro()){
-            listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
-        }else{
-            lblNhanVien.setForeground(new Color(153,153,153));
-        }
+        listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
         listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
-        listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque9));
         listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
         listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
         listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
@@ -71,7 +71,74 @@ public class TrangChuJrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPanel.setPreferredSize(new Dimension(1320, 700));
         setTxtXinChao();
+        setEventClickButton();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
 
+    }
+
+    public void setEventClickButton() {
+        SoDoPhongDAO sdpDAO = new SoDoPhongDAO();
+        List<SoDoPhong> listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
+        for (int i = 0; i < SoDoPhongJPanel.listDanhMucSoDoPhongPublic.size(); i++) {
+            DanhMucSoDoPhong itemDanhMucSoDoPhong = SoDoPhongJPanel.listDanhMucSoDoPhongPublic.get(i);
+            SoDoPhong itemSoDoPhong = listDataDanhMucSoDoPhong.get(i);
+            itemDanhMucSoDoPhong.getBtnChiTiet().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    maPhong = itemSoDoPhong.getMaPhong();
+                    fillJPanel(new QuanLyPhongJPanel());
+                    panelPhong.setBackground(colorChange);
+                    lblPhong.setBackground(colorChange);
+                    Opaque1.setOpaque(true);
+                    panelSoDoPhong.setBackground(colorDefault);
+                    lblSoDoPhong.setBackground(colorDefault);
+                    Opaque10.setOpaque(false);
+                    System.out.println(maPhong);
+                }
+            });
+            if (itemSoDoPhong.getTrangThai().equalsIgnoreCase("Trống")) {
+                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        maPhong = itemSoDoPhong.getMaPhong();
+                        fillJPanel(new QuanLyDatPhongJPanel());
+                        panelDatPhong.setBackground(colorChange);
+                        lblDatPhong.setBackground(colorChange);
+                        Opaque5.setOpaque(true);
+                        panelSoDoPhong.setBackground(colorDefault);
+                        lblSoDoPhong.setBackground(colorDefault);
+                        Opaque10.setOpaque(false);
+                        System.out.println(maPhong);
+                    }
+                });
+            } else {
+//                itemDanhMucSoDoPhong.getBtnChucNang().addActionListener(new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                        maPhong = itemSoDoPhong.getMaPhong();
+//                        fillJPanel(new QuanLyHoaDonJPanel());
+//                        panelPhong.setBackground(colorChange);
+//                        lblPhong.setBackground(colorChange);
+//                        Opaque1.setOpaque(true);
+//                        panelSoDoPhong.setBackground(colorDefault);
+//                        lblSoDoPhong.setBackground(colorDefault);
+//                        Opaque10.setOpaque(false);
+//                        System.out.println(maPhong);
+//                    }
+//                });
+            }
+        }
+    }
+
+    private void fillJPanel(JPanel jpanel) {
+        mainPanel.removeAll();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.add(jpanel);
+        mainPanel.validate();
+        mainPanel.repaint();
     }
 
     private void setTxtXinChao() {
@@ -110,9 +177,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelDichVu = new javax.swing.JPanel();
         Opaque3 = new javax.swing.JPanel();
         lblDichVu = new javax.swing.JLabel();
-        panelOrderDichVu = new javax.swing.JPanel();
-        Opaque9 = new javax.swing.JPanel();
-        lblOrderDichVu = new javax.swing.JLabel();
         panelHoaDon = new javax.swing.JPanel();
         Opaque4 = new javax.swing.JPanel();
         lblHoaDon = new javax.swing.JLabel();
@@ -170,7 +234,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         slidePanel.add(jPanel2);
@@ -210,7 +274,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
         panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
+                panelPhongMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
@@ -266,7 +330,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         panelNhanVien.add(Opaque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
-        lblNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLyNhanVien.png"))); // NOI18N
@@ -301,43 +364,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         lblDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDichVu.setForeground(new java.awt.Color(255, 255, 255));
-        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dichvuuuuu.png"))); // NOI18N
+        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLydichvu.png"))); // NOI18N
         lblDichVu.setText("Dịch vụ");
         panelDichVu.add(lblDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
         slidePanel.add(panelDichVu);
-
-        panelOrderDichVu.setBackground(new java.awt.Color(77, 73, 73));
-        panelOrderDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelOrderDichVuMousePressed(evt);
-            }
-        });
-        panelOrderDichVu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Opaque9.setEnabled(false);
-        Opaque9.setOpaque(false);
-
-        javax.swing.GroupLayout Opaque9Layout = new javax.swing.GroupLayout(Opaque9);
-        Opaque9.setLayout(Opaque9Layout);
-        Opaque9Layout.setHorizontalGroup(
-            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
-        );
-        Opaque9Layout.setVerticalGroup(
-            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        panelOrderDichVu.add(Opaque9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
-
-        lblOrderDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lblOrderDichVu.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrderDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLydichvu.png"))); // NOI18N
-        lblOrderDichVu.setText("Order Dịch vụ");
-        panelOrderDichVu.add(lblOrderDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
-
-        slidePanel.add(panelOrderDichVu);
 
         panelHoaDon.setBackground(new java.awt.Color(77, 73, 73));
         panelHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -611,11 +642,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 754, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(lblXinChao)
                 .addGap(83, 83, 83))
         );
@@ -709,7 +740,10 @@ public class TrangChuJrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, object, "Thông tin tài khoản", JOptionPane.INFORMATION_MESSAGE);
     }
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        new thongke().setVisible(true);
+        try {
+            new thongke().setVisible(true);
+        } catch (SQLException ex) {
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
@@ -734,11 +768,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
             MsgBox.alert(this, "Không tìm thấy trang giới thiệu!");
         }
     }//GEN-LAST:event_btnGioiThieuActionPerformed
-
-    private void panelOrderDichVuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOrderDichVuMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_panelOrderDichVuMousePressed
-
 
     /**
      * @param args the command line arguments
@@ -785,7 +814,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel Opaque6;
     private javax.swing.JPanel Opaque7;
     private javax.swing.JPanel Opaque8;
-    private javax.swing.JPanel Opaque9;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnGioiThieu;
@@ -807,7 +835,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblKhoHang;
     private javax.swing.JLabel lblKhuyenMai;
     private javax.swing.JLabel lblNhanVien;
-    private javax.swing.JLabel lblOrderDichVu;
     private javax.swing.JLabel lblPhong;
     private javax.swing.JLabel lblSoDoPhong;
     private javax.swing.JLabel lblXinChao;
@@ -819,7 +846,6 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelKhoHang;
     private javax.swing.JPanel panelKhuyenMai;
     private javax.swing.JPanel panelNhanVien;
-    private javax.swing.JPanel panelOrderDichVu;
     private javax.swing.JPanel panelPhong;
     private javax.swing.JPanel panelSoDoPhong;
     private javax.swing.JPanel slidePanel;
