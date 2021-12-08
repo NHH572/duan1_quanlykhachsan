@@ -1,5 +1,8 @@
 package com.exemple.views;
 
+import com.exemple.controller.NhanVienDAO;
+import com.exemple.entity.NhanVien;
+import com.exemple.helper.Auth;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -150,19 +153,19 @@ public class QRLogin extends javax.swing.JFrame implements Runnable, ThreadFacto
             if (result != null) {
 //                result_field.setText(result.getText());
                 String ke = String.valueOf(result.getText());
-                if(ke.equals("https://www.investopedia.com/terms/q/quick-response-qr-code.asp")){
+                if (ke.equals("https://www.investopedia.com/terms/q/quick-response-qr-code.asp")) {
                     result_field.setText("Quản Lý");
-                     new TrangChuJrame().setVisible(true);
+                    Auth.user = new NhanVienDAO().selectById("admin");
+                    new TrangChuJrame().setVisible(true);
                     break;
-                }
-                else if(ke.equals("http://bvu.edu.vn")){
+                } else if (ke.equals("http://bvu.edu.vn")) {
                     result_field.setText("Nhân Viên");
-                     new TrangChuJrame().setVisible(true);
+                    Auth.user = new NhanVienDAO().selectById("pnmtriet");
+                    new TrangChuJrame().setVisible(true);
                     break;
                 }
             }
-            
-         
+
         } while (true);
     }
 
