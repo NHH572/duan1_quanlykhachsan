@@ -26,14 +26,6 @@ public class DoiMatKhauJFrame extends javax.swing.JFrame {
         } else {
             txtTendangnhap.setText(Auth.user.getMaNV());
         }
-        init();
-    }
-
-    void init() {
-
-        setTitle("Đổi Mật Khẩu")
-                ;
-
     }
     
 
@@ -241,9 +233,11 @@ public class DoiMatKhauJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (utilityHelper.checkNullText(txtTendangnhap)
                 && utilityHelper.checkNullPass(txtMatkhau)
-                && utilityHelper.checkNullPass(txtMatkhauNew)&&utilityHelper.checkPass(txtMatkhauNew)
+                && utilityHelper.checkNullPass(txtMatkhauNew)
                 && utilityHelper.checkNullPass(txtXacnhanMK)) {
-            this.DoiMK();
+            if (utilityHelper.checkPass(txtMatkhauNew)) {
+                this.DoiMK();
+            }
         }
     }//GEN-LAST:event_btnXacnhanActionPerformed
 
