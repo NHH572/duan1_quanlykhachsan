@@ -106,11 +106,11 @@ public class HoaDon extends javax.swing.JFrame {
         return hd;
     }
 
-//    void insert() {
-//        HoaDonLoadTable hd = getModel();
-//        lthdDao.insertHoaDon(hd);
-//        lthdDao.insertChiTietHoaDon(hd);
-//    }
+    void insertsss() {
+        HoaDonLoadTable hd = getModel();
+        lthdDao.insertHoaDon(hd);
+        lthdDao.insertChiTietHoaDon(hd);
+    }
 
     void update() {
         try {
