@@ -23,7 +23,9 @@ public class HoaDonDAO extends EduSysDAO<HoaDon, String> {
 
     @Override
     public void insert(HoaDon entity) {
-        String sql = "INSERT INTO HOADON (NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai) values(?,?,?,?,?,?,?)";
+        String sql;
+        if (entity.getMaKhuyenMai() != null) {
+            sql = "INSERT INTO HOADON (NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai) values(?,?,?,?,?,?,?)";
         JdbcHelper.executeUpdate(sql,
                 entity.getNgayTao(),
                 entity.getNgayNhanPhong(),
@@ -32,8 +34,18 @@ public class HoaDonDAO extends EduSysDAO<HoaDon, String> {
                 entity.getTaiKhoanNV(),
                 entity.getCMND_CCCD(),
                 entity.getMaKhuyenMai());
+        } else {
+            sql = "INSERT INTO HOADON (NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang) values(?,?,?,?,?,?)";
+       JdbcHelper.executeUpdate(sql,
+                entity.getNgayTao(),
+                entity.getNgayNhanPhong(),
+                entity.getNgayTraPhong(),
+                entity.getThanhToan(),
+                entity.getTaiKhoanNV(),
+                entity.getCMND_CCCD());
+        }
+        
     }
-
     @Override
     public void update(HoaDon entity) {
         String sql = "Update HoaDon set NgayTao=?,NgayNhanPhong=?,NgayTraPhong=?,ThanhTien=?,TaiKhoanNV=?,SoCMTKhachHang=?,MaKhuyenMai=? Where MaHoaDon =?";
@@ -72,18 +84,24 @@ public class HoaDonDAO extends EduSysDAO<HoaDon, String> {
 
     @Override
     public List<HoaDon> selectAll() {
-    String sql = "SELECT * from HoaDon";
-    return selectBySql(sql);
-    
-    }
+        String sql = "SELECT * from HoaDon";
+        return selectBySql(sql);
 
+    }
+    
+    public HoaDon selectByCMND(String key) {
+        String sql = "Select * from HoaDon where SoCMTKhachHang =?";
+        selectBySql(sql, key);
+        List<HoaDon> list = selectBySql(sql, key);
+        return list.size() > 0 ? list.get(0) : null;
+    }
     
     @Override
     public HoaDon selectById(String key) {
-       String sql ="Select * from HoaDon where MaHoaDon =?";
+        String sql = "Select * from HoaDon where MaHoaDon =?";
         selectBySql(sql, key);
-        List<HoaDon> list= selectBySql(sql, key);
-        return list.size()>0 ? list.get(0) : null;
+        List<HoaDon> list = selectBySql(sql, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     @Override

@@ -702,7 +702,6 @@ public boolean checkTrungMa(JTextField txt) {
                 && utilityHelper.checkNullText(txtPass)) {
             if (utilityHelper.checkUserNV(txtUser)
                     && utilityHelper.checkName(txtHoten)
-                    && utilityHelper.checkNumber(txtCMND)
                     && utilityHelper.checkSDT(txtSDT)) {
                 if (checkTrungMa(txtUser)) {
                    this.insert();

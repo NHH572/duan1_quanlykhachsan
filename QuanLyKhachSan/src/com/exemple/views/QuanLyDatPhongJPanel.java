@@ -6,15 +6,20 @@
 package com.exemple.views;
 
 import com.exemple.controller.DatPhongDAO;
+import com.exemple.controller.HoaDonDAO;
 import com.exemple.controller.KhachHangDAO;
+import com.exemple.controller.LoadTableHoaDonDAO;
 import com.exemple.controller.LoaiPhongDAO;
 import com.exemple.controller.PhongDAO;
+import com.exemple.entity.ChiTietHoaDon;
 import com.exemple.entity.DatPhong;
+import com.exemple.entity.HoaDon;
 import com.exemple.entity.KhachHang;
 import com.exemple.entity.LoaiPhong;
 import com.exemple.entity.Phong;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.XDate;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.FocusEvent;
@@ -35,7 +40,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
-
+    LoadTableHoaDonDAO lthddao = new LoadTableHoaDonDAO();
+    private HoaDonDAO hddao = new HoaDonDAO();
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
     private List<LoaiPhong> listLoaiPhong = lpDAO.getAll();
     private String textDefault = "Tìm kiếm theo số chứng minh nhân dân....";
@@ -55,12 +61,24 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         lblTrangThai.setText("");
         setColorTableDatPhong();
         enableButton();
-        disposeLabelSoPhong();
+        if (SoDoPhongJPanel.maPhong != -1) {
+            PhongDAO pDAO = new PhongDAO();
+            Phong p = pDAO.selectById(String.valueOf(SoDoPhongJPanel.maPhong));
+            int maLoaiPhong = p.getMaLoaiPhong();
+            cbbLoaiPhong.setSelectedIndex(maLoaiPhong - 1);
+            lblSoPhong.setText(String.valueOf(p.getSoPhong()));
+            tblPhongTrong.setRowSelectionInterval(SoDoPhongJPanel.maPhong-1, SoDoPhongJPanel.maPhong-1);
+            Tabs.setSelectedIndex(1);
+        } else {
+            disposeLabelSoPhong();
+        }
     }
-    private void disposeLabelSoPhong(){
+
+    private void disposeLabelSoPhong() {
         lblSoPhong1.setVisible(false);
         lblSoPhong.setVisible(false);
     }
+
     private void placeHolder(JTextField txtFiled, String text) {
         txtFiled.addFocusListener(new FocusListener() {
             @Override
@@ -142,7 +160,46 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         }
 
     }
-
+    HoaDon getModel(){
+        HoaDon hd = new HoaDon();
+        hd.setCMND_CCCD(txtSoCMTKH.getText());
+        hd.setNgayNhanPhong(txtNgayNhanPhong.getDate());
+        hd.setNgayTao(XDate.now());
+        hd.setNgayTraPhong(txtNgayMuonTra.getDate());
+        hd.setTaiKhoanNV(Auth.user.getMaNV());
+        hd.setThanhToan(Float.parseFloat(txtTamTinh.getText()));
+        return hd;
+    }
+    void insertHoaDon(){
+        try {
+             HoaDon hd = getModel();
+            hddao.insert(hd);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi hệ thống");
+        }
+    }
+    ChiTietHoaDon getModel2(){
+        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        String CMND = txtSoCMTKH.getText();
+        HoaDon hd = hddao.selectByCMND(CMND);
+        int maHoaDon = hd.getMaHoaDon();
+        System.out.println("Ma hoa don : "+maHoaDon);
+        cthd.setMaHoaDon(maHoaDon);
+        cthd.setMaPhong(maPhong);
+        return cthd;
+    }
+    
+    void insertChiTietHoaDon(){
+        try {
+             ChiTietHoaDon cthd = getModel2();
+        lthddao.insertChiTietHoaDon(cthd);
+        } catch (Exception e) {
+            MsgBox.alert(this, "cthd ");
+            e.printStackTrace();
+        }
+       
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -725,10 +782,10 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Tabs)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(232, 232, 232)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -759,6 +816,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     private void showInformation() {
         try {
             int maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
+            
             DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dp = dpDAO.selectById(maDatPhong);
             int maLoaiPhong = dp.getMaLoaiPhong();
@@ -777,7 +835,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 lblTrangThai.setText("Đã xác nhận");
                 lblSoPhong1.setVisible(true);
                 lblSoPhong.setVisible(true);
-                Phong p=new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
+                Phong p = new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
                 lblSoPhong.setText(String.valueOf(p.getSoPhong()));
                 lblTrangThai.setForeground(new Color(0, 204, 0));
                 btnDatPhong.setEnabled(false);
@@ -797,6 +855,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             List<Phong> listPhong = pDAO.selectByMaLoaiPhong(String.valueOf(maLoaiPhong));
             fillTotablePhongTrong(listPhong);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -846,6 +905,8 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         fillToTableDatPhong();
         showInformation();
+        this.insertHoaDon();
+        this.insertChiTietHoaDon();
     }//GEN-LAST:event_btnDatPhongActionPerformed
     private void clearForm() {
         cbbLoaiPhong.setSelectedIndex(0);
@@ -1015,11 +1076,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
             dp.setNgayMuonTra(txtNgayMuonTra.getDate());
             dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
-            if(maPhong==-1){
+            if (maPhong == -1) {
                 dp.setMaPhong((int) tblDatPhong.getValueAt(rowDatPhong, 8));
-            }else{
+            } else {
                 dp.setMaPhong(maPhong);
-            }            
+            }
             dp.setSoCMT(txtSoCMTKH.getText());
             dp.setTaiKhoanNV(Auth.user.getMaNV());
             dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
@@ -1037,18 +1098,17 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             kh.setSoDienThoai(txtSoDienThoai.getText());
             kh.setEmail(txtEmail.getText());
             kh.setQuocTich(txtQuocTich.getText());
-            kh.setSoLanThue(0);            
+            kh.setSoLanThue(0);
             khDAO.update(kh);
-            DatPhongDAO dpDAO = new DatPhongDAO();            
+            DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dpOld = dpDAO.selectById(maDatPhong);
             int maPhongOld = dpOld.getMaPhong();
             PhongDAO pDAO = new PhongDAO();
             pDAO.updateTrangThaiTrong(maPhongOld);
-            
-            dpDAO.update(dp);            
-            pDAO.updateTrangThai(maPhong); 
-            
-            
+
+            dpDAO.update(dp);
+            pDAO.updateTrangThai(maPhong);
+
             showInformation();
             updateDanhSachPhongTrong();
             fillToTableDatPhong();

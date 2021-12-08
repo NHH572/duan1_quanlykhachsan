@@ -141,13 +141,34 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
     }
 
+//    void edit(String sophong) {
+//        try {
+//            HoaDonLoadTable hd = lthdDao.selectById(sophong);
+//            if (hd != null) {
+//
+//                this.setModel(hd);
+//            } else {
+//                this.clear();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            MsgBox.alert(this, "Lỗi truy vấn");
+//        }
+//    }
+    
     void edit(String sophong) {
         try {
-            HoaDonLoadTable hd = lthdDao.selectById(sophong);
-            if (hd != null) {
-
+            HoaDonLoadTable hd = lthdDao.selectById_2(sophong);
+            int soLan = hd.getSoLan();
+            String soLan2 = String.valueOf(soLan);
+            if(soLan2 != null){
                 this.setModel(hd);
-            } else {
+            }
+            else if (soLan2 == null) {
+            HoaDonLoadTable hd2 = lthdDao.selectById(sophong);
+                this.setModel(hd2);
+            }
+            else{
                 this.clear();
             }
         } catch (Exception e) {
@@ -204,11 +225,14 @@ void loadToTable() {
         float count = 0;
         float tienphong = 0;
         float tiengiam = 0;
+        int soLuong =0;
+        
         for (HoaDonLoadTable hoaDonLoadTable : hd) {
+            soLuong = hoaDonLoadTable.getSoLan();
             tiengiam = hoaDonLoadTable.getGiamTien();
             tienphong = hoaDonLoadTable.getTienPhong();
             float gia = hoaDonLoadTable.getGiaDichVu();
-            count = count + gia;
+            count = count + (gia*soLuong);
         }
         count = count + tienphong - tiengiam;
         System.out.println(count);
@@ -244,6 +268,10 @@ void loadToTable() {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
+    }
+    void updateTrangThaiPhong(){
+        HoaDonLoadTable hd = getModel();
+        lthdDao.updateTrangThaiPhong(hd);
     }
 
     @SuppressWarnings("unchecked")
@@ -700,6 +728,8 @@ void loadToTable() {
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         this.update();
         this.XuatHoaDon();
+        this.updateTrangThaiPhong();
+        this.fillComboBoxPhong();
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
