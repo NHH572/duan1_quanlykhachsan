@@ -23,7 +23,16 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
           return this.selectBySql(sql, soPhong);
     }
     
+    public HoaDonLoadTable selectById(int SoPhong,int maDichVu) {
+        String sql = "select SoLanThueDichVu from ChiTietHoaDon inner join Phong on ChiTietHoaDon.MaPhong=Phong.MaPhong where SoPhong =? and MaDichVu =?";
+        List<HoaDonLoadTable> list=selectBySql_2(sql, SoPhong,maDichVu);
+        return list.size()>0?list.get(0):null;  
+    }
     
+    public void delete(int maDichVu,int soPhong) {
+        String sql="delete from ChiTietHoaDon where MaDichVu =? and MaPhong  in (select MaPhong from Phong where soPhong =?)";
+     JdbcHelper.executeUpdate(sql, maDichVu,soPhong);
+    }
     
     
     protected List<HoaDonLoadTable> selectBySql(String sql, Object... args) {
@@ -72,6 +81,37 @@ String sql = "SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.T
         dv.setMaDichVu(rs.getInt("MaDichVu"));
         dv.setMaPhong(rs.getInt("MaPhong"));
         dv.setMaChiTietHoaDon(rs.getInt("MaChiTietHoaDon"));
+        return dv;
+    }
+    
+     protected List<HoaDonLoadTable> selectBySql_2(String sql, Object... args) {
+        List<HoaDonLoadTable> listDichVu = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            rs = JdbcHelper.executeQuery(sql, args);
+            while (rs.next()) {
+                listDichVu.add(readFromResultSet_2(rs));
+            }
+        } catch (Exception e) {
+            System.out.println("error"+e.getMessage());
+            e.printStackTrace();
+            
+            throw new RuntimeException();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.getStatement().getConnection().close();
+                } catch (SQLException ex) {
+
+                }
+            }
+        }
+        return listDichVu;
+    }
+    
+    public HoaDonLoadTable readFromResultSet_2(ResultSet rs) throws SQLException {
+        HoaDonLoadTable dv = new HoaDonLoadTable();
+        dv.setSoLan(rs.getInt("SoLanThueDichVu"));
         return dv;
     }
 }

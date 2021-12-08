@@ -1,0 +1,610 @@
+* [33m89bb4c7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update Enter Login
+* [33m1370300[m Update TrangChu, sơ đồ phòng, order dịch vụ
+* [33m4ea20c1[m update toàn bộ
+* [33m8536c17[m update
+*   [33mac65975[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan into dev_VietAnh
+[32m|[m[33m\[m  
+[32m|[m *   [33m72a10b3[m update toàn bộ
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m * [33m34a31ad[m[33m ([m[1;31morigin/dev_VietAnh[m[33m)[m update testcase
+* [34m|[m [35m|[m [33m143e0c0[m update all
+[35m|[m [34m|[m[35m/[m  
+[35m|[m[35m/[m[34m|[m   
+* [34m|[m [33me7913f1[m upload test case
+* [34m|[m   [33mc8b66d7[m update test case
+[36m|[m[1;31m\[m [34m\[m  
+[36m|[m * [34m|[m [33me0b8d9e[m doimatkhau upload
+[36m|[m [1;31m|[m [34m|[m * [33m2193935[m[33m ([m[1;31morigin/devTriet[m[33m)[m Update TrangChu và Login khi nhấn Enter
+[36m|[m [1;31m|[m [34m|[m * [33ma6ebcba[m Update TrangChu
+[36m|[m [1;31m|[m [34m|[m *   [33me1e9062[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[36m|[m [1;31m|[m [34m|[m [1;33m|[m[34m\[m  
+[36m|[m [1;31m|[m [34m|[m [1;33m|[m[34m/[m  
+[36m|[m [1;31m|[m [34m|[m[34m/[m[1;33m|[m   
+[36m|[m [1;31m|[m * [1;33m|[m [33md198d40[m update lại toàn bộ
+[36m|[m [1;31m|[m * [1;33m|[m   [33m6861850[m Merge branch 'origin/dev_Triet'
+[36m|[m [1;31m|[m [1;35m|[m[1;36m\[m [1;33m\[m  
+[36m|[m [1;31m|[m [1;35m|[m * [1;33m|[m [33m8107ac8[m[33m ([m[1;31morigin/origin/dev_Triet[m[33m)[m Update TrangChu
+[36m|[m [1;31m|[m * [1;36m|[m [1;33m|[m [33m8ed2ae3[m Merge branch 'origin/dev_Triet'
+[36m|[m [1;31m|[m [31m|[m[1;36m\[m[1;36m|[m [1;33m|[m 
+[36m|[m [1;31m|[m [31m|[m * [1;33m|[m [33m18f2753[m Update TrangChu
+[36m|[m [1;31m|[m [31m|[m * [1;33m|[m [33mf1bd6ab[m Update trangChu
+[36m|[m [1;31m|[m [31m|[m * [1;33m|[m [33md1023e3[m Update QuanLyDatPhong
+[36m|[m [1;31m|[m * [32m|[m [1;33m|[m [33me968c8d[m[33m ([m[1;31morigin/dev_Hai[m[33m)[m chỉnh sửa hóa đơn và order dịch vụ
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m *   [33m3526b07[m[33m ([m[1;31morigin/dev_long[m[33m)[m Merge branch 'dev_long' of https://github.com/NHH572/duan1_quanlykhachsan into dev_long
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m [33m|[m[34m\[m  
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m [33m|[m * [33m786aa9a[m Create ~$ ÁN 1 báo cáo (1) (1) (1).docx
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m [33m|[m * [33mae84941[m Create DỰ ÁN 1 báo cáo (1) (1) (1).docx
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m * [34m|[m [33me0a3fa9[m Update QuanLyKhachSan (1).sql
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m * [34m|[m [33m5a0e620[m Create ~$ ÁN 1 báo cáo (1) (1) (1).docx
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m * [34m|[m [33m4eb7c42[m Create DỰ ÁN 1 báo cáo (1) (1) (1).docx
+[36m|[m [1;31m|[m [32m|[m [32m|[m [1;33m|[m[1;33m/[m [34m/[m  
+[36m|[m [1;31m|[m [32m|[m [32m|[m * [34m|[m [33m346f2e5[m Merge branch 'dev_Thuat'
+[36m|[m [1;31m|[m [32m|[m [32m|[m[32m/[m[36m|[m [34m|[m 
+[36m|[m [1;31m|[m [32m|[m[32m/[m[32m|[m [36m|[m [34m|[m 
+[36m|[m [1;31m|[m [32m|[m [32m|[m * [34m|[m [33mcccb120[m[33m ([m[1;31morigin/dev_Thuat[m[33m)[m updateBaoCao_themKhachHangVaoTrangChu
+[36m|[m [1;31m|[m * [32m|[m [36m|[m [34m|[m [33mc3a57b0[m update hóa đơn và order dịch vụ
+[36m|[m [1;31m|[m [36m|[m [32m|[m[36m/[m [34m/[m  
+[36m|[m [1;31m|[m [36m|[m[36m/[m[32m|[m [34m|[m   
+[36m|[m [1;31m|[m * [32m|[m [34m|[m [33m03a1d2e[m update order dich vu
+[36m|[m [1;31m|[m * [32m|[m [34m|[m [33m3889048[m tinh chinh hoa don
+[36m|[m [1;31m|[m * [32m|[m [34m|[m   [33mcca686b[m Merge remote-tracking branch 'origin/dev_Hai'
+[36m|[m [1;31m|[m [1;31m|[m[1;32m\[m [32m\[m [34m\[m  
+[36m|[m [1;31m|[m [1;31m|[m * [32m|[m [34m|[m [33m35dc275[m update web
+[36m|[m [1;31m|[m * [1;32m|[m [32m|[m [34m|[m [33ma484d5f[m update web
+[36m|[m [1;31m|[m * [1;32m|[m [32m|[m [34m|[m   [33mb5de912[m Merge branch 'dev_long'
+[36m|[m [1;31m|[m [1;32m|[m[34m\[m [1;32m\[m [32m\[m [34m\[m  
+[36m|[m [1;31m|[m [1;32m|[m [34m|[m[1;32m/[m [32m/[m [34m/[m  
+[36m|[m [1;31m|[m [1;32m|[m[1;32m/[m[34m|[m [32m|[m [34m/[m   
+[36m|[m [1;31m|[m [1;32m|[m [34m|[m [32m|[m[34m/[m    
+[36m|[m [1;31m|[m [1;32m|[m [34m|[m[34m/[m[32m|[m     
+[36m|[m [1;31m|[m [1;32m|[m * [32m|[m [33m75e62c7[m Create DỰ ÁN 1 báo cáo.docx
+[36m|[m [1;31m|[m * [1;34m|[m [32m|[m   [33m492406b[m Merge branch 'origin/dev_Triet'
+[36m|[m [1;31m|[m [1;35m|[m[32m\[m [1;34m\[m [32m\[m  
+[36m|[m [1;31m|[m [1;35m|[m [32m|[m [1;34m|[m[32m/[m  
+[36m|[m [1;31m|[m [1;35m|[m [32m|[m[32m/[m[1;34m|[m   
+[36m|[m [1;31m|[m [1;35m|[m * [1;34m|[m [33m71e13e5[m Update TrangChu và SoDoPhong
+[36m|[m [1;31m|[m * [1;36m|[m [1;34m|[m   [33m51cea1e[m[33m ([m[1;31morigin/Update_DoiTac[m[33m)[m update
+[36m|[m [1;31m|[m [31m|[m[32m\[m [1;36m\[m [1;34m\[m  
+[36m|[m [1;31m|[m [31m|[m * [1;36m|[m [1;34m|[m [33m0da4a00[m UpdateThongKe
+[36m|[m [1;31m|[m [31m|[m * [1;36m|[m [1;34m|[m [33mcfcb28a[m AddThuVien
+[36m|[m [1;31m|[m [31m|[m * [1;36m|[m [1;34m|[m [33m6caae90[m UpdateThongKe
+[36m|[m [1;31m|[m * [32m|[m [1;36m|[m [1;34m|[m [33mce75292[m update
+[36m|[m [1;31m|[m[36m/[m [32m/[m [1;36m/[m [1;34m/[m  
+[36m|[m[36m/[m[1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   
+* [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   [33m9aee7a3[m Merge remote-tracking branch 'origin/dev_Hai'
+[33m|[m[34m\[m [1;31m\[m [32m\[m [1;36m\[m [1;34m\[m  
+[33m|[m * [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33mca02316[m oder dich vu
+* [34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33m36a943f[m oder dich vu
+* [34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   [33m898c253[m Merge branch 'dev_Thuat'
+[34m|[m[36m\[m [34m\[m [1;31m\[m [32m\[m [1;36m\[m [1;34m\[m  
+[34m|[m [36m|[m[34m/[m [1;31m/[m [32m/[m [1;36m/[m [1;34m/[m  
+[34m|[m[34m/[m[36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   
+[34m|[m * [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33ma077498[m UpdateKhachHang1xiu
+* [36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33m8541f03[m update order dịch vụ
+* [36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33mf3268ee[m Merge branch 'dev_Thuat'
+[1;31m|[m[36m\[m[36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m 
+[1;31m|[m * [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33m7590b74[m UpdateKhachHang
+* [1;32m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33mb3ac3fe[m Merge branch 'dev_Thuat'
+[1;33m|[m[1;32m\[m[1;32m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m 
+[1;33m|[m * [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33m72b9db2[m updateQuanLyKhachHang
+* [1;34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   [33mcf7bc0a[m Merge branch 'dev_Hai' of https://github.com/NHH572/duan1_quanlykhachsan into dev_Hai
+[1;35m|[m[1;36m\[m [1;34m\[m [1;31m\[m [32m\[m [1;36m\[m [1;34m\[m  
+[1;35m|[m * [1;34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33me5fdab1[m upload xuất hóa đơ
+* [1;36m|[m [1;34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33mffc1d13[m upload tùmlum
+* [1;36m|[m [1;34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33m4a56d45[m upload xuất hóa đơ
+* [1;36m|[m [1;34m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   [33mab714e8[m Merge branch 'dev_Thuat'
+[31m|[m[1;34m\[m [1;36m\[m [1;34m\[m [1;31m\[m [32m\[m [1;36m\[m [1;34m\[m  
+[31m|[m [1;34m|[m [1;36m|[m[1;34m/[m [1;31m/[m [32m/[m [1;36m/[m [1;34m/[m  
+[31m|[m [1;34m|[m[1;34m/[m[1;36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   
+[31m|[m * [1;36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m [33md0ba354[m QuanLyKhachHang
+* [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;36m|[m [1;34m|[m   [33m471b357[m Merge branch 'origin/dev_Triet'
+[33m|[m[1;36m\[m [32m\[m [1;36m\[m [1;31m\[m [32m\[m [1;36m\[m [1;34m\[m  
+[33m|[m [1;36m|[m [32m|[m[1;36m_[m[1;36m|[m[1;36m_[m[1;31m|[m[1;36m_[m[32m|[m[1;36m/[m [1;34m/[m  
+[33m|[m [1;36m|[m[1;36m/[m[32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m   
+[33m|[m * [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m [33m6fdb0c7[m Update QuanLyDatPhong + Login tắt thanh Title bar
+* [34m|[m [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m [33m3ad74ee[m Merge branch 'origin/dev_Triet'
+[35m|[m[34m\[m[34m|[m [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m 
+[35m|[m * [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m [33m523bd67[m Update QuanLyDatPhong
+* [36m|[m [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m [33m4ef3423[m Merge branch 'origin/dev_Triet'
+[1;36m|[m[36m\[m[36m|[m [32m|[m [1;36m|[m [1;31m|[m [32m|[m [1;34m|[m 
+[1;36m|[m [36m|[m[1;36m_[m[32m|[m[1;36m/[m [1;31m/[m [32m/[m [1;34m/[m  
+[1;36m|[m[1;36m/[m[36m|[m [32m|[m [1;31m|[m [32m|[m [1;34m|[m   
+[1;36m|[m * [32m|[m [1;31m|[m [32m|[m [1;34m|[m [33mfcf5bd3[m Update DatPhong, ChaoJDialog, TrangChu, KhachHangDAO
+* [1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;34m|[m [33mb178d0a[m upload hóa đơn
+* [1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;34m|[m [33me6d8296[m update
+* [1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;34m|[m [33mbc70699[m upload dmk
+[32m|[m [1;32m|[m[32m/[m [1;31m/[m [32m/[m [1;34m/[m  
+[32m|[m[32m/[m[1;32m|[m [1;31m|[m [32m|[m [1;34m|[m   
+* [1;32m|[m [1;31m|[m [32m|[m [1;34m|[m [33m244ef6e[m upload Hóa Đơn
+* [1;32m|[m [1;31m|[m [32m|[m [1;34m|[m [33mf793b8a[m upload hóa đơn
+[1;31m|[m [1;32m|[m[1;31m/[m [32m/[m [1;34m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m [32m|[m [1;34m|[m   
+* [1;32m|[m [32m|[m [1;34m|[m [33m769917d[m Upload hóa đơn
+[32m|[m [1;32m|[m[32m/[m [1;34m/[m  
+[32m|[m[32m/[m[1;32m|[m [1;34m|[m   
+* [1;32m|[m [1;34m|[m [33mfc9a30e[m upload thong ke
+* [1;32m|[m [1;34m|[m [33m3d4d23a[m Merge pull request #7 from NHH572/origin/dev_Triet
+[1;33m|[m[1;32m\[m[1;32m|[m [1;34m|[m 
+[1;33m|[m * [1;34m|[m [33me5eda18[m Thêm một số chức năng vào Login, Sửa trang chủ, giao diện, liên kết, đổi DoiMatKhau thành DoiMatKhau JFrame
+[1;33m|[m[1;33m/[m [1;34m/[m  
+* [1;34m|[m   [33m2e9c22c[m Merge pull request #6 from NHH572/origin/dev_Triet
+[1;35m|[m[1;36m\[m [1;34m\[m  
+[1;35m|[m * [1;34m|[m [33mb122d9b[m Update giao diện và sơ đồ phòng
+[1;35m|[m[1;35m/[m [1;34m/[m  
+* [1;34m|[m   [33ma2c76fb[m Merge pull request #5 from NHH572/origin/dev_Triet
+[31m|[m[32m\[m [1;34m\[m  
+[31m|[m * [1;34m|[m [33mca92dcb[m test
+[31m|[m * [1;34m|[m [33m0a73cfe[m test
+[31m|[m * [1;34m|[m [33m2f15a72[m Update QuanLyKhachSan
+[31m|[m[31m/[m [1;34m/[m  
+* [1;34m|[m   [33m602ebc2[m Merge pull request #4 from NHH572/origin/dev_Triet
+[33m|[m[34m\[m [1;34m\[m  
+[33m|[m * [1;34m|[m [33me9a5e52[m update privates
+[33m|[m * [1;34m|[m [33m62c4790[m fix bug
+[33m|[m * [1;34m|[m   [33m9a01352[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan into origin/dev_Triet
+[33m|[m [35m|[m[33m\[m [1;34m\[m  
+[33m|[m [35m|[m[33m/[m [1;34m/[m  
+[33m|[m[33m/[m[35m|[m [1;34m|[m   
+* [35m|[m [1;34m|[m [33m611fdcb[m testcase update
+* [35m|[m [1;34m|[m [33m8f6edda[m testcase
+* [35m|[m [1;34m|[m [33me25bcb2[m merge ireport
+* [35m|[m [1;34m|[m   [33m21c2a98[m Merge remote-tracking branch 'origin/dev_Hai'
+[1;31m|[m[1;32m\[m [35m\[m [1;34m\[m  
+[1;31m|[m * [35m|[m [1;34m|[m [33m562504a[m[33m ([m[1;31morigin/dev_hai[m[33m)[m upload ireport
+[1;31m|[m [1;34m|[m [35m|[m[1;34m/[m  
+[1;31m|[m [1;34m|[m[1;34m/[m[35m|[m   
+* [1;34m|[m [35m|[m [33m6a21383[m merger ireport
+* [1;34m|[m [35m|[m [33mcab114f[m upload ireport
+* [1;34m|[m [35m|[m [33mb3852f6[m updatequenmatkhau
+[1;34m|[m[1;34m/[m [35m/[m  
+* [35m|[m   [33m9bc7756[m Merge branch 'main' into dev_long
+[1;33m|[m[1;34m\[m [35m\[m  
+[1;33m|[m * [35m\[m   [33med7b63f[m Merge branch 'origin/dev_Triet'
+[1;33m|[m [1;35m|[m[1;36m\[m [35m\[m  
+[1;33m|[m * [1;36m\[m [35m\[m   [33m1cdf68c[m Merge remote-tracking branch 'origin/dev_Hai'
+[1;33m|[m [31m|[m[32m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [31m|[m * [1;36m|[m [35m|[m [33m2bd969f[m QR login
+[1;33m|[m * [32m|[m [1;36m|[m [35m|[m [33m42cdb9c[m QR login
+[1;33m|[m * [32m|[m [1;36m|[m [35m|[m   [33m086cb0c[m Merge branch 'origin/dev_Triet'
+[1;33m|[m [33m|[m[34m\[m [32m\[m [1;36m\[m [35m\[m  
+[1;33m|[m * [34m\[m [32m\[m [1;36m\[m [35m\[m   [33m246e70f[m Merge branch 'origin/dev_Triet'
+[1;33m|[m [32m|[m[36m\[m [34m\[m [32m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [32m|[m [36m|[m[32m_[m[34m|[m[32m/[m [1;36m/[m [35m/[m  
+[1;33m|[m [32m|[m[32m/[m[36m|[m [34m|[m [1;36m|[m [35m|[m   
+[1;33m|[m * [36m|[m [34m|[m [1;36m|[m [35m|[m [33md30cb99[m upload all
+[1;33m|[m * [36m|[m [34m|[m [1;36m|[m [35m|[m [33m38e178d[m upload all
+[1;33m|[m * [36m|[m [34m|[m [1;36m|[m [35m|[m   [33m08d0f5d[m Merge branch 'dev_Thuat'
+[1;33m|[m [1;31m|[m[1;32m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [1;31m|[m * [36m\[m [34m\[m [1;36m\[m [35m\[m   [33m6e95655[m Merge branch 'dev_Thuat' of https://github.com/NHH572/duan1_quanlykhachsan into dev_Thuat
+[1;33m|[m [1;31m|[m [1;33m|[m[1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [1;31m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma33e4a8[m testcase
+[1;33m|[m * [1;34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m7fbdc0b[m Revert "Merge branch 'dev_Thuat'"
+[1;33m|[m * [1;34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33m0e44921[m Merge branch 'dev_Thuat'
+[1;33m|[m [1;35m|[m[1;34m\[m [1;34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [1;35m|[m [1;34m|[m [1;34m|[m[1;34m/[m [36m/[m [34m/[m [1;36m/[m [35m/[m  
+[1;33m|[m [1;35m|[m [1;34m|[m[1;34m/[m[1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   
+[1;33m|[m [1;35m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mdc53efa[m update_testCase
+[1;33m|[m [1;35m|[m [1;34m|[m[1;34m/[m [36m/[m [34m/[m [1;36m/[m [35m/[m  
+[1;33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33mdd0e034[m Merge branch 'dev_VietAnh'
+[1;33m|[m [31m|[m[32m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [31m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m4ed2858[m Update
+[1;33m|[m * [32m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m8bfc117[m Merge branch 'dev_VietAnh'
+[1;33m|[m [33m|[m[32m\[m[32m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m 
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33maaea97d[m Update QuenMatKhauJDialog.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m7a2f70a[m Update QuanLyNhanVienJPanel.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m2e4572e[m Update QuanLyNhanVienJPanel.form
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m468b91b[m Update QuanLyKhuyenMaiJPanel.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m97a0567[m Update QuanLyKhuyenMaiJPanel.form
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m5093c8f[m Update QuanLyHoaDonJPanel.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mcade184[m Update QuanLyHoaDonJPanel.form
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m6f42adc[m Update QuanLyDoiTacJPanel.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m41b8641[m Update QuanLyDoiTacJPanel.form
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma9ee123[m Update DoiMatKhau.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m88d0d29[m Update DangnhapJDialog.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mfb9d293[m Update DangnhapJDialog.form
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mc0c9d21[m Create tien.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mf78d638[m Create lui.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33maba246b[m Create Edit.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33md885f70[m Create dau.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m55b1b8d[m Create cuoi.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m3a76991[m Create Clien list.png
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m902377a[m Update utilityHelper.java
+[1;33m|[m [33m|[m * [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma821d36[m Test case
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m3e8beb5[m Create den_2.jpg
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mcfd3260[m Create xanhduong.png
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m06873e6[m Create xanhtroi.png
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mda44fd6[m Create khachsan (1).png
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m6d2a70d[m Create LoginJFrame.form
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mb55c95d[m Create LoginJFrame.java
+[1;33m|[m * [34m|[m [1;34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33m5cf907d[m Merge branch 'origin/dev_Triet'
+[1;33m|[m [35m|[m[36m\[m [34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m * [36m\[m [34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m   [33m0f85630[m Merge branch 'origin/dev_Triet'
+[1;33m|[m [1;31m|[m[1;32m\[m [36m\[m [34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m * [1;32m\[m [36m\[m [34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m   [33mc7d569b[m Merge branch 'dev_Thuat'
+[1;33m|[m [1;33m|[m[1;34m\[m [1;32m\[m [36m\[m [34m\[m [1;34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [1;33m|[m [1;34m|[m [1;32m|[m[1;34m_[m[36m|[m[1;34m_[m[34m|[m[1;34m/[m [36m/[m [34m/[m [1;36m/[m [35m/[m  
+[1;33m|[m [1;33m|[m [1;34m|[m[1;34m/[m[1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   
+[1;33m|[m [1;33m|[m * [1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m9696aad[m Update QuanLyPhongJPanel.java
+[1;33m|[m [1;33m|[m * [1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m4db6f67[m Update QuanLyPhongJPanel.form
+[1;33m|[m [1;33m|[m * [1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mbdd446e[m Update JdbcHelper.java
+[1;33m|[m [1;33m|[m * [1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m8d7abf8[m Update private.xml
+[1;33m|[m * [1;34m|[m [1;32m|[m [36m|[m [34m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33m399315f[m Merge branch 'dev_VietAnh'
+[1;33m|[m [1;35m|[m[34m\[m [1;34m\[m [1;32m\[m [36m\[m [34m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [1;35m|[m [34m|[m [1;34m|[m[34m_[m[1;32m|[m[34m_[m[36m|[m[34m/[m [36m/[m [34m/[m [1;36m/[m [35m/[m  
+[1;33m|[m [1;35m|[m [34m|[m[34m/[m[1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   
+[1;33m|[m [1;35m|[m * [1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m3ff132a[m Update QuanLyNhanVien
+[1;33m|[m * [1;36m|[m [1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m4c738ee[m Merge branch 'dev_VietAnh'
+[1;33m|[m [31m|[m[1;36m\[m[1;36m|[m [1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m 
+[1;33m|[m [31m|[m * [1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m12993a5[m Update QuanLyNhanVien, DoiMatKhau, XImage
+[1;33m|[m * [32m|[m [1;34m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33mcea7ad9[m Merge branch 'dev_Thuat'
+[1;33m|[m [33m|[m[1;34m\[m [32m\[m [1;34m\[m [1;32m\[m [36m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [33m|[m [1;34m|[m [32m|[m[1;34m/[m [1;32m/[m [36m/[m [36m/[m [34m/[m [1;36m/[m [35m/[m  
+[1;33m|[m [33m|[m [1;34m|[m[1;34m/[m[32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33md9f6a85[m Update QuanLyPhongJPanel.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m19acd11[m Update QuanLyPhongJPanel.form
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma26d631[m Create Quanlyphong.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mff2d8f5[m Update Phong.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma651982[m Update LoaiPhong.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m2c816f0[m Create QuanLyPhongDAO.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m90940e3[m Create PhongDAO.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m0ded01d[m Update NhanVienDAO.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33me957d38[m Create LoaiPhongDAO.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mcd29c53[m Update private.xml
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m71c12d8[m Update project.properties
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mdc76d87[m Create javax.mail-1.6.2.jar
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mb029812[m Update project.properties
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m7833e75[m Update QuanLyPhongJPanel.form
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m9273880[m Update QuanLyPhongJPanel.java
+[1;33m|[m [33m|[m * [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m   [33m8990ce5[m Merge origin/main into dev_Thuat
+[1;33m|[m [33m|[m [35m|[m[36m\[m [32m\[m [1;32m\[m [36m\[m [36m\[m [34m\[m [1;36m\[m [35m\[m  
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33me2cc992[m Update project.properties
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m8af1df4[m Update project.properties
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m00b7b40[m Update NhanVienDAO.java
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m9ade73d[m Update private.xml
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mb5d53ca[m Update project.properties
+[1;33m|[m [33m|[m * [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m9135fc8[m Revert "Merge branch 'dev_Thuat'"
+[1;33m|[m * [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m17df4de[m[33m ([m[1;31morigin/QuanLyPhong[m[33m)[m UpdateDoiTac
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mebc2bfe[m Create khachsan (1).png
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m58d7d68[m Create LoginJFrame.form
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mfb2ac81[m Create LoginJFrame.java
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mee99f84[m Create den_2.jpg
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m8fbb387[m Create khachsan_sigin.png
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33ma5a7065[m Create xanhduong.png
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m53c7017[m Create xanhtroi.png
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33m539cc76[m Create Login.form
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33mcf1bf13[m Revert "Revert "Update Login.java""
+* [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m [35m|[m [33maa06144[m Update DoiMatKhau.java
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m * [33mda3c6f6[m .gitignore is now working
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m * [33m74ece02[m Update QuanLyDatPhong, KhachHangDAO
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m [1;36m|[m[1;36m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m * [33m4e15aaf[m Update QuanLyDatPhong
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [34m|[m[34m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m *   [33mf8eb4f4[m Merge branch 'origin/dev_Triet' of https://github.com/NHH572/duan1_quanlykhachsan into origin/dev_Triet
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [1;31m|[m[36m\[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m [1;31m|[m[36m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m [36m|[m[36m/[m[1;31m|[m   
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m * [1;31m|[m [33m0bb9f15[m Update QuanLyDatPhong và TrangChu
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m[36m/[m [1;31m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m * [33mf2408bc[m update QuanLyDatPhong
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m [36m|[m[36m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m * [33m3dc5f97[m Update SQL, QuanLyDatPhong, PhongDAO
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m [1;32m|[m[1;32m/[m  
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m * [33m40068ec[m Update Quản lý đặt phòng, LoaiPhongDAO, Ảnh Send
+[36m|[m [36m|[m [36m|[m [36m|[m [32m|[m * [33md1e534c[m Update QuanLyKhachSan (1).sql
+[36m|[m [36m|[m [36m|[m[36m_[m[36m|[m[36m_[m[32m|[m[36m/[m  
+[36m|[m [36m|[m[36m/[m[36m|[m [36m|[m [32m|[m   
+[36m|[m * [36m|[m [36m|[m [32m|[m [33m4abb47f[m Update TrangChu
+[36m|[m * [36m|[m [36m|[m [32m|[m   [33mb3baac7[m Merge branch 'main' into origin/dev_Triet
+[36m|[m [1;33m|[m[1;34m\[m [36m\[m [36m\[m [32m\[m  
+[36m|[m [1;33m|[m * [36m\[m [36m\[m [32m\[m   [33mea0f905[m Merge branch 'dev_long'
+[36m|[m [1;33m|[m [1;35m|[m[36m\[m [36m\[m [36m\[m [32m\[m  
+[36m|[m [1;33m|[m[36m_[m[1;35m|[m[36m/[m [36m/[m [36m/[m [32m/[m  
+[36m|[m[36m/[m[1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m   
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33m91b92dc[m Update KhuyenMaiDAO.java
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33mdaf93a8[m Update NhanVienDAO.java
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33mdd51292[m Update KhuyenMai.java
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33ma0e15b7[m Update DangnhapJDialog.form
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33m1e5dbe1[m Update DangnhapJDialog.java
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33mbf838c9[m Update QuanLyKhuyenMaiJPanel.form
+* [1;33m|[m [1;35m|[m [36m|[m [36m|[m [32m|[m [33md00cfa1[m Create QuanLyKhuyenMaiJPanel.java
+[1;36m|[m [1;33m|[m * [36m|[m [36m|[m [32m|[m [33mf5e1215[m upload hóa đơn
+[1;36m|[m [1;33m|[m * [36m|[m [36m|[m [32m|[m [33ma646ebc[m upload hóa đơn
+[1;36m|[m * [1;36m|[m [36m|[m [36m|[m [32m|[m [33m4921160[m Update Quản lý dịch vụ, Sơ đồ phòng, Giao diện form thống kê
+[1;36m|[m [1;36m|[m[1;36m/[m [36m/[m [36m/[m [32m/[m  
+[1;36m|[m * [36m|[m [36m|[m [32m|[m [33m6955158[m Update Trang Chu va SQL
+[1;36m|[m * [36m|[m [36m|[m [32m|[m   [33m9671956[m Merge branch 'main' into origin/dev_Triet
+[1;36m|[m [31m|[m[36m\[m [36m\[m [36m\[m [32m\[m  
+[1;36m|[m [31m|[m [36m|[m [36m|[m[36m/[m [32m/[m  
+[1;36m|[m [31m|[m [36m|[m[36m/[m[36m|[m [32m|[m   
+[1;36m|[m [31m|[m * [36m|[m [32m|[m   [33m1bf6dbf[m Merge branch 'main' into origin/dev_Triet
+[1;36m|[m [31m|[m [33m|[m[34m\[m [36m\[m [32m\[m  
+[1;36m|[m [31m|[m [33m|[m * [36m\[m [32m\[m   [33maae6d32[m Merge branch 'main' into origin/dev_Triet
+[1;36m|[m [31m|[m [33m|[m [35m|[m[36m\[m [36m\[m [32m\[m  
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [36m|[m [32m|[m [33md7b4c87[m Revert "Revert "Revert "Revert "Merge branch 'dev_Thuat'""""
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [36m|[m [32m|[m [33m238edb6[m Revert "Revert "Revert "Merge branch 'dev_Thuat'"""
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [36m|[m [32m|[m [33mea4cfab[m Revert "Revert "Merge branch 'dev_Thuat'""
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [36m|[m [32m|[m [33m8cbc80c[m Revert "Merge branch 'dev_Thuat'"
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [36m|[m [32m|[m [33m3d37219[m Merge branch 'dev_Thuat'
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m[36m\[m[36m|[m [32m|[m 
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m * [32m|[m [33mf73b16f[m Create javax.mail-1.6.2.jar
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m * [32m|[m [33m9b82309[m Update private.xml
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m * [32m|[m [33m16ba5fa[m Create QuenMatKhauJDialog.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m * [32m|[m [33m1b3f720[m Create QuenMatKhauJDialog.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m * [32m|[m [33m8952f9b[m Update NhanVienDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;31m|[m [32m|[m[32m/[m  
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m6218452[m Create QuenMatKhauJDialog.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m7bb57af[m Merge branch 'dev_Thuat'
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33md399e9d[m Revert "Update private.xml"
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33me5b6f71[m Update private.xml
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mff0632a[m Update TrangChuJrame.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m2339915[m Update TrangChuJrame.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mcfc3756[m Delete SoDoPhongJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mfbc6a5e[m Delete SoDoPhongJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33md3493ad[m Update QuanLyPhongJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m74a15ef[m Update QuanLyPhongJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m1827513[m Update QuanLyNhanVienJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m5ebacf4[m Update QuanLyNhanVienJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m7e91bfa[m Update QuanLyKhuyenMaiJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m1dde8da[m Update QuanLyKhuyenMaiJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33me92ef5f[m Update QuanLyDoiTacJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33me7b650c[m Update QuanLyDoiTacJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mbe4b073[m Update QuanLyDichVuJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m8a6636e[m Update QuanLyDichVuJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m6cc1bba[m Update QuanLyDatPhongJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mf08a75c[m Update QuanLyDatPhongJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mc1a61b3[m Update DangnhapJDialog.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m91cda07[m Update DangnhapJDialog.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mb8ffc95[m Update JdbcHelper.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m07e18d4[m Delete SoDoPhong.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m34a2c09[m Update KhuyenMai.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mef4995d[m Delete DanhMucSoDoPhong.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33mea5c266[m Delete SoDoPhongDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33me303847[m Update NhanVienDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m5907f30[m Update KhuyenMaiDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m3a97078[m Update ChuyenManHinhController.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m [33m69efa30[m Update project.properties
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [32m|[m   [33m275971e[m Update Trang Chủ và SoDoPhong
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;33m|[m[1;34m\[m [32m\[m  
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33me9f8427[m Update NhanVienDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33m5c651bb[m Update KhuyenMaiDAO.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33md72898b[m Update KhuyenMai.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33mf8730b6[m Update DangnhapJDialog.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33m296e669[m Update DangnhapJDialog.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33m73b12c0[m Update QuanLyKhuyenMaiJPanel.form
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [32m|[m [33mae26818[m Create QuanLyKhuyenMaiJPanel.java
+[1;36m|[m [31m|[m [33m|[m [35m|[m [32m|[m [1;34m|[m[32m/[m  
+[1;36m|[m [31m|[m [33m|[m [35m|[m [32m|[m[32m/[m[1;34m|[m   
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m   [33m41e4fec[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;35m|[m[1;36m\[m [1;34m\[m  
+[1;36m|[m [31m|[m [33m|[m [35m|[m [1;35m|[m * [1;34m|[m [33mc01baff[m Update private.properties
+[1;36m|[m [31m|[m[1;36m_[m[33m|[m[1;36m_[m[35m|[m[1;36m_[m[1;35m|[m[1;36m/[m [1;34m/[m  
+[1;36m|[m[1;36m/[m[31m|[m [33m|[m [35m|[m [1;35m|[m [1;34m|[m   
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [33m340b9fa[m Create QuanLyKhachSan.sql
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [33m6b2b503[m Delete QuanLyKhachSan (1).sql
+[1;36m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m   [33maee82ca[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;36m|[m [31m|[m [33m|[m [35m|[m [31m|[m[1;36m\[m [1;34m\[m  
+[1;36m|[m [31m|[m[1;36m_[m[33m|[m[1;36m_[m[35m|[m[1;36m_[m[31m|[m[1;36m/[m [1;34m/[m  
+[1;36m|[m[1;36m/[m[31m|[m [33m|[m [35m|[m [31m|[m [1;34m|[m   
+* [31m|[m [33m|[m [35m|[m [31m|[m [1;34m|[m [33m59a6594[m upload lib and form khuyến mãi
+[32m|[m [31m|[m [33m|[m [35m|[m * [1;34m|[m [33m5028f43[m Create QuanLyKhachSan.sql
+[32m|[m [31m|[m [33m|[m * [32m|[m [1;34m|[m [33m58b3f7a[m Update SoDoPhong
+[32m|[m [31m|[m * [32m|[m [32m|[m [1;34m|[m [33m574708a[m Upload SoDoPhong entity
+[32m|[m [31m|[m [32m|[m[32m/[m [32m/[m [1;34m/[m  
+[32m|[m * [32m|[m [32m|[m [1;34m|[m   [33md1b66b0[m Merge branch 'origin/dev_Triet' of https://github.com/NHH572/duan1_quanlykhachsan into origin/dev_Triet
+[32m|[m [33m|[m[1;34m\[m [32m\[m [32m\[m [1;34m\[m  
+[32m|[m [33m|[m [1;34m|[m [32m|[m[1;34m_[m[32m|[m[1;34m/[m  
+[32m|[m [33m|[m [1;34m|[m[1;34m/[m[32m|[m [32m|[m   
+[32m|[m [33m|[m * [32m|[m [32m|[m [33m2abdf83[m Chỉnh sửa giao diện cho các form
+[32m|[m [33m|[m * [32m|[m [32m|[m [33m3d5df88[m Update Sơ đồ phòng và sự kiện click
+[32m|[m [33m|[m [32m|[m[32m/[m [32m/[m  
+[32m|[m * [32m/[m [32m/[m [33m42877bb[m Update SoDoPhong 16/11
+[32m|[m [32m|[m[32m/[m [32m/[m  
+[32m|[m * [32m|[m [33m654a26e[m Update project.properties
+[32m|[m * [32m|[m [33ma8d0c30[m Thêm giao diện sơ đồ phòng
+[32m|[m[32m/[m [32m/[m  
+* [32m|[m [33m1032a99[m Update TrangChuJrame.java
+* [32m|[m [33m75a73d4[m Update TrangChuJrame.form
+* [32m|[m [33m00af077[m Update private.xml
+* [32m|[m [33m8c3e30e[m Update project.properties
+* [32m|[m [33m4fe9ad1[m Update private.xml
+* [32m|[m [33m8cf611b[m Update private.properties
+* [32m|[m [33m11d4491[m Update TrangChuJrame.form
+* [32m|[m [33m25a65ff[m Update TrangChuJrame.java
+* [32m|[m [33m6956aa4[m Update private.xml
+* [32m|[m   [33m7909c3b[m upload form Khuyễn mãi
+[35m|[m[36m\[m [32m\[m  
+[35m|[m * [32m|[m [33m6ff1b46[m Create NhanVienDAO.java
+[35m|[m * [32m|[m [33m02e11a5[m Update private.xml
+[35m|[m * [32m|[m [33m344403b[m Update project.properties
+[35m|[m * [32m|[m [33m6223041[m Update private.xml
+[35m|[m * [32m|[m [33m38bf38b[m Update private.xml
+[35m|[m * [32m|[m [33m87c5a1c[m Update private.properties
+[35m|[m * [32m|[m [33ma12d2ca[m Update private.xml
+[35m|[m * [32m|[m   [33m842b875[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[35m|[m [1;31m|[m[1;32m\[m [32m\[m  
+[35m|[m [1;31m|[m * [32m|[m [33m760cde0[m Update private.xml
+[35m|[m [1;31m|[m * [32m|[m [33m8feba0d[m Create DoiMatKhau.java
+[35m|[m [1;31m|[m * [32m|[m [33mf90363a[m Delete QuenMatKhau.java
+[35m|[m [1;31m|[m * [32m|[m [33m0c3b7ed[m Update DoiMatKhau.form
+[35m|[m [1;31m|[m [32m|[m[32m/[m  
+[35m|[m * [32m|[m [33m2c38601[m Update private.properties
+[35m|[m * [32m|[m [33m4a99a20[m Update private.xml
+[35m|[m * [32m|[m [33mc03a20f[m Update project.properties
+[35m|[m * [32m|[m [33mc75d329[m Update ChuyenManHinhController.java
+[35m|[m * [32m|[m [33me878235[m Update DichVu.java
+[35m|[m * [32m|[m [33medab0ef[m Update QuanLyDichVuJPanel.java
+[35m|[m * [32m|[m [33m3214164[m Update QuanLyDichVuJPanel.form
+[35m|[m * [32m|[m [33m05926a7[m Update TrangChuJrame.java
+[35m|[m * [32m|[m [33m1cd85c2[m Update TrangChuJrame.form
+[35m|[m * [32m|[m [33m7e94e74[m Create HoTroJPanel.java
+[35m|[m * [32m|[m [33m9ec42fe[m Create HoTroJPanel.form
+[35m|[m * [32m|[m [33maa968e6[m Create update.png
+[35m|[m * [32m|[m [33m39f25c1[m Create new.png
+[35m|[m * [32m|[m [33mb61a79e[m Create deleteService.png
+[35m|[m * [32m|[m [33m2008e5c[m Create add.png
+[35m|[m * [32m|[m [33maacfa27[m Create DichVuDAO.java
+[35m|[m [32m|[m[32m/[m  
+* [32m|[m [33m6cac81d[m upload form Khuyến mãi
+[1;32m|[m [32m|[m * [33m94c9391[m[33m ([m[1;31morigin/dev_Cuong[m[33m)[m Update QuanLyDoiTac
+[1;32m|[m [32m|[m * [33m7acd3bf[m Quan Ly Doi Tac
+[1;32m|[m [32m|[m[32m/[m  
+[1;32m|[m * [33m2ae66bb[m Update private.xml
+[1;32m|[m * [33m3a505c6[m Update private.xml
+[1;32m|[m * [33mbc563c4[m Update private.properties
+[1;32m|[m * [33m3e17f64[m Update JdbcHelper.java
+[1;32m|[m * [33mc53001e[m Create EduSysDAO.java
+[1;32m|[m * [33m9fb9173[m Update private.xml
+[1;32m|[m *   [33mb4f211b[m Update private.properties
+[1;32m|[m [1;34m|[m[1;32m\[m  
+[1;32m|[m [1;34m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;34m|[m   
+* [1;34m|[m [33m9bf0fd8[m upload jdbchelper
+[1;35m|[m * [33m57a5f53[m Update private.xml
+[1;35m|[m[1;35m/[m  
+* [33m5c9f98b[m Update private.properties
+* [33me29dc88[m Create TrangChuJrame.java
+* [33mcf19bbf[m Create TrangChuJrame.form
+* [33mcfe5991[m Delete TrangChuJFrame.java
+* [33mcfa1fcd[m Delete TrangChuJFrame.form
+* [33m358923a[m Create QuanLyPhongJPanel.java
+* [33m25fda88[m Create QuanLyPhongJPanel.form
+* [33m320e38c[m Delete QuanLyPhongJDialog.java
+* [33m529708b[m Delete QuanLyPhongJDialog.form
+* [33md09361a[m Create QuanLyNhanVienJPanel.java
+* [33m5dc8081[m Create QuanLyNhanVienJPanel.form
+* [33mb11e945[m Delete QuanLyNhanVienJDialog.java
+* [33m91cc761[m Delete QuanLyNhanVienJDialog.form
+* [33m090829e[m Create QuanLyKhuyenMaiJPanel.java
+* [33mba6bbd8[m Create QuanLyKhuyenMaiJPanel.form
+* [33m56b0c42[m Create QuanLyKhoJPanel.java
+* [33m10e1a76[m Create QuanLyKhoJPanel.form
+* [33m5bd68ff[m Delete QuanLyKhoJDialog.java
+* [33m5a35fea[m Delete QuanLyKhoJDialog.form
+* [33mf3d45ec[m Create QuanLyHoaDonJPanel.java
+* [33meef80b0[m Create QuanLyHoaDonJPanel.form
+* [33m9c964b2[m Create QuanLyDoiTacJPanel.java
+* [33md9dcee5[m Create QuanLyDoiTacJPanel.form
+* [33m8c2f254[m Delete QuanLyDoiTacJDialog.java
+* [33mde5d440[m Delete QuanLyDoiTacJDialog.form
+* [33m20c638b[m Create QuanLyDichVuJPanel.java
+* [33m7b01066[m Create QuanLyDichVuJPanel.form
+* [33m62b93f7[m Delete QuanLyDichVuJDialog.java
+* [33m69c8a28[m Delete QuanLyDichVuJDialog.form
+* [33m65a3061[m Create QuanLyDatPhongJPanel.java
+* [33m4b807ac[m Create QuanLyDatPhongJPanel.form
+* [33m4ead19b[m Delete QuanLyDatPhong.java
+* [33ma3de358[m Delete QuanLyDatPhong.form
+* [33mf02338b[m Create NewJPanel.java
+* [33m29f92a0[m Create NewJPanel.form
+* [33mb24c075[m Update ChaoJDialog.java
+* [33mf1cdf74[m Update ChaoJDialog.form
+* [33md3ff869[m Create ZN004-6.jpg
+* [33mabd10bd[m Create XImage.java
+* [33maf4976e[m Create MsgBox.java
+* [33m10a5096[m Create JdbcHelper.java
+* [33mbbd41d5[m Create Auth.java
+* [33mfea5c19[m Create Phong.java
+* [33m51a8f02[m Create NhanVien.java
+* [33m2f522a4[m Create LoaiPhong.java
+* [33m2d0dcf7[m Create KhuyenMai.java
+* [33md233c4e[m Create KhachHang.java
+* [33m9134a8a[m Create HoaDon.java
+* [33mfdd4737[m Create DoiTac.java
+* [33m744741b[m Create DichVu.java
+* [33m98b8d3a[m Create DatPhong.java
+* [33m77a389c[m Create DanhMuc.java
+* [33m5f6f39b[m Create ChiTietHoaDon.java
+* [33md25c11b[m Create ChuyenManHinhController.java
+* [33m569878c[m Update private.xml
+*   [33m239d163[m Update private.properties
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33m39d62e1[m Update QuanLyDoiTacJPanel.java
+[1;36m|[m * [33m4f882aa[m Update QuanLyDoiTacJPanel.form
+[1;36m|[m * [33mdd3f4fd[m Update QuanLyDichVuJPanel.java
+[1;36m|[m * [33me2c7870[m Update QuanLyDichVuJPanel.form
+[1;36m|[m * [33m876e734[m Update project.properties
+[1;36m|[m * [33md219279[m Update private.xml
+[1;36m|[m * [33mb49b937[m Update private.properties
+[1;36m|[m * [33m7919320[m update
+[1;36m|[m * [33mf17f998[m upload lại
+[1;36m|[m *   [33m1a3b9a1[m upload helper
+[1;36m|[m [32m|[m[33m\[m  
+[1;36m|[m [32m|[m * [33mbb2d3a3[m Update private.xml
+[1;36m|[m [32m|[m * [33m2d5fa51[m Update private.properties
+[1;36m|[m [32m|[m *   [33m300ed70[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;36m|[m [32m|[m [34m|[m[35m\[m  
+[1;36m|[m [32m|[m * [35m|[m [33m4e77f03[m Delete QuanLyDichVuJDialog.form
+[1;36m|[m [32m|[m * [35m|[m [33m08a3c03[m Delete QuanLyDichVuJDialog.java
+[1;36m|[m [32m|[m * [35m|[m [33m202e6fb[m Delete QuanLyDoiTacJDialog.form
+[1;36m|[m [32m|[m * [35m|[m [33m421730d[m Delete QuanLyDoiTacJDialog.java
+[1;36m|[m [32m|[m * [35m|[m [33mc2583e6[m Delete QuanLyKhoJDialog.form
+[1;36m|[m [32m|[m * [35m|[m [33mb120f17[m Create QuanLyDichVuJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33mcaeab36[m Create QuanLyDichVuJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33m54b3f9e[m Create QuanLyHoaDonJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33m33e60ef[m Create QuanLyHoaDonJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33m19e7346[m Create QuanLyDoiTacJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33mb94961b[m Create QuanLyDoiTacJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33m2bcf527[m Create QuanLyDatPhongJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33mc286c91[m Create QuanLyDatPhongJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33m936b013[m Create QuanLyKhoJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33m568f7f2[m Create QuanLyKhoJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33me3405e6[m Create QuanLyKhuyenMaiJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33m586caba[m Create QuanLyKhuyenMaiJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33mc408c21[m Create DanhMuc.java
+[1;36m|[m [32m|[m * [35m|[m [33md112c2a[m Create ChuyenManHinhController.java
+[1;36m|[m [32m|[m * [35m|[m [33m45c5108[m Create QuanLyNhanVienJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33m0eade1d[m Create QuanLyNhanVienJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33m80faf57[m Create QuanLyPhongJPanel.java
+[1;36m|[m [32m|[m * [35m|[m [33mc3e1733[m Create QuanLyPhongJPanel.form
+[1;36m|[m [32m|[m * [35m|[m [33mf5d19d9[m Create TrangChuJrame.java
+[1;36m|[m [32m|[m * [35m|[m [33m10357de[m Create TrangChuJrame.form
+[1;36m|[m * [35m|[m [35m|[m [33m9774810[m upload helper
+[1;36m|[m [35m|[m [35m|[m[35m/[m  
+[1;36m|[m [35m|[m[35m/[m[35m|[m   
+[1;36m|[m * [35m|[m   [33m6389090[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;36m|[m [36m|[m[1;31m\[m [35m\[m  
+[1;36m|[m [36m|[m * [35m|[m [33m35ec136[m Revert "Create aaa.txt"
+[1;36m|[m * [1;31m|[m [35m|[m [33md84ff41[m upload enity
+[1;36m|[m * [1;31m|[m [35m|[m [33m74889c0[m upload test
+[1;36m|[m * [1;31m|[m [35m|[m [33me985577[m upload test
+[1;36m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[1;36m|[m * [35m|[m [33m089d641[m Create aaa.txt
+* [1;31m|[m [35m|[m [33mf2f9981[m Update private.xml
+[1;31m|[m[1;31m/[m [35m/[m  
+* [35m|[m [33m5261f44[m Update private.properties
+* [35m|[m [33m9195ebf[m Update private.xml
+* [35m|[m   [33mf1e15dc[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;32m|[m[1;33m\[m [35m\[m  
+[1;32m|[m * [35m|[m [33m644b872[m Update private.properties
+[1;32m|[m * [35m|[m [33m4361b54[m Delete aaaa.txt
+[1;32m|[m [35m|[m[35m/[m  
+[1;32m|[m * [33m66ae2e3[m hello
+* [1;33m|[m [33m29fcefc[m Create QuanLyDatPhong.java
+* [1;33m|[m [33m1cccaf3[m Delete QuanLyDatPhongJDialog.form
+* [1;33m|[m [33m92e56d2[m Delete QuanLyDatPhongJDialog.java
+* [1;33m|[m [33ma138069[m Create QuenMatKhau.form
+* [1;33m|[m [33m92fa3c6[m Create QuenMatKhau.java
+* [1;33m|[m [33m9b169bc[m Delete QuenMKJDialog.form
+* [1;33m|[m [33m784fe70[m Delete QuenMKJDialog.java
+* [1;33m|[m [33m0fd1341[m Create QuanLyDatPhong.form
+[1;33m|[m[1;33m/[m  
+* [33m5fd9d82[m Delete test.txt
+* [33m7f96a08[m Create test.txt
+* [33ma5c02b4[m upload lib Animation
+* [33m94189b4[m upload giao diện
+* [33me7aadb2[m upload form
+* [33m48374e5[m upload tùm lum
+* [33md7646c3[m upload giao diện đối tác
+*   [33mea161e2[m Merge branch 'main' of https://github.com/NHH572/duan1_quanlykhachsan
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33mfbf73fe[m upload data và mocup
+[1;34m|[m * [33md0c6d9b[m Delete hai
+[1;34m|[m * [33m7480849[m Create hai
+* [1;35m|[m [33m4830785[m first commit
+* [1;35m|[m [33mca311e2[m test commit
+* [1;35m|[m [33m71084c2[m upload test
+[1;35m|[m[1;35m/[m  
+* [33m0fcb8a6[m upload giao diện thống kê
+* [33m46f4c08[m upload
+* [33m00ae680[m first commit
+* [33m4308759[m Initial commit

@@ -32,7 +32,7 @@ public class HoaDon extends javax.swing.JFrame {
     TableHoaDonDAO tblhddao = new TableHoaDonDAO();
     private int maPhong;
     private int maDichVu;
-    private int maCHiTietHoaDOn ;
+    private int maCHiTietHoaDOn;
     int index;
 
     public HoaDon() {
@@ -45,8 +45,6 @@ public class HoaDon extends javax.swing.JFrame {
         fillComboBoxPhong();
         loadToTable();
     }
-
-    
 
     private void fillComboBoxPhong() {
         try {
@@ -100,16 +98,10 @@ public class HoaDon extends javax.swing.JFrame {
         hd.setTongTien(txtTongTien.getText());
         int soPhong = (int) cboPhong.getSelectedItem();
         System.out.println("So phong : " + soPhong);
-        System.out.println("Tong tien : "+ txtTongTien.getText());
+        System.out.println("Tong tien : " + txtTongTien.getText());
         hd.setSoPhong(soPhong);
         return hd;
     }
-
-//    void insert() {
-//        HoaDonLoadTable hd = getModel();
-//        lthdDao.insertHoaDon(hd);
-//        lthdDao.insertChiTietHoaDon(hd);
-//    }
 
     void update() {
         try {
@@ -167,16 +159,22 @@ public class HoaDon extends javax.swing.JFrame {
             model.setRowCount(0);
             List<HoaDonLoadTable> list = lthdDao.selectBySoPhong1(soPhong);
             HoaDonLoadTable dv = null;
+            String tendichvu = null ;
             for (int i = 0; i < list.size(); i++) {
                 dv = list.get(i);
+                tendichvu = dv.getTenDichVu();
                 model.addRow(new Object[]{i + 1, dv.getSoPhong(), dv.getMaDichVu(), dv.getTenDichVu(), dv.getSoLan(), dv.getGiaDichVu()});
             }
+            System.out.println("ten dich vu" +tendichvu);
+            
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("error" + e.getMessage());
         }
     }
-void loadToTable() {
+
+
+    void loadToTable() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         List<TableHoaDon> list = tblhddao.selectAll();
@@ -194,6 +192,7 @@ void loadToTable() {
             model.addRow(row);
         }
     }
+
     float tinhtien(int soPhong) {
         List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
         float count = 0;
@@ -240,7 +239,6 @@ void loadToTable() {
             System.out.println(ex.getMessage());
         }
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -686,8 +684,9 @@ void loadToTable() {
     }//GEN-LAST:event_cboPhongItemStateChanged
 
     private void cboPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPhongActionPerformed
-        this.fillTableDichVuByClickCombox();
         this.editByCombox();
+        this.fillTableDichVuByClickCombox();
+        
         txtThanhTien.setText(String.valueOf(tinhTienbByCombox()));
         txtTongTien.setText(String.valueOf(tinhTienbByCombox()));
     }//GEN-LAST:event_cboPhongActionPerformed
