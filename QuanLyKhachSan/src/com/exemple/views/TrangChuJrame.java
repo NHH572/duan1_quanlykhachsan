@@ -57,6 +57,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
         listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
         listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
+        listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque9));
         listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
         listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
         listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
@@ -66,35 +67,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPanel.setPreferredSize(new Dimension(1320, 700));
         setTxtXinChao();
-//        setEventClickButton();
 
     }
-
-//    public void setEventClickButton() {
-//        for (int i = 0; i < listDanhMucSoDoPhong.size(); i++) {
-//            DanhMucSoDoPhong itemDanhMucSoDoPhong = listDanhMucSoDoPhong.get(i);
-//            SoDoPhong itemSoDoPhong = listDataDanhMucSoDoPhong.get(i);
-//            itemDanhMucSoDoPhong.getBtnChiTiet().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    maPhong = itemSoDoPhong.getMaPhong();
-//                    mainPanel.removeAll();
-//                    mainPanel.setLayout(new BorderLayout());
-//                    mainPanel.add(new QuanLyPhongJPanel());
-//                    mainPanel.validate();
-//                    mainPanel.repaint();
-//                    panelPhong.setBackground(colorChange);
-//                    lblPhong.setBackground(colorChange);
-//                    Opaque1.setOpaque(true);
-//                    panelSoDoPhong.setBackground(colorDefault);
-//                    lblSoDoPhong.setBackground(colorDefault);
-//                    Opaque10.setOpaque(false);
-//                    System.out.println(maPhong);
-//                }
-//            });
-//
-//        }
-//    }
 
     private void setTxtXinChao() {
         if (Auth.user == null) {
@@ -132,6 +106,9 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelDichVu = new javax.swing.JPanel();
         Opaque3 = new javax.swing.JPanel();
         lblDichVu = new javax.swing.JLabel();
+        panelOrderDichVu = new javax.swing.JPanel();
+        Opaque9 = new javax.swing.JPanel();
+        lblOrderDichVu = new javax.swing.JLabel();
         panelHoaDon = new javax.swing.JPanel();
         Opaque4 = new javax.swing.JPanel();
         lblHoaDon = new javax.swing.JLabel();
@@ -189,7 +166,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         slidePanel.add(jPanel2);
@@ -227,7 +204,10 @@ public class TrangChuJrame extends javax.swing.JFrame {
         slidePanel.add(panelSoDoPhong);
 
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
-        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {        
+        panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPhongMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);
             }
@@ -316,11 +296,43 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         lblDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblDichVu.setForeground(new java.awt.Color(255, 255, 255));
-        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLydichvu.png"))); // NOI18N
+        lblDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/dichvuuuuu.png"))); // NOI18N
         lblDichVu.setText("Dịch vụ");
         panelDichVu.add(lblDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
         slidePanel.add(panelDichVu);
+
+        panelOrderDichVu.setBackground(new java.awt.Color(77, 73, 73));
+        panelOrderDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelOrderDichVuMousePressed(evt);
+            }
+        });
+        panelOrderDichVu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Opaque9.setEnabled(false);
+        Opaque9.setOpaque(false);
+
+        javax.swing.GroupLayout Opaque9Layout = new javax.swing.GroupLayout(Opaque9);
+        Opaque9.setLayout(Opaque9Layout);
+        Opaque9Layout.setHorizontalGroup(
+            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        Opaque9Layout.setVerticalGroup(
+            Opaque9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        panelOrderDichVu.add(Opaque9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
+
+        lblOrderDichVu.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblOrderDichVu.setForeground(new java.awt.Color(255, 255, 255));
+        lblOrderDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLydichvu.png"))); // NOI18N
+        lblOrderDichVu.setText("Order Dịch vụ");
+        panelOrderDichVu.add(lblOrderDichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
+
+        slidePanel.add(panelOrderDichVu);
 
         panelHoaDon.setBackground(new java.awt.Color(77, 73, 73));
         panelHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -444,8 +456,8 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         lblKhoHang.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblKhoHang.setForeground(new java.awt.Color(255, 255, 255));
-        lblKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/hotro.png"))); // NOI18N
-        lblKhoHang.setText("Hỗ trợ");
+        lblKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/khachhangzzz.png"))); // NOI18N
+        lblKhoHang.setText("Khách hàng");
         panelKhoHang.add(lblKhoHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 13, 142, -1));
 
         slidePanel.add(panelKhoHang);
@@ -718,6 +730,10 @@ public class TrangChuJrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGioiThieuActionPerformed
 
+    private void panelOrderDichVuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOrderDichVuMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelOrderDichVuMousePressed
+
 
     /**
      * @param args the command line arguments
@@ -764,6 +780,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel Opaque6;
     private javax.swing.JPanel Opaque7;
     private javax.swing.JPanel Opaque8;
+    private javax.swing.JPanel Opaque9;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnGioiThieu;
@@ -785,6 +802,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblKhoHang;
     private javax.swing.JLabel lblKhuyenMai;
     private javax.swing.JLabel lblNhanVien;
+    private javax.swing.JLabel lblOrderDichVu;
     private javax.swing.JLabel lblPhong;
     private javax.swing.JLabel lblSoDoPhong;
     private javax.swing.JLabel lblXinChao;
@@ -796,6 +814,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelKhoHang;
     private javax.swing.JPanel panelKhuyenMai;
     private javax.swing.JPanel panelNhanVien;
+    private javax.swing.JPanel panelOrderDichVu;
     private javax.swing.JPanel panelPhong;
     private javax.swing.JPanel panelSoDoPhong;
     private javax.swing.JPanel slidePanel;

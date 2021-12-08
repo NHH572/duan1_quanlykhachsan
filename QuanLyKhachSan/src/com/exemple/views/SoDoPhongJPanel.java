@@ -44,8 +44,6 @@ public class SoDoPhongJPanel extends javax.swing.JPanel {
         List<SoDoPhong> listDataDanhMucSoDoPhong = sdpDAO.selectSoDoPhong();
         addToListDanhMucSoDoPhong();
         sdpDAO.setInformationSoDoPhong(listDanhMucSoDoPhong, listDataDanhMucSoDoPhong);
-        SoDoPhongDAO spDAO = new SoDoPhongDAO();
-        spDAO.setEvent(listDanhMucSoDoPhong);
         for (DanhMucSoDoPhong item : listDanhMucSoDoPhong) {
             item.getPanelTam().setOpaque(false);
             item.getBtnChiTiet().setVisible(false);

@@ -25,6 +25,7 @@ import com.exemple.entity.DanhMuc;
 import com.exemple.entity.DanhMucSoDoPhong;
 import com.exemple.entity.SoDoPhong;
 import com.exemple.views.HoTroJPanel;
+import com.exemple.views.OrderDichVuJPanel;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
 import com.exemple.views.SoDoPhongJPanel;
 import java.awt.event.ActionEvent;
@@ -65,7 +66,7 @@ public class ChuyenManHinhController {
         for (DanhMuc item : listDanhMuc) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb(), item.getObq()));
         }
-    }   
+    }
 
     class LabelEvent implements MouseInputListener {
 
@@ -96,6 +97,9 @@ public class ChuyenManHinhController {
                     break;
                 case "DichVu":
                     node = new QuanLyDichVuJPanel();
+                    break;
+                case "OrderDichVu":
+                    node = new OrderDichVuJPanel();
                     break;
                 case "HoaDon":
                     node = new QuanLyHoaDonJPanel();
