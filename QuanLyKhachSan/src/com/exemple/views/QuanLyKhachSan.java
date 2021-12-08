@@ -11,9 +11,7 @@ package com.exemple.views;
  */
 public class QuanLyKhachSan {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         new ChaoJDialog(null, true).setVisible(true);
         new Login().setVisible(true);

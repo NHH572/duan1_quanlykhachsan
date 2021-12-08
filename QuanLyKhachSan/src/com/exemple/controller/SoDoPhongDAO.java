@@ -85,4 +85,95 @@ public class SoDoPhongDAO {
 
     }
 
+    public void setEvent(List<DanhMucSoDoPhong> listDanhMucSoDoPhong) {
+        this.listDanhMucSoDoPhong = listDanhMucSoDoPhong;
+        for (DanhMucSoDoPhong item : listDanhMucSoDoPhong) {
+            item.getPanel().addMouseListener(new LabelEvent(item.getPanel(), item.getSoPhong(), item.getLoaiPhong(), item.getTrangThai(),
+                    item.getPanelTam(), item.getBtnChiTiet(), item.getBtnChucNang()));
+        }
+
+    }
+
+    class LabelEvent implements MouseInputListener {
+
+        private JPanel panelGoc;
+        private JLabel soPhong;
+        private JLabel loaiPhong;
+        private JLabel trangThai;
+        private JPanel panelTam;
+        private JButton btnChiTiet;
+        private JButton btnChucNang;
+        private int i = 0;
+
+        public LabelEvent() {
+        }
+
+        public LabelEvent(JPanel panelGoc, JLabel soPhong, JLabel loaiPhong, JLabel trangThai, JPanel panelTam, JButton btnChiTiet, JButton btnChucNang) {
+            this.panelGoc = panelGoc;
+            this.soPhong = soPhong;
+            this.loaiPhong = loaiPhong;
+            this.trangThai = trangThai;
+            this.panelTam = panelTam;
+            this.btnChiTiet = btnChiTiet;
+            this.btnChucNang = btnChucNang;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (i % 2 == 0) {
+                if (trangThai.getText().equalsIgnoreCase("Trạng thái: Trống")) {
+                    btnChucNang.setText("Đặt phòng");
+                    soPhong.setVisible(false);
+                    loaiPhong.setVisible(false);
+                    trangThai.setVisible(false);
+                    btnChiTiet.setVisible(true);
+                    btnChucNang.setVisible(true);
+                } else {
+                    btnChucNang.setText("Thanh toán");
+                    soPhong.setVisible(false);
+                    loaiPhong.setVisible(false);
+                    trangThai.setVisible(false);
+                    btnChiTiet.setVisible(true);
+                    btnChucNang.setVisible(true);
+                }
+                i++;
+            } else {
+                soPhong.setVisible(true);
+                loaiPhong.setVisible(true);
+                trangThai.setVisible(true);
+                btnChiTiet.setVisible(false);
+                btnChucNang.setVisible(false);
+                i++;
+            }
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+        }
+    }
 }

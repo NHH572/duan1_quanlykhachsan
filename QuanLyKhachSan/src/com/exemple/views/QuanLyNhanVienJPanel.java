@@ -28,9 +28,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
-    String textSearch = "Nhập Họ Tên để tìm kiếm....";
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
+    JFileChooser fileChooser = new JFileChooser("...\\DuAn1_QLKS\\duan1_quanlykhachsan\\QuanLyKhachSan\\logos");
 
     /**
      * Creates new form QuanLyNhanVienJPanel
@@ -49,24 +49,18 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDanhsach.getModel();
         model.setRowCount(0);
         try {
-//            String hoTen = txtSearch.getText();
-            List<NhanVien> list = null;
-            if (txtSearch.getText().equalsIgnoreCase(textSearch)) {
-                list = dao.selectAll();
-            } else {
-                String tenNhanvien = txtSearch.getText();
-                list = dao.selectByKeyword(tenNhanvien);
-            }
+            String hoTen = txtSearch.getText();
+            List<NhanVien> list = dao.selectByKeyword(hoTen);
             for (NhanVien nv : list) {
                 Object[] row = {nv.getHoTen(),
                     nv.getNgaySinh(),
-                    nv.isGioiTinh() ? "Nam" : "Nữ",
+                    nv.isGioiTinh(),
                     nv.getCMND_CCCD(),
                     nv.getDiaChi(),
                     nv.getSoDienThoai(),
-                    nv.isVaiTro() ? "Nhân Viên" : "Quản Lý",
+                    nv.isVaiTro() ? "Quản lý" : "Nhân viên",
                     nv.getMaNV(),
-                    !Auth.user.isVaiTro()?nv.getMatKhau():matKhauToSao(nv.getMatKhau()),
+                    nv.getMatKhau(),
                     nv.getHinh()};
 
                 model.addRow(row);
@@ -76,17 +70,8 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         }
 
     }
-//chỉ trưởng phòng mới đc xem mật khẩu người khác
-    public String matKhauToSao(String pass){
-        String sao="";
-        for(int i=0;i<pass.length();i++){
-            sao+="*";
-        }
-        return sao;
-    }
-    void chonAnh() {
-        JFileChooser fileChooser = new JFileChooser();
 
+    void chonAnh() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { //nếu người dùng đã chọn đc file
             File file = fileChooser.getSelectedFile();    //lấy file người dùng chọn
             if (XImage.saveLogo(file)) {  //sao chép file đã chọn thư mục logos
@@ -107,7 +92,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
         txtCMND.setText(model.getCMND_CCCD());
         txtDiachi.setText(model.getDiaChi());
         txtSDT.setText(model.getSoDienThoai());
-        cboVaitro.setSelectedIndex(model.isVaiTro() ? 0 : 1);
+        cboVaitro.setSelectedIndex(model.isVaiTro() ? 1 : 0);
         txtUser.setText(model.getMaNV());
         txtPass.setText(model.getMatKhau());
         if (model.getHinh() != null) {
@@ -177,41 +162,33 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     }
 
     void insert() {
-        if (Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền truy cập");
-        } else {
-            NhanVien nv = getForm();
-            try {
-                dao.insert(nv);
-                this.fillTable();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại ");
-                e.printStackTrace();
-            }
+        NhanVien nv = getForm();
+        try {
+            dao.insert(nv);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại ");
+            e.printStackTrace();
         }
     }
 
     void update() {
-        if (Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền truy cập");
-        } else {
-            NhanVien nv = getForm();
-            try {
-                dao.update(nv);
-                this.fillTable();
-                this.clearForm();
-                MsgBox.alert(this, "Sửa thành công");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Sửa thất bai ");
-                e.printStackTrace();
-            }
+        NhanVien nv = getForm();
+        try {
+            dao.update(nv);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Sửa thành công");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Sửa thất bai ");
+            e.printStackTrace();
         }
     }
 
     void delete() {
-        if (Auth.isManager()) {
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền truy cập");
         } else {
             String manv = txtUser.getText();
@@ -605,9 +582,11 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
         tabs.addTab("Cập nhập", new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/Edit.png")), jPanel2); // NOI18N
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm theo tên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        txtSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtSearch.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(153, 153, 153));
+        txtSearch.setText("Nhập Họ Tên để tìm kiếm....");
         txtSearch.setToolTipText("");
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -703,7 +682,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhMouseClicked
-    public boolean checkTrungMa(JTextField txt) {
+public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
         if (dao.selectById(txt.getText()) == null) {
             return true;
@@ -715,16 +694,19 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (utilityHelper.checkNullText(txtHoten) && utilityHelper.checkName(txtHoten)
-                && utilityHelper.checkNullText(txtCMND) && utilityHelper.checkCMT(txtCMND)
+          if (utilityHelper.checkNullText(txtHoten)
+                && utilityHelper.checkNullText(txtCMND)
                 && utilityHelper.checkNullText(txtDiachi)
-                && utilityHelper.checkNullText(txtSDT) && utilityHelper.checkSDT(txtSDT)
-                && utilityHelper.checkNullText(txtUser) && utilityHelper.checkUserNV(txtUser)
-                && utilityHelper.checkNullText(txtPass) && utilityHelper.checkPass(txtPass)) {
-            if (checkTrungMa(txtUser)) {
-                this.insert();
+                && utilityHelper.checkNullText(txtSDT)
+                && utilityHelper.checkNullText(txtUser)
+                && utilityHelper.checkNullText(txtPass)) {
+            if (utilityHelper.checkUserNV(txtUser)
+                    && utilityHelper.checkName(txtHoten)
+                    && utilityHelper.checkSDT(txtSDT)) {
+                if (checkTrungMa(txtUser)) {
+                   this.insert();
+                }
             }
-
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -735,14 +717,19 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (utilityHelper.checkNullText(txtHoten) && utilityHelper.checkName(txtHoten)
-                && utilityHelper.checkNullText(txtCMND) && utilityHelper.checkCMT(txtCMND)
+                      if (utilityHelper.checkNullText(txtHoten)
+                && utilityHelper.checkNullText(txtCMND)
                 && utilityHelper.checkNullText(txtDiachi)
-                && utilityHelper.checkNullText(txtSDT) && utilityHelper.checkSDT(txtSDT)
-                && utilityHelper.checkNullText(txtUser) && utilityHelper.checkUserNV(txtUser)
-                && utilityHelper.checkNullText(txtPass) && utilityHelper.checkPass(txtPass)) {
-            this.update();
-
+                && utilityHelper.checkNullText(txtSDT)
+                && utilityHelper.checkNullText(txtUser)
+                && utilityHelper.checkNullText(txtPass)) {
+            if (utilityHelper.checkUserNV(txtUser)
+                    && utilityHelper.checkName(txtHoten)
+                    && utilityHelper.checkSDT(txtSDT)) {
+                if (checkTrungMa(txtUser)) {
+                   this.update();
+                }
+            }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -794,7 +781,7 @@ public class QuanLyNhanVienJPanel extends javax.swing.JPanel {
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         fillTable();
-        clearForm();
+
     }//GEN-LAST:event_txtSearchKeyReleased
 
 
