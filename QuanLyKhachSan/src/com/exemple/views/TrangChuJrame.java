@@ -55,7 +55,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
         List<DanhMuc> listDanhMuc = new ArrayList<>();
         listDanhMuc.add(new DanhMuc("SoDoPhong", panelSoDoPhong, lblSoDoPhong, Opaque10));
         listDanhMuc.add(new DanhMuc("QuanLyPhong", panelPhong, lblPhong, Opaque1));
-        listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
+        if(!Auth.user.isVaiTro()){
+            listDanhMuc.add(new DanhMuc("NhanVien", panelNhanVien, lblNhanVien, Opaque2));
+        }else{
+            lblNhanVien.setForeground(new Color(153,153,153));
+        }
         listDanhMuc.add(new DanhMuc("DichVu", panelDichVu, lblDichVu, Opaque3));
         listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque9));
         listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
@@ -262,6 +266,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
 
         panelNhanVien.add(Opaque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 3, 70));
 
+        lblNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/quanLyNhanVien.png"))); // NOI18N

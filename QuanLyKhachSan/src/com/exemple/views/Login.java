@@ -4,7 +4,9 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.MailSender;
 import com.exemple.controller.NhanVienDAO;
+import com.exemple.entity.GuiMailMaKhuyenMai;
 import com.exemple.entity.NhanVien;
 import com.exemple.helper.Auth;
 import com.exemple.helper.MsgBox;
@@ -13,6 +15,15 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -69,6 +80,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtMatkhau = new javax.swing.JPasswordField();
+        btnSendMail = new javax.swing.JButton();
         btnQRCode = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
@@ -100,6 +112,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 450, -1));
+
+        btnSendMail.setText("Gửi");
+        btnSendMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendMailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSendMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
 
         btnQRCode.setBackground(new java.awt.Color(255, 255, 255));
         btnQRCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -298,6 +318,67 @@ public void dangnhap() {
        new QRLogin().setVisible(true);
     }//GEN-LAST:event_btnQRCodeActionPerformed
 
+    private void btnSendMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMailActionPerformed
+        sendMailToCustomers();
+    }//GEN-LAST:event_btnSendMailActionPerformed
+    private void sendMailToCustomers(){
+        List<GuiMailMaKhuyenMai> listGuiMaKhuyenMai=new ArrayList<>();
+        listGuiMaKhuyenMai.add(new GuiMailMaKhuyenMai("abc", "trietpnmps17263@fpt.edu.vn",true, "Mã Khuyến Mãi"));
+         if (listGuiMaKhuyenMai.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Thêm 1 địa chỉ Email muốn gửi!", "Thông báo", JOptionPane.CANCEL_OPTION);
+            return;
+        }
+        String from = "quanlykhachsan1@gmail.com";
+        String subject = "Thông tin khuyến mãi";
+//        int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn gửi mail các sinh viên trong danh sách không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+//        if (option == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+        int count = 0;
+        for (GuiMailMaKhuyenMai item : listGuiMaKhuyenMai) {
+            try {
+                Message msg = null;
+                String to = item.getEmail();
+                String hoTen=item.getHoTen();
+                String body = "";
+                String maKhuyenMai = item.getMaKhuyenMai();
+                
+                String gioiTinh="";
+                if(item.isGioiTinh()){
+                    gioiTinh="chị";
+                }else{
+                    gioiTinh="anh";
+                }
+                
+                body = "Xin chào "+gioiTinh+" "+hoTen+". Khách sạn của chúng tôi xin gửi tặng đến quý khách mã khuyến mãi nhằm tri ân quy khách."
+                        + "\nMã khuyến mãi của "+gioiTinh+" là:"+maKhuyenMai;
+                Properties p = new Properties();
+                p.put("mail.smtp.auth", "true");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.host", "smtp.gmail.com");
+                p.put("mail.smtp.port", 587);
+                String accountName = "quanlykhachsan1@gmail.com";
+                String accountPassword = "Aa123456@";
+                Session s = Session.getInstance(p,
+                        new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(accountName, accountPassword);
+                    }
+                });
+                msg = new MimeMessage(s);
+                msg.setFrom(new InternetAddress(from));
+                msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                msg.setSubject(subject);
+                msg.setText(body);
+//                Transport.send(msg);
+                MailSender.queue((MimeMessage) msg);
+                count++;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Gửi Email thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
     /**
      * @param args the command line arguments
      */
@@ -336,6 +417,7 @@ public void dangnhap() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnQRCode;
+    private javax.swing.JButton btnSendMail;
     private javax.swing.JButton btnThoat;
     private javax.swing.JCheckBox chkHienMatKhau;
     private javax.swing.JLabel jLabel1;
