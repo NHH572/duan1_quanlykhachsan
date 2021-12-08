@@ -731,7 +731,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnHoTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoTroActionPerformed
-        new HoTroJDialog(this, true).setVisible(true);
+        new HoTroJFrame().setVisible(true);
     }//GEN-LAST:event_btnHoTroActionPerformed
 
     private void btnGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGioiThieuActionPerformed
