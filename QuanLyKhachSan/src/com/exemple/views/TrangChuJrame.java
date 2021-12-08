@@ -23,8 +23,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -709,7 +712,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, object, "Thông tin tài khoản", JOptionPane.INFORMATION_MESSAGE);
     }
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        new thongke().setVisible(true);
+        try {
+            new thongke().setVisible(true);
+        } catch (SQLException ex) {
+            
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
