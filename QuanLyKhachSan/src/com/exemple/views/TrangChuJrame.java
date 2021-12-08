@@ -206,7 +206,7 @@ public class TrangChuJrame extends javax.swing.JFrame {
         panelPhong.setBackground(new java.awt.Color(77, 73, 73));
         panelPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelPhongMouseClicked(evt);
+                
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelPhongMousePressed(evt);

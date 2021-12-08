@@ -109,12 +109,12 @@ public class utilityHelper {
     public static boolean checkCMT(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
-        String rgx = "[0-9]{12}";
+        String rgx = "[0-9]{9}||{12}";
         if (id.matches(rgx)) {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " Phải gồm 12 chữ số đúng với số CMT ");
+            MsgBox.alert(txt.getRootPane(), txt.getName() + " Phải gồm 9 hoac 12 chữ số đúng với số CMT ");
             return false;
 
         }
