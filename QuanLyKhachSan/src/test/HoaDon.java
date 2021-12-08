@@ -136,34 +136,13 @@ public class HoaDon extends javax.swing.JFrame {
 
     }
 
-//    void edit(String sophong) {
-//        try {
-//            HoaDonLoadTable hd = lthdDao.selectById(sophong);
-//            if (hd != null) {
-//
-//                this.setModel(hd);
-//            } else {
-//                this.clear();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            MsgBox.alert(this, "Lỗi truy vấn");
-//        }
-//    }
-    
     void edit(String sophong) {
         try {
-            HoaDonLoadTable hd = lthdDao.selectById_2(sophong);
-            int soLan = hd.getSoLan();
-            String soLan2 = String.valueOf(soLan);
-            if(soLan2 != null){
+            HoaDonLoadTable hd = lthdDao.selectById(sophong);
+            if (hd != null) {
+
                 this.setModel(hd);
-            }
-            else if (soLan2 == null) {
-            HoaDonLoadTable hd2 = lthdDao.selectById(sophong);
-                this.setModel(hd2);
-            }
-            else{
+            } else {
                 this.clear();
             }
         } catch (Exception e) {

@@ -23,10 +23,11 @@ import javax.swing.JOptionPane;
  * @author ACER
  */
 public class QuenMatKhauJDialog extends javax.swing.JDialog {
- Connection con = null;
-     ResultSet rs = null;
-     PreparedStatement pst = null;
-      String matkhau;
+
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    String matkhau;
 
     /**
      * Creates new form QuenMatKhauJDialog
@@ -36,49 +37,6 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    public void QuenMK(){
-      String query="select MatKhauNV from NhanVien where TaiKhoanNV=?";
-        try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;database=QuanLyKhachSan","sa","admin");
-            pst=con.prepareStatement(query);
-             pst.setString(1,txtTaiKhoan.getText());
-             rs=pst.executeQuery();
-             while(rs.next()){
-                 matkhau = rs.getString("MatKhauNV");   
-             }                                                
-            String host = "smtp.gmail.com";
-            String user = "thuatlhps18797@fpt.edu.vn";
-            String pass = "hoangthuat2009";
-            String to = txtEmail.getText();
-            String subject = "Quên mật khẩu";
-            String message = "Mật khẩu của bạn là "+matkhau;
-            boolean sessionDebug = false;
-            Properties pros = System.getProperties();
-            pros.put("mail.smtp.starttls.enable", "true");
-            pros.put("mail.smtp.host", "smtp.gmail.com");
-            pros.put("mail.smtp.port", "587");
-            pros.put("mail.smtp.ssl.trust", "*");
-            pros.put("mail.smtp.auth", "true");
-            pros.put("mail.smtp.starttls.required", "true");
-            pros.put("mail.smtp.ssl.protocols", "TLSv1.2");
-           // java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-            Session mailSession = Session.getDefaultInstance(pros, null);
-            mailSession.setDebug(sessionDebug);
-            Message msg = new MimeMessage(mailSession);
-            msg.setFrom(new InternetAddress(user));
-            InternetAddress[] address = {new InternetAddress(to)};
-            msg.setRecipients(Message.RecipientType.TO, address);
-            msg.setSubject(subject);
-            msg.setText(message);
-            Transport transport = mailSession.getTransport("smtp");
-            transport.connect(host, user, pass);
-            transport.sendMessage(msg, msg.getAllRecipients());
-            transport.close();
-            JOptionPane.showMessageDialog(null, "Code has been to the email");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex);
-        }
-}
 
 
     /**
@@ -174,12 +132,52 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-           if(utilityHelper.checkNullText(txtTaiKhoan)
-               &&utilityHelper.checkNullText(txtEmail)){
-           if(utilityHelper.checkEmail(txtEmail)){
-               this.QuenMK();
-           }
-       }
+        if (utilityHelper.checkNullText(txtTaiKhoan)
+                && utilityHelper.checkNullText(txtEmail) && utilityHelper.checkEmail(txtEmail)) {
+
+             String query = "select MatKhauNV from NhanVien where TaiKhoanNV=?";
+        try {
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;database=QuanLyKhachSan", "sa", "admin");
+            pst = con.prepareStatement(query);
+            pst.setString(1, txtTaiKhoan.getText());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                matkhau = rs.getString("MatKhauNV");
+            }
+            String host = "smtp.gmail.com";
+            String user = "thuatlhps18797@fpt.edu.vn";
+            String pass = "hoangthuat2009";
+            String to = txtEmail.getText();
+            String subject = "Quên mật khẩu";
+            String message = "Mật khẩu của bạn là " + matkhau;
+            boolean sessionDebug = false;
+            Properties pros = System.getProperties();
+            pros.put("mail.smtp.starttls.enable", "true");
+            pros.put("mail.smtp.host", "smtp.gmail.com");
+            pros.put("mail.smtp.port", "587");
+            pros.put("mail.smtp.ssl.trust", "*");
+            pros.put("mail.smtp.auth", "true");
+            pros.put("mail.smtp.starttls.required", "true");
+            pros.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            // java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+            Session mailSession = Session.getDefaultInstance(pros, null);
+            mailSession.setDebug(sessionDebug);
+            Message msg = new MimeMessage(mailSession);
+            msg.setFrom(new InternetAddress(user));
+            InternetAddress[] address = {new InternetAddress(to)};
+            msg.setRecipients(Message.RecipientType.TO, address);
+            msg.setSubject(subject);
+            msg.setText(message);
+            Transport transport = mailSession.getTransport("smtp");
+            transport.connect(host, user, pass);
+            transport.sendMessage(msg, msg.getAllRecipients());
+            transport.close();
+            JOptionPane.showMessageDialog(null, "Code has been to the email");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

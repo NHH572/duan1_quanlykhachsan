@@ -8,6 +8,7 @@ package com.exemple.views;
 import com.exemple.controller.DichVuDAO;
 import com.exemple.entity.DichVu;
 import com.exemple.helper.MsgBox;
+import com.exemple.helper.utilityHelper;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -409,7 +410,7 @@ public class QuanLyDichVuJPanel extends javax.swing.JPanel {
         }
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if (checkNullTextFiled(txtTenDichVu) && checkNullTextFiled(txtGiaDichVu) && checkNullEditorPane(txtMoTa)) {
+        if (checkNullTextFiled(txtTenDichVu) && checkNullTextFiled(txtGiaDichVu)&&utilityHelper.checkNumber(txtGiaDichVu) && checkNullEditorPane(txtMoTa)) {
             if (checkPrice()) {
                 if (insertDichVu()) {
                     fillToTable();
