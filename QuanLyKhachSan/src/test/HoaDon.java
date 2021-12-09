@@ -34,6 +34,7 @@ public class HoaDon extends javax.swing.JFrame {
     private int maDichVu;
     private int maCHiTietHoaDOn;
     int index;
+    public static boolean check = true;
 
     public HoaDon() {
         initComponents();
@@ -41,7 +42,6 @@ public class HoaDon extends javax.swing.JFrame {
     }
 
     void init() {
-        setLocationRelativeTo(this);
         fillComboBoxPhong();
         loadToTable();
     }
@@ -103,6 +103,11 @@ public class HoaDon extends javax.swing.JFrame {
         return hd;
     }
 
+//    void insert() {
+//        HoaDonLoadTable hd = getModel();
+//        lthdDao.insertHoaDon(hd);
+//        lthdDao.insertChiTietHoaDon(hd);
+//    }
     void update() {
         try {
             HoaDonLoadTable hd = getModel();
@@ -128,18 +133,35 @@ public class HoaDon extends javax.swing.JFrame {
 
     }
 
+//    void edit(String sophong) {
+//        try {
+//            HoaDonLoadTable hd = lthdDao.selectById(sophong);
+//            if (hd != null) {
+//
+//                this.setModel(hd);
+//            } else {
+//                this.clear();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            MsgBox.alert(this, "Lỗi truy vấn");
+//        }
+//    }
     void edit(String sophong) {
         try {
-            HoaDonLoadTable hd = lthdDao.selectById(sophong);
-            if (hd != null) {
-
+            HoaDonLoadTable hd = lthdDao.selectById_2(sophong);
+            int soLan = hd.getSoLan();
+            String soLan2 = String.valueOf(soLan);
+            if (soLan2 != null) {
                 this.setModel(hd);
+            } else if (soLan2 == null) {
+                HoaDonLoadTable hd2 = lthdDao.selectById(sophong);
+                this.setModel(hd2);
             } else {
                 this.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            MsgBox.alert(this, "Lỗi truy vấn");
         }
     }
 
@@ -159,20 +181,55 @@ public class HoaDon extends javax.swing.JFrame {
             model.setRowCount(0);
             List<HoaDonLoadTable> list = lthdDao.selectBySoPhong1(soPhong);
             HoaDonLoadTable dv = null;
-            String tendichvu = null ;
+           
             for (int i = 0; i < list.size(); i++) {
                 dv = list.get(i);
-                tendichvu = dv.getTenDichVu();
                 model.addRow(new Object[]{i + 1, dv.getSoPhong(), dv.getMaDichVu(), dv.getTenDichVu(), dv.getSoLan(), dv.getGiaDichVu()});
             }
-            System.out.println("ten dich vu" +tendichvu);
-            
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("error" + e.getMessage());
         }
     }
 
+    public void XuatHoaDon() {
+        int i=tblDichVu.getRowCount();
+        System.out.println("i"+i);
+        if (tblDichVu.getRowCount() ==0) {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+
+                Hashtable map = new Hashtable();
+                JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report2.jrxml");
+                int soPhong = (int) cboPhong.getSelectedItem();
+                map.put("SoPhong", soPhong);
+                JasperPrint p = JasperFillManager.fillReport(report, map, con);
+                JasperViewer.viewReport(p, false);
+                JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+
+                Hashtable map = new Hashtable();
+                JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
+                int soPhong = (int) cboPhong.getSelectedItem();
+                map.put("SoPhong", soPhong);
+                JasperPrint p = JasperFillManager.fillReport(report, map, con);
+                JasperViewer.viewReport(p, false);
+                JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println(ex.getMessage());
+            }
+        }
+
+    }
 
     void loadToTable() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
@@ -194,18 +251,30 @@ public class HoaDon extends javax.swing.JFrame {
     }
 
     float tinhtien(int soPhong) {
+
         List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
         float count = 0;
         float tienphong = 0;
         float tiengiam = 0;
-        for (HoaDonLoadTable hoaDonLoadTable : hd) {
-            tiengiam = hoaDonLoadTable.getGiamTien();
-            tienphong = hoaDonLoadTable.getTienPhong();
-            float gia = hoaDonLoadTable.getGiaDichVu();
-            count = count + gia;
+        int soLuong = 0;
+        try {
+            for (HoaDonLoadTable hoaDonLoadTable : hd) {
+                tienphong = hoaDonLoadTable.getTienPhong();
+                soLuong = hoaDonLoadTable.getSoLan();
+                tiengiam = hoaDonLoadTable.getGiamTien();
+                float gia = hoaDonLoadTable.getGiaDichVu();
+                count = count + (gia * soLuong);
+            }
+
+            count = count + tienphong - tiengiam;
+            if (count == 0) {
+                count = Float.parseFloat(txtTienPhong.getText());
+            }
+            System.out.println(count);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        count = count + tienphong - tiengiam;
-        System.out.println(count);
+
         return count;
     }
 
@@ -222,22 +291,9 @@ public class HoaDon extends javax.swing.JFrame {
         return tinhtien(soPhong);
     }
 
-    public void XuatHoaDon() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
-
-            Hashtable map = new Hashtable();
-            JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
-            int soPhong = (int) cboPhong.getSelectedItem();
-            map.put("SoPhong", soPhong);
-            JasperPrint p = JasperFillManager.fillReport(report, map, con);
-            JasperViewer.viewReport(p);
-            JasperExportManager.exportReportToPdfFile(p, "test.pdf");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
-        }
+    void updateTrangThaiPhong() {
+        HoaDonLoadTable hd = getModel();
+        lthdDao.updateTrangThaiPhong(hd);
     }
 
     @SuppressWarnings("unchecked")
@@ -686,7 +742,7 @@ public class HoaDon extends javax.swing.JFrame {
     private void cboPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPhongActionPerformed
         this.editByCombox();
         this.fillTableDichVuByClickCombox();
-        
+
         txtThanhTien.setText(String.valueOf(tinhTienbByCombox()));
         txtTongTien.setText(String.valueOf(tinhTienbByCombox()));
     }//GEN-LAST:event_cboPhongActionPerformed

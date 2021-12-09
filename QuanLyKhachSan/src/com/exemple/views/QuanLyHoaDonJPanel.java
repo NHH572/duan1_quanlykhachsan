@@ -31,7 +31,7 @@ import test.OrderDichVu;
 
 public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
-   Connection con;
+    Connection con;
     PreparedStatement pst;
     DichVuDAO dvdao = new DichVuDAO();
     PhongDAO pdao = new PhongDAO();
@@ -39,7 +39,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     TableHoaDonDAO tblhddao = new TableHoaDonDAO();
     private int maPhong;
     private int maDichVu;
-    private int maCHiTietHoaDOn ;
+    private int maCHiTietHoaDOn;
     int index;
 
     public QuanLyHoaDonJPanel() {
@@ -47,7 +47,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         init();
     }
 
-   void init() {
+    void init() {
         fillComboBoxPhong();
         loadToTable();
     }
@@ -218,21 +218,30 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }
 
     float tinhtien(int soPhong) {
+
         List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
         float count = 0;
         float tienphong = 0;
         float tiengiam = 0;
         int soLuong = 0;
+        try {
+            for (HoaDonLoadTable hoaDonLoadTable : hd) {
+                tienphong = hoaDonLoadTable.getTienPhong();
+                soLuong = hoaDonLoadTable.getSoLan();
+                tiengiam = hoaDonLoadTable.getGiamTien();
+                float gia = hoaDonLoadTable.getGiaDichVu();
+                count = count + (gia * soLuong);
+            }
 
-        for (HoaDonLoadTable hoaDonLoadTable : hd) {
-            soLuong = hoaDonLoadTable.getSoLan();
-            tiengiam = hoaDonLoadTable.getGiamTien();
-            tienphong = hoaDonLoadTable.getTienPhong();
-            float gia = hoaDonLoadTable.getGiaDichVu();
-            count = count + (gia * soLuong);
+            count = count + tienphong - tiengiam;
+            if (count == 0) {
+                count = Float.parseFloat(txtTienPhong.getText());
+            }
+            System.out.println(count);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        count = count + tienphong - tiengiam;
-        System.out.println(count);
+
         return count;
     }
 
@@ -250,21 +259,40 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }
 
     public void XuatHoaDon() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+        if (tblDichVu.getRowCount() == 0) {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
 
-            Hashtable map = new Hashtable();
-            JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
-            int soPhong = (int) cboPhong.getSelectedItem();
-            map.put("SoPhong", soPhong);
-            JasperPrint p = JasperFillManager.fillReport(report, map, con);
-            JasperViewer.viewReport(p,false);
-            JasperExportManager.exportReportToPdfFile(p, "test.pdf");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
+                Hashtable map = new Hashtable();
+                JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report2.jrxml");
+                int soPhong = (int) cboPhong.getSelectedItem();
+                map.put("SoPhong", soPhong);
+                JasperPrint p = JasperFillManager.fillReport(report, map, con);
+                JasperViewer.viewReport(p, false);
+                JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=QuanLyKhachSan;user=sa;password=admin");
+
+                Hashtable map = new Hashtable();
+                JasperReport report = JasperCompileManager.compileReport("C:\\Users\\hp\\OneDrive\\Máy tính\\hehe\\duan1_quanlykhachsan\\QuanLyKhachSan\\src\\test\\report1.jrxml");
+                int soPhong = (int) cboPhong.getSelectedItem();
+                map.put("SoPhong", soPhong);
+                JasperPrint p = JasperFillManager.fillReport(report, map, con);
+                JasperViewer.viewReport(p, false);
+                JasperExportManager.exportReportToPdfFile(p, "test.pdf");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println(ex.getMessage());
+            }
         }
+
     }
 
     void updateTrangThaiPhong() {
@@ -744,19 +772,20 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGiamTienActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        if (utilityHelper.checkNullText(txtSoHoaDon)&&utilityHelper.checkNumber(txtSoHoaDon)
-                && utilityHelper.checkNullText(txtKhachHang)&& utilityHelper.checkName(txtKhachHang)
+        if (utilityHelper.checkNullText(txtSoHoaDon) && utilityHelper.checkNumber(txtSoHoaDon)
+                && utilityHelper.checkNullText(txtKhachHang) && utilityHelper.checkName(txtKhachHang)
                 && utilityHelper.checkNullText(txtThuNgan)
-                && utilityHelper.checkNullText(txtCCCD) && utilityHelper.checkNumber(txtCCCD) && utilityHelper.checkCMT(txtCCCD)
+//                && utilityHelper.checkNullText(txtCCCD) && utilityHelper.checkNumber(txtCCCD) && utilityHelper.checkCMT(txtCCCD)
                 && utilityHelper.checkNullText(txtTienPhong) && utilityHelper.checkNumber(txtTienPhong)
-                && utilityHelper.checkNullText(txtThanhTien)&& utilityHelper.checkNumber(txtThanhTien)
-                && utilityHelper.checkNullText(txtTongTien)&& utilityHelper.checkNumber(txtTongTien))
-           
-              this.update();
+                && utilityHelper.checkNullText(txtThanhTien) && utilityHelper.checkNumber(txtThanhTien)
+                && utilityHelper.checkNullText(txtTongTien) && utilityHelper.checkNumber(txtTongTien)) {
+            this.update();
             this.XuatHoaDon();
             this.updateTrangThaiPhong();
             this.fillComboBoxPhong();
-            
+        }
+
+
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed

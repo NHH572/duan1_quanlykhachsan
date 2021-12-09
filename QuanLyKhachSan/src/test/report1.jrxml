@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24a4687c-271c-4319-a74f-dc7863cc1732">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="54"/>
+	<property name="ireport.y" value="39"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -32,11 +32,14 @@
      KhuyenMai."GiaTri" AS KhuyenMai_GiaTri,
      NhanVien."TaiKhoanNV" AS NhanVien_TaiKhoanNV,
      Phong."SoPhong" AS Phong_SoPhong,
-     KhachHang."SoDienThoai" AS KhachHang_SoDienThoai
+     KhachHang."SoDienThoai" AS KhachHang_SoDienThoai,
+     LoaiPhong."DonGiaTheoNgay" AS LoaiPhong_DonGiaTheoNgay,
+     ChiTietHoaDon."SoLanThueDichVu" AS ChiTietHoaDon_SoLanThueDichVu
 FROM
      "dbo"."DichVu" DichVu INNER JOIN "dbo"."ChiTietHoaDon" ChiTietHoaDon ON DichVu."MaDichVu" = ChiTietHoaDon."MaDichVu"
      INNER JOIN "dbo"."HoaDon" HoaDon ON ChiTietHoaDon."MaHoaDon" = HoaDon."MaHoaDon"
      INNER JOIN "dbo"."Phong" Phong ON ChiTietHoaDon."MaPhong" = Phong."MaPhong"
+     INNER JOIN "dbo"."LoaiPhong" LoaiPhong ON Phong."MaLoaiPhong" = LoaiPhong."MaLoaiPhong"
      INNER JOIN "dbo"."KhachHang" KhachHang ON HoaDon."SoCMTKhachHang" = KhachHang."SoCMTKhachHang"
      INNER JOIN "dbo"."KhuyenMai" KhuyenMai ON HoaDon."MaKhuyenMai" = KhuyenMai."MaKhuyenMai"
      INNER JOIN "dbo"."NhanVien" NhanVien ON HoaDon."TaiKhoanNV" = NhanVien."TaiKhoanNV"
@@ -58,6 +61,8 @@ WHERE
 	<field name="NhanVien_TaiKhoanNV" class="java.lang.String"/>
 	<field name="Phong_SoPhong" class="java.lang.Integer"/>
 	<field name="KhachHang_SoDienThoai" class="java.lang.String"/>
+	<field name="LoaiPhong_DonGiaTheoNgay" class="java.lang.Integer"/>
+	<field name="ChiTietHoaDon_SoLanThueDichVu" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -137,7 +142,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font size="16" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Mã giảm giá]]></text>
+				<text><![CDATA[Tiền phòng]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="SubTitle" x="1" y="72" width="94" height="24" forecolor="#000000" uuid="a50d9cf4-7001-4a87-9d93-7182f098f0b9"/>
@@ -165,7 +170,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{KhuyenMai_MaKhuyenMai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{LoaiPhong_DonGiaTheoNgay}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="95" y="72" width="138" height="24" uuid="feb6ea09-85fd-437c-a525-73ddedc7a446"/>
@@ -234,60 +239,67 @@ WHERE
 				<reportElement x="0" y="106" width="554" height="1" uuid="868067cd-690e-4abb-a77d-dab7894e08e8"/>
 			</line>
 			<staticText>
-				<reportElement style="SubTitle" x="1" y="118" width="138" height="24" forecolor="#000000" uuid="a2c5586b-f222-4da9-b9fd-598ff74c5a7f"/>
+				<reportElement style="SubTitle" x="1" y="118" width="105" height="24" forecolor="#000000" uuid="a2c5586b-f222-4da9-b9fd-598ff74c5a7f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MÃ DỊCH VỤ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="139" y="118" width="138" height="24" forecolor="#000000" uuid="cbfaf97e-738a-44ea-9d2d-d9cd735dbb4a"/>
+				<reportElement style="SubTitle" x="106" y="118" width="110" height="24" forecolor="#000000" uuid="cbfaf97e-738a-44ea-9d2d-d9cd735dbb4a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TÊN DỊCH VỤ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="277" y="118" width="134" height="24" forecolor="#000000" uuid="5ef880a3-59dd-492a-81da-8940df25b99d"/>
+				<reportElement style="SubTitle" x="216" y="118" width="77" height="24" forecolor="#000000" uuid="5ef880a3-59dd-492a-81da-8940df25b99d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[GIÁ DỊCH VỤ]]></text>
+				<text><![CDATA[GIÁ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="411" y="118" width="144" height="24" forecolor="#000000" uuid="1dc30cf4-a64e-4e35-b3d8-5744236634a7"/>
+				<reportElement style="SubTitle" x="380" y="118" width="175" height="24" forecolor="#000000" uuid="1dc30cf4-a64e-4e35-b3d8-5744236634a7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MÔ TẢ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="292" y="118" width="88" height="24" forecolor="#000000" uuid="adc77d01-855c-4f94-b62a-499ebebcde61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SỐ LƯỢNG]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="47" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="1" y="11" width="138" height="18" uuid="7007948d-2cbc-439b-9532-aea3c3eb5f80"/>
+				<reportElement style="Detail" positionType="Float" x="1" y="11" width="105" height="18" uuid="7007948d-2cbc-439b-9532-aea3c3eb5f80"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_MaDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="139" y="11" width="138" height="18" uuid="59b1e941-f6e5-43e6-a314-29d2916c0fce"/>
+				<reportElement style="Detail" positionType="Float" x="106" y="11" width="110" height="18" uuid="59b1e941-f6e5-43e6-a314-29d2916c0fce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_TenDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="277" y="11" width="134" height="18" uuid="050eb5d1-d76b-4d36-ac8b-8a83c8e01b93"/>
+				<reportElement style="Detail" positionType="Float" x="216" y="11" width="77" height="18" uuid="050eb5d1-d76b-4d36-ac8b-8a83c8e01b93"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DichVu_GiaDichVu}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" positionType="Float" x="411" y="11" width="144" height="18" uuid="2b4ec6eb-a160-49c8-97ac-8d271e2e928e"/>
+				<reportElement style="Detail" positionType="Float" x="380" y="11" width="175" height="18" uuid="2b4ec6eb-a160-49c8-97ac-8d271e2e928e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -296,6 +308,13 @@ WHERE
 			<line>
 				<reportElement x="1" y="39" width="554" height="1" uuid="c2bd0c07-1368-4299-a93a-e3a62cd3679f"/>
 			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="292" y="11" width="88" height="18" uuid="bb2b5238-f248-4ebe-b76a-c36df6d1a904"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ChiTietHoaDon_SoLanThueDichVu}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

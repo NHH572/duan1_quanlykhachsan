@@ -19,7 +19,8 @@
      KhuyenMai."GiaTri" AS KhuyenMai_GiaTri,
      NhanVien."TaiKhoanNV" AS NhanVien_TaiKhoanNV,
      Phong."SoPhong" AS Phong_SoPhong,
-     LoaiPhong."DonGiaTheoNgay" AS LoaiPhong_DonGiaTheoNgay
+     LoaiPhong."DonGiaTheoNgay" AS LoaiPhong_DonGiaTheoNgay,
+     ChiTietHoaDon."MaChiTietHoaDon" AS ChiTietHoaDon_MaChiTietHoaDon
 FROM
      "dbo"."HoaDon" HoaDon INNER JOIN "dbo"."ChiTietHoaDon" ChiTietHoaDon ON HoaDon."MaHoaDon" = ChiTietHoaDon."MaHoaDon"
      INNER JOIN "dbo"."KhachHang" KhachHang ON HoaDon."SoCMTKhachHang" = KhachHang."SoCMTKhachHang"
@@ -42,6 +43,7 @@ WHERE
 	<field name="NhanVien_TaiKhoanNV" class="java.lang.String"/>
 	<field name="Phong_SoPhong" class="java.lang.Integer"/>
 	<field name="LoaiPhong_DonGiaTheoNgay" class="java.lang.Integer"/>
+	<field name="ChiTietHoaDon_MaChiTietHoaDon" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
