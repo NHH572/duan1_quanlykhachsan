@@ -106,4 +106,9 @@ public class PhongDAO extends EduSysDAO<Phong, String> {
         String sql = "update Phong set TrangThai=? where MaPhong=?";
         JdbcHelper.executeUpdate(sql, "Trống", maPhong);
     }
+    public int selectLauCaoNhat(){
+        String sql="select top 1 * from Phong Order by Lau DESC";
+        List<Phong> list=selectBySql(sql);
+        return !list.isEmpty()?list.get(0).getLau():-1;
+    }
 }
