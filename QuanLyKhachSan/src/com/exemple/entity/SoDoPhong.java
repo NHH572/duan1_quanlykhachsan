@@ -13,6 +13,7 @@ public class SoDoPhong {
     
     private int maPhong;
     private int soPhong;
+    private int lau;
     private String tenLoaiPhong;
     private String trangThai;
     public SoDoPhong() {
@@ -31,6 +32,22 @@ public class SoDoPhong {
         this.trangThai = trangThai;
     }
 
+    public SoDoPhong(int maPhong, int soPhong, int lau, String tenLoaiPhong, String trangThai) {
+        this.maPhong = maPhong;
+        this.soPhong = soPhong;
+        this.lau = lau;
+        this.tenLoaiPhong = tenLoaiPhong;
+        this.trangThai = trangThai;
+    }
+
+    public int getLau() {
+        return lau;
+    }
+
+    public void setLau(int lau) {
+        this.lau = lau;
+    }
+    
     public int getMaPhong() {
         return maPhong;
     }

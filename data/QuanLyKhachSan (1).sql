@@ -237,12 +237,12 @@ GO
 	(504,5,N'Trống',3),
 	(505,5,N'Trống',3),
 	(506,5,N'Trống',1),
-	(601,5,N'Trống',5),
-	(602,5,N'Trống',2),
-	(603,5,N'Trống',5),
-	(604,5,N'Trống',4),
-	(605,5,N'Trống',3),
-	(606,5,N'Trống',1)
+	(601,6,N'Trống',5),
+	(602,6,N'Trống',2),
+	(603,6,N'Trống',5),
+	(604,6,N'Trống',4),
+	(605,6,N'Trống',3),
+	(606,6,N'Trống',1)
 -- NHÂN VIÊN
 	INSERT INTO NhanVien(TaiKhoanNV,MatKhauNV,HoTen,NgaySinh,GioiTinh,SoCMT,DiaChi,SoDienThoai,VaiTro)
 	VALUES ('admin','admin',N'Lê Văn Phụng','1972/10/10',0,'765666271',N'12 Thái Thị Nhạn, Q.Tân Bình, TP. HCM','0393796446',0),
@@ -491,8 +491,10 @@ SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang , 
 
 	
 	*/
-	select * from KhachHang;
-	select * from DichVu;
-	select * from KhuyenMai
 
-
+--insert into Phong values(701,7,N'Đang thuê',2)
+--insert into Phong values(702,7,N'Đang thuê',2)
+--insert into Phong values(703,7,N'Đang thuê',2)
+--insert into Phong values(704,7,N'Đang thuê',2)
+--insert into Phong values(705,7,N'Đang thuê',2)
+--insert into Phong values(706,7,N'Đang thuê',2)
