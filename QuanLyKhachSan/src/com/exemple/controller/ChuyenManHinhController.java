@@ -28,6 +28,7 @@ import com.exemple.views.QuanLyKhachHangJPanel;
 import com.exemple.views.OrderDichVuJPanel;
 import com.exemple.views.QuanLyKhuyenMaiJPanel;
 import com.exemple.views.SoDoPhongJPanel;
+import com.exemple.views.SoDoPhongJPanel2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,7 +57,7 @@ public class ChuyenManHinhController {
         opaque.setOpaque(true);
         mainPanel.removeAll();
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new SoDoPhongJPanel());
+        mainPanel.add(new SoDoPhongJPanel2());
         mainPanel.validate();
         mainPanel.repaint();
     }
@@ -87,7 +88,7 @@ public class ChuyenManHinhController {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                 case "SoDoPhong":
-                    node = new SoDoPhongJPanel();
+                    node = new SoDoPhongJPanel2();
                     break;
                 case "QuanLyPhong":
                     node = new QuanLyPhongJPanel();
