@@ -250,6 +250,34 @@ public class HoaDon extends javax.swing.JFrame {
         }
     }
 
+//    float tinhtien(int soPhong) {
+//
+//        List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
+//        float count = 0;
+//        float tienphong = 0;
+//        float tiengiam = 0;
+//        int soLuong = 0;
+//        try {
+//            for (HoaDonLoadTable hoaDonLoadTable : hd) {
+//                tienphong = hoaDonLoadTable.getTienPhong();
+//                soLuong = hoaDonLoadTable.getSoLan();
+//                tiengiam = hoaDonLoadTable.getGiamTien();
+//                float gia = hoaDonLoadTable.getGiaDichVu();
+//                count = count + (gia * soLuong);
+//            }
+//
+//            count = count + tienphong - tiengiam;
+//            if (count == 0) {
+//                count = Float.parseFloat(txtTienPhong.getText());
+//            }
+//            System.out.println(count);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return count;
+//    }
+
     float tinhtien(int soPhong) {
 
         List<HoaDonLoadTable> hd = (List<HoaDonLoadTable>) lthdDao.selectBySoPhong1(soPhong);
@@ -257,19 +285,20 @@ public class HoaDon extends javax.swing.JFrame {
         float tienphong = 0;
         float tiengiam = 0;
         int soLuong = 0;
+        float gia =0;
         try {
             for (HoaDonLoadTable hoaDonLoadTable : hd) {
                 tienphong = hoaDonLoadTable.getTienPhong();
                 soLuong = hoaDonLoadTable.getSoLan();
                 tiengiam = hoaDonLoadTable.getGiamTien();
-                float gia = hoaDonLoadTable.getGiaDichVu();
+                 gia = hoaDonLoadTable.getGiaDichVu();
                 count = count + (gia * soLuong);
             }
 
             count = count + tienphong - tiengiam;
-            if (count == 0) {
-                count = Float.parseFloat(txtTienPhong.getText());
-            }
+//            if (count == 0) {
+//                count = Float.parseFloat(txtTienPhong.getText());
+//            }
             System.out.println(count);
         } catch (Exception e) {
             e.printStackTrace();
@@ -277,7 +306,7 @@ public class HoaDon extends javax.swing.JFrame {
 
         return count;
     }
-
+    
     float tinhTienbByCombox() {
         int soPhong = (int) cboPhong.getSelectedItem();
         String soPhong2 = String.valueOf(soPhong);

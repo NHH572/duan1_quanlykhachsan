@@ -157,11 +157,13 @@ public class QRLogin extends javax.swing.JFrame implements Runnable, ThreadFacto
                     result_field.setText("Quản Lý");
                     Auth.user = new NhanVienDAO().selectById("admin");
                     new TrangChuJrame().setVisible(true);
+                    this.dispose();
                     break;
                 } else if (ke.equals("http://bvu.edu.vn")) {
                     result_field.setText("Nhân Viên");
                     Auth.user = new NhanVienDAO().selectById("pnmtriet");
                     new TrangChuJrame().setVisible(true);
+                    this.dispose();
                     break;
                 }
             }

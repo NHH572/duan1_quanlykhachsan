@@ -279,15 +279,15 @@ GO
 		   (4,21,4),(4,22,4),(4,23,2),(4,24,4),(4,25,4)
 -- Khuyến mãi
 	INSERT INTO KhuyenMai(MaKhuyenMai,TenKhuyenMai,GiaTri,NgayBatDau,NgayHetHan)
-	VALUES ('KHTT1',N'Khách hàng thân thiết 1',10,'2021/11/11','2021/12/12'),
-	('KHTT2',N'Khách hàng thân thiết 2',20,'2021/11/01','2021/12/31'),
-	('KHTT3',N'Khách hàng thân thiết 3',50,'2021/11/01','2021/12/31'),
-	('LGS21',N'Lễ giáng sinh',10,'2021/12/01','2021/12/31'),
-	('TDL152',N'Tết Dương Lịch',109,'2022/01/01','2022/01/03'),
-	('L304',N'Lễ 30 THÁNG 4',150,'2021/04/30','2021/05/02'),
-	('QTTN',N'Quốc Tế Thiếu Nhi',1000,'2021/06/01','2021/06/05'),
-	('QTPN',N'Quốc Tế Phụ Nữ',1500,'2021/03/08','2021/03/11'),
-	('QT2010',N'Lễ 20 Tháng 10',1000,'2021/10/20','2021/10/25'),
+	VALUES ('KHTT1',N'Khách hàng thân thiết 1',100000,'2021/11/11','2021/12/12'),
+	('KHTT2',N'Khách hàng thân thiết 2',200000,'2021/11/01','2021/12/31'),
+	('KHTT3',N'Khách hàng thân thiết 3',500000,'2021/11/01','2021/12/31'),
+	('LGS21',N'Lễ giáng sinh',100000,'2021/12/01','2021/12/31'),
+	('TDL152',N'Tết Dương Lịch',1090000,'2022/01/01','2022/01/03'),
+	('L304',N'Lễ 30 THÁNG 4',1500000,'2021/04/30','2021/05/02'),
+	('QTTN',N'Quốc Tế Thiếu Nhi',10000000,'2021/06/01','2021/06/05'),
+	('QTPN',N'Quốc Tế Phụ Nữ',15000000,'2021/03/08','2021/03/11'),
+	('QT2010',N'Lễ 20 Tháng 10',10000000,'2021/10/20','2021/10/25'),
 	('NONE',null,0,null,null)
 -- Đối tác
 	INSERT INTO DoiTac(MaDoiTac,TenDoiTac,SoDienThoai,DanhGiaKhachSan)
@@ -295,28 +295,34 @@ GO
 	('CTTT',N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
 	('CTPT',N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
 -- Khách hàng
-	
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'123456789124',null,2),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'234567891587',null,3),
+	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'345678912534',null,4),
+	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'4567891235424',null,5),
+	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'5678912345315',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'6789123454534',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'8912345675345',null,1)
 	
 	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue,MaDoiTac)
-	VALUES ('123456789',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
-	('234567891',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
-	('345678912',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
-	('456789123',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
-	('567891234',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
-	('678912345',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
-	('789123456',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
-	('891234567',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
-	('912345678',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
-	('301258900',N'jonny dang','1982/01/02',1,'0987563541','jnd@gmail.com',N'USA','3',null),
-	('301147852',N'Trân Duy Mạnh','1997/01/02',1,'0925896320','TDM@gmail.com',N'Thái Lan','3','CTTT'),
-	('301802451',N'Đỗ Duy Mạnh','1996/12/29',1,'0972569871','DDM@gmail.com',N'Việt Nam','3',null),
-	('301802452',N'Đặng Văn Lâm','1993/08/13',1,'0895148523','DVL@gmail.com',N'Nhật Bản','3','CTTT'),
-	('301802453',N'Nguyễn Công Phượng','1995/01/21','1','0879456320','NVP@gmail.com',N'Việt Nam','3',null),
-	('301258968',N'Nguyễn Tiến Linh ','1997/10/20',1,'0879523487','NTL@gmail.com',N'Việt Nam','3','CTTT'),
-	('301874631',N'Trần Văn Đạt','2000/12/26',1,'0987563541','jnd@gmail.com',N'USA','3',null),
-	('301258963',N'Trần Nguyên Mạnh ','1991/10/20',1,'0879523487','TNM@gmail.com',N'Việt Nam','3','CTTT'),
-	('301258982',N'Quan Văn Chuẩn ','1997/10/20',1,'0879523488','QVC@gmail.com',N'Việt Nam','3','CTTT'),
-	('301258961',N'Lương Xuân Trường','1995/04/28',1,'0879523451','NTP@gmail.com',N'Việt Nam','3','CTTT')
+	VALUES ('123456789124',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
+	('234567891587',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
+	('345678912534',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
+	('4567891235424',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
+	('5678912345315',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
+	('6789123454534',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
+	('7891234565345',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
+	('8912345675345',N'John Tom','1982/01/01',0,'0987654221','jtom@gmail.com',N'Singapore',null,'CTTP'),
+	('912345678845',N'Nguyễn Hoàng Hải','1989/11/11',0,'0765289765','nhh@gmail.com',N'Việt Nam',2,'CTTT'),
+	('301258900354',N'jonny dang','1982/01/02',1,'0987563541','jnd@gmail.com',N'USA','3',null),
+	('301147852542',N'Trân Duy Mạnh','1997/01/02',1,'0925896320','TDM@gmail.com',N'Thái Lan','3','CTTT'),
+	('301802451387',N'Đỗ Duy Mạnh','1996/12/29',1,'0972569871','DDM@gmail.com',N'Việt Nam','3',null),
+	('301802452843',N'Đặng Văn Lâm','1993/08/13',1,'0895148523','DVL@gmail.com',N'Nhật Bản','3','CTTT'),
+	('301802453321',N'Nguyễn Công Phượng','1995/01/21','1','0879456320','NVP@gmail.com',N'Việt Nam','3',null),
+	('301258968167',N'Nguyễn Tiến Linh ','1997/10/20',1,'0879523487','NTL@gmail.com',N'Việt Nam','3','CTTT'),
+	('301874631621',N'Trần Văn Đạt','2000/12/26',1,'0987563541','jnd@gmail.com',N'USA','3',null),
+	('301258963364',N'Trần Nguyên Mạnh ','1991/10/20',1,'0879523487','TNM@gmail.com',N'Việt Nam','3','CTTT'),
+	('301258982487',N'Quan Văn Chuẩn ','1997/10/20',1,'0879523488','QVC@gmail.com',N'Việt Nam','3','CTTT'),
+	('301258961834',N'Lương Xuân Trường','1995/04/28',1,'0879523451','NTP@gmail.com',N'Việt Nam','3','CTTT')
 
 -- Dịch Vụ
 	INSERT INTO DichVu(TenDichVu,GiaDichVu,MoTa)
@@ -340,16 +346,17 @@ GO
 	(N'Fitness centre',50000,N'1 buổi'),
 	(N'Dịch vụ bể bơi 4 mùa',20000,N'1 vé')
 -- Hóa đơn
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','123456789','KHTT2')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','234567891','NONE')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','345678912','KHTT2')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','456789123','NONE')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/01/07','2019/07/05','2019/07/07',1000000,'pnmtriet','567891234','KHTT2')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/01/07','2019/08/10','2019/10/12',2000000,'pnmtriet','678912345','NONE')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2012/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','789123456','KHTT2')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','891234567','NONE')
-	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','912345678','KHTT2')
- --Chi tiết hóa đơn
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2021/11/07','2021/11/05','2021/11/07',1000000,'pnmtriet','123456789124','KHTT2')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2021/11/07','2021/11/05','2021/11/07',2000000,'pnmtriet','234567891587','NONE')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','345678912534','KHTT2')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','4567891235424','NONE')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/01/07','2019/07/05','2019/07/07',1000000,'pnmtriet','5678912345315','KHTT2')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2019/01/07','2019/08/10','2019/10/12',2000000,'pnmtriet','6789123454534','NONE')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2012/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','7891234565345','KHTT2')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/08/07','2019/08/10','2019/10/12',2000000,'pnmtriet','8912345675345','NONE')
+	INSERT INTO HoaDon(NgayTao,NgayNhanPhong,NgayTraPhong,ThanhTien,TaiKhoanNV,SoCMTKhachHang,MaKhuyenMai)VALUES ('2020/06/07','2019/07/05','2019/07/07',1000000,'pnmtriet','912345678845','KHTT2')
+
+	 --Chi tiết hóa đơn
 	INSERT INTO ChiTietHoaDon(MaHoaDon,MaDichVu,MaPhong,SoLanThueDichVu,TongTien)
 	VALUES (1,3,1,1,80000), (1,4,1,1,500000), (1,6,1,1,30000),
 	(2,5,5,2,200000), (2,2,5,3,90000), (2,1,5,2,40000)
@@ -358,13 +365,7 @@ GO
 
 	INSERT INTO DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
 	VALUES
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'123456789',null,2),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'234567891',null,3),
-	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'345678912',null,4),
-	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'456789123',null,5),
-	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'567891234',null,1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'678912345',null,1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'891234567',null,1)
+
 -- TẠO PROC
 --1
 IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
@@ -490,3 +491,8 @@ SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang , 
 
 	
 	*/
+	select * from KhachHang;
+	select * from DichVu;
+	select * from KhuyenMai
+
+

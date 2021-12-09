@@ -122,6 +122,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
             this.clear();
             MsgBox.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
+            e.printStackTrace();
             MsgBox.alert(this, "Thêm mới thất bại!");
         }
     }
@@ -423,7 +424,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                && utilityHelper.checkNullText(txt_TenDT)
                && utilityHelper.checkNullText2(txt_DanhGia)){
            if(utilityHelper.checkMaDoitac(txt_MaDT)
-                   && utilityHelper.checkName(txt_TenDT)
+//                   && utilityHelper.checkName(txt_TenDT)
                    && utilityHelper.checkSDT(txt_SDT)){
                this.insert();
            }

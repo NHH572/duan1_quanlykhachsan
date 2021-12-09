@@ -115,7 +115,7 @@ public class Login extends javax.swing.JFrame {
                 txtMatkhauKeyPressed(evt);
             }
         });
-        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 450, -1));
+        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 193, 390, 30));
 
         btnQRCode.setBackground(new java.awt.Color(255, 255, 255));
         btnQRCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -252,7 +252,9 @@ public void dangnhap() {
                     Auth.user = nhanVien;
                     MsgBox.alert(this, "Đăng nhập thành công!");
                     this.dispose();
+                    
                     new TrangChuJrame().setVisible(true);
+                    
                 } else {
                     MsgBox.alert(this, "Sai mật khẩu!");
                 }

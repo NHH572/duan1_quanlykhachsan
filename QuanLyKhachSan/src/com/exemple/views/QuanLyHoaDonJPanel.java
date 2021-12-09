@@ -224,12 +224,13 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         float tienphong = 0;
         float tiengiam = 0;
         int soLuong = 0;
+        float gia =0;
         try {
             for (HoaDonLoadTable hoaDonLoadTable : hd) {
                 tienphong = hoaDonLoadTable.getTienPhong();
                 soLuong = hoaDonLoadTable.getSoLan();
                 tiengiam = hoaDonLoadTable.getGiamTien();
-                float gia = hoaDonLoadTable.getGiaDichVu();
+                 gia = hoaDonLoadTable.getGiaDichVu();
                 count = count + (gia * soLuong);
             }
 

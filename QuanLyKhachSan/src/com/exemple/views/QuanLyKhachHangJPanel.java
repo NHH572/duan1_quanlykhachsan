@@ -614,7 +614,7 @@ public class QuanLyKhachHangJPanel extends javax.swing.JPanel {
 
         jLabel12.setText("Loại Khách Hàng");
 
-        cboLoaiKhach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null", "Khách chưa thuê", "Khách hàng tiềm năng", "Khách VIP" }));
+        cboLoaiKhach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Khách chưa thuê", "Khách hàng tiềm năng", "Khách VIP" }));
         cboLoaiKhach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboLoaiKhachActionPerformed(evt);
