@@ -295,13 +295,7 @@ GO
 	('CTTT',N'Công ty du lịch Trung Thành','0989999999',N'Nhân viên chuyên nghiệp, view đẹp, tiện nghi'),
 	('CTPT',N'Công ty du lịch Phát Tài','0777777777',N'Chất lượng khỏi phải chê, tiện nghi quá đầy đủ')
 -- Khách hàng
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'123456789124',null,2),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'234567891587',null,3),
-	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'345678912534',null,4),
-	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'4567891235424',null,5),
-	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'5678912345315',null,1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'6789123454534',null,1),
-	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'8912345675345',null,1)
+
 	
 	INSERT INTO KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue,MaDoiTac)
 	VALUES ('123456789124',N'Phạm Nguyễn Minh Triết','1990/09/09',0,'0987263232','pnmtriet@gmail.com',N'Việt Nam',null,null),
@@ -365,7 +359,13 @@ GO
 
 	INSERT INTO DatPhong(NgayDat,NgayHetHan,NgayTraPhong,TamTinh,MaPhong,SoCMTKhachHang,TaiKhoanNV,MaLoaiPhong)
 	VALUES
-
+		('2021/11/22','2021/11/25','2021/11/30',1000000,null,'123456789124',null,2),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'234567891587',null,3),
+	('2021/11/22','2021/11/25','2021/11/29',1000000,null,'345678912534',null,4),
+	('2021/11/22','2021/11/25','2021/11/28',1000000,null,'4567891235424',null,5),
+	('2021/11/22','2021/11/25','2021/11/27',1000000,null,'5678912345315',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'6789123454534',null,1),
+	('2021/11/22','2021/11/25','2021/11/30',1000000,null,'8912345675345',null,1)
 -- TẠO PROC
 --1
 IF OBJECT_ID('sp_DoanhThuHoaDon') is not null
@@ -498,3 +498,15 @@ SELECT  HoaDon.MaHoaDon ,  KhachHang.SoCMTKhachHang ,  KhachHang.TenKhachHang , 
 --insert into Phong values(704,7,N'Đang thuê',2)
 --insert into Phong values(705,7,N'Đang thuê',2)
 --insert into Phong values(706,7,N'Đang thuê',2)
+
+select * from HoaDon;
+
+SELECT HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien , HoaDon.TaiKhoanNV , HoaDon.SoCMTKhachHang , HoaDon.MaKhuyenMai AS MaKhuyenMai, Phong.SoPhong  FROM dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong WHERE SoCMTKhachHang like ?  GROUP BY  HoaDon.MaHoaDon ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien ,  HoaDon.TaiKhoanNV ,  HoaDon.SoCMTKhachHang ,  HoaDon.MaKhuyenMai ,  Phong.SoPhong
+
+
+select * from HoaDon where SoCMTKhachHang like '%';
+
+select * from khuyenMai where MaKhuyenMai ='KHTT1'
+
+INSERT INTO KhuyenMai(MaKhuyenMai,TenKhuyenMai,GiaTri,NgayBatDau,NgayHetHan)
+	VALUES ('DLGT',N'Du lịch và giải trí',1000000,'2021/11/01','2021/12/5'),

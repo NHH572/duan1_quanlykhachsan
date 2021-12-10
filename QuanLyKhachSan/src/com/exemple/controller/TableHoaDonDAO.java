@@ -24,6 +24,10 @@ public class TableHoaDonDAO {
            return selectBySql(sql);
        }
     
+    public List<TableHoaDon>selectBySoCMND(String soCMND){
+            String sql ="SELECT HoaDon.MaHoaDon ,HoaDon.NgayTao ,HoaDon.NgayNhanPhong ,HoaDon.NgayTraPhong ,HoaDon.ThanhTien , HoaDon.TaiKhoanNV , HoaDon.SoCMTKhachHang , HoaDon.MaKhuyenMai AS MaKhuyenMai, Phong.SoPhong  FROM dbo.HoaDon HoaDon INNER JOIN dbo.ChiTietHoaDon ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon INNER JOIN dbo.Phong Phong ON ChiTietHoaDon.MaPhong = Phong.MaPhong WHERE SoCMTKhachHang like ?  GROUP BY  HoaDon.MaHoaDon ,  HoaDon.NgayTao ,  HoaDon.NgayNhanPhong ,  HoaDon.NgayTraPhong ,  HoaDon.ThanhTien ,  HoaDon.TaiKhoanNV ,  HoaDon.SoCMTKhachHang ,  HoaDon.MaKhuyenMai ,  Phong.SoPhong";
+           return selectBySql(sql, "%" + soCMND + "%");
+       }
     
     protected List<TableHoaDon> selectBySql(String sql, Object... args) {
         List<TableHoaDon> listDichVu = new ArrayList<>();

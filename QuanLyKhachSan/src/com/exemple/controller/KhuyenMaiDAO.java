@@ -56,6 +56,15 @@ JdbcHelper.executeUpdate(DELETE_SQL, key);
         return list.get(0);   
     }
 
+    public KhuyenMai selectByMaKhuyenMai(String key) {
+        String sql = "select * from khuyenMai where MaKhuyenMai = ?";
+  List<KhuyenMai> list = this.selectBySql(sql, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);   
+    }
+    
     @Override
     protected List<KhuyenMai> selectBySql(String sqlString, Object... args) {
 List<KhuyenMai> list = new ArrayList<KhuyenMai>();
@@ -67,7 +76,7 @@ List<KhuyenMai> list = new ArrayList<KhuyenMai>();
                 entity.setTenKhuyenMai(rs.getString("TenKhuyenMai"));
                 entity.setGiaTri(rs.getInt("GiaTri"));
                 entity.setNgayBatDau(rs.getDate("NgayBatDau"));
-                entity.setNgayHetHan(rs.getDate("NgayBatDau"));
+                entity.setNgayHetHan(rs.getDate("NgayHetHan"));
 
                 list.add(entity);
             }
