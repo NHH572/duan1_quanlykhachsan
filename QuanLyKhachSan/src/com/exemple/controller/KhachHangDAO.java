@@ -31,6 +31,13 @@ public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
         JdbcHelper.executeUpdate(sql, kh.getCMND(), kh.getTenKhachHang(), kh.getNgaySinh(), kh.isGioiTinh(),
                 kh.getSoDienThoai(), kh.getEmail(), kh.getQuocTich(), kh.getSoLanThue(), kh.getMaDoiTac());
     }
+    public void insertKhongMaDoiTac(KhachHang kh){
+        String sql = "insert into "
+                + " KhachHang(SoCMTKhachHang,TenKhachHang,NgaySinh,GioiTinh,SoDienThoai,Email,QuocTich,SoLanThue) "
+                + " values (?,?,?,?,?,?,?,?)";
+        JdbcHelper.executeUpdate(sql, kh.getCMND(), kh.getTenKhachHang(), kh.getNgaySinh(), kh.isGioiTinh(),
+                kh.getSoDienThoai(), kh.getEmail(), kh.getQuocTich(), kh.getSoLanThue());
+    }
 
     @Override
     public void update(KhachHang kh) {
@@ -82,8 +89,8 @@ public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
                 entity.setCMND(rs.getString("SoCMTKhachHang"));
                 entity.setTenKhachHang(rs.getString("TenKhachHang"));
                 entity.setNgaySinh(rs.getDate("NgaySinh"));
-                entity.setGioiTinh(rs.getBoolean("gioitinh"));
-                entity.setSoDienThoai(rs.getString("sodienthoai"));
+                entity.setGioiTinh(rs.getBoolean("GioiTinh"));
+                entity.setSoDienThoai(rs.getString("SoDienThoai"));
                 entity.setEmail(rs.getString("Email"));
                 entity.setQuocTich(rs.getString("QuocTich"));
                 entity.setSoLanThue(rs.getInt("SoLanThue"));
@@ -128,5 +135,12 @@ public class KhachHangDAO extends EduSysDAO<KhachHang, String> {
                 + "where MaDoiTac= ?";
         return this.selectBySqlKH_DT(sql, key);
     }
-
+    public List<KhachHang> selectDanhSachSinhNhatKhacThang1(){
+        String sql="select * from KhachHang where MONTH(NgaySinh)-MONTH(GETDATE())=1";
+        return selectBySql(sql);
+    }
+     public List<KhachHang> selectDanhSachSinhNhatThang1(){
+        String sql="select * from KhachHang where MONTH(NgaySinh)=1";
+        return selectBySql(sql);
+    }
 }

@@ -5,12 +5,27 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.KhachHangDAO;
 import com.exemple.controller.KhuyenMaiDAO;
+import com.exemple.controller.MailSender;
+import com.exemple.entity.KhachHang;
 import com.exemple.entity.KhuyenMai;
 import com.exemple.helper.MsgBox;
 import com.exemple.helper.utilityHelper;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
@@ -21,6 +36,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
     int row = 0;
     KhuyenMaiDAO dao = new KhuyenMaiDAO();
     int index = 0; // vị trí của nhân viên đang hiển thị trên form 
+    List<KhachHang> listGuiMaKhuyenMai = new ArrayList<>();
 
     public QuanLyKhuyenMaiJPanel() {
         initComponents();
@@ -95,6 +111,7 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        btnSendMail = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -202,6 +219,15 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 51, 204));
         jLabel6.setText("Quản Lý Khuyến Mãi");
 
+        btnSendMail.setBackground(new java.awt.Color(255, 102, 51));
+        btnSendMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exemple/icon/send.png"))); // NOI18N
+        btnSendMail.setText("Gửi mail chúc mừng sinh nhật");
+        btnSendMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendMailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,14 +267,15 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(0, 653, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendMail)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +304,9 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
                     .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(46, 46, 46)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSendMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -330,10 +359,103 @@ public class QuanLyKhuyenMaiJPanel extends javax.swing.JPanel {
             this.update();
         }
     }//GEN-LAST:event_btnSuaActionPerformed
+    private int getMonth(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH) + 1;
+        return month;
+    }
+
+    private String getRamdomString(int soKyTu) {
+        return RandomStringUtils.randomAlphanumeric(soKyTu).toUpperCase();
+    }
+
+    private String getRanDom2Number() {
+        return String.valueOf(ThreadLocalRandom.current().nextInt(10, 99));
+    }
+
+    private void addToListGuiMaKhuyenMai() {
+        KhachHangDAO khDAO = new KhachHangDAO();
+        int thangHienTai = getMonth(new Date());
+        if (thangHienTai == 12) {
+            listGuiMaKhuyenMai = khDAO.selectDanhSachSinhNhatThang1();
+        } else {
+            listGuiMaKhuyenMai = khDAO.selectDanhSachSinhNhatKhacThang1();
+        }
+    }
+    private void insertKhuyenMaiSinhNhat(String maKhuyenMai,int thangSinhNhat){
+        KhuyenMai km = new KhuyenMai();
+        km.setMaKhuyenMai(maKhuyenMai);
+        km.setTenKhuyenMai("Chúc mừng sinh nhật");
+        km.setGiaTri(200);
+        Date ngayBatDau=new Date();
+        ngayBatDau.setMonth(thangSinhNhat-1);
+        ngayBatDau.setDate(1);
+        km.setNgayBatDau(ngayBatDau);
+        Date ngayHetHan=new Date();
+        ngayHetHan.setMonth(thangSinhNhat-1);
+        ngayHetHan.setDate(30);
+        km.setNgayHetHan(ngayHetHan);
+        
+        KhuyenMaiDAO kmDAO=new KhuyenMaiDAO();
+        kmDAO.insert(km);
+    }
+    private void sendMailToCustomers() {
+        addToListGuiMaKhuyenMai();
+        if (listGuiMaKhuyenMai.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không có khách hàng nào sinh vào tháng " + getMonth(new Date()), "Thông báo", JOptionPane.CANCEL_OPTION);
+            return;
+        }
+        String from = "quanlykhachsan1@gmail.com";
+        for (KhachHang item : listGuiMaKhuyenMai) {
+            try {
+                Message msg = null;
+                String maKhuyenMai = getRamdomString(4) + getRanDom2Number();
+                insertKhuyenMaiSinhNhat(maKhuyenMai, getMonth(item.getNgaySinh()));
+                String to = item.getEmail();
+                String hoTen = item.getTenKhachHang();
+                String subject = "CHÚC MỪNG SINH NHẬT " + hoTen;
+                String body = "";
+                body = "<h1>Xin chào"+hoTen+"</h1>" + "<br>"
+                        + "<h1>Mã khuyến mãi là:" + maKhuyenMai + "</h1>" + "<br>"
+                        + "<u>Đây là tag u</u>" + "<br>"
+                        + "<i>Đây là tag i</i>";
+                Properties p = new Properties();
+                p.put("mail.smtp.auth", "true");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.host", "smtp.gmail.com");
+                p.put("mail.smtp.port", 587);
+                String accountName = "quanlykhachsan1@gmail.com";
+                String accountPassword = "Aa123456@";
+                Session s = Session.getInstance(p,
+                        new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(accountName, accountPassword);
+                    }
+                });
+                msg = new MimeMessage(s);
+                msg.setFrom(new InternetAddress(from));
+                msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                msg.setSubject(subject);
+                msg.setText(body);
+                msg.setContent(body, "text/html; charset=utf-8");
+//                Transport.send(msg);
+                MailSender.queue((MimeMessage) msg);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Gửi Email chúc mừng sinh nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+    private void btnSendMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMailActionPerformed
+        sendMailToCustomers();
+        filtable();
+    }//GEN-LAST:event_btnSendMailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMoi;
+    private javax.swing.JButton btnSendMail;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;

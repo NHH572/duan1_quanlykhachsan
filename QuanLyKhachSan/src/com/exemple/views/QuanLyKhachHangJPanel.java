@@ -99,8 +99,8 @@ public class QuanLyKhachHangJPanel extends javax.swing.JPanel {
         }
         model.setSoDienThoai(txtSdt.getText());
         model.setEmail(txtEmail.getText());
-        model.setQuocTich(txtQuocTich.getText());
-        model.setSoLanThue(Integer.valueOf(txtSolanThue.getText()));
+        model.setQuocTich(txtQuocTich.getText());        
+        model.setSoLanThue(0);
         model.setMaDoiTac(txtMaDoiTac.getText());
         return model;
     }
@@ -150,7 +150,11 @@ public class QuanLyKhachHangJPanel extends javax.swing.JPanel {
     public void Insert() {
         KhachHang kh = getForm();
         try {
-            dao.insert(kh);
+            if(txtMaDoiTac.getText().isEmpty()){
+                dao.insertKhongMaDoiTac(kh);
+            }else{
+                dao.insert(kh);
+            }            
             this.filltable();
             this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công");
