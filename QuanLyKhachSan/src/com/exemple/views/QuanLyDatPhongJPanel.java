@@ -31,12 +31,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Minh Triet
  */
 public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
+
     private HoaDonDAO hddao = new HoaDonDAO();
     LoadTableHoaDonDAO lthddao = new LoadTableHoaDonDAO();
     private LoaiPhongDAO lpDAO = new LoaiPhongDAO();
@@ -60,10 +60,12 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         enableButton();
         disposeLabelSoPhong();
     }
-    private void disposeLabelSoPhong(){
+
+    private void disposeLabelSoPhong() {
         lblSoPhong1.setVisible(false);
         lblSoPhong.setVisible(false);
     }
+
     private void placeHolder(JTextField txtFiled, String text) {
         txtFiled.addFocusListener(new FocusListener() {
             @Override
@@ -102,7 +104,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
 //            }
 //        });
     }
-    
+
     private void addToModelDatPhong(int indexCbb, String txtSearch) {
         DefaultTableModel model = (DefaultTableModel) tblDatPhong.getModel();
         model.setRowCount(0);
@@ -781,7 +783,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
                 lblTrangThai.setText("Đã xác nhận");
                 lblSoPhong1.setVisible(true);
                 lblSoPhong.setVisible(true);
-                Phong p=new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
+                Phong p = new PhongDAO().selectById(String.valueOf(dp.getMaPhong()));
                 lblSoPhong.setText(String.valueOf(p.getSoPhong()));
                 lblTrangThai.setForeground(new Color(0, 204, 0));
                 btnDatPhong.setEnabled(false);
@@ -820,7 +822,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
     }
     private void tblDatPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatPhongMouseClicked
         if (evt.getClickCount() == 2) {
-            rowDatPhong = tblDatPhong.rowAtPoint(evt.getPoint()); //lấy vị trí dòng được chọn
+            rowDatPhong = tblDatPhong.getSelectedRow(); //lấy vị trí dòng được chọn
             maDatPhong = (int) tblDatPhong.getValueAt(rowDatPhong, 0);
             if (rowDatPhong >= 0) {
                 showInformation();
@@ -834,7 +836,7 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         int row = tblPhongTrong.getSelectedRow();
         maPhong = (int) tblPhongTrong.getValueAt(row, 0);
     }//GEN-LAST:event_tblPhongTrongMouseClicked
-    
+
     HoaDon getModel() {
         HoaDon hd = new HoaDon();
         hd.setCMND_CCCD(txtSoCMTKH.getText());
@@ -890,11 +892,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         dpDAO.updateDatPhong(maPhong, taiKhoanNV, maDatPhong, maLoaiPhong);
         PhongDAO pDAO = new PhongDAO();
         pDAO.updateTrangThai(maPhong);
-        fillToTableDatPhong();
         showInformation();
+        fillToTableDatPhong();
         insertHoaDon();
         insertChiTietHoaDon();
-        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);        
+        JOptionPane.showMessageDialog(this, "Đặt phòng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnDatPhongActionPerformed
     private void clearForm() {
         cbbLoaiPhong.setSelectedIndex(0);
@@ -1002,20 +1004,20 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
         return false;
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if(utilityHelper.checkNullText(txtSoCMTKH)&&utilityHelper.checkCMT(txtSoCMTKH)
-                &&utilityHelper.checkNullText(txtHoTen)&&utilityHelper.checkName(txtHoTen)
-                &&utilityHelper.checkNullText(txtSoDienThoai)&&utilityHelper.checkSDT(txtSoDienThoai)
-                &&utilityHelper.checkNullText(txtEmail)&&utilityHelper.checkEmail(txtEmail)
-                &&utilityHelper.checkNullText(txtQuocTich)){
-        if (maPhong == -1) {
-            JOptionPane.showMessageDialog(this, "Chọn một phòng trống!");
-            return;
-        }
-        if (insertDatPhong()) {
-            JOptionPane.showMessageDialog(this, "Thêm thành công!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
+        if (utilityHelper.checkNullText(txtSoCMTKH) && utilityHelper.checkCMT(txtSoCMTKH)
+                && utilityHelper.checkNullText(txtHoTen) && utilityHelper.checkName(txtHoTen)
+                && utilityHelper.checkNullText(txtSoDienThoai) && utilityHelper.checkSDT(txtSoDienThoai)
+                && utilityHelper.checkNullText(txtEmail) && utilityHelper.checkEmail(txtEmail)
+                && utilityHelper.checkNullText(txtQuocTich)) {
+            if (maPhong == -1) {
+                JOptionPane.showMessageDialog(this, "Chọn một phòng trống!");
+                return;
+            }
+            if (insertDatPhong()) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -1070,11 +1072,11 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             dp.setNgayNhanPhong(txtNgayNhanPhong.getDate());
             dp.setNgayMuonTra(txtNgayMuonTra.getDate());
             dp.setTamTinh(Integer.valueOf(txtTamTinh.getText()));
-            if(maPhong==-1){
+            if (maPhong == -1) {
                 dp.setMaPhong((int) tblDatPhong.getValueAt(rowDatPhong, 8));
-            }else{
+            } else {
                 dp.setMaPhong(maPhong);
-            }            
+            }
             dp.setSoCMT(txtSoCMTKH.getText());
             dp.setTaiKhoanNV(Auth.user.getMaNV());
             dp.setMaLoaiPhong(cbbLoaiPhong.getSelectedIndex() + 1);
@@ -1092,18 +1094,17 @@ public class QuanLyDatPhongJPanel extends javax.swing.JPanel {
             kh.setSoDienThoai(txtSoDienThoai.getText());
             kh.setEmail(txtEmail.getText());
             kh.setQuocTich(txtQuocTich.getText());
-            kh.setSoLanThue(0);            
+            kh.setSoLanThue(0);
             khDAO.update(kh);
-            DatPhongDAO dpDAO = new DatPhongDAO();            
+            DatPhongDAO dpDAO = new DatPhongDAO();
             DatPhong dpOld = dpDAO.selectById(maDatPhong);
             int maPhongOld = dpOld.getMaPhong();
             PhongDAO pDAO = new PhongDAO();
             pDAO.updateTrangThaiTrong(maPhongOld);
-            
-            dpDAO.update(dp);            
-            pDAO.updateTrangThai(maPhong); 
-            
-            
+
+            dpDAO.update(dp);
+            pDAO.updateTrangThai(maPhong);
+
             showInformation();
             updateDanhSachPhongTrong();
             fillToTableDatPhong();

@@ -39,6 +39,13 @@ public class KhachHang {
     
     }
 
+    public KhachHang(String tenKhachHang, boolean gioiTinh, String email) {
+        this.tenKhachHang = tenKhachHang;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
+    }
+
+    
     public String getEmail() {
         return email;
     }
@@ -76,7 +83,9 @@ public class KhachHang {
     public boolean isGioiTinh() {
         return gioiTinh;
     }
-
+    public String getNamNu(){
+        return gioiTinh?"Nữ":"Nam";
+    }
     public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }

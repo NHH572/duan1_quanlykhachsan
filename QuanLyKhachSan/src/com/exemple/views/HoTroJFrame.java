@@ -4,6 +4,7 @@
  */
 package com.exemple.views;
 
+import com.exemple.controller.MailSender;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -80,6 +81,7 @@ public class HoTroJFrame extends javax.swing.JFrame {
             }
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -212,7 +214,9 @@ public class HoTroJFrame extends javax.swing.JFrame {
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             msg.setSubject(subject);
             msg.setText(message);
-            Transport.send(msg);
+//            Transport.send(msg);
+               //xử lý bất đồng bộ
+            MailSender.queue((MimeMessage) msg);
             JOptionPane.showMessageDialog(this, "Đã gửi mail thành công!\nNgười nhận:" + to, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
 //            e.printStackTrace();
