@@ -28,32 +28,7 @@ public class thongKeDAO {
     thống kê số người học của trung tâm theo từng năm
     return 1 <Object[]> list : Năm - số lượng - ngày người đầu tiên đk - ngày người cc đk
      */
-    public List<Object[]> getNguoiHoc() {
-        String sql = "{CALL sp_ThongKeNguoiHoc}";
-        String[] cols = {"Nam", "SoLuong", "DauTien", "CuoiCung"};
-        return this.getListOfArray(sql, cols);
-    }
-
-    /*
-    bảng điểm của các học viên trong khóa học
-    @param makh mã khóa học
-    @return <Object[]> list : mã NH - họ và tên - điểm - xếp loại
-     */
-    public List<Object[]> getBangDiem(Integer makh) {
-        String sql = "{CALL sp_BangDiem(?)}";
-        String[] cols = {"MaNH", "HoTen", "Diem"};
-        return this.getListOfArray(sql, cols, makh);
-    }
-
-    /*
-    tổng hợp điểm của theo từng chuyên đề
-    @return <Object[]> list : tên chuyên đề - số HV - điểm thấp nhất - điểm cao nhất - điểm trung bình
-     */
-    public List<Object[]> getDiemTheoChuyenDe() {
-        String sql = "{CALL sp_ThongKeDiem}";
-        String[] cols = {"ChuyenDe", "SoHocVien", "ThapNhat", "CaoNhat", "TB"};
-        return this.getListOfArray(sql, cols);
-    }
+    
 
     /*
     tổng hợp doanh thu từng chuyên đề (theo từng năm)

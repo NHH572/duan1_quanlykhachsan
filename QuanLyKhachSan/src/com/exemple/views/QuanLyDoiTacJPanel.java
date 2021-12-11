@@ -78,7 +78,7 @@ public class QuanLyDoiTacJPanel extends javax.swing.JPanel {
                 Object[] row = {
                     kh.getCMND(),
                     kh.getTenKhachHang(),
-                    kh.isGioiTinh(),
+                    kh.isGioiTinh() ? "Nam" : "Nữ",
                     kh.getEmail(),
                     kh.getSoDienThoai()
                 };
