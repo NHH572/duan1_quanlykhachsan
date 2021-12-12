@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame {
         txtMatkhau.setBackground(new java.awt.Color(0, 0, 0));
         txtMatkhau.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtMatkhau.setForeground(new java.awt.Color(153, 153, 153));
-        txtMatkhau.setText("admin");
+        txtMatkhau.setText("123456");
         txtMatkhau.setBorder(null);
         txtMatkhau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
         txtTendangnhap.setBackground(new java.awt.Color(0, 0, 0));
         txtTendangnhap.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         txtTendangnhap.setForeground(new java.awt.Color(102, 102, 102));
-        txtTendangnhap.setText("admin");
+        txtTendangnhap.setText("hvanh");
         txtTendangnhap.setBorder(null);
         txtTendangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

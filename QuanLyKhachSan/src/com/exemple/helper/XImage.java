@@ -26,25 +26,27 @@ public class XImage {
     }
 
     public static ImageIcon readLogo(String fileName) {
-        File path = new File("logos", fileName);
-        return new ImageIcon(new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT));
+        File path = new File("Pictures", fileName);
+        return new ImageIcon(new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(225,225, Image.SCALE_DEFAULT));
     }
 
     public static boolean saveLogo(File file) {
-        File dir = new File("logos");  //khai báo thư mục logos ngang hàng với src
+        File dir = new File("Pictures");  //khai báo thư mục Pictures ngang hàng với src
         // Tạo thư mục nếu chưa tồn tại
         if (!dir.exists()) {
             dir.mkdirs();
         }
         File newFile = new File(dir, file.getName());
         try {
-            // Copy vào thư mục logos (đè nếu đã tồn tại)
+            // Copy vào thư mục Pictures (đè nếu đã tồn tại)
             Path source = Paths.get(file.getAbsolutePath());
             Path destination = Paths.get(newFile.getAbsolutePath());
             Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
             return true;
         } catch (Exception ex) {
+              ex.printStackTrace();
             return false;
+          
         }
     }
 }
