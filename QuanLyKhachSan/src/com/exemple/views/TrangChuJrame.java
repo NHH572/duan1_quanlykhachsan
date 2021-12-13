@@ -67,7 +67,11 @@ public class TrangChuJrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMuc("OrderDichVu", panelOrderDichVu, lblOrderDichVu, Opaque9));
         listDanhMuc.add(new DanhMuc("HoaDon", panelHoaDon, lblHoaDon, Opaque4));
         listDanhMuc.add(new DanhMuc("DatPhong", panelDatPhong, lblDatPhong, Opaque5));
-        listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
+        if(!Auth.user.isVaiTro()){
+            listDanhMuc.add(new DanhMuc("DoiTac", panelDoiTac, lblDoiTac, Opaque6));
+        }else{
+            lblDoiTac.setForeground(new Color(153,153,153));
+        }        
         listDanhMuc.add(new DanhMuc("HoTro", panelKhoHang, lblKhoHang, Opaque7));
         listDanhMuc.add(new DanhMuc("KhuyenMai", panelKhuyenMai, lblKhuyenMai, Opaque8));
         controller.setEvent(listDanhMuc);
